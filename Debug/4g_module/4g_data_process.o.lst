@@ -157,11 +157,11 @@
  142 0006 0021     	 movs r1,#0
  143 0008 6422     	 movs r2,#100
  144 000a FFF7FEFF 	 bl memset
-  21:../4g_module/4g_data_process.c **** 	TD1.car_id = 10;
+  21:../4g_module/4g_data_process.c **** 	TD1.car_id = 6;
  145              	 .loc 1 21 0
  146 000e 5D4B     	 ldr r3,.L2
  147 0010 0022     	 movs r2,#0
- 148 0012 42F00A02 	 orr r2,r2,#10
+ 148 0012 42F00602 	 orr r2,r2,#6
  149 0016 1A70     	 strb r2,[r3]
  150 0018 0022     	 movs r2,#0
  151 001a 5A70     	 strb r2,[r3,#1]

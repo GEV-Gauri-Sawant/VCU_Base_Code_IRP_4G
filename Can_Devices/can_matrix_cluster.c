@@ -244,17 +244,17 @@ void Update_CAN_0x18FF2121(void)
 	 //  update data for the MO to transmit
 	status = (CAN_NODE_STATUS_t)CAN_NODE_MO_UpdateData(HandlePtr1->lmobj_ptr[29],tempData);
 
-		       if (status == CAN_NODE_STATUS_SUCCESS)
-		       {
-		         // message object data updated.
+	if (status == CAN_NODE_STATUS_SUCCESS)
+	{
+		// message object data updated.
 
-		         // transmit the data
-		         CAN_NODE_MO_Transmit(HandlePtr1->lmobj_ptr[29]);
-		       }
-		       else
-		       {
-		         // message object failed to update.
-		       }
+		// transmit the data
+		CAN_NODE_MO_Transmit(HandlePtr1->lmobj_ptr[29]);
+	}
+	else
+	{
+		// message object failed to update.
+	}
 }
 
 void Update_CAN_0x18FED911(void)

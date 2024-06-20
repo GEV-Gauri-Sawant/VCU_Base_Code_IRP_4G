@@ -14,6 +14,8 @@ void OutPutAction_Update(void)
 {
 	ALL_CONDITION_ON();
 
+	SPI_ADC_ProcessModeChange(1);
+
 	can_outputs_allState();
 
 	State_1();
@@ -28,7 +30,6 @@ void OutPutAction_Update(void)
 	VcuOut_MotorController_IRPbrakes();
 
 	door_en_cabin_light();
-	 SPI_ADC_ProcessModeChange(1);
 }
 
 void charger_tx(void)

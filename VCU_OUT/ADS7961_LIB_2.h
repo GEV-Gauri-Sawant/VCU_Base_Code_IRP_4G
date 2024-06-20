@@ -53,31 +53,29 @@ typedef union
 	uint16_t F_Data;
 }ADS7961Frame_t;
 
-float DROPPED_IN_12V=0;
+float DROPPED_IN_12V;
 
 
 //ADS7961 frame format
 uint8_t ADCModeAUTO2Frame[2];
 //collecting data ADS1
-uint8_t ADS1_receive_data[16]={0};
-uint8_t ADS1_recive_channel[16]={0};
-uint32_t ADS1_avg_receive_data[16]={0};
+uint8_t ADS1_receive_data[16];
+uint8_t ADS1_recive_channel[16];
+uint32_t ADS1_avg_receive_data[16];
 
 //collecting data ADS2
-uint8_t ADS2_receive_data[16]={0};
-uint8_t ADS2_recive_channel[16]={0};
-uint32_t ADS2_avg_receive_data[16]={0};
+uint8_t ADS2_receive_data[16][50];
+//uint8_t ADS2_recive_channel[16]; //uncomment channel for debugging
+uint32_t ADS2_avg_receive_data[16];
 
 //collecting data ADS3//
-uint8_t ADS3_receive_data[16]={0};
-uint8_t ADS3_recive_channel[16]={0};
-uint32_t ADS3_avg_receive_data[16]={0};
+uint8_t ADS3_receive_data[16][50];
+//uint8_t ADS3_recive_channel[16]; //uncomment channel for debugging
+uint32_t ADS3_avg_receive_data[16];
 
-uint8_t flag=false;
+uint8_t flag;
 float adc2_current[16];
-
-
-
+float adc3_current[16];
 
 XMC_GPIO_PORT_t temp;
 
@@ -89,3 +87,4 @@ void ADC_Read_AllChannel(uint8_t temp_port_num ,uint8_t pin_number);
 void ADC_Read_by_Channel(uint8_t temp_port_num ,uint8_t pin_number,uint8_t channel);
 void SPI_ADS7961_AUTO_MODE2(uint8_t temp_port_num ,uint8_t pin_number);
 void SPI_ADS7961_AUTO2_Init(uint8_t temp_port_num ,uint8_t pin_number);
+void DROPPED_IN_12_volt(void);

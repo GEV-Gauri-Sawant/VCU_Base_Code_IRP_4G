@@ -18,7 +18,7 @@ void Process_4G_Event_Data(void)
 {
 
 	memset(&TD1,0,sizeof(TD1));
-	TD1.car_id = 10;
+	TD1.car_id = 6;
 	TD1.trip_id = 81050;
 	TD1.identifier = 318;
 //	TD1.rtc.month = current_time.month;

@@ -2620,27 +2620,27 @@
  715 001c 0346     	 mov r3,r0
  716 001e FB71     	 strb r3,[r7,#7]
  246:../Can_Devices/can_matrix_cluster.c **** 
- 247:../Can_Devices/can_matrix_cluster.c **** 		       if (status == CAN_NODE_STATUS_SUCCESS)
+ 247:../Can_Devices/can_matrix_cluster.c **** 	if (status == CAN_NODE_STATUS_SUCCESS)
  717              	 .loc 2 247 0
  718 0020 FB79     	 ldrb r3,[r7,#7]
  719 0022 002B     	 cmp r3,#0
  720 0024 05D1     	 bne .L26
- 248:../Can_Devices/can_matrix_cluster.c **** 		       {
- 249:../Can_Devices/can_matrix_cluster.c **** 		         // message object data updated.
+ 248:../Can_Devices/can_matrix_cluster.c **** 	{
+ 249:../Can_Devices/can_matrix_cluster.c **** 		// message object data updated.
  250:../Can_Devices/can_matrix_cluster.c **** 
- 251:../Can_Devices/can_matrix_cluster.c **** 		         // transmit the data
- 252:../Can_Devices/can_matrix_cluster.c **** 		         CAN_NODE_MO_Transmit(HandlePtr1->lmobj_ptr[29]);
+ 251:../Can_Devices/can_matrix_cluster.c **** 		// transmit the data
+ 252:../Can_Devices/can_matrix_cluster.c **** 		CAN_NODE_MO_Transmit(HandlePtr1->lmobj_ptr[29]);
  721              	 .loc 2 252 0
  722 0026 FB68     	 ldr r3,[r7,#12]
  723 0028 D3F88030 	 ldr r3,[r3,#128]
  724 002c 1846     	 mov r0,r3
  725 002e FFF7FEFF 	 bl CAN_NODE_MO_Transmit
  726              	.L26:
- 253:../Can_Devices/can_matrix_cluster.c **** 		       }
- 254:../Can_Devices/can_matrix_cluster.c **** 		       else
- 255:../Can_Devices/can_matrix_cluster.c **** 		       {
- 256:../Can_Devices/can_matrix_cluster.c **** 		         // message object failed to update.
- 257:../Can_Devices/can_matrix_cluster.c **** 		       }
+ 253:../Can_Devices/can_matrix_cluster.c **** 	}
+ 254:../Can_Devices/can_matrix_cluster.c **** 	else
+ 255:../Can_Devices/can_matrix_cluster.c **** 	{
+ 256:../Can_Devices/can_matrix_cluster.c **** 		// message object failed to update.
+ 257:../Can_Devices/can_matrix_cluster.c **** 	}
  258:../Can_Devices/can_matrix_cluster.c **** }
  727              	 .loc 2 258 0
  728 0032 1037     	 adds r7,r7,#16

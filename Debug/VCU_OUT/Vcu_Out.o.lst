@@ -944,38 +944,39 @@
  318              	 .loc 3 15 0
  319 0004 FFF7FEFF 	 bl ALL_CONDITION_ON
   16:../VCU_OUT/Vcu_Out.c **** 
-  17:../VCU_OUT/Vcu_Out.c **** 	can_outputs_allState();
+  17:../VCU_OUT/Vcu_Out.c **** 	SPI_ADC_ProcessModeChange(1);
  320              	 .loc 3 17 0
- 321 0008 FFF7FEFF 	 bl can_outputs_allState
+ 321 0008 0120     	 movs r0,#1
+ 322 000a FFF7FEFF 	 bl SPI_ADC_ProcessModeChange
   18:../VCU_OUT/Vcu_Out.c **** 
-  19:../VCU_OUT/Vcu_Out.c **** 	State_1();
- 322              	 .loc 3 19 0
- 323 000c FFF7FEFF 	 bl State_1
-  20:../VCU_OUT/Vcu_Out.c **** 	State_2();
- 324              	 .loc 3 20 0
- 325 0010 FFF7FEFF 	 bl State_2
-  21:../VCU_OUT/Vcu_Out.c **** 	//Can_Outputs_State1();
-  22:../VCU_OUT/Vcu_Out.c **** 
-  23:../VCU_OUT/Vcu_Out.c **** 	/* light */
-  24:../VCU_OUT/Vcu_Out.c **** 	Lights_on_off();
- 326              	 .loc 3 24 0
- 327 0014 FFF7FEFF 	 bl Lights_on_off
-  25:../VCU_OUT/Vcu_Out.c **** 
-  26:../VCU_OUT/Vcu_Out.c **** 
+  19:../VCU_OUT/Vcu_Out.c **** 	can_outputs_allState();
+ 323              	 .loc 3 19 0
+ 324 000e FFF7FEFF 	 bl can_outputs_allState
+  20:../VCU_OUT/Vcu_Out.c **** 
+  21:../VCU_OUT/Vcu_Out.c **** 	State_1();
+ 325              	 .loc 3 21 0
+ 326 0012 FFF7FEFF 	 bl State_1
+  22:../VCU_OUT/Vcu_Out.c **** 	State_2();
+ 327              	 .loc 3 22 0
+ 328 0016 FFF7FEFF 	 bl State_2
+  23:../VCU_OUT/Vcu_Out.c **** 	//Can_Outputs_State1();
+  24:../VCU_OUT/Vcu_Out.c **** 
+  25:../VCU_OUT/Vcu_Out.c **** 	/* light */
+  26:../VCU_OUT/Vcu_Out.c **** 	Lights_on_off();
+ 329              	 .loc 3 26 0
+ 330 001a FFF7FEFF 	 bl Lights_on_off
   27:../VCU_OUT/Vcu_Out.c **** 
-  28:../VCU_OUT/Vcu_Out.c **** 	VcuOut_MotorController_IRPbrakes();
- 328              	 .loc 3 28 0
- 329 0018 FFF7FEFF 	 bl VcuOut_MotorController_IRPbrakes
+  28:../VCU_OUT/Vcu_Out.c **** 
   29:../VCU_OUT/Vcu_Out.c **** 
-  30:../VCU_OUT/Vcu_Out.c **** 	door_en_cabin_light();
- 330              	 .loc 3 30 0
- 331 001c FFF7FEFF 	 bl door_en_cabin_light
-  31:../VCU_OUT/Vcu_Out.c **** 	 SPI_ADC_ProcessModeChange(1);
- 332              	 .loc 3 31 0
- 333 0020 0120     	 movs r0,#1
- 334 0022 FFF7FEFF 	 bl SPI_ADC_ProcessModeChange
-  32:../VCU_OUT/Vcu_Out.c **** }
- 335              	 .loc 3 32 0
+  30:../VCU_OUT/Vcu_Out.c **** 	VcuOut_MotorController_IRPbrakes();
+ 331              	 .loc 3 30 0
+ 332 001e FFF7FEFF 	 bl VcuOut_MotorController_IRPbrakes
+  31:../VCU_OUT/Vcu_Out.c **** 
+  32:../VCU_OUT/Vcu_Out.c **** 	door_en_cabin_light();
+ 333              	 .loc 3 32 0
+ 334 0022 FFF7FEFF 	 bl door_en_cabin_light
+  33:../VCU_OUT/Vcu_Out.c **** }
+ 335              	 .loc 3 33 0
  336 0026 80BD     	 pop {r7,pc}
  337              	 .cfi_endproc
  338              	.LFE605:
@@ -986,10 +987,10 @@
  344              	 .thumb_func
  346              	charger_tx:
  347              	.LFB606:
-  33:../VCU_OUT/Vcu_Out.c **** 
-  34:../VCU_OUT/Vcu_Out.c **** void charger_tx(void)
-  35:../VCU_OUT/Vcu_Out.c **** {
- 348              	 .loc 3 35 0
+  34:../VCU_OUT/Vcu_Out.c **** 
+  35:../VCU_OUT/Vcu_Out.c **** void charger_tx(void)
+  36:../VCU_OUT/Vcu_Out.c **** {
+ 348              	 .loc 3 36 0
  349              	 .cfi_startproc
  350              	 
  351              	 
@@ -1001,12 +1002,12 @@
  357 0002 00AF     	 add r7,sp,#0
  358              	.LCFI25:
  359              	 .cfi_def_cfa_register 7
-  36:../VCU_OUT/Vcu_Out.c **** 	/*  obc set v and i */
-  37:../VCU_OUT/Vcu_Out.c **** 	Update_CAN_id0x1806E5F4();
- 360              	 .loc 3 37 0
+  37:../VCU_OUT/Vcu_Out.c **** 	/*  obc set v and i */
+  38:../VCU_OUT/Vcu_Out.c **** 	Update_CAN_id0x1806E5F4();
+ 360              	 .loc 3 38 0
  361 0004 FFF7FEFF 	 bl Update_CAN_id0x1806E5F4
-  38:../VCU_OUT/Vcu_Out.c **** }
- 362              	 .loc 3 38 0
+  39:../VCU_OUT/Vcu_Out.c **** }
+ 362              	 .loc 3 39 0
  363 0008 80BD     	 pop {r7,pc}
  364              	 .cfi_endproc
  365              	.LFE606:
@@ -1017,10 +1018,10 @@
  371              	 .thumb_func
  373              	Lights_on_off:
  374              	.LFB607:
-  39:../VCU_OUT/Vcu_Out.c **** 
-  40:../VCU_OUT/Vcu_Out.c **** void Lights_on_off()
-  41:../VCU_OUT/Vcu_Out.c **** {
- 375              	 .loc 3 41 0
+  40:../VCU_OUT/Vcu_Out.c **** 
+  41:../VCU_OUT/Vcu_Out.c **** void Lights_on_off()
+  42:../VCU_OUT/Vcu_Out.c **** {
+ 375              	 .loc 3 42 0
  376              	 .cfi_startproc
  377              	 
  378              	 
@@ -1032,20 +1033,20 @@
  384 0002 00AF     	 add r7,sp,#0
  385              	.LCFI27:
  386              	 .cfi_def_cfa_register 7
-  42:../VCU_OUT/Vcu_Out.c **** 	/* light */
-  43:../VCU_OUT/Vcu_Out.c **** 	if(Lights_OUT.brake_switch_out_d)
- 387              	 .loc 3 43 0
+  43:../VCU_OUT/Vcu_Out.c **** 	/* light */
+  44:../VCU_OUT/Vcu_Out.c **** 	if(Lights_OUT.brake_switch_out_d)
+ 387              	 .loc 3 44 0
  388 0004 0B4B     	 ldr r3,.L10
  389 0006 5B78     	 ldrb r3,[r3,#1]
  390 0008 002B     	 cmp r3,#0
  391 000a 09D0     	 beq .L8
-  44:../VCU_OUT/Vcu_Out.c **** 	{
-  45:../VCU_OUT/Vcu_Out.c **** 		DIGITAL_IO_SetOutputHigh(&BRAKE_LIGHT_OUT_D);
- 392              	 .loc 3 45 0
+  45:../VCU_OUT/Vcu_Out.c **** 	{
+  46:../VCU_OUT/Vcu_Out.c **** 		DIGITAL_IO_SetOutputHigh(&BRAKE_LIGHT_OUT_D);
+ 392              	 .loc 3 46 0
  393 000c 0A48     	 ldr r0,.L10+4
  394 000e FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
-  46:../VCU_OUT/Vcu_Out.c **** 		Gtake_Mcu_drive_states_additional_29bit->Brake_cmd = 1;
- 395              	 .loc 3 46 0
+  47:../VCU_OUT/Vcu_Out.c **** 		Gtake_Mcu_drive_states_additional_29bit->Brake_cmd = 1;
+ 395              	 .loc 3 47 0
  396 0012 0A4B     	 ldr r3,.L10+8
  397 0014 1A68     	 ldr r2,[r3]
  398 0016 1378     	 ldrb r3,[r2]
@@ -1053,24 +1054,24 @@
  400 001c 1370     	 strb r3,[r2]
  401 001e 08E0     	 b .L7
  402              	.L8:
-  47:../VCU_OUT/Vcu_Out.c **** 	}
-  48:../VCU_OUT/Vcu_Out.c **** 	else
-  49:../VCU_OUT/Vcu_Out.c **** 	{
-  50:../VCU_OUT/Vcu_Out.c **** 		DIGITAL_IO_SetOutputLow(&BRAKE_LIGHT_OUT_D);
- 403              	 .loc 3 50 0
+  48:../VCU_OUT/Vcu_Out.c **** 	}
+  49:../VCU_OUT/Vcu_Out.c **** 	else
+  50:../VCU_OUT/Vcu_Out.c **** 	{
+  51:../VCU_OUT/Vcu_Out.c **** 		DIGITAL_IO_SetOutputLow(&BRAKE_LIGHT_OUT_D);
+ 403              	 .loc 3 51 0
  404 0020 0548     	 ldr r0,.L10+4
  405 0022 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
-  51:../VCU_OUT/Vcu_Out.c **** 		Gtake_Mcu_drive_states_additional_29bit->Brake_cmd = 0;
- 406              	 .loc 3 51 0
+  52:../VCU_OUT/Vcu_Out.c **** 		Gtake_Mcu_drive_states_additional_29bit->Brake_cmd = 0;
+ 406              	 .loc 3 52 0
  407 0026 054B     	 ldr r3,.L10+8
  408 0028 1A68     	 ldr r2,[r3]
  409 002a 1378     	 ldrb r3,[r2]
  410 002c 6FF38613 	 bfc r3,#6,#1
  411 0030 1370     	 strb r3,[r2]
  412              	.L7:
-  52:../VCU_OUT/Vcu_Out.c **** 	}
-  53:../VCU_OUT/Vcu_Out.c **** }
- 413              	 .loc 3 53 0
+  53:../VCU_OUT/Vcu_Out.c **** 	}
+  54:../VCU_OUT/Vcu_Out.c **** }
+ 413              	 .loc 3 54 0
  414 0032 80BD     	 pop {r7,pc}
  415              	.L11:
  416              	 .align 2
@@ -1087,10 +1088,10 @@
  428              	 .thumb_func
  430              	VcuOut_MotorController_IRPbrakes:
  431              	.LFB608:
-  54:../VCU_OUT/Vcu_Out.c **** 
-  55:../VCU_OUT/Vcu_Out.c **** void VcuOut_MotorController_IRPbrakes(void)
-  56:../VCU_OUT/Vcu_Out.c **** {
- 432              	 .loc 3 56 0
+  55:../VCU_OUT/Vcu_Out.c **** 
+  56:../VCU_OUT/Vcu_Out.c **** void VcuOut_MotorController_IRPbrakes(void)
+  57:../VCU_OUT/Vcu_Out.c **** {
+ 432              	 .loc 3 57 0
  433              	 .cfi_startproc
  434              	 
  435              	 
@@ -1102,8 +1103,8 @@
  441 0002 00AF     	 add r7,sp,#0
  442              	.LCFI29:
  443              	 .cfi_def_cfa_register 7
-  57:../VCU_OUT/Vcu_Out.c **** 	Irp_Mcu_drive_states_29bit->Brake_Command = Lights_OUT.brake_switch_out_d;
- 444              	 .loc 3 57 0
+  58:../VCU_OUT/Vcu_Out.c **** 	Irp_Mcu_drive_states_29bit->Brake_Command = Lights_OUT.brake_switch_out_d;
+ 444              	 .loc 3 58 0
  445 0004 0D4B     	 ldr r3,.L13
  446 0006 1A68     	 ldr r2,[r3]
  447 0008 0D4B     	 ldr r3,.L13+4
@@ -1111,9 +1112,9 @@
  449 000c 1378     	 ldrb r3,[r2]
  450 000e 61F34513 	 bfi r3,r1,#5,#1
  451 0012 1370     	 strb r3,[r2]
-  58:../VCU_OUT/Vcu_Out.c **** 
-  59:../VCU_OUT/Vcu_Out.c **** 	Irp_Mcu_drive_states_29bit->Handbrake_Command = !Relay_Control_Switch_OUT.elec_handbrake_pwr_out;
- 452              	 .loc 3 59 0
+  59:../VCU_OUT/Vcu_Out.c **** 
+  60:../VCU_OUT/Vcu_Out.c **** 	Irp_Mcu_drive_states_29bit->Handbrake_Command = !Relay_Control_Switch_OUT.elec_handbrake_pwr_out;
+ 452              	 .loc 3 60 0
  453 0014 094B     	 ldr r3,.L13
  454 0016 1A68     	 ldr r2,[r3]
  455 0018 0A4B     	 ldr r3,.L13+8
@@ -1125,8 +1126,8 @@
  461 002a 1378     	 ldrb r3,[r2]
  462 002c 61F38613 	 bfi r3,r1,#6,#1
  463 0030 1370     	 strb r3,[r2]
-  60:../VCU_OUT/Vcu_Out.c **** }
- 464              	 .loc 3 60 0
+  61:../VCU_OUT/Vcu_Out.c **** }
+ 464              	 .loc 3 61 0
  465 0032 BD46     	 mov sp,r7
  466              	.LCFI30:
  467              	 .cfi_def_cfa_register 13
@@ -1151,10 +1152,10 @@
  487              	 .thumb_func
  489              	door_en_cabin_light:
  490              	.LFB609:
-  61:../VCU_OUT/Vcu_Out.c **** 
-  62:../VCU_OUT/Vcu_Out.c **** void door_en_cabin_light(void)
-  63:../VCU_OUT/Vcu_Out.c **** {
- 491              	 .loc 3 63 0
+  62:../VCU_OUT/Vcu_Out.c **** 
+  63:../VCU_OUT/Vcu_Out.c **** void door_en_cabin_light(void)
+  64:../VCU_OUT/Vcu_Out.c **** {
+ 491              	 .loc 3 64 0
  492              	 .cfi_startproc
  493              	 
  494              	 
@@ -1166,22 +1167,22 @@
  500 0002 00AF     	 add r7,sp,#0
  501              	.LCFI33:
  502              	 .cfi_def_cfa_register 7
-  64:../VCU_OUT/Vcu_Out.c **** 	if((!Door_Switch_OUT.passenger_door_OUT) || (!Door_Switch_OUT.driver_door_OUT) || /*(!Door_Switch_
- 503              	 .loc 3 64 0
+  65:../VCU_OUT/Vcu_Out.c **** 	if((!Door_Switch_OUT.passenger_door_OUT) || (!Door_Switch_OUT.driver_door_OUT) || /*(!Door_Switch_
+ 503              	 .loc 3 65 0
  504 0004 0E4B     	 ldr r3,.L19
  505 0006 9B78     	 ldrb r3,[r3,#2]
  506 0008 83F00103 	 eor r3,r3,#1
  507 000c DBB2     	 uxtb r3,r3
  508 000e 002B     	 cmp r3,#0
  509 0010 0DD1     	 bne .L16
- 510              	 .loc 3 64 0 is_stmt 0 discriminator 1
+ 510              	 .loc 3 65 0 is_stmt 0 discriminator 1
  511 0012 0B4B     	 ldr r3,.L19
  512 0014 5B78     	 ldrb r3,[r3,#1]
  513 0016 83F00103 	 eor r3,r3,#1
  514 001a DBB2     	 uxtb r3,r3
  515 001c 002B     	 cmp r3,#0
  516 001e 06D1     	 bne .L16
- 517              	 .loc 3 64 0 discriminator 2
+ 517              	 .loc 3 65 0 discriminator 2
  518 0020 074B     	 ldr r3,.L19
  519 0022 5B79     	 ldrb r3,[r3,#5]
  520 0024 83F00103 	 eor r3,r3,#1
@@ -1189,25 +1190,25 @@
  522 002a 002B     	 cmp r3,#0
  523 002c 03D0     	 beq .L17
  524              	.L16:
-  65:../VCU_OUT/Vcu_Out.c **** 	{
-  66:../VCU_OUT/Vcu_Out.c **** 		digital_io_setoutputhigh(&AC_COMPRESSOR_OUT_D); // for cabin light on doors on/off
- 525              	 .loc 3 66 0 is_stmt 1
+  66:../VCU_OUT/Vcu_Out.c **** 	{
+  67:../VCU_OUT/Vcu_Out.c **** 		digital_io_setoutputhigh(&AC_COMPRESSOR_OUT_D); // for cabin light on doors on/off
+ 525              	 .loc 3 67 0 is_stmt 1
  526 002e 0548     	 ldr r0,.L19+4
  527 0030 FFF7FEFF 	 bl digital_io_setoutputhigh
  528 0034 02E0     	 b .L15
  529              	.L17:
-  67:../VCU_OUT/Vcu_Out.c **** 	}
-  68:../VCU_OUT/Vcu_Out.c **** 	else
-  69:../VCU_OUT/Vcu_Out.c **** 	{
-  70:../VCU_OUT/Vcu_Out.c **** 		digital_io_setoutputlow(&AC_COMPRESSOR_OUT_D);
- 530              	 .loc 3 70 0
+  68:../VCU_OUT/Vcu_Out.c **** 	}
+  69:../VCU_OUT/Vcu_Out.c **** 	else
+  70:../VCU_OUT/Vcu_Out.c **** 	{
+  71:../VCU_OUT/Vcu_Out.c **** 		digital_io_setoutputlow(&AC_COMPRESSOR_OUT_D);
+ 530              	 .loc 3 71 0
  531 0036 0348     	 ldr r0,.L19+4
  532 0038 FFF7FEFF 	 bl digital_io_setoutputlow
  533              	.L15:
-  71:../VCU_OUT/Vcu_Out.c **** 	}
-  72:../VCU_OUT/Vcu_Out.c **** 
-  73:../VCU_OUT/Vcu_Out.c **** }
- 534              	 .loc 3 73 0
+  72:../VCU_OUT/Vcu_Out.c **** 	}
+  73:../VCU_OUT/Vcu_Out.c **** 
+  74:../VCU_OUT/Vcu_Out.c **** }
+ 534              	 .loc 3 74 0
  535 003c 80BD     	 pop {r7,pc}
  536              	.L20:
  537 003e 00BF     	 .align 2
@@ -1223,15 +1224,15 @@
  548              	 .thumb_func
  550              	ALL_CONDITION_ON:
  551              	.LFB610:
-  74:../VCU_OUT/Vcu_Out.c **** /*
-  75:../VCU_OUT/Vcu_Out.c **** void cluster_door_out(void)
-  76:../VCU_OUT/Vcu_Out.c **** {
-  77:../VCU_OUT/Vcu_Out.c **** 	//cluster_door_out = cluster_door_in;
-  78:../VCU_OUT/Vcu_Out.c **** }
-  79:../VCU_OUT/Vcu_Out.c **** */
-  80:../VCU_OUT/Vcu_Out.c **** void ALL_CONDITION_ON()
-  81:../VCU_OUT/Vcu_Out.c ****  {
- 552              	 .loc 3 81 0
+  75:../VCU_OUT/Vcu_Out.c **** /*
+  76:../VCU_OUT/Vcu_Out.c **** void cluster_door_out(void)
+  77:../VCU_OUT/Vcu_Out.c **** {
+  78:../VCU_OUT/Vcu_Out.c **** 	//cluster_door_out = cluster_door_in;
+  79:../VCU_OUT/Vcu_Out.c **** }
+  80:../VCU_OUT/Vcu_Out.c **** */
+  81:../VCU_OUT/Vcu_Out.c **** void ALL_CONDITION_ON()
+  82:../VCU_OUT/Vcu_Out.c ****  {
+ 552              	 .loc 3 82 0
  553              	 .cfi_startproc
  554              	 
  555              	 
@@ -1243,38 +1244,38 @@
  561 0002 00AF     	 add r7,sp,#0
  562              	.LCFI35:
  563              	 .cfi_def_cfa_register 7
-  82:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&DOOR_LOCK_PWR_OUT_D);//check j4 -> f1
- 564              	 .loc 3 82 0
+  83:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&DOOR_LOCK_PWR_OUT_D);//check j4 -> f1
+ 564              	 .loc 3 83 0
  565 0004 0948     	 ldr r0,.L22
  566 0006 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
-  83:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&LIGHTS_PWR_OUT_D); // Check j4 -> k1
- 567              	 .loc 3 83 0
+  84:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&LIGHTS_PWR_OUT_D); // Check j4 -> k1
+ 567              	 .loc 3 84 0
  568 000a 0948     	 ldr r0,.L22+4
  569 000c FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
-  84:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&HORN_PWR_OUT_D);
- 570              	 .loc 3 84 0
+  85:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&HORN_PWR_OUT_D);
+ 570              	 .loc 3 85 0
  571 0010 0848     	 ldr r0,.L22+8
  572 0012 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
-  85:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D);
- 573              	 .loc 3 85 0
+  86:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D);
+ 573              	 .loc 3 86 0
  574 0016 0848     	 ldr r0,.L22+12
  575 0018 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
-  86:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&HEADLAMPS_ADJ_PWR_OUT_D);
- 576              	 .loc 3 86 0
+  87:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&HEADLAMPS_ADJ_PWR_OUT_D);
+ 576              	 .loc 3 87 0
  577 001c 0748     	 ldr r0,.L22+16
  578 001e FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
-  87:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&CABIN_LIGHT_OUT_D);
- 579              	 .loc 3 87 0
+  88:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&CABIN_LIGHT_OUT_D);
+ 579              	 .loc 3 88 0
  580 0022 0748     	 ldr r0,.L22+20
  581 0024 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
-  88:../VCU_OUT/Vcu_Out.c **** 
   89:../VCU_OUT/Vcu_Out.c **** 
-  90:../VCU_OUT/Vcu_Out.c **** 	// DIGITAL_IO_SetOutputHigh(&AUX_EFUSE_1_OUT_D);//instrument cluster 12v as battery(constant 12v)
-  91:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputhigh(&AUX_EFUSE_3_OUT_D);//bms 12v
-  92:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputhigh(&AUX_EFUSE_2_OUT_D);//GB/T that is for super charge charging connector
-  93:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputhigh(&AUX_EFUSE_5_OUT_D);//obc 12v
-  94:../VCU_OUT/Vcu_Out.c ****  }
- 582              	 .loc 3 94 0
+  90:../VCU_OUT/Vcu_Out.c **** 
+  91:../VCU_OUT/Vcu_Out.c **** 	// DIGITAL_IO_SetOutputHigh(&AUX_EFUSE_1_OUT_D);//instrument cluster 12v as battery(constant 12v)
+  92:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputhigh(&AUX_EFUSE_3_OUT_D);//bms 12v
+  93:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputhigh(&AUX_EFUSE_2_OUT_D);//GB/T that is for super charge charging connector
+  94:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputhigh(&AUX_EFUSE_5_OUT_D);//obc 12v
+  95:../VCU_OUT/Vcu_Out.c ****  }
+ 582              	 .loc 3 95 0
  583 0028 80BD     	 pop {r7,pc}
  584              	.L23:
  585 002a 00BF     	 .align 2
@@ -1294,10 +1295,10 @@
  600              	 .thumb_func
  602              	ALL_CONDITION_OFF:
  603              	.LFB611:
-  95:../VCU_OUT/Vcu_Out.c **** 
-  96:../VCU_OUT/Vcu_Out.c ****  void ALL_CONDITION_OFF()
-  97:../VCU_OUT/Vcu_Out.c ****  {
- 604              	 .loc 3 97 0
+  96:../VCU_OUT/Vcu_Out.c **** 
+  97:../VCU_OUT/Vcu_Out.c ****  void ALL_CONDITION_OFF()
+  98:../VCU_OUT/Vcu_Out.c ****  {
+ 604              	 .loc 3 98 0
  605              	 .cfi_startproc
  606              	 
  607              	 
@@ -1309,38 +1310,38 @@
  613 0002 00AF     	 add r7,sp,#0
  614              	.LCFI37:
  615              	 .cfi_def_cfa_register 7
-  98:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&DOOR_LOCK_PWR_OUT_D);
- 616              	 .loc 3 98 0
+  99:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&DOOR_LOCK_PWR_OUT_D);
+ 616              	 .loc 3 99 0
  617 0004 0948     	 ldr r0,.L25
  618 0006 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
-  99:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&LIGHTS_PWR_OUT_D);
- 619              	 .loc 3 99 0
+ 100:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&LIGHTS_PWR_OUT_D);
+ 619              	 .loc 3 100 0
  620 000a 0948     	 ldr r0,.L25+4
  621 000c FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
- 100:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&HORN_PWR_OUT_D);
- 622              	 .loc 3 100 0
+ 101:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&HORN_PWR_OUT_D);
+ 622              	 .loc 3 101 0
  623 0010 0848     	 ldr r0,.L25+8
  624 0012 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
- 101:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D);
- 625              	 .loc 3 101 0
+ 102:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D);
+ 625              	 .loc 3 102 0
  626 0016 0848     	 ldr r0,.L25+12
  627 0018 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
- 102:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&HEADLAMPS_ADJ_PWR_OUT_D);
- 628              	 .loc 3 102 0
+ 103:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&HEADLAMPS_ADJ_PWR_OUT_D);
+ 628              	 .loc 3 103 0
  629 001c 0748     	 ldr r0,.L25+16
  630 001e FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
- 103:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&CABIN_LIGHT_OUT_D);
- 631              	 .loc 3 103 0
+ 104:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&CABIN_LIGHT_OUT_D);
+ 631              	 .loc 3 104 0
  632 0022 0748     	 ldr r0,.L25+20
  633 0024 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
- 104:../VCU_OUT/Vcu_Out.c **** 
  105:../VCU_OUT/Vcu_Out.c **** 
- 106:../VCU_OUT/Vcu_Out.c **** 	 //DIGITAL_IO_SetOutputHigh(&AUX_EFUSE_1_OUT_D);//instrument cluster 12v as battery(constant 12v)
- 107:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputlow(&AUX_EFUSE_3_OUT_D);//bms 12v
- 108:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputlow(&AUX_EFUSE_2_OUT_D);//GB/T that is for super charge charging connector
- 109:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputlow(&AUX_EFUSE_5_OUT_D);//obc 12v
- 110:../VCU_OUT/Vcu_Out.c ****  }
- 634              	 .loc 3 110 0
+ 106:../VCU_OUT/Vcu_Out.c **** 
+ 107:../VCU_OUT/Vcu_Out.c **** 	 //DIGITAL_IO_SetOutputHigh(&AUX_EFUSE_1_OUT_D);//instrument cluster 12v as battery(constant 12v)
+ 108:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputlow(&AUX_EFUSE_3_OUT_D);//bms 12v
+ 109:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputlow(&AUX_EFUSE_2_OUT_D);//GB/T that is for super charge charging connector
+ 110:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputlow(&AUX_EFUSE_5_OUT_D);//obc 12v
+ 111:../VCU_OUT/Vcu_Out.c ****  }
+ 634              	 .loc 3 111 0
  635 0028 80BD     	 pop {r7,pc}
  636              	.L26:
  637 002a 00BF     	 .align 2
@@ -1360,10 +1361,10 @@
  652              	 .thumb_func
  654              	charger_connected_inVoff:
  655              	.LFB612:
- 111:../VCU_OUT/Vcu_Out.c **** 
- 112:../VCU_OUT/Vcu_Out.c **** void charger_connected_inVoff(void)
- 113:../VCU_OUT/Vcu_Out.c **** {
- 656              	 .loc 3 113 0
+ 112:../VCU_OUT/Vcu_Out.c **** 
+ 113:../VCU_OUT/Vcu_Out.c **** void charger_connected_inVoff(void)
+ 114:../VCU_OUT/Vcu_Out.c **** {
+ 656              	 .loc 3 114 0
  657              	 .cfi_startproc
  658              	 
  659              	 
@@ -1376,23 +1377,23 @@
  666              	.LCFI39:
  667              	 .cfi_def_cfa_register 7
  668              	.LBB2:
- 114:../VCU_OUT/Vcu_Out.c **** 	if(charger_on())
- 669              	 .loc 3 114 0
+ 115:../VCU_OUT/Vcu_Out.c **** 	if(charger_on())
+ 669              	 .loc 3 115 0
  670 0004 FFF7FEFF 	 bl charger_on
  671 0008 0346     	 mov r3,r0
  672 000a 002B     	 cmp r3,#0
  673 000c 01D0     	 beq .L27
  674              	.LBB3:
- 115:../VCU_OUT/Vcu_Out.c **** 	{
- 116:../VCU_OUT/Vcu_Out.c **** 		Update_CAN_0x18FFB632();
- 675              	 .loc 3 116 0
+ 116:../VCU_OUT/Vcu_Out.c **** 	{
+ 117:../VCU_OUT/Vcu_Out.c **** 		Update_CAN_0x18FFB632();
+ 675              	 .loc 3 117 0
  676 000e FFF7FEFF 	 bl Update_CAN_0x18FFB632
  677              	.L27:
  678              	.LBE3:
  679              	.LBE2:
- 117:../VCU_OUT/Vcu_Out.c **** 	}
- 118:../VCU_OUT/Vcu_Out.c **** }
- 680              	 .loc 3 118 0
+ 118:../VCU_OUT/Vcu_Out.c **** 	}
+ 119:../VCU_OUT/Vcu_Out.c **** }
+ 680              	 .loc 3 119 0
  681 0012 80BD     	 pop {r7,pc}
  682              	 .cfi_endproc
  683              	.LFE612:
@@ -1403,10 +1404,10 @@
  689              	 .thumb_func
  691              	can_outputs_allState:
  692              	.LFB613:
- 119:../VCU_OUT/Vcu_Out.c **** 
- 120:../VCU_OUT/Vcu_Out.c **** void can_outputs_allState(void)
- 121:../VCU_OUT/Vcu_Out.c **** {
- 693              	 .loc 3 121 0
+ 120:../VCU_OUT/Vcu_Out.c **** 
+ 121:../VCU_OUT/Vcu_Out.c **** void can_outputs_allState(void)
+ 122:../VCU_OUT/Vcu_Out.c **** {
+ 693              	 .loc 3 122 0
  694              	 .cfi_startproc
  695              	 
  696              	 
@@ -1418,15 +1419,15 @@
  702 0002 00AF     	 add r7,sp,#0
  703              	.LCFI41:
  704              	 .cfi_def_cfa_register 7
- 122:../VCU_OUT/Vcu_Out.c **** 	//charger_tx(); // charger can tx
- 123:../VCU_OUT/Vcu_Out.c **** 	charger_connected_inVoff();
- 705              	 .loc 3 123 0
+ 123:../VCU_OUT/Vcu_Out.c **** 	//charger_tx(); // charger can tx
+ 124:../VCU_OUT/Vcu_Out.c **** 	charger_connected_inVoff();
+ 705              	 .loc 3 124 0
  706 0004 FFF7FEFF 	 bl charger_connected_inVoff
- 124:../VCU_OUT/Vcu_Out.c **** 	OBDII_CAN_Tx();
- 707              	 .loc 3 124 0
+ 125:../VCU_OUT/Vcu_Out.c **** 	OBDII_CAN_Tx();
+ 707              	 .loc 3 125 0
  708 0008 FFF7FEFF 	 bl OBDII_CAN_Tx
- 125:../VCU_OUT/Vcu_Out.c **** }
- 709              	 .loc 3 125 0
+ 126:../VCU_OUT/Vcu_Out.c **** }
+ 709              	 .loc 3 126 0
  710 000c 80BD     	 pop {r7,pc}
  711              	 .cfi_endproc
  712              	.LFE613:
@@ -1437,10 +1438,10 @@
  718              	 .thumb_func
  720              	limphome_Mode:
  721              	.LFB614:
- 126:../VCU_OUT/Vcu_Out.c **** 
- 127:../VCU_OUT/Vcu_Out.c **** int limphome_Mode(void)
- 128:../VCU_OUT/Vcu_Out.c **** {
- 722              	 .loc 3 128 0
+ 127:../VCU_OUT/Vcu_Out.c **** 
+ 128:../VCU_OUT/Vcu_Out.c **** int limphome_Mode(void)
+ 129:../VCU_OUT/Vcu_Out.c **** {
+ 722              	 .loc 3 129 0
  723              	 .cfi_startproc
  724              	 
  725              	 
@@ -1452,44 +1453,44 @@
  731 0002 00AF     	 add r7,sp,#0
  732              	.LCFI43:
  733              	 .cfi_def_cfa_register 7
- 129:../VCU_OUT/Vcu_Out.c **** 	if((Bms_SOC < 10) || (Mcu_Temp > 120))
- 734              	 .loc 3 129 0
+ 130:../VCU_OUT/Vcu_Out.c **** 	if((Bms_SOC < 10) || (Mcu_Temp > 120))
+ 734              	 .loc 3 130 0
  735 0004 0B4B     	 ldr r3,.L34
  736 0006 1B88     	 ldrh r3,[r3]
  737 0008 092B     	 cmp r3,#9
  738 000a 03D9     	 bls .L31
- 739              	 .loc 3 129 0 is_stmt 0 discriminator 1
+ 739              	 .loc 3 130 0 is_stmt 0 discriminator 1
  740 000c 0A4B     	 ldr r3,.L34+4
  741 000e 1B68     	 ldr r3,[r3]
  742 0010 782B     	 cmp r3,#120
  743 0012 08DD     	 ble .L32
  744              	.L31:
- 130:../VCU_OUT/Vcu_Out.c **** 	{
- 131:../VCU_OUT/Vcu_Out.c **** 		Gtake_Mcu_drive_states_29bit ->Drive_mode_cmd = limphome_mode_mcu;
- 745              	 .loc 3 131 0 is_stmt 1
+ 131:../VCU_OUT/Vcu_Out.c **** 	{
+ 132:../VCU_OUT/Vcu_Out.c **** 		Gtake_Mcu_drive_states_29bit ->Drive_mode_cmd = limphome_mode_mcu;
+ 745              	 .loc 3 132 0 is_stmt 1
  746 0014 094B     	 ldr r3,.L34+8
  747 0016 1A68     	 ldr r2,[r3]
  748 0018 1378     	 ldrb r3,[r2]
  749 001a 0421     	 movs r1,#4
  750 001c 61F3C503 	 bfi r3,r1,#3,#3
  751 0020 1370     	 strb r3,[r2]
- 132:../VCU_OUT/Vcu_Out.c **** 		return 0;
- 752              	 .loc 3 132 0
+ 133:../VCU_OUT/Vcu_Out.c **** 		return 0;
+ 752              	 .loc 3 133 0
  753 0022 0023     	 movs r3,#0
  754 0024 00E0     	 b .L33
  755              	.L32:
- 133:../VCU_OUT/Vcu_Out.c **** 	}
- 134:../VCU_OUT/Vcu_Out.c **** 	else
- 135:../VCU_OUT/Vcu_Out.c **** 	{
- 136:../VCU_OUT/Vcu_Out.c **** 		return 1;
- 756              	 .loc 3 136 0
+ 134:../VCU_OUT/Vcu_Out.c **** 	}
+ 135:../VCU_OUT/Vcu_Out.c **** 	else
+ 136:../VCU_OUT/Vcu_Out.c **** 	{
+ 137:../VCU_OUT/Vcu_Out.c **** 		return 1;
+ 756              	 .loc 3 137 0
  757 0026 0123     	 movs r3,#1
  758              	.L33:
- 137:../VCU_OUT/Vcu_Out.c **** 	}
- 138:../VCU_OUT/Vcu_Out.c **** 
- 139:../VCU_OUT/Vcu_Out.c **** 	return 0;
- 140:../VCU_OUT/Vcu_Out.c **** }
- 759              	 .loc 3 140 0
+ 138:../VCU_OUT/Vcu_Out.c **** 	}
+ 139:../VCU_OUT/Vcu_Out.c **** 
+ 140:../VCU_OUT/Vcu_Out.c **** 	return 0;
+ 141:../VCU_OUT/Vcu_Out.c **** }
+ 759              	 .loc 3 141 0
  760 0028 1846     	 mov r0,r3
  761 002a BD46     	 mov sp,r7
  762              	.LCFI44:
@@ -1515,10 +1516,10 @@
  783              	 .thumb_func
  785              	limphome_Mode_IRP:
  786              	.LFB615:
- 141:../VCU_OUT/Vcu_Out.c **** 
- 142:../VCU_OUT/Vcu_Out.c **** int limphome_Mode_IRP(void)
- 143:../VCU_OUT/Vcu_Out.c **** {
- 787              	 .loc 3 143 0
+ 142:../VCU_OUT/Vcu_Out.c **** 
+ 143:../VCU_OUT/Vcu_Out.c **** int limphome_Mode_IRP(void)
+ 144:../VCU_OUT/Vcu_Out.c **** {
+ 787              	 .loc 3 144 0
  788              	 .cfi_startproc
  789              	 
  790              	 
@@ -1530,38 +1531,38 @@
  796 0002 00AF     	 add r7,sp,#0
  797              	.LCFI47:
  798              	 .cfi_def_cfa_register 7
- 144:../VCU_OUT/Vcu_Out.c **** 	if((Mapped_BMS_SOC < 10) /*|| (Mcu_Temp_Irp > 90)*/)
- 799              	 .loc 3 144 0
+ 145:../VCU_OUT/Vcu_Out.c **** 	if((Mapped_BMS_SOC < 10) /*|| (Mcu_Temp_Irp > 90)*/)
+ 799              	 .loc 3 145 0
  800 0004 094B     	 ldr r3,.L39
  801 0006 1B78     	 ldrb r3,[r3]
  802 0008 092B     	 cmp r3,#9
  803 000a 08D8     	 bhi .L37
- 145:../VCU_OUT/Vcu_Out.c **** 	{
- 146:../VCU_OUT/Vcu_Out.c **** 		Irp_Mcu_drive_states_29bit ->Driving_Profile = Limp_Crawl_irp;
- 804              	 .loc 3 146 0
+ 146:../VCU_OUT/Vcu_Out.c **** 	{
+ 147:../VCU_OUT/Vcu_Out.c **** 		Irp_Mcu_drive_states_29bit ->Driving_Profile = Limp_Crawl_irp;
+ 804              	 .loc 3 147 0
  805 000c 084B     	 ldr r3,.L39+4
  806 000e 1A68     	 ldr r2,[r3]
  807 0010 1378     	 ldrb r3,[r2]
  808 0012 0321     	 movs r1,#3
  809 0014 61F38403 	 bfi r3,r1,#2,#3
  810 0018 1370     	 strb r3,[r2]
- 147:../VCU_OUT/Vcu_Out.c **** 		return 0;
- 811              	 .loc 3 147 0
+ 148:../VCU_OUT/Vcu_Out.c **** 		return 0;
+ 811              	 .loc 3 148 0
  812 001a 0023     	 movs r3,#0
  813 001c 00E0     	 b .L38
  814              	.L37:
- 148:../VCU_OUT/Vcu_Out.c **** 	}
- 149:../VCU_OUT/Vcu_Out.c **** 	else
- 150:../VCU_OUT/Vcu_Out.c **** 	{
- 151:../VCU_OUT/Vcu_Out.c **** 		return 1;
- 815              	 .loc 3 151 0
+ 149:../VCU_OUT/Vcu_Out.c **** 	}
+ 150:../VCU_OUT/Vcu_Out.c **** 	else
+ 151:../VCU_OUT/Vcu_Out.c **** 	{
+ 152:../VCU_OUT/Vcu_Out.c **** 		return 1;
+ 815              	 .loc 3 152 0
  816 001e 0123     	 movs r3,#1
  817              	.L38:
- 152:../VCU_OUT/Vcu_Out.c **** 	}
- 153:../VCU_OUT/Vcu_Out.c **** 
- 154:../VCU_OUT/Vcu_Out.c **** 	return 0;
- 155:../VCU_OUT/Vcu_Out.c **** }
- 818              	 .loc 3 155 0
+ 153:../VCU_OUT/Vcu_Out.c **** 	}
+ 154:../VCU_OUT/Vcu_Out.c **** 
+ 155:../VCU_OUT/Vcu_Out.c **** 	return 0;
+ 156:../VCU_OUT/Vcu_Out.c **** }
+ 818              	 .loc 3 156 0
  819 0020 1846     	 mov r0,r3
  820 0022 BD46     	 mov sp,r7
  821              	.LCFI48:
@@ -1733,9 +1734,9 @@ DEFINED SYMBOLS
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
+SPI_ADC_ProcessModeChange
 State_1
 State_2
-SPI_ADC_ProcessModeChange
 Update_CAN_id0x1806E5F4
 BRAKE_LIGHT_OUT_D
 Gtake_Mcu_drive_states_additional_29bit

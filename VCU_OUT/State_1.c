@@ -9,6 +9,7 @@
 #include "DAVE.h"
 #include "Vcu_Init.h"
 #include "can_matrix.h"
+#include "ADS7961_LIB_2.h"
 
 /*instrument_clustor_indicators_t *instrument_clustor_indicators = &CAN_MSG_DB[CAN_18FFB632];*/
 
@@ -25,6 +26,8 @@ void State_1(void)
 	}
 	else if(!(Vcu_OutPuts.IGNITION_1_OUT))
 	{
+		//check battery voltage and turn on/off DC to DC converter
+		dc_dc_state_update(); //test this later
 		/* ignition 1 off state */
 		ignition1_d_off();
 		all_direct_controlled_relay_off();
@@ -223,3 +226,37 @@ void ignition1_d_on()
 	}
 
  }
+
+ //check 12V battery voltage, if less than 12.5V then start DC to DC converter and 48V battery and if greater than 13.5 then turn off DC to DC converter and 48V battery
+//only in ignition off mode as in ignition on mode DC to DC and 48V battery is always ON.
+//we can also add a flag to check if DC to DC converter is already on or not
+void dc_dc_state_update(void)
+{
+	static bool dc_dc_started = false;
+
+	DROPPED_IN_12_volt(); //update voltage value
+	if (DROPPED_IN_12V < 12.50f)
+//	if (DROPPED_IN_12V > 12.0f && DROPPED_IN_12V < 12.50f) //added for testing
+	{
+		//AUX_EFUSE_3_OUT_D output is connected to 48V battery input
+		digital_io_setoutputhigh(&AUX_EFUSE_3_OUT_D); //48V battery
+		//DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D); //FOR TRIPHASE DC TO DC converter
+		DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D); //for Madhura DC TO DC converter
+		dc_dc_started = true;
+	}
+	else if (DROPPED_IN_12V > 13.50f)
+	{
+		//AUX_EFUSE_3_OUT_D output is connected to 48V battery input
+		digital_io_setoutputlow(&AUX_EFUSE_3_OUT_D); //48V battery
+		//DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D); //FOR TRIPHASE DC TO DC converter
+		DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D); //for Madhura DC TO DC converter
+		dc_dc_started = false;
+	}
+	//when DC to DC is not started
+	else if (dc_dc_started == false)
+	{
+		//if voltage is within range then do not turn on 48V battery as well as DC to DC converter
+		digital_io_setoutputlow(&AUX_EFUSE_3_OUT_D);
+		DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D);
+	}
+}

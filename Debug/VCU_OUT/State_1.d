@@ -105,7 +105,8 @@ VCU_OUT/State_1.o VCU_OUT/State_1.d VCU_OUT/State_1.o: \
  D:/Projects/VCU\ Firmware\ Main/IRP/Git\ Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/FATFS/fatfs_extern.h \
  D:/Projects/VCU\ Firmware\ Main/IRP/Git\ Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Vcu_Config.h \
  D:/Projects/VCU\ Firmware\ Main/IRP/Git\ Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Vcu_Init.h \
- D:/Projects/VCU\ Firmware\ Main/IRP/Git\ Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/can_matrix.h
+ D:/Projects/VCU\ Firmware\ Main/IRP/Git\ Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/can_matrix.h \
+ ../VCU_OUT/ADS7961_LIB_2.h
 
 ../VCU_OUT/Vcu_Out.h:
 
@@ -320,3 +321,5 @@ D:/Projects/VCU\ Firmware\ Main/IRP/Git\ Repo/VCU14_29bit_overCAN_withIRP_new4g_
 D:/Projects/VCU\ Firmware\ Main/IRP/Git\ Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Vcu_Init.h:
 
 D:/Projects/VCU\ Firmware\ Main/IRP/Git\ Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/can_matrix.h:
+
+../VCU_OUT/ADS7961_LIB_2.h:

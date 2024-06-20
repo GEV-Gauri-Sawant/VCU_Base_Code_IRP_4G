@@ -4837,36 +4837,17 @@
   34:../main.c     ****  * code.
   35:../main.c     ****  */
   36:../main.c     **** 
-  37:../main.c     **** /*
-  38:../main.c     **** * Changelog -
-  39:../main.c     **** *
-  40:../main.c     **** * Date : 17/06/2024
-  41:../main.c     **** * Search for //hifire in the code to find the changes that are done.
-  42:../main.c     **** * 1. Hifire compressor CAN ids added 0x8000530 (Tx index = 9), 0x8000250 (Rx index = 8).
-  43:../main.c     **** * 2. Previous compressor ids removed.
-  44:../main.c     **** * 3. Needs testing.
-  45:../main.c     **** *
-  46:../main.c     **** * Date : 18/06/2024
-  47:../main.c     **** * 1. Tested on VP10 (with Lokesh, Ankit), having Hifire compressor and IRP MCU.
-  48:../main.c     **** * 2. BMS SOC mapping removed by Suchit (can_matrix_cluster.c).
-  49:../main.c     **** * 3. Uploaded on VP05 and VP09.
-  50:../main.c     **** * 4. VP05 - Speedometer and Power Dial not getting updated.
-  51:../main.c     **** *
-  52:../main.c     **** * Date : 19/06/2024
-  53:../main.c     **** * 1. Tested on VP05 again (Devendra) working alright.
-  54:../main.c     **** * */
-  55:../main.c     **** 
-  56:../main.c     **** void VCU_init_on(void);
-  57:../main.c     **** void InputCapture(void);
-  58:../main.c     **** void Process_Inputs(void);
-  59:../main.c     **** void Vcu_OutPut(void);
-  60:../main.c     **** void reset_on(void);
-  61:../main.c     **** 
-  62:../main.c     **** uint8_t CState = 4, PreState = 0;
-  63:../main.c     **** 
-  64:../main.c     **** int main(void)
-  65:../main.c     **** {
- 508              	 .loc 8 65 0
+  37:../main.c     **** void VCU_init_on(void);
+  38:../main.c     **** void InputCapture(void);
+  39:../main.c     **** void Process_Inputs(void);
+  40:../main.c     **** void Vcu_OutPut(void);
+  41:../main.c     **** void reset_on(void);
+  42:../main.c     **** 
+  43:../main.c     **** uint8_t CState = 4, PreState = 0;
+  44:../main.c     **** 
+  45:../main.c     **** int main(void)
+  46:../main.c     **** {
+ 508              	 .loc 8 46 0
  509              	 .cfi_startproc
  510              	 
  511              	 
@@ -4881,211 +4862,211 @@
  520 0004 00AF     	 add r7,sp,#0
  521              	.LCFI42:
  522              	 .cfi_def_cfa_register 7
-  66:../main.c     **** 	en_responseRetCodes_t len_retStatus = E_RET_INPROGRESS;
- 523              	 .loc 8 66 0
+  47:../main.c     **** 	en_responseRetCodes_t len_retStatus = E_RET_INPROGRESS;
+ 523              	 .loc 8 47 0
  524 0006 0423     	 movs r3,#4
  525 0008 FB71     	 strb r3,[r7,#7]
-  67:../main.c     **** 	uint8_t super_count = 0;
- 526              	 .loc 8 67 0
+  48:../main.c     **** 	uint8_t super_count = 0;
+ 526              	 .loc 8 48 0
  527 000a 0023     	 movs r3,#0
  528 000c BB71     	 strb r3,[r7,#6]
-  68:../main.c     **** 	//jump :;
-  69:../main.c     ****   DAVE_STATUS_t status;
-  70:../main.c     **** 
-  71:../main.c     ****   status = DAVE_Init();           /* Initialization of DAVE APPs  */
- 529              	 .loc 8 71 0
+  49:../main.c     **** 	//jump :;
+  50:../main.c     ****   DAVE_STATUS_t status;
+  51:../main.c     **** 
+  52:../main.c     ****   status = DAVE_Init();           /* Initialization of DAVE APPs  */
+ 529              	 .loc 8 52 0
  530 000e FFF7FEFF 	 bl DAVE_Init
  531 0012 0346     	 mov r3,r0
  532 0014 7B71     	 strb r3,[r7,#5]
-  72:../main.c     **** 
-  73:../main.c     ****   if (status != DAVE_STATUS_SUCCESS)
- 533              	 .loc 8 73 0
+  53:../main.c     **** 
+  54:../main.c     ****   if (status != DAVE_STATUS_SUCCESS)
+ 533              	 .loc 8 54 0
  534 0016 7B79     	 ldrb r3,[r7,#5]
  535 0018 002B     	 cmp r3,#0
  536 001a 03D0     	 beq .L21
-  74:../main.c     ****   {
-  75:../main.c     ****     /* Placeholder for error handler code. The while loop below can be replaced with an user error 
-  76:../main.c     ****     XMC_DEBUG("DAVE APPs initialization failed\n");
- 537              	 .loc 8 76 0
+  55:../main.c     ****   {
+  56:../main.c     ****     /* Placeholder for error handler code. The while loop below can be replaced with an user error 
+  57:../main.c     ****     XMC_DEBUG("DAVE APPs initialization failed\n");
+ 537              	 .loc 8 57 0
  538 001c 1C48     	 ldr r0,.L27
  539 001e FFF7FEFF 	 bl puts
  540              	.L22:
-  77:../main.c     **** 
-  78:../main.c     ****     while(1U)
-  79:../main.c     ****     {
-  80:../main.c     **** 
-  81:../main.c     ****     }
- 541              	 .loc 8 81 0 discriminator 1
+  58:../main.c     **** 
+  59:../main.c     ****     while(1U)
+  60:../main.c     ****     {
+  61:../main.c     **** 
+  62:../main.c     ****     }
+ 541              	 .loc 8 62 0 discriminator 1
  542 0022 FEE7     	 b .L22
  543              	.L21:
-  82:../main.c     ****   }
-  83:../main.c     **** 
-  84:../main.c     ****   /* Placeholder for user application code. The while loop below can be replaced with user applicat
-  85:../main.c     **** 
-  86:../main.c     **** 	/*  enable here all the relays need to be HIGH at startup  */
-  87:../main.c     **** 	INTERRUPT_Disable(&INTERRUPT_0);
- 544              	 .loc 8 87 0
+  63:../main.c     ****   }
+  64:../main.c     **** 
+  65:../main.c     ****   /* Placeholder for user application code. The while loop below can be replaced with user applicat
+  66:../main.c     **** 
+  67:../main.c     **** 	/*  enable here all the relays need to be HIGH at startup  */
+  68:../main.c     **** 	INTERRUPT_Disable(&INTERRUPT_0);
+ 544              	 .loc 8 68 0
  545 0024 1B48     	 ldr r0,.L27+4
  546 0026 FFF7FEFF 	 bl INTERRUPT_Disable
-  88:../main.c     **** 	VCU_init_on();
- 547              	 .loc 8 88 0
+  69:../main.c     **** 	VCU_init_on();
+ 547              	 .loc 8 69 0
  548 002a FFF7FEFF 	 bl VCU_init_on
-  89:../main.c     **** 	reset_on();
- 549              	 .loc 8 89 0
+  70:../main.c     **** 	reset_on();
+ 549              	 .loc 8 70 0
  550 002e FFF7FEFF 	 bl reset_on
-  90:../main.c     **** 	//initialize_sd_card_and_transmit_cid();
-  91:../main.c     **** 	len_retStatus = mod_open4gModPort();
- 551              	 .loc 8 91 0
+  71:../main.c     **** 	//initialize_sd_card_and_transmit_cid();
+  72:../main.c     **** 	len_retStatus = mod_open4gModPort();
+ 551              	 .loc 8 72 0
  552 0032 FFF7FEFF 	 bl mod_open4gModPort
  553 0036 0346     	 mov r3,r0
  554 0038 FB71     	 strb r3,[r7,#7]
-  92:../main.c     **** 	if (E_RET_SUCCESS == len_retStatus) {
- 555              	 .loc 8 92 0
+  73:../main.c     **** 	if (E_RET_SUCCESS == len_retStatus) {
+ 555              	 .loc 8 73 0
  556 003a FB79     	 ldrb r3,[r7,#7]
  557 003c 002B     	 cmp r3,#0
  558 003e 0CD1     	 bne .L23
-  93:../main.c     **** 		len_retStatus = tm_setTimerCount(TM_1MS_TIMER_VAL);
- 559              	 .loc 8 93 0
+  74:../main.c     **** 		len_retStatus = tm_setTimerCount(TM_1MS_TIMER_VAL);
+ 559              	 .loc 8 74 0
  560 0040 4FF47A70 	 mov r0,#1000
  561 0044 FFF7FEFF 	 bl tm_setTimerCount
  562 0048 0346     	 mov r3,r0
  563 004a FB71     	 strb r3,[r7,#7]
-  94:../main.c     **** 		if (E_RET_SUCCESS == len_retStatus) {
- 564              	 .loc 8 94 0
+  75:../main.c     **** 		if (E_RET_SUCCESS == len_retStatus) {
+ 564              	 .loc 8 75 0
  565 004c FB79     	 ldrb r3,[r7,#7]
  566 004e 002B     	 cmp r3,#0
  567 0050 03D1     	 bne .L23
-  95:../main.c     **** 			len_retStatus = tm_startTimer();
- 568              	 .loc 8 95 0
+  76:../main.c     **** 			len_retStatus = tm_startTimer();
+ 568              	 .loc 8 76 0
  569 0052 FFF7FEFF 	 bl tm_startTimer
  570 0056 0346     	 mov r3,r0
  571 0058 FB71     	 strb r3,[r7,#7]
  572              	.L23:
-  96:../main.c     **** 			if (E_RET_SUCCESS == len_retStatus) {
-  97:../main.c     **** 			}
-  98:../main.c     **** 		}
-  99:../main.c     **** 	}
- 100:../main.c     **** 
- 101:../main.c     **** 	mod_enable4gModule();
- 573              	 .loc 8 101 0
+  77:../main.c     **** 			if (E_RET_SUCCESS == len_retStatus) {
+  78:../main.c     **** 			}
+  79:../main.c     **** 		}
+  80:../main.c     **** 	}
+  81:../main.c     **** 
+  82:../main.c     **** 	mod_enable4gModule();
+ 573              	 .loc 8 82 0
  574 005a FFF7FEFF 	 bl mod_enable4gModule
  575              	.L26:
- 102:../main.c     **** 
- 103:../main.c     **** 
- 104:../main.c     **** 	while (1U) {
- 105:../main.c     **** 		//SuperLooptime_Start();
- 106:../main.c     **** 
- 107:../main.c     **** 	  /* Updating the inputs*/
- 108:../main.c     **** 	  InputCapture();
- 576              	 .loc 8 108 0
+  83:../main.c     **** 
+  84:../main.c     **** 
+  85:../main.c     **** 	while (1U) {
+  86:../main.c     **** 		//SuperLooptime_Start();
+  87:../main.c     **** 
+  88:../main.c     **** 	  /* Updating the inputs*/
+  89:../main.c     **** 	  InputCapture();
+ 576              	 .loc 8 89 0
  577 005e FFF7FEFF 	 bl InputCapture
- 109:../main.c     **** 
- 110:../main.c     **** 
- 111:../main.c     **** 	  /* processing all inputs */
- 112:../main.c     **** 	  Process_Inputs();
- 578              	 .loc 8 112 0
+  90:../main.c     **** 
+  91:../main.c     **** 
+  92:../main.c     **** 	  /* processing all inputs */
+  93:../main.c     **** 	  Process_Inputs();
+ 578              	 .loc 8 93 0
  579 0062 FFF7FEFF 	 bl Process_Inputs
- 113:../main.c     **** 
- 114:../main.c     **** 		/* action loop , taking the action */
- 115:../main.c     **** 	  Vcu_OutPut();
- 580              	 .loc 8 115 0
+  94:../main.c     **** 
+  95:../main.c     **** 		/* action loop , taking the action */
+  96:../main.c     **** 	  Vcu_OutPut();
+ 580              	 .loc 8 96 0
  581 0066 FFF7FEFF 	 bl Vcu_OutPut
- 116:../main.c     **** 
- 117:../main.c     **** 		//SuperLooptime_End();
- 118:../main.c     **** 
- 119:../main.c     **** 		//SuperLooptime_Start();
- 120:../main.c     **** 
- 121:../main.c     **** 		mod_receiveRsp();
- 582              	 .loc 8 121 0
+  97:../main.c     **** 
+  98:../main.c     **** 		//SuperLooptime_End();
+  99:../main.c     **** 
+ 100:../main.c     **** 		//SuperLooptime_Start();
+ 101:../main.c     **** 
+ 102:../main.c     **** 		mod_receiveRsp();
+ 582              	 .loc 8 102 0
  583 006a FFF7FEFF 	 bl mod_receiveRsp
- 122:../main.c     **** 		if(false == gb_isMqttConnected)
- 584              	 .loc 8 122 0
+ 103:../main.c     **** 		if(false == gb_isMqttConnected)
+ 584              	 .loc 8 103 0
  585 006e 0A4B     	 ldr r3,.L27+8
  586 0070 1B78     	 ldrb r3,[r3]
  587 0072 83F00103 	 eor r3,r3,#1
  588 0076 DBB2     	 uxtb r3,r3
  589 0078 002B     	 cmp r3,#0
  590 007a 02D0     	 beq .L24
- 123:../main.c     **** 		{
- 124:../main.c     **** 			mod_4gHandler();
- 591              	 .loc 8 124 0
+ 104:../main.c     **** 		{
+ 105:../main.c     **** 			mod_4gHandler();
+ 591              	 .loc 8 105 0
  592 007c FFF7FEFF 	 bl mod_4gHandler
  593 0080 05E0     	 b .L25
  594              	.L24:
- 125:../main.c     **** 		}
- 126:../main.c     **** 		else if(true == gb_isMqttConnected)
- 595              	 .loc 8 126 0
+ 106:../main.c     **** 		}
+ 107:../main.c     **** 		else if(true == gb_isMqttConnected)
+ 595              	 .loc 8 107 0
  596 0082 054B     	 ldr r3,.L27+8
  597 0084 1B78     	 ldrb r3,[r3]
  598 0086 002B     	 cmp r3,#0
  599 0088 01D0     	 beq .L25
- 127:../main.c     **** 		{
- 128:../main.c     **** //			mod_4gProcess();
- 129:../main.c     **** 			mod_pub10sPackExtractGps();
- 600              	 .loc 8 129 0
+ 108:../main.c     **** 		{
+ 109:../main.c     **** //			mod_4gProcess();
+ 110:../main.c     **** 			mod_pub10sPackExtractGps();
+ 600              	 .loc 8 110 0
  601 008a FFF7FEFF 	 bl mod_pub10sPackExtractGps
  602              	.L25:
- 130:../main.c     **** 
- 131:../main.c     **** 		}
- 132:../main.c     **** //		mod_pub10sPackExtractGps();
- 133:../main.c     **** 		/*RTC_GetTime(&current_time);
- 134:../main.c     **** 		if ((current_time.seconds % 10 == 0U) && (flag4g == false)) {
- 135:../main.c     **** 			epoch_time();
- 136:../main.c     **** 			Process_4G_Event_Data();
- 137:../main.c     **** 			memset(Eventbuffer_4Gcomm, 0, 512);
- 138:../main.c     **** 			pb_ostream_t stream1;
- 139:../main.c     **** 			stream1 = pb_ostream_from_buffer(Eventbuffer_4Gcomm,sizeof(Eventbuffer_4Gcomm));
- 140:../main.c     **** 			pb_encode(&stream1, vcu_fleet_fleet_10_sec_fields, &TD1);
- 141:../main.c     **** 			packetflag = true;
- 142:../main.c     **** 			flag4g = true;
- 143:../main.c     **** 		}
- 144:../main.c     **** 		else if((flag4g == true) && (current_time.seconds % 10 != 0U)){
- 145:../main.c     **** 			flag4g = false;
- 146:../main.c     **** 		}
- 147:../main.c     **** 
- 148:../main.c     **** 		if(packetflag == true)
- 149:../main.c     **** 		{
- 150:../main.c     **** 			len_retStatus = mod_mqttPublishData(Eventbuffer_4Gcomm,
- 151:../main.c     **** 					strlen((char*) Eventbuffer_4Gcomm));
+ 111:../main.c     **** 
+ 112:../main.c     **** 		}
+ 113:../main.c     **** //		mod_pub10sPackExtractGps();
+ 114:../main.c     **** 		/*RTC_GetTime(&current_time);
+ 115:../main.c     **** 		if ((current_time.seconds % 10 == 0U) && (flag4g == false)) {
+ 116:../main.c     **** 			epoch_time();
+ 117:../main.c     **** 			Process_4G_Event_Data();
+ 118:../main.c     **** 			memset(Eventbuffer_4Gcomm, 0, 512);
+ 119:../main.c     **** 			pb_ostream_t stream1;
+ 120:../main.c     **** 			stream1 = pb_ostream_from_buffer(Eventbuffer_4Gcomm,sizeof(Eventbuffer_4Gcomm));
+ 121:../main.c     **** 			pb_encode(&stream1, vcu_fleet_fleet_10_sec_fields, &TD1);
+ 122:../main.c     **** 			packetflag = true;
+ 123:../main.c     **** 			flag4g = true;
+ 124:../main.c     **** 		}
+ 125:../main.c     **** 		else if((flag4g == true) && (current_time.seconds % 10 != 0U)){
+ 126:../main.c     **** 			flag4g = false;
+ 127:../main.c     **** 		}
+ 128:../main.c     **** 
+ 129:../main.c     **** 		if(packetflag == true)
+ 130:../main.c     **** 		{
+ 131:../main.c     **** 			len_retStatus = mod_mqttPublishData(Eventbuffer_4Gcomm,
+ 132:../main.c     **** 					strlen((char*) Eventbuffer_4Gcomm));
+ 133:../main.c     **** 
+ 134:../main.c     **** 			if (E_RET_SUCCESS == len_retStatus) {
+ 135:../main.c     **** 				packetflag = false;
+ 136:../main.c     **** 			}
+ 137:../main.c     **** 			else if (E_RET_INPROGRESS != len_retStatus) {
+ 138:../main.c     **** 				lu8_retryCont++;
+ 139:../main.c     **** 				if (3 > lu8_retryCont) {
+ 140:../main.c     **** 					lu8_retryCont = 0;
+ 141:../main.c     **** 
+ 142:../main.c     **** 					//write to SD card
+ 143:../main.c     **** 
+ 144:../main.c     **** 					packetflag = false;
+ 145:../main.c     **** 					gb_isMqttConnected = false;
+ 146:../main.c     **** 					sen_4gRunState = E_MQTT_OPEN_STATE;
+ 147:../main.c     **** 				}
+ 148:../main.c     **** 			}
+ 149:../main.c     **** 		}
+ 150:../main.c     **** */
+ 151:../main.c     **** 
  152:../main.c     **** 
- 153:../main.c     **** 			if (E_RET_SUCCESS == len_retStatus) {
- 154:../main.c     **** 				packetflag = false;
- 155:../main.c     **** 			}
- 156:../main.c     **** 			else if (E_RET_INPROGRESS != len_retStatus) {
- 157:../main.c     **** 				lu8_retryCont++;
- 158:../main.c     **** 				if (3 > lu8_retryCont) {
- 159:../main.c     **** 					lu8_retryCont = 0;
- 160:../main.c     **** 
- 161:../main.c     **** 					//write to SD card
- 162:../main.c     **** 
- 163:../main.c     **** 					packetflag = false;
- 164:../main.c     **** 					gb_isMqttConnected = false;
- 165:../main.c     **** 					sen_4gRunState = E_MQTT_OPEN_STATE;
- 166:../main.c     **** 				}
- 167:../main.c     **** 			}
- 168:../main.c     **** 		}
- 169:../main.c     **** */
- 170:../main.c     **** 
- 171:../main.c     **** 
- 172:../main.c     **** 		/////////////// above for 10 sec ///////////////
- 173:../main.c     **** 
- 174:../main.c     **** 		//SuperLooptime_End();
- 175:../main.c     **** 
- 176:../main.c     **** 	  /* to reset */
- 177:../main.c     **** 	/* if((DIGITAL_IO_GetInput(&IGNI_POS1_IN_D)))
- 178:../main.c     **** 	 {
- 179:../main.c     **** 		if(super_count == 0)
- 180:../main.c     **** 	  {
- 181:../main.c     **** 			super_count = 1;
- 182:../main.c     **** 		  goto jump;
- 183:../main.c     **** 	  }
- 184:../main.c     **** 	 }
- 185:../main.c     **** 	  else if((!DIGITAL_IO_GetInput(&IGNI_POS1_IN_D)))
- 186:../main.c     **** 	  {
- 187:../main.c     **** 		  super_count = 0;
- 188:../main.c     **** 	  }*/
- 189:../main.c     ****   }
- 603              	 .loc 8 189 0
+ 153:../main.c     **** 		/////////////// above for 10 sec ///////////////
+ 154:../main.c     **** 
+ 155:../main.c     **** 		//SuperLooptime_End();
+ 156:../main.c     **** 
+ 157:../main.c     **** 	  /* to reset */
+ 158:../main.c     **** 	/* if((DIGITAL_IO_GetInput(&IGNI_POS1_IN_D)))
+ 159:../main.c     **** 	 {
+ 160:../main.c     **** 		if(super_count == 0)
+ 161:../main.c     **** 	  {
+ 162:../main.c     **** 			super_count = 1;
+ 163:../main.c     **** 		  goto jump;
+ 164:../main.c     **** 	  }
+ 165:../main.c     **** 	 }
+ 166:../main.c     **** 	  else if((!DIGITAL_IO_GetInput(&IGNI_POS1_IN_D)))
+ 167:../main.c     **** 	  {
+ 168:../main.c     **** 		  super_count = 0;
+ 169:../main.c     **** 	  }*/
+ 170:../main.c     ****   }
+ 603              	 .loc 8 170 0
  604 008e E6E7     	 b .L26
  605              	.L28:
  606              	 .align 2
@@ -5102,10 +5083,10 @@
  618              	 .thumb_func
  620              	VCU_init_on:
  621              	.LFB606:
- 190:../main.c     **** }
- 191:../main.c     **** 
- 192:../main.c     **** void VCU_init_on(void) {
- 622              	 .loc 8 192 0
+ 171:../main.c     **** }
+ 172:../main.c     **** 
+ 173:../main.c     **** void VCU_init_on(void) {
+ 622              	 .loc 8 173 0
  623              	 .cfi_startproc
  624              	 
  625              	 
@@ -5117,35 +5098,35 @@
  631 0002 00AF     	 add r7,sp,#0
  632              	.LCFI44:
  633              	 .cfi_def_cfa_register 7
- 193:../main.c     **** 	/* enable here all the relays need to be HIGH at startup */
- 194:../main.c     **** 
- 195:../main.c     **** 		//set_PIN(&COMM_PWR_ENB_D, HIGH);
- 196:../main.c     **** 
- 197:../main.c     **** 		/* enable common power to IO */
- 198:../main.c     **** 		DIGITAL_IO_SetOutputHigh(&COMM_3V3_PWR_EN);
- 634              	 .loc 8 198 0
+ 174:../main.c     **** 	/* enable here all the relays need to be HIGH at startup */
+ 175:../main.c     **** 
+ 176:../main.c     **** 		//set_PIN(&COMM_PWR_ENB_D, HIGH);
+ 177:../main.c     **** 
+ 178:../main.c     **** 		/* enable common power to IO */
+ 179:../main.c     **** 		DIGITAL_IO_SetOutputHigh(&COMM_3V3_PWR_EN);
+ 634              	 .loc 8 179 0
  635 0004 0548     	 ldr r0,.L30
  636 0006 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
- 199:../main.c     **** 
- 200:../main.c     **** 		/* 3v3 enable */
- 201:../main.c     **** 		DIGITAL_IO_SetOutputHigh(&INPUTS_3V3_PWR_EN);
- 637              	 .loc 8 201 0
+ 180:../main.c     **** 
+ 181:../main.c     **** 		/* 3v3 enable */
+ 182:../main.c     **** 		DIGITAL_IO_SetOutputHigh(&INPUTS_3V3_PWR_EN);
+ 637              	 .loc 8 182 0
  638 000a 0548     	 ldr r0,.L30+4
  639 000c FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
- 202:../main.c     **** 
- 203:../main.c     **** 
- 204:../main.c     **** 		DIGITAL_IO_SetOutputHigh(&SENSOR_3V3_PWR_EN);
- 640              	 .loc 8 204 0
+ 183:../main.c     **** 
+ 184:../main.c     **** 
+ 185:../main.c     **** 		DIGITAL_IO_SetOutputHigh(&SENSOR_3V3_PWR_EN);
+ 640              	 .loc 8 185 0
  641 0010 0448     	 ldr r0,.L30+8
  642 0012 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
- 205:../main.c     **** 
- 206:../main.c     **** 	/* comm initialization */
- 207:../main.c     **** 	Io_Exp_Init();
- 643              	 .loc 8 207 0
+ 186:../main.c     **** 
+ 187:../main.c     **** 	/* comm initialization */
+ 188:../main.c     **** 	Io_Exp_Init();
+ 643              	 .loc 8 188 0
  644 0016 FFF7FEFF 	 bl Io_Exp_Init
- 208:../main.c     **** 
- 209:../main.c     **** }
- 645              	 .loc 8 209 0
+ 189:../main.c     **** 
+ 190:../main.c     **** }
+ 645              	 .loc 8 190 0
  646 001a 80BD     	 pop {r7,pc}
  647              	.L31:
  648              	 .align 2
@@ -5186,9 +5167,9 @@
  669              	 .thumb_func
  671              	InputCapture:
  672              	.LFB607:
- 210:../main.c     **** 
- 211:../main.c     **** void InputCapture(void) {
- 673              	 .loc 8 211 0
+ 191:../main.c     **** 
+ 192:../main.c     **** void InputCapture(void) {
+ 673              	 .loc 8 192 0
  674              	 .cfi_startproc
  675              	 
  676              	 
@@ -5200,13 +5181,13 @@
  682 0002 00AF     	 add r7,sp,#0
  683              	.LCFI46:
  684              	 .cfi_def_cfa_register 7
- 212:../main.c     **** 	uart_debugg(
- 685              	 .loc 8 212 0
+ 193:../main.c     **** 	uart_debugg(
+ 685              	 .loc 8 193 0
  686 0004 0948     	 ldr r0,.L33
  687 0006 FFF7FEFF 	 bl uart_debugg
- 213:../main.c     **** 			"************************in input capture************************\n");
- 214:../main.c     **** 	CState = PreState = 1;
- 688              	 .loc 8 214 0
+ 194:../main.c     **** 			"************************in input capture************************\n");
+ 195:../main.c     **** 	CState = PreState = 1;
+ 688              	 .loc 8 195 0
  689 000a 094B     	 ldr r3,.L33+4
  690 000c 0122     	 movs r2,#1
  691 000e 1A70     	 strb r2,[r3]
@@ -5214,21 +5195,21 @@
  693 0012 1A78     	 ldrb r2,[r3]
  694 0014 074B     	 ldr r3,.L33+8
  695 0016 1A70     	 strb r2,[r3]
- 215:../main.c     **** 	/* Updating the inputs */
- 216:../main.c     **** 	Input_Capture();
- 696              	 .loc 8 216 0
+ 196:../main.c     **** 	/* Updating the inputs */
+ 197:../main.c     **** 	Input_Capture();
+ 696              	 .loc 8 197 0
  697 0018 FFF7FEFF 	 bl Input_Capture
- 217:../main.c     **** 	PreState = 0;
- 698              	 .loc 8 217 0
+ 198:../main.c     **** 	PreState = 0;
+ 698              	 .loc 8 198 0
  699 001c 044B     	 ldr r3,.L33+4
  700 001e 0022     	 movs r2,#0
  701 0020 1A70     	 strb r2,[r3]
- 218:../main.c     **** 	uart_debugg("************************exit input capture************************\n");
- 702              	 .loc 8 218 0
+ 199:../main.c     **** 	uart_debugg("************************exit input capture************************\n");
+ 702              	 .loc 8 199 0
  703 0022 0548     	 ldr r0,.L33+12
  704 0024 FFF7FEFF 	 bl uart_debugg
- 219:../main.c     **** }
- 705              	 .loc 8 219 0
+ 200:../main.c     **** }
+ 705              	 .loc 8 200 0
  706 0028 80BD     	 pop {r7,pc}
  707              	.L34:
  708 002a 00BF     	 .align 2
@@ -5270,10 +5251,10 @@
  730              	 .thumb_func
  732              	Process_Inputs:
  733              	.LFB608:
- 220:../main.c     **** 
- 221:../main.c     **** void Process_Inputs(void)
- 222:../main.c     **** {
- 734              	 .loc 8 222 0
+ 201:../main.c     **** 
+ 202:../main.c     **** void Process_Inputs(void)
+ 203:../main.c     **** {
+ 734              	 .loc 8 203 0
  735              	 .cfi_startproc
  736              	 
  737              	 
@@ -5285,25 +5266,25 @@
  743 0002 00AF     	 add r7,sp,#0
  744              	.LCFI48:
  745              	 .cfi_def_cfa_register 7
- 223:../main.c     **** 	uart_debugg("************************in process input************************\n");
- 746              	 .loc 8 223 0
+ 204:../main.c     **** 	uart_debugg("************************in process input************************\n");
+ 746              	 .loc 8 204 0
  747 0004 0548     	 ldr r0,.L36
  748 0006 FFF7FEFF 	 bl uart_debugg
- 224:../main.c     **** 	CState = 2;
- 749              	 .loc 8 224 0
+ 205:../main.c     **** 	CState = 2;
+ 749              	 .loc 8 205 0
  750 000a 054B     	 ldr r3,.L36+4
  751 000c 0222     	 movs r2,#2
  752 000e 1A70     	 strb r2,[r3]
- 225:../main.c     **** 	/* Updating the outputs */
- 226:../main.c     **** 	Process_VcuOutputs_Update();
- 753              	 .loc 8 226 0
+ 206:../main.c     **** 	/* Updating the outputs */
+ 207:../main.c     **** 	Process_VcuOutputs_Update();
+ 753              	 .loc 8 207 0
  754 0010 FFF7FEFF 	 bl Process_VcuOutputs_Update
- 227:../main.c     **** 	uart_debugg("***********************exit process input**************************\n");
- 755              	 .loc 8 227 0
+ 208:../main.c     **** 	uart_debugg("***********************exit process input**************************\n");
+ 755              	 .loc 8 208 0
  756 0014 0348     	 ldr r0,.L36+8
  757 0016 FFF7FEFF 	 bl uart_debugg
- 228:../main.c     **** }
- 758              	 .loc 8 228 0
+ 209:../main.c     **** }
+ 758              	 .loc 8 209 0
  759 001a 80BD     	 pop {r7,pc}
  760              	.L37:
  761              	 .align 2
@@ -5344,10 +5325,10 @@
  782              	 .thumb_func
  784              	Vcu_OutPut:
  785              	.LFB609:
- 229:../main.c     **** 
- 230:../main.c     **** void Vcu_OutPut(void)
- 231:../main.c     **** {
- 786              	 .loc 8 231 0
+ 210:../main.c     **** 
+ 211:../main.c     **** void Vcu_OutPut(void)
+ 212:../main.c     **** {
+ 786              	 .loc 8 212 0
  787              	 .cfi_startproc
  788              	 
  789              	 
@@ -5359,25 +5340,25 @@
  795 0002 00AF     	 add r7,sp,#0
  796              	.LCFI50:
  797              	 .cfi_def_cfa_register 7
- 232:../main.c     **** 	uart_debugg("***********************in vcu output*****************************\n");
- 798              	 .loc 8 232 0
+ 213:../main.c     **** 	uart_debugg("***********************in vcu output*****************************\n");
+ 798              	 .loc 8 213 0
  799 0004 0548     	 ldr r0,.L39
  800 0006 FFF7FEFF 	 bl uart_debugg
- 233:../main.c     **** 	CState = 3;
- 801              	 .loc 8 233 0
+ 214:../main.c     **** 	CState = 3;
+ 801              	 .loc 8 214 0
  802 000a 054B     	 ldr r3,.L39+4
  803 000c 0322     	 movs r2,#3
  804 000e 1A70     	 strb r2,[r3]
- 234:../main.c     **** 	/* Taking the action */
- 235:../main.c     **** 	OutPutAction_Update();
- 805              	 .loc 8 235 0
+ 215:../main.c     **** 	/* Taking the action */
+ 216:../main.c     **** 	OutPutAction_Update();
+ 805              	 .loc 8 216 0
  806 0010 FFF7FEFF 	 bl OutPutAction_Update
- 236:../main.c     **** 	uart_debugg("************************exit vcu output******************************\n");
- 807              	 .loc 8 236 0
+ 217:../main.c     **** 	uart_debugg("************************exit vcu output******************************\n");
+ 807              	 .loc 8 217 0
  808 0014 0348     	 ldr r0,.L39+8
  809 0016 FFF7FEFF 	 bl uart_debugg
- 237:../main.c     **** }
- 810              	 .loc 8 237 0
+ 218:../main.c     **** }
+ 810              	 .loc 8 218 0
  811 001a 80BD     	 pop {r7,pc}
  812              	.L40:
  813              	 .align 2
@@ -5394,10 +5375,10 @@
  825              	 .thumb_func
  827              	reset_on:
  828              	.LFB610:
- 238:../main.c     **** 
- 239:../main.c     **** void reset_on(void)
- 240:../main.c     **** {
- 829              	 .loc 8 240 0
+ 219:../main.c     **** 
+ 220:../main.c     **** void reset_on(void)
+ 221:../main.c     **** {
+ 829              	 .loc 8 221 0
  830              	 .cfi_startproc
  831              	 
  832              	 
@@ -5409,16 +5390,16 @@
  838 0002 00AF     	 add r7,sp,#0
  839              	.LCFI52:
  840              	 .cfi_def_cfa_register 7
- 241:../main.c     **** 	//WATCHDOG_Stop();
- 242:../main.c     **** 	Delay(100);
- 841              	 .loc 8 242 0
+ 222:../main.c     **** 	//WATCHDOG_Stop();
+ 223:../main.c     **** 	Delay(100);
+ 841              	 .loc 8 223 0
  842 0004 6420     	 movs r0,#100
  843 0006 FFF7FEFF 	 bl Delay
- 243:../main.c     **** 	WATCHDOG_Start();
- 844              	 .loc 8 243 0
+ 224:../main.c     **** 	WATCHDOG_Start();
+ 844              	 .loc 8 224 0
  845 000a FFF7FEFF 	 bl WATCHDOG_Start
- 244:../main.c     **** }
- 846              	 .loc 8 244 0
+ 225:../main.c     **** }
+ 846              	 .loc 8 225 0
  847 000e 80BD     	 pop {r7,pc}
  848              	 .cfi_endproc
  849              	.LFE610:
@@ -5429,10 +5410,10 @@
  855              	 .thumb_func
  857              	NMI_Handler:
  858              	.LFB611:
- 245:../main.c     **** 
- 246:../main.c     **** void NMI_Handler(void)
- 247:../main.c     **** {
- 859              	 .loc 8 247 0
+ 226:../main.c     **** 
+ 227:../main.c     **** void NMI_Handler(void)
+ 228:../main.c     **** {
+ 859              	 .loc 8 228 0
  860              	 .cfi_startproc
  861              	 
  862              	 
@@ -5444,26 +5425,26 @@
  868 0002 00AF     	 add r7,sp,#0
  869              	.LCFI54:
  870              	 .cfi_def_cfa_register 7
- 248:../main.c     **** 	//if(!PreState)
- 249:../main.c     **** 	{
- 250:../main.c     **** 		//PreState = CState;
- 251:../main.c     **** 	//uart_debugg("in watchdog");
- 252:../main.c     **** 	WATCHDOG_ClearAlarm();
- 871              	 .loc 8 252 0
+ 229:../main.c     **** 	//if(!PreState)
+ 230:../main.c     **** 	{
+ 231:../main.c     **** 		//PreState = CState;
+ 232:../main.c     **** 	//uart_debugg("in watchdog");
+ 233:../main.c     **** 	WATCHDOG_ClearAlarm();
+ 871              	 .loc 8 233 0
  872 0004 FFF7FEFF 	 bl WATCHDOG_ClearAlarm
- 253:../main.c     **** 	//XMC_SCU_cle
- 254:../main.c     **** 	XMC_SCU_INTERRUPT_ClearEventStatus((XMC_SCU_INTERRUPT_EVENT_t)XMC_SCU_INTERRUPT_EVENT_WDT_WARN);
- 873              	 .loc 8 254 0
+ 234:../main.c     **** 	//XMC_SCU_cle
+ 235:../main.c     **** 	XMC_SCU_INTERRUPT_ClearEventStatus((XMC_SCU_INTERRUPT_EVENT_t)XMC_SCU_INTERRUPT_EVENT_WDT_WARN);
+ 873              	 .loc 8 235 0
  874 0008 0120     	 movs r0,#1
  875 000a FFF7FEFF 	 bl XMC_SCU_INTERRUPT_ClearEventStatus
- 255:../main.c     **** 	WATCHDOG_Service();
- 876              	 .loc 8 255 0
+ 236:../main.c     **** 	WATCHDOG_Service();
+ 876              	 .loc 8 236 0
  877 000e FFF7FEFF 	 bl WATCHDOG_Service
- 256:../main.c     **** 	//DIGITAL_IO_SetOutputLow(&CABIN_LIGHT_OUT_D);
- 257:../main.c     **** 	//uart_debugg("exit watchdog");
- 258:../main.c     **** 	}
- 259:../main.c     **** }
- 878              	 .loc 8 259 0
+ 237:../main.c     **** 	//DIGITAL_IO_SetOutputLow(&CABIN_LIGHT_OUT_D);
+ 238:../main.c     **** 	//uart_debugg("exit watchdog");
+ 239:../main.c     **** 	}
+ 240:../main.c     **** }
+ 878              	 .loc 8 240 0
  879 0012 80BD     	 pop {r7,pc}
  880              	 .cfi_endproc
  881              	.LFE611:
