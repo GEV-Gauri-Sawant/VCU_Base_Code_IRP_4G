@@ -1,0 +1,477 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "OBD_II.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .comm BMS_SOC,1,1
+  20              	 .comm CAN_MSG_DB_HVAC,60,4
+  21              	 .comm eps_status,4,4
+  22              	 .comm instrument_clustor_doors,1,1
+  23              	 .comm CAN_BMS_29bit,132,4
+  24              	 .comm CAN_IRP_29bit,132,4
+  25              	 .comm charge_complete,1,1
+  26              	 .comm charging_started,1,1
+  27              	 .comm Bms_SOC,2,2
+  28              	 .comm Bms_SOH,2,2
+  29              	 .comm Mapped_BMS_SOC,1,1
+  30              	 .comm Bms_minTemp,2,2
+  31              	 .comm Bms_maxTemp,2,2
+  32              	 .comm PackCurrent,4,4
+  33              	 .comm PackVoltage,4,4
+  34              	 .comm RegenerativeCurrentLimit,2,2
+  35              	 .comm ChargeCurrentLimit,2,2
+  36              	 .comm DischargeCurrentLimit,2,2
+  37              	 .comm HvBatteryPower,4,4
+  38              	 .comm bmsFault1,4,4
+  39              	 .comm bmsFault2,4,4
+  40              	 .comm GtakeFaults,4,4
+  41              	 .comm allFault_indicator,3,4
+  42              	 .comm cluster_Fault_Indicator,4,4
+  43              	 .comm Mcu_Temp,4,4
+  44              	 .comm Motor_Temp,4,4
+  45              	 .comm VehicleSpeedglb,2,2
+  46              	 .global OBDII_CAN
+  47              	 .section .data.OBDII_CAN,"aw",%progbits
+  48              	 .align 2
+  51              	OBDII_CAN:
+  52 0000 E1050000 	 .word 1505
+  53 0004 00       	 .byte 0
+  54 0005 00000000 	 .space 7
+  54      000000
+  55 000c E2050000 	 .word 1506
+  56 0010 00       	 .byte 0
+  57 0011 00000000 	 .space 7
+  57      000000
+  58 0018 E3050000 	 .word 1507
+  59 001c 00       	 .byte 0
+  60 001d 00000000 	 .space 7
+  60      000000
+  61 0024 E4050000 	 .word 1508
+  62 0028 00       	 .byte 0
+  63 0029 00000000 	 .space 7
+  63      000000
+  64 0030 E5050000 	 .word 1509
+  65 0034 00       	 .byte 0
+  66 0035 00000000 	 .space 7
+  66      000000
+  67              	 .comm OBD_data,2,2
+  68              	 .comm Irp_Mcu_drive_states_29bit,4,4
+  69              	 .comm Irp_Mcu_BMS_states_29bit,4,4
+  70              	 .comm Irp_Mcu_Torques_29bit,4,4
+  71              	 .comm Irp_Mcu_BMS_Currents_29bit,4,4
+  72              	 .comm Irp_MCU_Status_29bit,4,4
+  73              	 .comm Irp_MCU_Faults_29bit,4,4
+  74              	 .comm DC_Current_irp,2,2
+  75              	 .comm MotorPower_Irp,2,2
+  76              	 .comm Torque_Estimation,2,2
+  77              	 .comm DC_Voltage_irp,2,2
+  78              	 .comm Mcu_Temp_Irp,2,2
+  79              	 .comm Motor_Temp_Irp,2,2
+  80              	 .comm RPM,2,2
+  81              	 .comm Regenration_flag,1,1
+  82              	 .comm hv_count,2,2
+  83              	 .comm BMS_Avg_temp,4,4
+  84              	 .comm AC_ON_4g,1,1
+  85              	 .comm speed_4g,2,2
+  86              	 .section .text.OBDII_CAN_Tx,"ax",%progbits
+  87              	 .align 2
+  88              	 .global OBDII_CAN_Tx
+  89              	 .thumb
+  90              	 .thumb_func
+  92              	OBDII_CAN_Tx:
+  93              	.LFB605:
+  94              	 .file 1 "../Can_Devices/OBD_II.c"
+   1:../Can_Devices/OBD_II.c **** /*
+   2:../Can_Devices/OBD_II.c ****  * OBD_II.c
+   3:../Can_Devices/OBD_II.c **** 
+   4:../Can_Devices/OBD_II.c ****  *
+   5:../Can_Devices/OBD_II.c ****  *  Created on: 23-Nov-2023
+   6:../Can_Devices/OBD_II.c ****  *      Author: Suchit Sawant
+   7:../Can_Devices/OBD_II.c ****  */
+   8:../Can_Devices/OBD_II.c **** 
+   9:../Can_Devices/OBD_II.c **** 
+  10:../Can_Devices/OBD_II.c **** #include "DAVE.h"
+  11:../Can_Devices/OBD_II.c **** 
+  12:../Can_Devices/OBD_II.c **** #include "can_matrix.h"
+  13:../Can_Devices/OBD_II.c **** 
+  14:../Can_Devices/OBD_II.c **** 
+  15:../Can_Devices/OBD_II.c **** OBD_CAN_MSG_t OBDII_CAN[can_OBD_max] =
+  16:../Can_Devices/OBD_II.c **** {
+  17:../Can_Devices/OBD_II.c **** 		{0x5E1, {0x00}},
+  18:../Can_Devices/OBD_II.c **** 		{0x5E2, {0x00}},
+  19:../Can_Devices/OBD_II.c **** 		{0x5E3, {0x00}},
+  20:../Can_Devices/OBD_II.c **** 		{0x5E4, {0x00}},
+  21:../Can_Devices/OBD_II.c **** 		{0x5E5, {0x00}}
+  22:../Can_Devices/OBD_II.c **** };
+  23:../Can_Devices/OBD_II.c **** 
+  24:../Can_Devices/OBD_II.c **** void OBDII_CAN_Tx(void)
+  25:../Can_Devices/OBD_II.c **** {
+  95              	 .loc 1 25 0
+  96              	 .cfi_startproc
+  97              	 
+  98              	 
+  99 0000 80B5     	 push {r7,lr}
+ 100              	.LCFI0:
+ 101              	 .cfi_def_cfa_offset 8
+ 102              	 .cfi_offset 7,-8
+ 103              	 .cfi_offset 14,-4
+ 104 0002 84B0     	 sub sp,sp,#16
+ 105              	.LCFI1:
+ 106              	 .cfi_def_cfa_offset 24
+ 107 0004 00AF     	 add r7,sp,#0
+ 108              	.LCFI2:
+ 109              	 .cfi_def_cfa_register 7
+  26:../Can_Devices/OBD_II.c **** 	CAN_NODE_STATUS_t status;
+  27:../Can_Devices/OBD_II.c **** 	const CAN_NODE_t *HandlePtr1 = &CAN_NODE_2;
+ 110              	 .loc 1 27 0
+ 111 0006 494B     	 ldr r3,.L5
+ 112 0008 BB60     	 str r3,[r7,#8]
+  28:../Can_Devices/OBD_II.c **** 	uint8_t *array_data;
+  29:../Can_Devices/OBD_II.c **** 
+  30:../Can_Devices/OBD_II.c **** /*******************************************bms 0x01******************************************/
+  31:../Can_Devices/OBD_II.c **** 	OBDII_CAN[can_0x01].CAN_Data[0] = BMS_SOC; // soc
+ 113              	 .loc 1 31 0
+ 114 000a 494B     	 ldr r3,.L5+4
+ 115 000c 1B78     	 ldrb r3,[r3]
+ 116 000e DAB2     	 uxtb r2,r3
+ 117 0010 484B     	 ldr r3,.L5+8
+ 118 0012 1A71     	 strb r2,[r3,#4]
+  32:../Can_Devices/OBD_II.c **** 
+  33:../Can_Devices/OBD_II.c **** 	OBDII_CAN[can_0x01].CAN_Data[1] = Bms_maxTemp; // temp;
+ 119              	 .loc 1 33 0
+ 120 0014 484B     	 ldr r3,.L5+12
+ 121 0016 1B88     	 ldrh r3,[r3]
+ 122 0018 DAB2     	 uxtb r2,r3
+ 123 001a 464B     	 ldr r3,.L5+8
+ 124 001c 5A71     	 strb r2,[r3,#5]
+  34:../Can_Devices/OBD_II.c **** 
+  35:../Can_Devices/OBD_II.c **** 	//OBDII_CAN[can_0x01].CAN_Data[2];//packcurrent H;
+  36:../Can_Devices/OBD_II.c **** 	//OBDII_CAN[can_0x01].CAN_Data[3];//packcurrent L;
+  37:../Can_Devices/OBD_II.c **** 
+  38:../Can_Devices/OBD_II.c **** 	OBDII_CAN[can_0x01].CAN_Data[4] = CAN_BMS_29bit[CAN_0X180FA7F3].CAN_Data[7]; //packvoltage H
+ 125              	 .loc 1 38 0
+ 126 001e 474B     	 ldr r3,.L5+16
+ 127 0020 DB7D     	 ldrb r3,[r3,#23]
+ 128 0022 DAB2     	 uxtb r2,r3
+ 129 0024 434B     	 ldr r3,.L5+8
+ 130 0026 1A72     	 strb r2,[r3,#8]
+  39:../Can_Devices/OBD_II.c **** 	OBDII_CAN[can_0x01].CAN_Data[5] = CAN_BMS_29bit[CAN_0X180FA7F3].CAN_Data[6]; //packvoltage L
+ 131              	 .loc 1 39 0
+ 132 0028 444B     	 ldr r3,.L5+16
+ 133 002a 9B7D     	 ldrb r3,[r3,#22]
+ 134 002c DAB2     	 uxtb r2,r3
+ 135 002e 414B     	 ldr r3,.L5+8
+ 136 0030 5A72     	 strb r2,[r3,#9]
+  40:../Can_Devices/OBD_II.c **** 
+  41:../Can_Devices/OBD_II.c **** /*******************************************eps 0x02******************************************/
+  42:../Can_Devices/OBD_II.c **** 
+  43:../Can_Devices/OBD_II.c **** 
+  44:../Can_Devices/OBD_II.c **** /*******************************************hvac 0x03******************************************/
+  45:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x03].CAN_Data[0] = CAN_MSG_DB_HVAC[CAN_0x100].CAN_Data[0]; //TempdegreeC
+ 137              	 .loc 1 45 0
+ 138 0032 434B     	 ldr r3,.L5+20
+ 139 0034 1B7C     	 ldrb r3,[r3,#16]
+ 140 0036 DAB2     	 uxtb r2,r3
+ 141 0038 3E4B     	 ldr r3,.L5+8
+ 142 003a 1A77     	 strb r2,[r3,#28]
+  46:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x03].CAN_Data[1] = CAN_MSG_DB_HVAC[CAN_0x100].CAN_Data[1]; //Pressure
+ 143              	 .loc 1 46 0
+ 144 003c 404B     	 ldr r3,.L5+20
+ 145 003e 5B7C     	 ldrb r3,[r3,#17]
+ 146 0040 DAB2     	 uxtb r2,r3
+ 147 0042 3C4B     	 ldr r3,.L5+8
+ 148 0044 5A77     	 strb r2,[r3,#29]
+  47:../Can_Devices/OBD_II.c **** 
+  48:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x03].CAN_Data[2] = CAN_MSG_DB_HVAC[CAN_0x100].CAN_Data[2]; //1: AC switch on,  0: 
+ 149              	 .loc 1 48 0
+ 150 0046 3E4B     	 ldr r3,.L5+20
+ 151 0048 9B7C     	 ldrb r3,[r3,#18]
+ 152 004a DAB2     	 uxtb r2,r3
+ 153 004c 394B     	 ldr r3,.L5+8
+ 154 004e 9A77     	 strb r2,[r3,#30]
+  49:../Can_Devices/OBD_II.c **** 
+  50:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x03].CAN_Data[3] = CAN_MSG_DB_HVAC[CAN_0x238].CAN_Data[1]; //AC rpm H
+ 155              	 .loc 1 50 0
+ 156 0050 3B4B     	 ldr r3,.L5+20
+ 157 0052 5B79     	 ldrb r3,[r3,#5]
+ 158 0054 DAB2     	 uxtb r2,r3
+ 159 0056 374B     	 ldr r3,.L5+8
+ 160 0058 DA77     	 strb r2,[r3,#31]
+  51:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x03].CAN_Data[4] = CAN_MSG_DB_HVAC[CAN_0x238].CAN_Data[0]; //AC rpm L
+ 161              	 .loc 1 51 0
+ 162 005a 394B     	 ldr r3,.L5+20
+ 163 005c 1B79     	 ldrb r3,[r3,#4]
+ 164 005e DAB2     	 uxtb r2,r3
+ 165 0060 344B     	 ldr r3,.L5+8
+ 166 0062 83F82020 	 strb r2,[r3,#32]
+  52:../Can_Devices/OBD_II.c **** 
+  53:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x03].CAN_Data[5] = CAN_MSG_DB_HVAC[CAN_0x238].CAN_Data[3]; //AC ON -> compressor e
+ 167              	 .loc 1 53 0
+ 168 0066 364B     	 ldr r3,.L5+20
+ 169 0068 DB79     	 ldrb r3,[r3,#7]
+ 170 006a DAB2     	 uxtb r2,r3
+ 171 006c 314B     	 ldr r3,.L5+8
+ 172 006e 83F82120 	 strb r2,[r3,#33]
+  54:../Can_Devices/OBD_II.c **** 
+  55:../Can_Devices/OBD_II.c **** 
+  56:../Can_Devices/OBD_II.c **** /*******************************************gtake 0x04******************************************/
+  57:../Can_Devices/OBD_II.c **** 
+  58:../Can_Devices/OBD_II.c **** 	 //OBDII_CAN[can_0x04].CAN_Data[0]; //rpm H
+  59:../Can_Devices/OBD_II.c **** 	 //OBDII_CAN[can_0x04].CAN_Data[1]; //rpm L
+  60:../Can_Devices/OBD_II.c **** 
+  61:../Can_Devices/OBD_II.c **** 	 //OBDII_CAN[can_0x04].CAN_Data[2]; //throttle percentage H
+  62:../Can_Devices/OBD_II.c **** 	 //OBDII_CAN[can_0x04].CAN_Data[3]; //throttle percentage L
+  63:../Can_Devices/OBD_II.c **** 
+  64:../Can_Devices/OBD_II.c **** 	//OBDII_CAN[can_0x04].CAN_Data[4]; //speed H
+  65:../Can_Devices/OBD_II.c **** 	 //OBDII_CAN[can_0x04].CAN_Data[5]; //speed L
+  66:../Can_Devices/OBD_II.c **** 
+  67:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x04].CAN_Data[6] = Mcu_Temp;
+ 173              	 .loc 1 67 0
+ 174 0072 344B     	 ldr r3,.L5+24
+ 175 0074 1B68     	 ldr r3,[r3]
+ 176 0076 DAB2     	 uxtb r2,r3
+ 177 0078 2E4B     	 ldr r3,.L5+8
+ 178 007a 83F82E20 	 strb r2,[r3,#46]
+  68:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x04].CAN_Data[7] = Motor_Temp;
+ 179              	 .loc 1 68 0
+ 180 007e 324B     	 ldr r3,.L5+28
+ 181 0080 1B68     	 ldr r3,[r3]
+ 182 0082 DAB2     	 uxtb r2,r3
+ 183 0084 2B4B     	 ldr r3,.L5+8
+ 184 0086 83F82F20 	 strb r2,[r3,#47]
+  69:../Can_Devices/OBD_II.c **** 
+  70:../Can_Devices/OBD_II.c **** /*******************************************madhura 0x05******************************************/
+  71:../Can_Devices/OBD_II.c **** 
+  72:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x05].CAN_Data[0] = obc_madhura[can_0x18FF50E5].CAN_Data[0]; // voltage H
+ 185              	 .loc 1 72 0
+ 186 008a 304B     	 ldr r3,.L5+32
+ 187 008c 1B7C     	 ldrb r3,[r3,#16]
+ 188 008e DAB2     	 uxtb r2,r3
+ 189 0090 284B     	 ldr r3,.L5+8
+ 190 0092 83F83420 	 strb r2,[r3,#52]
+  73:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x05].CAN_Data[1] = obc_madhura[can_0x18FF50E5].CAN_Data[1]; // voltage L
+ 191              	 .loc 1 73 0
+ 192 0096 2D4B     	 ldr r3,.L5+32
+ 193 0098 5B7C     	 ldrb r3,[r3,#17]
+ 194 009a DAB2     	 uxtb r2,r3
+ 195 009c 254B     	 ldr r3,.L5+8
+ 196 009e 83F83520 	 strb r2,[r3,#53]
+  74:../Can_Devices/OBD_II.c **** 
+  75:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x05].CAN_Data[2] = obc_madhura[can_0x18FF50E5].CAN_Data[2]; // current H
+ 197              	 .loc 1 75 0
+ 198 00a2 2A4B     	 ldr r3,.L5+32
+ 199 00a4 9B7C     	 ldrb r3,[r3,#18]
+ 200 00a6 DAB2     	 uxtb r2,r3
+ 201 00a8 224B     	 ldr r3,.L5+8
+ 202 00aa 83F83620 	 strb r2,[r3,#54]
+  76:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x05].CAN_Data[3] = obc_madhura[can_0x18FF50E5].CAN_Data[3]; // current L
+ 203              	 .loc 1 76 0
+ 204 00ae 274B     	 ldr r3,.L5+32
+ 205 00b0 DB7C     	 ldrb r3,[r3,#19]
+ 206 00b2 DAB2     	 uxtb r2,r3
+ 207 00b4 1F4B     	 ldr r3,.L5+8
+ 208 00b6 83F83720 	 strb r2,[r3,#55]
+  77:../Can_Devices/OBD_II.c **** 
+  78:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x05].CAN_Data[4] = obc_madhura[can_0x18FF50E5].CAN_Data[4]; // 0:Charger turned on
+ 209              	 .loc 1 78 0
+ 210 00ba 244B     	 ldr r3,.L5+32
+ 211 00bc 1B7D     	 ldrb r3,[r3,#20]
+ 212 00be DAB2     	 uxtb r2,r3
+ 213 00c0 1C4B     	 ldr r3,.L5+8
+ 214 00c2 83F83820 	 strb r2,[r3,#56]
+  79:../Can_Devices/OBD_II.c **** 	 OBDII_CAN[can_0x05].CAN_Data[5] = obc_madhura[can_0x18FF50E5].CAN_Data[5]; // 0:charging mode, 1:
+ 215              	 .loc 1 79 0
+ 216 00c6 214B     	 ldr r3,.L5+32
+ 217 00c8 5B7D     	 ldrb r3,[r3,#21]
+ 218 00ca DAB2     	 uxtb r2,r3
+ 219 00cc 194B     	 ldr r3,.L5+8
+ 220 00ce 83F83920 	 strb r2,[r3,#57]
+ 221              	.LBB2:
+  80:../Can_Devices/OBD_II.c **** 
+  81:../Can_Devices/OBD_II.c **** 
+  82:../Can_Devices/OBD_II.c **** 	 for(int i = 0; i < can_OBD_max; i++)
+ 222              	 .loc 1 82 0
+ 223 00d2 0023     	 movs r3,#0
+ 224 00d4 FB60     	 str r3,[r7,#12]
+ 225 00d6 23E0     	 b .L2
+ 226              	.L4:
+  83:../Can_Devices/OBD_II.c **** 	 {
+  84:../Can_Devices/OBD_II.c **** 		 array_data = &OBDII_CAN[i].CAN_Data[0];
+ 227              	 .loc 1 84 0
+ 228 00d8 FA68     	 ldr r2,[r7,#12]
+ 229 00da 1346     	 mov r3,r2
+ 230 00dc 5B00     	 lsls r3,r3,#1
+ 231 00de 1344     	 add r3,r3,r2
+ 232 00e0 9B00     	 lsls r3,r3,#2
+ 233 00e2 144A     	 ldr r2,.L5+8
+ 234 00e4 1344     	 add r3,r3,r2
+ 235 00e6 0433     	 adds r3,r3,#4
+ 236 00e8 7B60     	 str r3,[r7,#4]
+  85:../Can_Devices/OBD_II.c **** 
+  86:../Can_Devices/OBD_II.c **** 		 //  update data for the MO to transmit
+  87:../Can_Devices/OBD_II.c **** 		 status = (CAN_NODE_STATUS_t)CAN_NODE_MO_UpdateData(HandlePtr1->lmobj_ptr[i],array_data);
+ 237              	 .loc 1 87 0
+ 238 00ea BA68     	 ldr r2,[r7,#8]
+ 239 00ec FB68     	 ldr r3,[r7,#12]
+ 240 00ee 0233     	 adds r3,r3,#2
+ 241 00f0 9B00     	 lsls r3,r3,#2
+ 242 00f2 1344     	 add r3,r3,r2
+ 243 00f4 5B68     	 ldr r3,[r3,#4]
+ 244 00f6 1846     	 mov r0,r3
+ 245 00f8 7968     	 ldr r1,[r7,#4]
+ 246 00fa FFF7FEFF 	 bl CAN_NODE_MO_UpdateData
+ 247 00fe 0346     	 mov r3,r0
+ 248 0100 FB70     	 strb r3,[r7,#3]
+  88:../Can_Devices/OBD_II.c **** 
+  89:../Can_Devices/OBD_II.c **** 		 if (status == CAN_NODE_STATUS_SUCCESS)
+ 249              	 .loc 1 89 0
+ 250 0102 FB78     	 ldrb r3,[r7,#3]
+ 251 0104 002B     	 cmp r3,#0
+ 252 0106 08D1     	 bne .L3
+  90:../Can_Devices/OBD_II.c **** 		 {
+  91:../Can_Devices/OBD_II.c **** 		    // message object data updated.
+  92:../Can_Devices/OBD_II.c **** 
+  93:../Can_Devices/OBD_II.c **** 		    // transmit the data
+  94:../Can_Devices/OBD_II.c **** 		    CAN_NODE_MO_Transmit(HandlePtr1->lmobj_ptr[i]);
+ 253              	 .loc 1 94 0
+ 254 0108 BA68     	 ldr r2,[r7,#8]
+ 255 010a FB68     	 ldr r3,[r7,#12]
+ 256 010c 0233     	 adds r3,r3,#2
+ 257 010e 9B00     	 lsls r3,r3,#2
+ 258 0110 1344     	 add r3,r3,r2
+ 259 0112 5B68     	 ldr r3,[r3,#4]
+ 260 0114 1846     	 mov r0,r3
+ 261 0116 FFF7FEFF 	 bl CAN_NODE_MO_Transmit
+ 262              	.L3:
+  82:../Can_Devices/OBD_II.c **** 	 {
+ 263              	 .loc 1 82 0 discriminator 2
+ 264 011a FB68     	 ldr r3,[r7,#12]
+ 265 011c 0133     	 adds r3,r3,#1
+ 266 011e FB60     	 str r3,[r7,#12]
+ 267              	.L2:
+  82:../Can_Devices/OBD_II.c **** 	 {
+ 268              	 .loc 1 82 0 is_stmt 0 discriminator 1
+ 269 0120 FB68     	 ldr r3,[r7,#12]
+ 270 0122 042B     	 cmp r3,#4
+ 271 0124 D8DD     	 ble .L4
+ 272              	.LBE2:
+  95:../Can_Devices/OBD_II.c **** 		 }
+  96:../Can_Devices/OBD_II.c **** 		 else
+  97:../Can_Devices/OBD_II.c **** 		 {
+  98:../Can_Devices/OBD_II.c **** 		     // message object failed to update.
+  99:../Can_Devices/OBD_II.c **** 		 }
+ 100:../Can_Devices/OBD_II.c **** 	 }
+ 101:../Can_Devices/OBD_II.c **** }
+ 273              	 .loc 1 101 0 is_stmt 1
+ 274 0126 1037     	 adds r7,r7,#16
+ 275              	.LCFI3:
+ 276              	 .cfi_def_cfa_offset 8
+ 277 0128 BD46     	 mov sp,r7
+ 278              	.LCFI4:
+ 279              	 .cfi_def_cfa_register 13
+ 280              	 
+ 281 012a 80BD     	 pop {r7,pc}
+ 282              	.L6:
+ 283              	 .align 2
+ 284              	.L5:
+ 285 012c 00000000 	 .word CAN_NODE_2
+ 286 0130 00000000 	 .word BMS_SOC
+ 287 0134 00000000 	 .word OBDII_CAN
+ 288 0138 00000000 	 .word Bms_maxTemp
+ 289 013c 00000000 	 .word CAN_BMS_29bit
+ 290 0140 00000000 	 .word CAN_MSG_DB_HVAC
+ 291 0144 00000000 	 .word Mcu_Temp
+ 292 0148 00000000 	 .word Motor_Temp
+ 293 014c 00000000 	 .word obc_madhura
+ 294              	 .cfi_endproc
+ 295              	.LFE605:
+ 297              	 .text
+ 298              	.Letext0:
+ 299              	 .file 2 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 300              	 .file 3 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 301              	 .file 4 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Infineon/XMC4700_series/Include/XMC4700.h"
+ 302              	 .file 5 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_gpio.h"
+ 303              	 .file 6 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 304              	 .file 7 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_usic.h"
+ 305              	 .file 8 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_can.h"
+ 306              	 .file 9 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/GLOBAL_CAN/global_can.h"
+ 307              	 .file 10 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/CAN_NODE/can_node.h"
+ 308              	 .file 11 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_spi.h"
+ 309              	 .file 12 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/can_matrix.h"
+ 310              	 .file 13 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Include/cmsis_gcc.h"
+ 311              	 .file 14 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Include/core_cm4.h"
+ 312              	 .file 15 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Infineon/XMC4700_series/Include/system_XMC4700.h"
+ 313              	 .file 16 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/CAN_NODE/can_node_extern.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 OBD_II.c
+                            *COM*:00000001 BMS_SOC
+                            *COM*:0000003c CAN_MSG_DB_HVAC
+                            *COM*:00000004 eps_status
+                            *COM*:00000001 instrument_clustor_doors
+                            *COM*:00000084 CAN_BMS_29bit
+                            *COM*:00000084 CAN_IRP_29bit
+                            *COM*:00000001 charge_complete
+                            *COM*:00000001 charging_started
+                            *COM*:00000002 Bms_SOC
+                            *COM*:00000002 Bms_SOH
+                            *COM*:00000001 Mapped_BMS_SOC
+                            *COM*:00000002 Bms_minTemp
+                            *COM*:00000002 Bms_maxTemp
+                            *COM*:00000004 PackCurrent
+                            *COM*:00000004 PackVoltage
+                            *COM*:00000002 RegenerativeCurrentLimit
+                            *COM*:00000002 ChargeCurrentLimit
+                            *COM*:00000002 DischargeCurrentLimit
+                            *COM*:00000004 HvBatteryPower
+                            *COM*:00000004 bmsFault1
+                            *COM*:00000004 bmsFault2
+                            *COM*:00000004 GtakeFaults
+                            *COM*:00000003 allFault_indicator
+                            *COM*:00000004 cluster_Fault_Indicator
+                            *COM*:00000004 Mcu_Temp
+                            *COM*:00000004 Motor_Temp
+                            *COM*:00000002 VehicleSpeedglb
+    {standard input}:51     .data.OBDII_CAN:00000000 OBDII_CAN
+    {standard input}:48     .data.OBDII_CAN:00000000 $d
+                            *COM*:00000002 OBD_data
+                            *COM*:00000004 Irp_Mcu_drive_states_29bit
+                            *COM*:00000004 Irp_Mcu_BMS_states_29bit
+                            *COM*:00000004 Irp_Mcu_Torques_29bit
+                            *COM*:00000004 Irp_Mcu_BMS_Currents_29bit
+                            *COM*:00000004 Irp_MCU_Status_29bit
+                            *COM*:00000004 Irp_MCU_Faults_29bit
+                            *COM*:00000002 DC_Current_irp
+                            *COM*:00000002 MotorPower_Irp
+                            *COM*:00000002 Torque_Estimation
+                            *COM*:00000002 DC_Voltage_irp
+                            *COM*:00000002 Mcu_Temp_Irp
+                            *COM*:00000002 Motor_Temp_Irp
+                            *COM*:00000002 RPM
+                            *COM*:00000001 Regenration_flag
+                            *COM*:00000002 hv_count
+                            *COM*:00000004 BMS_Avg_temp
+                            *COM*:00000001 AC_ON_4g
+                            *COM*:00000002 speed_4g
+    {standard input}:87     .text.OBDII_CAN_Tx:00000000 $t
+    {standard input}:92     .text.OBDII_CAN_Tx:00000000 OBDII_CAN_Tx
+    {standard input}:285    .text.OBDII_CAN_Tx:0000012c $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+CAN_NODE_MO_UpdateData
+CAN_NODE_MO_Transmit
+CAN_NODE_2
+obc_madhura

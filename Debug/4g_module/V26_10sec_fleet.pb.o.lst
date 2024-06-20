@@ -1,0 +1,82 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "V26_10sec_fleet.pb.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .global vcu_fleet_fleet_10_sec_field_info
+  20              	 .section .rodata.vcu_fleet_fleet_10_sec_field_info,"a",%progbits
+  21              	 .align 2
+  24              	vcu_fleet_fleet_10_sec_field_info:
+  25 0000 04120040 	 .word 1073746436
+  26 0004 08120440 	 .word 1074008584
+  27 0008 0C110840 	 .word 1074270476
+  28 000c 10120C40 	 .word 1074532880
+  29 0010 14121040 	 .word 1074795028
+  30 0014 18121440 	 .word 1075057176
+  31 0018 1C121840 	 .word 1075319324
+  32 001c 20121C40 	 .word 1075581472
+  33 0020 24112040 	 .word 1075843364
+  34 0024 28122440 	 .word 1076105768
+  35 0028 2C122840 	 .word 1076367916
+  36 002c 30122C40 	 .word 1076630064
+  37 0030 34123040 	 .word 1076892212
+  38 0034 38113440 	 .word 1077154104
+  39 0038 3C123840 	 .word 1077416508
+  40 003c 40123C40 	 .word 1077678656
+  41 0040 44124040 	 .word 1077940804
+  42 0044 48124440 	 .word 1078202952
+  43 0048 4C124840 	 .word 1078465100
+  44 004c 50124C40 	 .word 1078727248
+  45 0050 54125040 	 .word 1078989396
+  46 0054 58125440 	 .word 1079251544
+  47 0058 5C125840 	 .word 1079513692
+  48 005c 60125C40 	 .word 1079775840
+  49 0060 64116040 	 .word 1080037732
+  50 0064 00000000 	 .word 0
+  51              	 .global vcu_fleet_fleet_10_sec_submsg_info
+  52              	 .section .rodata.vcu_fleet_fleet_10_sec_submsg_info,"a",%progbits
+  53              	 .align 2
+  56              	vcu_fleet_fleet_10_sec_submsg_info:
+  57 0000 00000000 	 .space 4
+  58              	 .global vcu_fleet_fleet_10_sec_msg
+  59              	 .section .rodata.vcu_fleet_fleet_10_sec_msg,"a",%progbits
+  60              	 .align 2
+  63              	vcu_fleet_fleet_10_sec_msg:
+  64 0000 00000000 	 .word vcu_fleet_fleet_10_sec_field_info
+  65 0004 00000000 	 .word vcu_fleet_fleet_10_sec_submsg_info
+  66 0008 00000000 	 .word 0
+  67 000c 00000000 	 .word 0
+  68 0010 1900     	 .short 25
+  69 0012 0000     	 .short 0
+  70 0014 1900     	 .short 25
+  71 0016 0000     	 .space 2
+  72              	 .text
+  73              	.Letext0:
+  74              	 .file 1 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+  75              	 .file 2 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+  76              	 .file 3 "../4g_module/pb.h"
+  77              	 .file 4 "../4g_module/V26_10sec_fleet.pb.h"
+  78              	 .file 5 "../4g_module/V26_10sec_fleet.pb.c"
+DEFINED SYMBOLS
+                            *ABS*:00000000 V26_10sec_fleet.pb.c
+    {standard input}:24     .rodata.vcu_fleet_fleet_10_sec_field_info:00000000 vcu_fleet_fleet_10_sec_field_info
+    {standard input}:21     .rodata.vcu_fleet_fleet_10_sec_field_info:00000000 $d
+    {standard input}:56     .rodata.vcu_fleet_fleet_10_sec_submsg_info:00000000 vcu_fleet_fleet_10_sec_submsg_info
+    {standard input}:53     .rodata.vcu_fleet_fleet_10_sec_submsg_info:00000000 $d
+    {standard input}:63     .rodata.vcu_fleet_fleet_10_sec_msg:00000000 vcu_fleet_fleet_10_sec_msg
+    {standard input}:60     .rodata.vcu_fleet_fleet_10_sec_msg:00000000 $d
+
+NO UNDEFINED SYMBOLS

@@ -1,0 +1,392 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "State2_Process.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .comm cluster_door_in,4,4
+  20              	 .comm Vcu_OutPuts,3,4
+  21              	 .comm Combi_Switch_IN,8,4
+  22              	 .comm Seat_Switch_IN,3,4
+  23              	 .comm Door_Switch_IN,7,4
+  24              	 .comm Relay_Control_Switch_OUT,47,4
+  25              	 .comm Hvac_IN,24,4
+  26              	 .comm Switch_Ios_IN,20,4
+  27              	 .comm Motor_controller_OUT,5,4
+  28              	 .comm Lights_OUT,8,4
+  29              	 .comm Sensors_OUT,8,4
+  30              	 .comm Aux_Inputs,6,4
+  31              	 .comm Instrument_Cluster_OUT,18,4
+  32              	 .comm Seat_Belt_OUT,3,4
+  33              	 .comm Gear_OUT,4,4
+  34              	 .comm Instrumetcluster_DriveMode_OUT,4,4
+  35              	 .comm Door_Switch_OUT,7,4
+  36              	 .comm instrument_cluster_doorsvar,7,4
+  37              	 .comm cluster_door_out,4,4
+  38              	 .comm current_time,8,4
+  39              	 .comm timeval,8,4
+  40              	 .comm GPS_data_val,16,4
+  41              	 .comm epoch,4,4
+  42              	 .comm ambient_temp,1,1
+  43              	 .section .text.Process_State2_Inputs,"ax",%progbits
+  44              	 .align 2
+  45              	 .global Process_State2_Inputs
+  46              	 .thumb
+  47              	 .thumb_func
+  49              	Process_State2_Inputs:
+  50              	.LFB605:
+  51              	 .file 1 "../VCU_PROCESS/State2_Process.c"
+   1:../VCU_PROCESS/State2_Process.c **** /*
+   2:../VCU_PROCESS/State2_Process.c ****  * State2_Process.c
+   3:../VCU_PROCESS/State2_Process.c ****  *
+   4:../VCU_PROCESS/State2_Process.c ****  *  Created on: 30-Jun-2023
+   5:../VCU_PROCESS/State2_Process.c ****  *      Author: Suchit Sawant
+   6:../VCU_PROCESS/State2_Process.c ****  */
+   7:../VCU_PROCESS/State2_Process.c **** 
+   8:../VCU_PROCESS/State2_Process.c **** #include "Vcu_Config.h"
+   9:../VCU_PROCESS/State2_Process.c **** #include "Vcu_Process.h"
+  10:../VCU_PROCESS/State2_Process.c **** 
+  11:../VCU_PROCESS/State2_Process.c **** void Process_State2_Inputs(void)
+  12:../VCU_PROCESS/State2_Process.c **** {
+  52              	 .loc 1 12 0
+  53              	 .cfi_startproc
+  54              	 
+  55              	 
+  56 0000 80B5     	 push {r7,lr}
+  57              	.LCFI0:
+  58              	 .cfi_def_cfa_offset 8
+  59              	 .cfi_offset 7,-8
+  60              	 .cfi_offset 14,-4
+  61 0002 00AF     	 add r7,sp,#0
+  62              	.LCFI1:
+  63              	 .cfi_def_cfa_register 7
+  13:../VCU_PROCESS/State2_Process.c **** 	if(Vcu_OutPuts.IGNITION_2_OUT)
+  64              	 .loc 1 13 0
+  65 0004 0A4B     	 ldr r3,.L4
+  66 0006 5B78     	 ldrb r3,[r3,#1]
+  67 0008 002B     	 cmp r3,#0
+  68 000a 04D0     	 beq .L2
+  14:../VCU_PROCESS/State2_Process.c **** 	{
+  15:../VCU_PROCESS/State2_Process.c **** 		Process_vehicleDrive_Inputs();
+  69              	 .loc 1 15 0
+  70 000c FFF7FEFF 	 bl Process_vehicleDrive_Inputs
+  16:../VCU_PROCESS/State2_Process.c **** 		Process_ig2_lights();
+  71              	 .loc 1 16 0
+  72 0010 FFF7FEFF 	 bl Process_ig2_lights
+  73 0014 0AE0     	 b .L1
+  74              	.L2:
+  17:../VCU_PROCESS/State2_Process.c **** 	}
+  18:../VCU_PROCESS/State2_Process.c **** 	else if(!(Vcu_OutPuts.IGNITION_2_OUT))
+  75              	 .loc 1 18 0
+  76 0016 064B     	 ldr r3,.L4
+  77 0018 5B78     	 ldrb r3,[r3,#1]
+  78 001a 83F00103 	 eor r3,r3,#1
+  79 001e DBB2     	 uxtb r3,r3
+  80 0020 002B     	 cmp r3,#0
+  81 0022 03D0     	 beq .L1
+  19:../VCU_PROCESS/State2_Process.c **** 	{
+  20:../VCU_PROCESS/State2_Process.c **** 		Process_vehicleDrive_Inputs_off();
+  82              	 .loc 1 20 0
+  83 0024 FFF7FEFF 	 bl Process_vehicleDrive_Inputs_off
+  21:../VCU_PROCESS/State2_Process.c **** 		Process_ig2_lights_off();
+  84              	 .loc 1 21 0
+  85 0028 FFF7FEFF 	 bl Process_ig2_lights_off
+  86              	.L1:
+  22:../VCU_PROCESS/State2_Process.c **** 	}
+  23:../VCU_PROCESS/State2_Process.c **** 
+  24:../VCU_PROCESS/State2_Process.c **** }
+  87              	 .loc 1 24 0
+  88 002c 80BD     	 pop {r7,pc}
+  89              	.L5:
+  90 002e 00BF     	 .align 2
+  91              	.L4:
+  92 0030 00000000 	 .word Vcu_OutPuts
+  93              	 .cfi_endproc
+  94              	.LFE605:
+  96              	 .section .text.Process_vehicleDrive_Inputs,"ax",%progbits
+  97              	 .align 2
+  98              	 .global Process_vehicleDrive_Inputs
+  99              	 .thumb
+ 100              	 .thumb_func
+ 102              	Process_vehicleDrive_Inputs:
+ 103              	.LFB606:
+  25:../VCU_PROCESS/State2_Process.c **** 
+  26:../VCU_PROCESS/State2_Process.c **** void Process_vehicleDrive_Inputs(void)
+  27:../VCU_PROCESS/State2_Process.c **** {
+ 104              	 .loc 1 27 0
+ 105              	 .cfi_startproc
+ 106              	 
+ 107              	 
+ 108              	 
+ 109 0000 80B4     	 push {r7}
+ 110              	.LCFI2:
+ 111              	 .cfi_def_cfa_offset 4
+ 112              	 .cfi_offset 7,-4
+ 113 0002 00AF     	 add r7,sp,#0
+ 114              	.LCFI3:
+ 115              	 .cfi_def_cfa_register 7
+  28:../VCU_PROCESS/State2_Process.c **** 	Motor_controller_OUT.neutral = Switch_Ios_IN.gear_sw1_IN;//neutral
+ 116              	 .loc 1 28 0
+ 117 0004 094B     	 ldr r3,.L7
+ 118 0006 5A7A     	 ldrb r2,[r3,#9]
+ 119 0008 094B     	 ldr r3,.L7+4
+ 120 000a 1A71     	 strb r2,[r3,#4]
+  29:../VCU_PROCESS/State2_Process.c **** 	Motor_controller_OUT.forward_Relay = Switch_Ios_IN.gear_sw2_IN;//forward
+ 121              	 .loc 1 29 0
+ 122 000c 074B     	 ldr r3,.L7
+ 123 000e 9A7A     	 ldrb r2,[r3,#10]
+ 124 0010 074B     	 ldr r3,.L7+4
+ 125 0012 DA70     	 strb r2,[r3,#3]
+  30:../VCU_PROCESS/State2_Process.c **** 	Motor_controller_OUT.reverse_relay = Switch_Ios_IN.gear_sw3_IN;//reverse
+ 126              	 .loc 1 30 0
+ 127 0014 054B     	 ldr r3,.L7
+ 128 0016 DA7A     	 ldrb r2,[r3,#11]
+ 129 0018 054B     	 ldr r3,.L7+4
+ 130 001a 5A70     	 strb r2,[r3,#1]
+  31:../VCU_PROCESS/State2_Process.c **** 	Motor_controller_OUT.park_relay = Switch_Ios_IN.gear_sw4_IN;//park
+ 131              	 .loc 1 31 0
+ 132 001c 034B     	 ldr r3,.L7
+ 133 001e 1A7B     	 ldrb r2,[r3,#12]
+ 134 0020 034B     	 ldr r3,.L7+4
+ 135 0022 9A70     	 strb r2,[r3,#2]
+  32:../VCU_PROCESS/State2_Process.c **** 	Motor_controller_OUT.regen_relay;
+  33:../VCU_PROCESS/State2_Process.c **** }
+ 136              	 .loc 1 33 0
+ 137 0024 BD46     	 mov sp,r7
+ 138              	.LCFI4:
+ 139              	 .cfi_def_cfa_register 13
+ 140              	 
+ 141 0026 5DF8047B 	 ldr r7,[sp],#4
+ 142              	.LCFI5:
+ 143              	 .cfi_restore 7
+ 144              	 .cfi_def_cfa_offset 0
+ 145 002a 7047     	 bx lr
+ 146              	.L8:
+ 147              	 .align 2
+ 148              	.L7:
+ 149 002c 00000000 	 .word Switch_Ios_IN
+ 150 0030 00000000 	 .word Motor_controller_OUT
+ 151              	 .cfi_endproc
+ 152              	.LFE606:
+ 154              	 .section .text.Process_vehicleDrive_Inputs_off,"ax",%progbits
+ 155              	 .align 2
+ 156              	 .global Process_vehicleDrive_Inputs_off
+ 157              	 .thumb
+ 158              	 .thumb_func
+ 160              	Process_vehicleDrive_Inputs_off:
+ 161              	.LFB607:
+  34:../VCU_PROCESS/State2_Process.c **** void Process_vehicleDrive_Inputs_off(void)
+  35:../VCU_PROCESS/State2_Process.c **** {
+ 162              	 .loc 1 35 0
+ 163              	 .cfi_startproc
+ 164              	 
+ 165              	 
+ 166              	 
+ 167 0000 80B4     	 push {r7}
+ 168              	.LCFI6:
+ 169              	 .cfi_def_cfa_offset 4
+ 170              	 .cfi_offset 7,-4
+ 171 0002 00AF     	 add r7,sp,#0
+ 172              	.LCFI7:
+ 173              	 .cfi_def_cfa_register 7
+  36:../VCU_PROCESS/State2_Process.c **** 	Motor_controller_OUT.neutral = HIGH;// neutral
+ 174              	 .loc 1 36 0
+ 175 0004 094B     	 ldr r3,.L10
+ 176 0006 0122     	 movs r2,#1
+ 177 0008 1A71     	 strb r2,[r3,#4]
+  37:../VCU_PROCESS/State2_Process.c **** 	Motor_controller_OUT.forward_Relay = LOW;//forward
+ 178              	 .loc 1 37 0
+ 179 000a 084B     	 ldr r3,.L10
+ 180 000c 0022     	 movs r2,#0
+ 181 000e DA70     	 strb r2,[r3,#3]
+  38:../VCU_PROCESS/State2_Process.c **** 	Motor_controller_OUT.reverse_relay = LOW;//reverse
+ 182              	 .loc 1 38 0
+ 183 0010 064B     	 ldr r3,.L10
+ 184 0012 0022     	 movs r2,#0
+ 185 0014 5A70     	 strb r2,[r3,#1]
+  39:../VCU_PROCESS/State2_Process.c **** 	Motor_controller_OUT.park_relay = LOW;//park
+ 186              	 .loc 1 39 0
+ 187 0016 054B     	 ldr r3,.L10
+ 188 0018 0022     	 movs r2,#0
+ 189 001a 9A70     	 strb r2,[r3,#2]
+  40:../VCU_PROCESS/State2_Process.c **** 	Motor_controller_OUT.regen_relay = LOW;
+ 190              	 .loc 1 40 0
+ 191 001c 034B     	 ldr r3,.L10
+ 192 001e 0022     	 movs r2,#0
+ 193 0020 1A70     	 strb r2,[r3]
+  41:../VCU_PROCESS/State2_Process.c **** 
+  42:../VCU_PROCESS/State2_Process.c **** }
+ 194              	 .loc 1 42 0
+ 195 0022 BD46     	 mov sp,r7
+ 196              	.LCFI8:
+ 197              	 .cfi_def_cfa_register 13
+ 198              	 
+ 199 0024 5DF8047B 	 ldr r7,[sp],#4
+ 200              	.LCFI9:
+ 201              	 .cfi_restore 7
+ 202              	 .cfi_def_cfa_offset 0
+ 203 0028 7047     	 bx lr
+ 204              	.L11:
+ 205 002a 00BF     	 .align 2
+ 206              	.L10:
+ 207 002c 00000000 	 .word Motor_controller_OUT
+ 208              	 .cfi_endproc
+ 209              	.LFE607:
+ 211              	 .section .text.Process_ig2_lights,"ax",%progbits
+ 212              	 .align 2
+ 213              	 .global Process_ig2_lights
+ 214              	 .thumb
+ 215              	 .thumb_func
+ 217              	Process_ig2_lights:
+ 218              	.LFB608:
+  43:../VCU_PROCESS/State2_Process.c **** 
+  44:../VCU_PROCESS/State2_Process.c **** void Process_ig2_lights(void)
+  45:../VCU_PROCESS/State2_Process.c **** {
+ 219              	 .loc 1 45 0
+ 220              	 .cfi_startproc
+ 221              	 
+ 222              	 
+ 223              	 
+ 224 0000 80B4     	 push {r7}
+ 225              	.LCFI10:
+ 226              	 .cfi_def_cfa_offset 4
+ 227              	 .cfi_offset 7,-4
+ 228 0002 00AF     	 add r7,sp,#0
+ 229              	.LCFI11:
+ 230              	 .cfi_def_cfa_register 7
+  46:../VCU_PROCESS/State2_Process.c **** 	Lights_OUT.reverse_light_out = Switch_Ios_IN.gear_sw3_IN;
+ 231              	 .loc 1 46 0
+ 232 0004 034B     	 ldr r3,.L13
+ 233 0006 DA7A     	 ldrb r2,[r3,#11]
+ 234 0008 034B     	 ldr r3,.L13+4
+ 235 000a 9A70     	 strb r2,[r3,#2]
+  47:../VCU_PROCESS/State2_Process.c **** }
+ 236              	 .loc 1 47 0
+ 237 000c BD46     	 mov sp,r7
+ 238              	.LCFI12:
+ 239              	 .cfi_def_cfa_register 13
+ 240              	 
+ 241 000e 5DF8047B 	 ldr r7,[sp],#4
+ 242              	.LCFI13:
+ 243              	 .cfi_restore 7
+ 244              	 .cfi_def_cfa_offset 0
+ 245 0012 7047     	 bx lr
+ 246              	.L14:
+ 247              	 .align 2
+ 248              	.L13:
+ 249 0014 00000000 	 .word Switch_Ios_IN
+ 250 0018 00000000 	 .word Lights_OUT
+ 251              	 .cfi_endproc
+ 252              	.LFE608:
+ 254              	 .section .text.Process_ig2_lights_off,"ax",%progbits
+ 255              	 .align 2
+ 256              	 .global Process_ig2_lights_off
+ 257              	 .thumb
+ 258              	 .thumb_func
+ 260              	Process_ig2_lights_off:
+ 261              	.LFB609:
+  48:../VCU_PROCESS/State2_Process.c **** 
+  49:../VCU_PROCESS/State2_Process.c **** void Process_ig2_lights_off(void)
+  50:../VCU_PROCESS/State2_Process.c **** {
+ 262              	 .loc 1 50 0
+ 263              	 .cfi_startproc
+ 264              	 
+ 265              	 
+ 266              	 
+ 267 0000 80B4     	 push {r7}
+ 268              	.LCFI14:
+ 269              	 .cfi_def_cfa_offset 4
+ 270              	 .cfi_offset 7,-4
+ 271 0002 00AF     	 add r7,sp,#0
+ 272              	.LCFI15:
+ 273              	 .cfi_def_cfa_register 7
+  51:../VCU_PROCESS/State2_Process.c **** 	Lights_OUT.reverse_light_out = LOW;
+ 274              	 .loc 1 51 0
+ 275 0004 034B     	 ldr r3,.L16
+ 276 0006 0022     	 movs r2,#0
+ 277 0008 9A70     	 strb r2,[r3,#2]
+  52:../VCU_PROCESS/State2_Process.c **** }
+ 278              	 .loc 1 52 0
+ 279 000a BD46     	 mov sp,r7
+ 280              	.LCFI16:
+ 281              	 .cfi_def_cfa_register 13
+ 282              	 
+ 283 000c 5DF8047B 	 ldr r7,[sp],#4
+ 284              	.LCFI17:
+ 285              	 .cfi_restore 7
+ 286              	 .cfi_def_cfa_offset 0
+ 287 0010 7047     	 bx lr
+ 288              	.L17:
+ 289 0012 00BF     	 .align 2
+ 290              	.L16:
+ 291 0014 00000000 	 .word Lights_OUT
+ 292              	 .cfi_endproc
+ 293              	.LFE609:
+ 295              	 .text
+ 296              	.Letext0:
+ 297              	 .file 2 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 298              	 .file 3 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 299              	 .file 4 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_usic.h"
+ 300              	 .file 5 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\sys\\types.h"
+ 301              	 .file 6 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_rtc.h"
+ 302              	 .file 7 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_spi.h"
+ 303              	 .file 8 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Vcu_Config.h"
+ 304              	 .file 9 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Include/cmsis_gcc.h"
+ 305              	 .file 10 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Include/core_cm4.h"
+ 306              	 .file 11 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Infineon/XMC4700_series/Include/system_XMC4700.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 State2_Process.c
+                            *COM*:00000004 cluster_door_in
+                            *COM*:00000003 Vcu_OutPuts
+                            *COM*:00000008 Combi_Switch_IN
+                            *COM*:00000003 Seat_Switch_IN
+                            *COM*:00000007 Door_Switch_IN
+                            *COM*:0000002f Relay_Control_Switch_OUT
+                            *COM*:00000018 Hvac_IN
+                            *COM*:00000014 Switch_Ios_IN
+                            *COM*:00000005 Motor_controller_OUT
+                            *COM*:00000008 Lights_OUT
+                            *COM*:00000008 Sensors_OUT
+                            *COM*:00000006 Aux_Inputs
+                            *COM*:00000012 Instrument_Cluster_OUT
+                            *COM*:00000003 Seat_Belt_OUT
+                            *COM*:00000004 Gear_OUT
+                            *COM*:00000004 Instrumetcluster_DriveMode_OUT
+                            *COM*:00000007 Door_Switch_OUT
+                            *COM*:00000007 instrument_cluster_doorsvar
+                            *COM*:00000004 cluster_door_out
+                            *COM*:00000008 current_time
+                            *COM*:00000008 timeval
+                            *COM*:00000010 GPS_data_val
+                            *COM*:00000004 epoch
+                            *COM*:00000001 ambient_temp
+    {standard input}:44     .text.Process_State2_Inputs:00000000 $t
+    {standard input}:49     .text.Process_State2_Inputs:00000000 Process_State2_Inputs
+    {standard input}:102    .text.Process_vehicleDrive_Inputs:00000000 Process_vehicleDrive_Inputs
+    {standard input}:217    .text.Process_ig2_lights:00000000 Process_ig2_lights
+    {standard input}:160    .text.Process_vehicleDrive_Inputs_off:00000000 Process_vehicleDrive_Inputs_off
+    {standard input}:260    .text.Process_ig2_lights_off:00000000 Process_ig2_lights_off
+    {standard input}:92     .text.Process_State2_Inputs:00000030 $d
+    {standard input}:97     .text.Process_vehicleDrive_Inputs:00000000 $t
+    {standard input}:149    .text.Process_vehicleDrive_Inputs:0000002c $d
+    {standard input}:155    .text.Process_vehicleDrive_Inputs_off:00000000 $t
+    {standard input}:207    .text.Process_vehicleDrive_Inputs_off:0000002c $d
+    {standard input}:212    .text.Process_ig2_lights:00000000 $t
+    {standard input}:249    .text.Process_ig2_lights:00000014 $d
+    {standard input}:255    .text.Process_ig2_lights_off:00000000 $t
+    {standard input}:291    .text.Process_ig2_lights_off:00000014 $d
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

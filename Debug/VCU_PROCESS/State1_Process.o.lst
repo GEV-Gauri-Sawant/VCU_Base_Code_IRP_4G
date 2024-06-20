@@ -1,0 +1,2047 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "State1_Process.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .comm cluster_door_in,4,4
+  20              	 .comm Vcu_OutPuts,3,4
+  21              	 .comm Combi_Switch_IN,8,4
+  22              	 .comm Seat_Switch_IN,3,4
+  23              	 .comm Door_Switch_IN,7,4
+  24              	 .comm Relay_Control_Switch_OUT,47,4
+  25              	 .comm Hvac_IN,24,4
+  26              	 .comm Switch_Ios_IN,20,4
+  27              	 .comm Motor_controller_OUT,5,4
+  28              	 .comm Lights_OUT,8,4
+  29              	 .comm Sensors_OUT,8,4
+  30              	 .comm Aux_Inputs,6,4
+  31              	 .comm Instrument_Cluster_OUT,18,4
+  32              	 .comm Seat_Belt_OUT,3,4
+  33              	 .comm Gear_OUT,4,4
+  34              	 .global Instrumetcluster_DriveMode_OUT
+  35              	 .section .data.Instrumetcluster_DriveMode_OUT,"aw",%progbits
+  36              	 .align 2
+  39              	Instrumetcluster_DriveMode_OUT:
+  40 0000 2C000000 	 .word CAN_MSG_DB+44
+  41              	 .comm Door_Switch_OUT,7,4
+  42              	 .comm instrument_cluster_doorsvar,7,4
+  43              	 .comm cluster_door_out,4,4
+  44              	 .comm current_time,8,4
+  45              	 .comm timeval,8,4
+  46              	 .comm GPS_data_val,16,4
+  47              	 .comm epoch,4,4
+  48              	 .comm ambient_temp,1,1
+  49              	 .comm BMS_SOC,1,1
+  50              	 .comm CAN_MSG_DB_HVAC,60,4
+  51              	 .global eps_status
+  52              	 .section .data.eps_status,"aw",%progbits
+  53              	 .align 2
+  56              	eps_status:
+  57 0000 04000000 	 .word eps_n+4
+  58              	 .comm instrument_clustor_doors,1,1
+  59              	 .comm CAN_BMS_29bit,132,4
+  60              	 .comm CAN_IRP_29bit,132,4
+  61              	 .comm charge_complete,1,1
+  62              	 .comm charging_started,1,1
+  63              	 .comm Bms_SOC,2,2
+  64              	 .comm Bms_SOH,2,2
+  65              	 .comm Mapped_BMS_SOC,1,1
+  66              	 .comm Bms_minTemp,2,2
+  67              	 .comm Bms_maxTemp,2,2
+  68              	 .comm PackCurrent,4,4
+  69              	 .comm PackVoltage,4,4
+  70              	 .comm RegenerativeCurrentLimit,2,2
+  71              	 .comm ChargeCurrentLimit,2,2
+  72              	 .comm DischargeCurrentLimit,2,2
+  73              	 .comm HvBatteryPower,4,4
+  74              	 .comm bmsFault1,4,4
+  75              	 .comm bmsFault2,4,4
+  76              	 .comm GtakeFaults,4,4
+  77              	 .comm allFault_indicator,3,4
+  78              	 .comm cluster_Fault_Indicator,4,4
+  79              	 .comm Mcu_Temp,4,4
+  80              	 .comm Motor_Temp,4,4
+  81              	 .comm VehicleSpeedglb,2,2
+  82              	 .comm OBDII_CAN,60,4
+  83              	 .comm OBD_data,2,2
+  84              	 .comm Irp_Mcu_drive_states_29bit,4,4
+  85              	 .comm Irp_Mcu_BMS_states_29bit,4,4
+  86              	 .comm Irp_Mcu_Torques_29bit,4,4
+  87              	 .comm Irp_Mcu_BMS_Currents_29bit,4,4
+  88              	 .comm Irp_MCU_Status_29bit,4,4
+  89              	 .comm Irp_MCU_Faults_29bit,4,4
+  90              	 .comm DC_Current_irp,2,2
+  91              	 .comm MotorPower_Irp,2,2
+  92              	 .comm Torque_Estimation,2,2
+  93              	 .comm DC_Voltage_irp,2,2
+  94              	 .comm Mcu_Temp_Irp,2,2
+  95              	 .comm Motor_Temp_Irp,2,2
+  96              	 .comm RPM,2,2
+  97              	 .comm Regenration_flag,1,1
+  98              	 .comm hv_count,2,2
+  99              	 .comm BMS_Avg_temp,4,4
+ 100              	 .comm AC_ON_4g,1,1
+ 101              	 .comm speed_4g,2,2
+ 102              	 .global instrument_clustor_indicators
+ 103              	 .section .data.instrument_clustor_indicators,"aw",%progbits
+ 104              	 .align 2
+ 107              	instrument_clustor_indicators:
+ 108 0000 28000000 	 .word CAN_MSG_DB+40
+ 109              	 .global instrument_clustor_buzzer
+ 110              	 .section .data.instrument_clustor_buzzer,"aw",%progbits
+ 111              	 .align 2
+ 114              	instrument_clustor_buzzer:
+ 115 0000 4C000000 	 .word CAN_MSG_DB+76
+ 116              	 .section .text.Process_State1_Inputs,"ax",%progbits
+ 117              	 .align 2
+ 118              	 .global Process_State1_Inputs
+ 119              	 .thumb
+ 120              	 .thumb_func
+ 122              	Process_State1_Inputs:
+ 123              	.LFB605:
+ 124              	 .file 1 "../VCU_PROCESS/State1_Process.c"
+   1:../VCU_PROCESS/State1_Process.c **** /*
+   2:../VCU_PROCESS/State1_Process.c ****  * State1_Process.c
+   3:../VCU_PROCESS/State1_Process.c ****  *
+   4:../VCU_PROCESS/State1_Process.c ****  *  Created on: 29-Jun-2023
+   5:../VCU_PROCESS/State1_Process.c ****  *      Author: Suchit Sawant
+   6:../VCU_PROCESS/State1_Process.c ****  */
+   7:../VCU_PROCESS/State1_Process.c **** 
+   8:../VCU_PROCESS/State1_Process.c **** //#include "DAVE.h"
+   9:../VCU_PROCESS/State1_Process.c **** #include "Vcu_Config.h"
+  10:../VCU_PROCESS/State1_Process.c **** #include "Vcu_Process.h"
+  11:../VCU_PROCESS/State1_Process.c **** #include "can_matrix.h"
+  12:../VCU_PROCESS/State1_Process.c **** 
+  13:../VCU_PROCESS/State1_Process.c **** instrument_clustor_indicators_t *instrument_clustor_indicators = (instrument_clustor_indicators_t *
+  14:../VCU_PROCESS/State1_Process.c **** instrument_clustor_buzzer_t *instrument_clustor_buzzer = &(CAN_MSG_DB[CAN_18FF2021].CAN_Data[0]);
+  15:../VCU_PROCESS/State1_Process.c **** Instrumetcluster_DriveMode_OUT_t *Instrumetcluster_DriveMode_OUT = &(CAN_MSG_DB[CAN_18FFB632].CAN_D
+  16:../VCU_PROCESS/State1_Process.c **** eps_status_t *eps_status = &eps_n[can_0x1E5].can_matrix[0];
+  17:../VCU_PROCESS/State1_Process.c **** 
+  18:../VCU_PROCESS/State1_Process.c **** void Process_State1_Inputs(void)
+  19:../VCU_PROCESS/State1_Process.c **** {
+ 125              	 .loc 1 19 0
+ 126              	 .cfi_startproc
+ 127              	 
+ 128              	 
+ 129 0000 80B5     	 push {r7,lr}
+ 130              	.LCFI0:
+ 131              	 .cfi_def_cfa_offset 8
+ 132              	 .cfi_offset 7,-8
+ 133              	 .cfi_offset 14,-4
+ 134 0002 00AF     	 add r7,sp,#0
+ 135              	.LCFI1:
+ 136              	 .cfi_def_cfa_register 7
+  20:../VCU_PROCESS/State1_Process.c **** 	static bool init_once = 1;
+  21:../VCU_PROCESS/State1_Process.c **** 	Process_Io_exp_U24();
+ 137              	 .loc 1 21 0
+ 138 0004 FFF7FEFF 	 bl Process_Io_exp_U24
+  22:../VCU_PROCESS/State1_Process.c **** 
+  23:../VCU_PROCESS/State1_Process.c **** 	if(Vcu_OutPuts.IGNITION_1_OUT)
+ 139              	 .loc 1 23 0
+ 140 0008 114B     	 ldr r3,.L5
+ 141 000a 1B78     	 ldrb r3,[r3]
+ 142 000c 002B     	 cmp r3,#0
+ 143 000e 10D0     	 beq .L2
+ 144              	.LBB2:
+  24:../VCU_PROCESS/State1_Process.c **** 	{
+  25:../VCU_PROCESS/State1_Process.c **** 		//Process_Io_exp_U25();
+  26:../VCU_PROCESS/State1_Process.c **** 		Process_cluster_indicators();
+ 145              	 .loc 1 26 0
+ 146 0010 FFF7FEFF 	 bl Process_cluster_indicators
+  27:../VCU_PROCESS/State1_Process.c **** 		Process_drive_mode();
+ 147              	 .loc 1 27 0
+ 148 0014 FFF7FEFF 	 bl Process_drive_mode
+  28:../VCU_PROCESS/State1_Process.c **** 		Process_faciaaswitches();
+ 149              	 .loc 1 28 0
+ 150 0018 FFF7FEFF 	 bl Process_faciaaswitches
+  29:../VCU_PROCESS/State1_Process.c **** 		if(init_once)
+ 151              	 .loc 1 29 0
+ 152 001c 0D4B     	 ldr r3,.L5+4
+ 153 001e 1B78     	 ldrb r3,[r3]
+ 154 0020 002B     	 cmp r3,#0
+ 155 0022 05D0     	 beq .L3
+  30:../VCU_PROCESS/State1_Process.c **** 		{
+  31:../VCU_PROCESS/State1_Process.c **** 			init_hw();
+ 156              	 .loc 1 31 0
+ 157 0024 FFF7FEFF 	 bl init_hw
+  32:../VCU_PROCESS/State1_Process.c **** 			init_once = 0;
+ 158              	 .loc 1 32 0
+ 159 0028 0A4B     	 ldr r3,.L5+4
+ 160 002a 0022     	 movs r2,#0
+ 161 002c 1A70     	 strb r2,[r3]
+ 162              	.LBE2:
+ 163 002e 0EE0     	 b .L1
+ 164              	.L3:
+ 165 0030 0DE0     	 b .L1
+ 166              	.L2:
+  33:../VCU_PROCESS/State1_Process.c **** 		}
+  34:../VCU_PROCESS/State1_Process.c **** 	}
+  35:../VCU_PROCESS/State1_Process.c **** 	else if(!(Vcu_OutPuts.IGNITION_1_OUT))
+ 167              	 .loc 1 35 0
+ 168 0032 074B     	 ldr r3,.L5
+ 169 0034 1B78     	 ldrb r3,[r3]
+ 170 0036 83F00103 	 eor r3,r3,#1
+ 171 003a DBB2     	 uxtb r3,r3
+ 172 003c 002B     	 cmp r3,#0
+ 173 003e 06D0     	 beq .L1
+  36:../VCU_PROCESS/State1_Process.c **** 	{
+  37:../VCU_PROCESS/State1_Process.c **** 		all_Ig1_Inputs_off();
+ 174              	 .loc 1 37 0
+ 175 0040 FFF7FEFF 	 bl all_Ig1_Inputs_off
+  38:../VCU_PROCESS/State1_Process.c **** 		cluster_indicators_off();
+ 176              	 .loc 1 38 0
+ 177 0044 FFF7FEFF 	 bl cluster_indicators_off
+  39:../VCU_PROCESS/State1_Process.c **** 		init_once = 1;
+ 178              	 .loc 1 39 0
+ 179 0048 024B     	 ldr r3,.L5+4
+ 180 004a 0122     	 movs r2,#1
+ 181 004c 1A70     	 strb r2,[r3]
+ 182              	.L1:
+  40:../VCU_PROCESS/State1_Process.c **** 	}
+  41:../VCU_PROCESS/State1_Process.c **** }
+ 183              	 .loc 1 41 0
+ 184 004e 80BD     	 pop {r7,pc}
+ 185              	.L6:
+ 186              	 .align 2
+ 187              	.L5:
+ 188 0050 00000000 	 .word Vcu_OutPuts
+ 189 0054 00000000 	 .word init_once.13875
+ 190              	 .cfi_endproc
+ 191              	.LFE605:
+ 193              	 .section .text.hazzard,"ax",%progbits
+ 194              	 .align 2
+ 195              	 .global hazzard
+ 196              	 .thumb
+ 197              	 .thumb_func
+ 199              	hazzard:
+ 200              	.LFB606:
+  42:../VCU_PROCESS/State1_Process.c **** 
+  43:../VCU_PROCESS/State1_Process.c **** void hazzard(void)
+  44:../VCU_PROCESS/State1_Process.c **** {
+ 201              	 .loc 1 44 0
+ 202              	 .cfi_startproc
+ 203              	 
+ 204              	 
+ 205              	 
+ 206 0000 80B4     	 push {r7}
+ 207              	.LCFI2:
+ 208              	 .cfi_def_cfa_offset 4
+ 209              	 .cfi_offset 7,-4
+ 210 0002 00AF     	 add r7,sp,#0
+ 211              	.LCFI3:
+ 212              	 .cfi_def_cfa_register 7
+  45:../VCU_PROCESS/State1_Process.c **** 	/* for hazzard */
+  46:../VCU_PROCESS/State1_Process.c **** 	if((Vcu_OutPuts.IGNITION_1_OUT == 0) && (Combi_Switch_IN.left_indicator_IN && Combi_Switch_IN.righ
+ 213              	 .loc 1 46 0
+ 214 0004 1D4B     	 ldr r3,.L11
+ 215 0006 1B78     	 ldrb r3,[r3]
+ 216 0008 83F00103 	 eor r3,r3,#1
+ 217 000c DBB2     	 uxtb r3,r3
+ 218 000e 002B     	 cmp r3,#0
+ 219 0010 0ED0     	 beq .L8
+ 220              	 .loc 1 46 0 is_stmt 0 discriminator 1
+ 221 0012 1B4B     	 ldr r3,.L11+4
+ 222 0014 DB78     	 ldrb r3,[r3,#3]
+ 223 0016 002B     	 cmp r3,#0
+ 224 0018 0AD0     	 beq .L8
+ 225              	 .loc 1 46 0 discriminator 2
+ 226 001a 194B     	 ldr r3,.L11+4
+ 227 001c 1B79     	 ldrb r3,[r3,#4]
+ 228 001e 002B     	 cmp r3,#0
+ 229 0020 06D0     	 beq .L8
+  47:../VCU_PROCESS/State1_Process.c **** 	{
+  48:../VCU_PROCESS/State1_Process.c **** 		Relay_Control_Switch_OUT.left_indicator_OUT = true;
+ 230              	 .loc 1 48 0 is_stmt 1
+ 231 0022 184B     	 ldr r3,.L11+8
+ 232 0024 0122     	 movs r2,#1
+ 233 0026 DA70     	 strb r2,[r3,#3]
+  49:../VCU_PROCESS/State1_Process.c **** 		Relay_Control_Switch_OUT.right_indicator_OUT = true;
+ 234              	 .loc 1 49 0
+ 235 0028 164B     	 ldr r3,.L11+8
+ 236 002a 0122     	 movs r2,#1
+ 237 002c 1A71     	 strb r2,[r3,#4]
+ 238 002e 20E0     	 b .L7
+ 239              	.L8:
+  50:../VCU_PROCESS/State1_Process.c **** 	}
+  51:../VCU_PROCESS/State1_Process.c **** 
+  52:../VCU_PROCESS/State1_Process.c **** 	else if(((Combi_Switch_IN.left_indicator_IN == 0) && (Combi_Switch_IN.right_indicator_IN == 0)))
+ 240              	 .loc 1 52 0
+ 241 0030 134B     	 ldr r3,.L11+4
+ 242 0032 DB78     	 ldrb r3,[r3,#3]
+ 243 0034 83F00103 	 eor r3,r3,#1
+ 244 0038 DBB2     	 uxtb r3,r3
+ 245 003a 002B     	 cmp r3,#0
+ 246 003c 0DD0     	 beq .L10
+ 247              	 .loc 1 52 0 is_stmt 0 discriminator 1
+ 248 003e 104B     	 ldr r3,.L11+4
+ 249 0040 1B79     	 ldrb r3,[r3,#4]
+ 250 0042 83F00103 	 eor r3,r3,#1
+ 251 0046 DBB2     	 uxtb r3,r3
+ 252 0048 002B     	 cmp r3,#0
+ 253 004a 06D0     	 beq .L10
+  53:../VCU_PROCESS/State1_Process.c **** 	{
+  54:../VCU_PROCESS/State1_Process.c **** 		Relay_Control_Switch_OUT.left_indicator_OUT = false;
+ 254              	 .loc 1 54 0 is_stmt 1
+ 255 004c 0D4B     	 ldr r3,.L11+8
+ 256 004e 0022     	 movs r2,#0
+ 257 0050 DA70     	 strb r2,[r3,#3]
+  55:../VCU_PROCESS/State1_Process.c **** 		Relay_Control_Switch_OUT.right_indicator_OUT = false;
+ 258              	 .loc 1 55 0
+ 259 0052 0C4B     	 ldr r3,.L11+8
+ 260 0054 0022     	 movs r2,#0
+ 261 0056 1A71     	 strb r2,[r3,#4]
+ 262 0058 0BE0     	 b .L7
+ 263              	.L10:
+  56:../VCU_PROCESS/State1_Process.c **** 	}
+  57:../VCU_PROCESS/State1_Process.c **** 	/* end */
+  58:../VCU_PROCESS/State1_Process.c **** 
+  59:../VCU_PROCESS/State1_Process.c **** 	else if(Vcu_OutPuts.IGNITION_1_OUT)
+ 264              	 .loc 1 59 0
+ 265 005a 084B     	 ldr r3,.L11
+ 266 005c 1B78     	 ldrb r3,[r3]
+ 267 005e 002B     	 cmp r3,#0
+ 268 0060 07D0     	 beq .L7
+  60:../VCU_PROCESS/State1_Process.c **** 	{
+  61:../VCU_PROCESS/State1_Process.c **** 		Relay_Control_Switch_OUT.left_indicator_OUT = Combi_Switch_IN.left_indicator_IN;
+ 269              	 .loc 1 61 0
+ 270 0062 074B     	 ldr r3,.L11+4
+ 271 0064 DA78     	 ldrb r2,[r3,#3]
+ 272 0066 074B     	 ldr r3,.L11+8
+ 273 0068 DA70     	 strb r2,[r3,#3]
+  62:../VCU_PROCESS/State1_Process.c **** 		Relay_Control_Switch_OUT.right_indicator_OUT = Combi_Switch_IN.right_indicator_IN;
+ 274              	 .loc 1 62 0
+ 275 006a 054B     	 ldr r3,.L11+4
+ 276 006c 1A79     	 ldrb r2,[r3,#4]
+ 277 006e 054B     	 ldr r3,.L11+8
+ 278 0070 1A71     	 strb r2,[r3,#4]
+ 279              	.L7:
+  63:../VCU_PROCESS/State1_Process.c **** 	}
+  64:../VCU_PROCESS/State1_Process.c **** 
+  65:../VCU_PROCESS/State1_Process.c **** }
+ 280              	 .loc 1 65 0
+ 281 0072 BD46     	 mov sp,r7
+ 282              	.LCFI4:
+ 283              	 .cfi_def_cfa_register 13
+ 284              	 
+ 285 0074 5DF8047B 	 ldr r7,[sp],#4
+ 286              	.LCFI5:
+ 287              	 .cfi_restore 7
+ 288              	 .cfi_def_cfa_offset 0
+ 289 0078 7047     	 bx lr
+ 290              	.L12:
+ 291 007a 00BF     	 .align 2
+ 292              	.L11:
+ 293 007c 00000000 	 .word Vcu_OutPuts
+ 294 0080 00000000 	 .word Combi_Switch_IN
+ 295 0084 00000000 	 .word Relay_Control_Switch_OUT
+ 296              	 .cfi_endproc
+ 297              	.LFE606:
+ 299              	 .section .text.Process_Io_exp_U24,"ax",%progbits
+ 300              	 .align 2
+ 301              	 .global Process_Io_exp_U24
+ 302              	 .thumb
+ 303              	 .thumb_func
+ 305              	Process_Io_exp_U24:
+ 306              	.LFB607:
+  66:../VCU_PROCESS/State1_Process.c **** 
+  67:../VCU_PROCESS/State1_Process.c **** void Process_Io_exp_U24(void)
+  68:../VCU_PROCESS/State1_Process.c **** {
+ 307              	 .loc 1 68 0
+ 308              	 .cfi_startproc
+ 309              	 
+ 310              	 
+ 311 0000 80B5     	 push {r7,lr}
+ 312              	.LCFI6:
+ 313              	 .cfi_def_cfa_offset 8
+ 314              	 .cfi_offset 7,-8
+ 315              	 .cfi_offset 14,-4
+ 316 0002 00AF     	 add r7,sp,#0
+ 317              	.LCFI7:
+ 318              	 .cfi_def_cfa_register 7
+  69:../VCU_PROCESS/State1_Process.c **** 	Relay_Control_Switch_OUT.low_beam_OUT = Combi_Switch_IN.low_beam_IN;
+ 319              	 .loc 1 69 0
+ 320 0004 074B     	 ldr r3,.L14
+ 321 0006 1A78     	 ldrb r2,[r3]
+ 322 0008 074B     	 ldr r3,.L14+4
+ 323 000a 1A70     	 strb r2,[r3]
+  70:../VCU_PROCESS/State1_Process.c **** 	Relay_Control_Switch_OUT.high_beam_OUT = Combi_Switch_IN.high_beam_IN;
+ 324              	 .loc 1 70 0
+ 325 000c 054B     	 ldr r3,.L14
+ 326 000e 5A78     	 ldrb r2,[r3,#1]
+ 327 0010 054B     	 ldr r3,.L14+4
+ 328 0012 5A70     	 strb r2,[r3,#1]
+  71:../VCU_PROCESS/State1_Process.c **** 	Relay_Control_Switch_OUT.pos_light_OUT = Combi_Switch_IN.pos_light_IN;
+ 329              	 .loc 1 71 0
+ 330 0014 034B     	 ldr r3,.L14
+ 331 0016 9A78     	 ldrb r2,[r3,#2]
+ 332 0018 034B     	 ldr r3,.L14+4
+ 333 001a 9A70     	 strb r2,[r3,#2]
+  72:../VCU_PROCESS/State1_Process.c **** 
+  73:../VCU_PROCESS/State1_Process.c **** 	hazzard();
+ 334              	 .loc 1 73 0
+ 335 001c FFF7FEFF 	 bl hazzard
+  74:../VCU_PROCESS/State1_Process.c **** }
+ 336              	 .loc 1 74 0
+ 337 0020 80BD     	 pop {r7,pc}
+ 338              	.L15:
+ 339 0022 00BF     	 .align 2
+ 340              	.L14:
+ 341 0024 00000000 	 .word Combi_Switch_IN
+ 342 0028 00000000 	 .word Relay_Control_Switch_OUT
+ 343              	 .cfi_endproc
+ 344              	.LFE607:
+ 346              	 .section .text.Process_Io_exp_U25,"ax",%progbits
+ 347              	 .align 2
+ 348              	 .global Process_Io_exp_U25
+ 349              	 .thumb
+ 350              	 .thumb_func
+ 352              	Process_Io_exp_U25:
+ 353              	.LFB608:
+  75:../VCU_PROCESS/State1_Process.c **** 
+  76:../VCU_PROCESS/State1_Process.c **** void Process_Io_exp_U25(void)
+  77:../VCU_PROCESS/State1_Process.c **** {
+ 354              	 .loc 1 77 0
+ 355              	 .cfi_startproc
+ 356              	 
+ 357              	 
+ 358              	 
+ 359 0000 80B4     	 push {r7}
+ 360              	.LCFI8:
+ 361              	 .cfi_def_cfa_offset 4
+ 362              	 .cfi_offset 7,-4
+ 363 0002 00AF     	 add r7,sp,#0
+ 364              	.LCFI9:
+ 365              	 .cfi_def_cfa_register 7
+  78:../VCU_PROCESS/State1_Process.c **** 	Relay_Control_Switch_OUT.ac_blower1_OUT = Hvac_IN.blower_speed1_IN;
+ 366              	 .loc 1 78 0
+ 367 0004 054B     	 ldr r3,.L17
+ 368 0006 1A79     	 ldrb r2,[r3,#4]
+ 369 0008 054B     	 ldr r3,.L17+4
+ 370 000a 1A72     	 strb r2,[r3,#8]
+  79:../VCU_PROCESS/State1_Process.c **** 	Relay_Control_Switch_OUT.ac_blower2_OUT = Hvac_IN.blower_speed2_IN;
+ 371              	 .loc 1 79 0
+ 372 000c 034B     	 ldr r3,.L17
+ 373 000e 5A79     	 ldrb r2,[r3,#5]
+ 374 0010 034B     	 ldr r3,.L17+4
+ 375 0012 5A72     	 strb r2,[r3,#9]
+  80:../VCU_PROCESS/State1_Process.c **** 	//Relay_Control_Switch_OUT.ac_blower3_OUT = Hvac_IN.blower_speed3_IN;
+  81:../VCU_PROCESS/State1_Process.c **** 
+  82:../VCU_PROCESS/State1_Process.c **** }
+ 376              	 .loc 1 82 0
+ 377 0014 BD46     	 mov sp,r7
+ 378              	.LCFI10:
+ 379              	 .cfi_def_cfa_register 13
+ 380              	 
+ 381 0016 5DF8047B 	 ldr r7,[sp],#4
+ 382              	.LCFI11:
+ 383              	 .cfi_restore 7
+ 384              	 .cfi_def_cfa_offset 0
+ 385 001a 7047     	 bx lr
+ 386              	.L18:
+ 387              	 .align 2
+ 388              	.L17:
+ 389 001c 00000000 	 .word Hvac_IN
+ 390 0020 00000000 	 .word Relay_Control_Switch_OUT
+ 391              	 .cfi_endproc
+ 392              	.LFE608:
+ 394              	 .section .text.Process_cluster_indicators,"ax",%progbits
+ 395              	 .align 2
+ 396              	 .global Process_cluster_indicators
+ 397              	 .thumb
+ 398              	 .thumb_func
+ 400              	Process_cluster_indicators:
+ 401              	.LFB609:
+  83:../VCU_PROCESS/State1_Process.c **** 
+  84:../VCU_PROCESS/State1_Process.c **** void Process_cluster_indicators(void)
+  85:../VCU_PROCESS/State1_Process.c ****  {
+ 402              	 .loc 1 85 0
+ 403              	 .cfi_startproc
+ 404              	 
+ 405              	 
+ 406 0000 80B5     	 push {r7,lr}
+ 407              	.LCFI12:
+ 408              	 .cfi_def_cfa_offset 8
+ 409              	 .cfi_offset 7,-8
+ 410              	 .cfi_offset 14,-4
+ 411 0002 00AF     	 add r7,sp,#0
+ 412              	.LCFI13:
+ 413              	 .cfi_def_cfa_register 7
+  86:../VCU_PROCESS/State1_Process.c **** 	static int i_counter = 0;
+  87:../VCU_PROCESS/State1_Process.c **** 	/*if(Combi_Switch_IN.left_indicator_IN || Combi_Switch_IN.right_indicator_IN)
+  88:../VCU_PROCESS/State1_Process.c **** 	{
+  89:../VCU_PROCESS/State1_Process.c **** 		 INTERRUPT_Enable(&INTERRUPT_0);
+  90:../VCU_PROCESS/State1_Process.c **** 	}
+  91:../VCU_PROCESS/State1_Process.c **** 	else
+  92:../VCU_PROCESS/State1_Process.c **** 	{
+  93:../VCU_PROCESS/State1_Process.c **** 		Instrument_Cluster_OUT.set_left_indicator = 0;
+  94:../VCU_PROCESS/State1_Process.c **** 		Instrument_Cluster_OUT.set_right_indicator = 0;
+  95:../VCU_PROCESS/State1_Process.c **** 		INTERRUPT_Disable(&INTERRUPT_0);
+  96:../VCU_PROCESS/State1_Process.c **** 	}*/
+  97:../VCU_PROCESS/State1_Process.c **** 	/*
+  98:../VCU_PROCESS/State1_Process.c **** if(((i_counter >= 0) && (i_counter <= 25)) && (Combi_Switch_IN.left_indicator_IN || Combi_Switch_IN
+  99:../VCU_PROCESS/State1_Process.c **** {
+ 100:../VCU_PROCESS/State1_Process.c **** 	 Instrument_Cluster_OUT.set_left_indicator = Combi_Switch_IN.left_indicator_IN;
+ 101:../VCU_PROCESS/State1_Process.c **** 	 Instrument_Cluster_OUT.set_right_indicator = Combi_Switch_IN.right_indicator_IN;
+ 102:../VCU_PROCESS/State1_Process.c **** 	 i_counter++;
+ 103:../VCU_PROCESS/State1_Process.c **** 
+ 104:../VCU_PROCESS/State1_Process.c **** }
+ 105:../VCU_PROCESS/State1_Process.c **** else if(((i_counter >= 25) && (i_counter <= 26)) && (Combi_Switch_IN.left_indicator_IN || Combi_Swi
+ 106:../VCU_PROCESS/State1_Process.c **** {
+ 107:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.set_left_indicator = 0;//Combi_Switch_IN.left_indicator_IN;
+ 108:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.set_right_indicator = 0;//Combi_Switch_IN.right_indicator_IN;
+ 109:../VCU_PROCESS/State1_Process.c **** 		i_counter++;
+ 110:../VCU_PROCESS/State1_Process.c **** 
+ 111:../VCU_PROCESS/State1_Process.c **** }
+ 112:../VCU_PROCESS/State1_Process.c **** else
+ 113:../VCU_PROCESS/State1_Process.c **** {
+ 114:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.set_left_indicator = 0;//Combi_Switch_IN.left_indicator_IN;
+ 115:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.set_right_indicator = 0;//Combi_Switch_IN.right_indicator_IN;
+ 116:../VCU_PROCESS/State1_Process.c **** 
+ 117:../VCU_PROCESS/State1_Process.c **** 	i_counter = 0;
+ 118:../VCU_PROCESS/State1_Process.c **** }
+ 119:../VCU_PROCESS/State1_Process.c **** */
+ 120:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.set_left_indicator = Combi_Switch_IN.left_indicator_IN;
+ 414              	 .loc 1 120 0
+ 415 0004 394B     	 ldr r3,.L25
+ 416 0006 DA78     	 ldrb r2,[r3,#3]
+ 417 0008 394B     	 ldr r3,.L25+4
+ 418 000a 9A71     	 strb r2,[r3,#6]
+ 121:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.set_right_indicator = Combi_Switch_IN.right_indicator_IN;
+ 419              	 .loc 1 121 0
+ 420 000c 374B     	 ldr r3,.L25
+ 421 000e 1A79     	 ldrb r2,[r3,#4]
+ 422 0010 374B     	 ldr r3,.L25+4
+ 423 0012 DA71     	 strb r2,[r3,#7]
+ 122:../VCU_PROCESS/State1_Process.c **** 	 //Instrument_Cluster_OUT.set_low_beam = Relay_Control_Switch_OUT.low_beam_OUT;
+ 123:../VCU_PROCESS/State1_Process.c **** 	 Instrument_Cluster_OUT.set_high_beam = Relay_Control_Switch_OUT.high_beam_OUT;
+ 424              	 .loc 1 123 0
+ 425 0014 374B     	 ldr r3,.L25+8
+ 426 0016 5A78     	 ldrb r2,[r3,#1]
+ 427 0018 354B     	 ldr r3,.L25+4
+ 428 001a 5A72     	 strb r2,[r3,#9]
+ 124:../VCU_PROCESS/State1_Process.c **** 	 Instrument_Cluster_OUT.set_low_beam = Relay_Control_Switch_OUT.pos_light_OUT;//There is no indica
+ 429              	 .loc 1 124 0
+ 430 001c 354B     	 ldr r3,.L25+8
+ 431 001e 9A78     	 ldrb r2,[r3,#2]
+ 432 0020 334B     	 ldr r3,.L25+4
+ 433 0022 1A72     	 strb r2,[r3,#8]
+ 125:../VCU_PROCESS/State1_Process.c **** 	 Instrument_Cluster_OUT.set_brake_oil = Switch_Ios_IN.brake_oil_IN;
+ 434              	 .loc 1 125 0
+ 435 0024 344B     	 ldr r3,.L25+12
+ 436 0026 9A79     	 ldrb r2,[r3,#6]
+ 437 0028 314B     	 ldr r3,.L25+4
+ 438 002a 9A72     	 strb r2,[r3,#10]
+ 126:../VCU_PROCESS/State1_Process.c **** 
+ 127:../VCU_PROCESS/State1_Process.c **** 	// Instrument_Cluster_OUT.eps_status = 1;//default value to show eps failure
+ 128:../VCU_PROCESS/State1_Process.c **** 	 Instrument_Cluster_OUT.eps_status = eps_status-> Power_Steering_Fault_Indication_On_EPS;///////ep
+ 439              	 .loc 1 128 0
+ 440 002c 334B     	 ldr r3,.L25+16
+ 441 002e 1B68     	 ldr r3,[r3]
+ 442 0030 DB78     	 ldrb r3,[r3,#3]
+ 443 0032 C3F30013 	 ubfx r3,r3,#4,#1
+ 444 0036 DBB2     	 uxtb r3,r3
+ 445 0038 002B     	 cmp r3,#0
+ 446 003a 14BF     	 ite ne
+ 447 003c 0123     	 movne r3,#1
+ 448 003e 0023     	 moveq r3,#0
+ 449 0040 DAB2     	 uxtb r2,r3
+ 450 0042 2B4B     	 ldr r3,.L25+4
+ 451 0044 1A73     	 strb r2,[r3,#12]
+ 129:../VCU_PROCESS/State1_Process.c **** 
+ 130:../VCU_PROCESS/State1_Process.c **** 	 Instrument_Cluster_OUT.aux_vtg_critical;////////
+ 131:../VCU_PROCESS/State1_Process.c **** 	 Instrument_Cluster_OUT.battery_temp_exceeded;/////////
+ 132:../VCU_PROCESS/State1_Process.c **** 	 /*instrument_clustor_buzzer-> charging_connected = */Instrument_Cluster_OUT.charging_connected = 
+ 452              	 .loc 1 132 0
+ 453 0046 FFF7FEFF 	 bl charger_on
+ 454 004a 0346     	 mov r3,r0
+ 455 004c 002B     	 cmp r3,#0
+ 456 004e 14BF     	 ite ne
+ 457 0050 0123     	 movne r3,#1
+ 458 0052 0023     	 moveq r3,#0
+ 459 0054 DAB2     	 uxtb r2,r3
+ 460 0056 264B     	 ldr r3,.L25+4
+ 461 0058 9A73     	 strb r2,[r3,#14]
+ 133:../VCU_PROCESS/State1_Process.c **** 	 /*instrument_clustor_indicators-> generic_alarm;////////*/
+ 134:../VCU_PROCESS/State1_Process.c **** 	 Instrument_Cluster_OUT.regen_enabled = Irp_Mcu_drive_states_29bit-> Regen_On_Throttle_Realese || 
+ 462              	 .loc 1 134 0
+ 463 005a 294B     	 ldr r3,.L25+20
+ 464 005c 1B68     	 ldr r3,[r3]
+ 465 005e 9B78     	 ldrb r3,[r3,#2]
+ 466 0060 03F00803 	 and r3,r3,#8
+ 467 0064 DBB2     	 uxtb r3,r3
+ 468 0066 002B     	 cmp r3,#0
+ 469 0068 07D1     	 bne .L20
+ 470              	 .loc 1 134 0 is_stmt 0 discriminator 2
+ 471 006a 254B     	 ldr r3,.L25+20
+ 472 006c 1B68     	 ldr r3,[r3]
+ 473 006e 9B78     	 ldrb r3,[r3,#2]
+ 474 0070 03F00403 	 and r3,r3,#4
+ 475 0074 DBB2     	 uxtb r3,r3
+ 476 0076 002B     	 cmp r3,#0
+ 477 0078 01D0     	 beq .L21
+ 478              	.L20:
+ 479              	 .loc 1 134 0 discriminator 3
+ 480 007a 0123     	 movs r3,#1
+ 481 007c 00E0     	 b .L22
+ 482              	.L21:
+ 483              	 .loc 1 134 0 discriminator 4
+ 484 007e 0023     	 movs r3,#0
+ 485              	.L22:
+ 486              	 .loc 1 134 0 discriminator 6
+ 487 0080 03F00103 	 and r3,r3,#1
+ 488 0084 DAB2     	 uxtb r2,r3
+ 489 0086 1A4B     	 ldr r3,.L25+4
+ 490 0088 DA73     	 strb r2,[r3,#15]
+ 135:../VCU_PROCESS/State1_Process.c **** 	 instrument_clustor_indicators-> parking_brake_light = !Switch_Ios_IN.handbrake_sw_IN;////////
+ 491              	 .loc 1 135 0 is_stmt 1 discriminator 6
+ 492 008a 1E4B     	 ldr r3,.L25+24
+ 493 008c 1A68     	 ldr r2,[r3]
+ 494 008e 1A4B     	 ldr r3,.L25+12
+ 495 0090 1B7A     	 ldrb r3,[r3,#8]
+ 496 0092 83F00103 	 eor r3,r3,#1
+ 497 0096 DBB2     	 uxtb r3,r3
+ 498 0098 03F00103 	 and r3,r3,#1
+ 499 009c D9B2     	 uxtb r1,r3
+ 500 009e 5379     	 ldrb r3,[r2,#5]
+ 501 00a0 61F3C303 	 bfi r3,r1,#3,#1
+ 502 00a4 5371     	 strb r3,[r2,#5]
+ 136:../VCU_PROCESS/State1_Process.c **** 	 Seat_Belt_OUT.seat_occupied = (!(/*Seat_Switch_IN.seat_belt_d_IN &&*/ Seat_Switch_IN.seat_belt_p_
+ 503              	 .loc 1 136 0 discriminator 6
+ 504 00a6 184B     	 ldr r3,.L25+28
+ 505 00a8 5B78     	 ldrb r3,[r3,#1]
+ 506 00aa 002B     	 cmp r3,#0
+ 507 00ac 14BF     	 ite ne
+ 508 00ae 0123     	 movne r3,#1
+ 509 00b0 0023     	 moveq r3,#0
+ 510 00b2 DBB2     	 uxtb r3,r3
+ 511 00b4 83F00103 	 eor r3,r3,#1
+ 512 00b8 DBB2     	 uxtb r3,r3
+ 513 00ba 03F00103 	 and r3,r3,#1
+ 514 00be DAB2     	 uxtb r2,r3
+ 515 00c0 124B     	 ldr r3,.L25+32
+ 516 00c2 9A70     	 strb r2,[r3,#2]
+ 137:../VCU_PROCESS/State1_Process.c **** 
+ 138:../VCU_PROCESS/State1_Process.c **** 	 if(vspeed >=10)
+ 517              	 .loc 1 138 0 discriminator 6
+ 518 00c4 124B     	 ldr r3,.L25+36
+ 519 00c6 1B88     	 ldrh r3,[r3]
+ 520 00c8 092B     	 cmp r3,#9
+ 521 00ca 08D9     	 bls .L23
+ 139:../VCU_PROCESS/State1_Process.c **** 	 {
+ 140:../VCU_PROCESS/State1_Process.c **** 		 instrument_clustor_buzzer-> seat_belt_warning = Seat_Belt_OUT.seat_occupied;
+ 522              	 .loc 1 140 0
+ 523 00cc 114B     	 ldr r3,.L25+40
+ 524 00ce 1A68     	 ldr r2,[r3]
+ 525 00d0 0E4B     	 ldr r3,.L25+32
+ 526 00d2 9978     	 ldrb r1,[r3,#2]
+ 527 00d4 1378     	 ldrb r3,[r2]
+ 528 00d6 61F34103 	 bfi r3,r1,#1,#1
+ 529 00da 1370     	 strb r3,[r2]
+ 530 00dc 05E0     	 b .L19
+ 531              	.L23:
+ 141:../VCU_PROCESS/State1_Process.c **** 	 }
+ 142:../VCU_PROCESS/State1_Process.c **** 	 else
+ 143:../VCU_PROCESS/State1_Process.c **** 	 {
+ 144:../VCU_PROCESS/State1_Process.c **** 		 instrument_clustor_buzzer-> seat_belt_warning = false;
+ 532              	 .loc 1 144 0
+ 533 00de 0D4B     	 ldr r3,.L25+40
+ 534 00e0 1A68     	 ldr r2,[r3]
+ 535 00e2 1378     	 ldrb r3,[r2]
+ 536 00e4 6FF34103 	 bfc r3,#1,#1
+ 537 00e8 1370     	 strb r3,[r2]
+ 538              	.L19:
+ 145:../VCU_PROCESS/State1_Process.c **** 	 }
+ 146:../VCU_PROCESS/State1_Process.c **** 	 // instrument_clustor_indicators-> overspeed = 1;
+ 147:../VCU_PROCESS/State1_Process.c ****  }
+ 539              	 .loc 1 147 0
+ 540 00ea 80BD     	 pop {r7,pc}
+ 541              	.L26:
+ 542              	 .align 2
+ 543              	.L25:
+ 544 00ec 00000000 	 .word Combi_Switch_IN
+ 545 00f0 00000000 	 .word Instrument_Cluster_OUT
+ 546 00f4 00000000 	 .word Relay_Control_Switch_OUT
+ 547 00f8 00000000 	 .word Switch_Ios_IN
+ 548 00fc 00000000 	 .word eps_status
+ 549 0100 00000000 	 .word Irp_Mcu_drive_states_29bit
+ 550 0104 00000000 	 .word instrument_clustor_indicators
+ 551 0108 00000000 	 .word Seat_Switch_IN
+ 552 010c 00000000 	 .word Seat_Belt_OUT
+ 553 0110 00000000 	 .word vspeed
+ 554 0114 00000000 	 .word instrument_clustor_buzzer
+ 555              	 .cfi_endproc
+ 556              	.LFE609:
+ 558              	 .section .text.cluster_indicators_off,"ax",%progbits
+ 559              	 .align 2
+ 560              	 .global cluster_indicators_off
+ 561              	 .thumb
+ 562              	 .thumb_func
+ 564              	cluster_indicators_off:
+ 565              	.LFB610:
+ 148:../VCU_PROCESS/State1_Process.c **** 
+ 149:../VCU_PROCESS/State1_Process.c **** void cluster_indicators_off(void)
+ 150:../VCU_PROCESS/State1_Process.c ****  {
+ 566              	 .loc 1 150 0
+ 567              	 .cfi_startproc
+ 568              	 
+ 569              	 
+ 570              	 
+ 571 0000 80B4     	 push {r7}
+ 572              	.LCFI14:
+ 573              	 .cfi_def_cfa_offset 4
+ 574              	 .cfi_offset 7,-4
+ 575 0002 00AF     	 add r7,sp,#0
+ 576              	.LCFI15:
+ 577              	 .cfi_def_cfa_register 7
+ 151:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.set_left_indicator = false;
+ 578              	 .loc 1 151 0
+ 579 0004 124B     	 ldr r3,.L28
+ 580 0006 0022     	 movs r2,#0
+ 581 0008 9A71     	 strb r2,[r3,#6]
+ 152:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.set_right_indicator = false;
+ 582              	 .loc 1 152 0
+ 583 000a 114B     	 ldr r3,.L28
+ 584 000c 0022     	 movs r2,#0
+ 585 000e DA71     	 strb r2,[r3,#7]
+ 153:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.set_low_beam = false;
+ 586              	 .loc 1 153 0
+ 587 0010 0F4B     	 ldr r3,.L28
+ 588 0012 0022     	 movs r2,#0
+ 589 0014 1A72     	 strb r2,[r3,#8]
+ 154:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.set_high_beam = false;
+ 590              	 .loc 1 154 0
+ 591 0016 0E4B     	 ldr r3,.L28
+ 592 0018 0022     	 movs r2,#0
+ 593 001a 5A72     	 strb r2,[r3,#9]
+ 155:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.set_brake_oil = false;//////
+ 594              	 .loc 1 155 0
+ 595 001c 0C4B     	 ldr r3,.L28
+ 596 001e 0022     	 movs r2,#0
+ 597 0020 9A72     	 strb r2,[r3,#10]
+ 156:../VCU_PROCESS/State1_Process.c **** 	//Instrument_Cluster_OUT.;///////eps failure
+ 157:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.aux_vtg_critical = false;////////
+ 598              	 .loc 1 157 0
+ 599 0022 0B4B     	 ldr r3,.L28
+ 600 0024 0022     	 movs r2,#0
+ 601 0026 DA72     	 strb r2,[r3,#11]
+ 158:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.battery_temp_exceeded = false;/////////
+ 602              	 .loc 1 158 0
+ 603 0028 094B     	 ldr r3,.L28
+ 604 002a 0022     	 movs r2,#0
+ 605 002c 5A73     	 strb r2,[r3,#13]
+ 159:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.charging_connected = false;/////////////
+ 606              	 .loc 1 159 0
+ 607 002e 084B     	 ldr r3,.L28
+ 608 0030 0022     	 movs r2,#0
+ 609 0032 9A73     	 strb r2,[r3,#14]
+ 160:../VCU_PROCESS/State1_Process.c **** 	/*instrument_clustor_indicators-> generic_alarm;////////*/
+ 161:../VCU_PROCESS/State1_Process.c **** 	Instrument_Cluster_OUT.regen_enabled = false;
+ 610              	 .loc 1 161 0
+ 611 0034 064B     	 ldr r3,.L28
+ 612 0036 0022     	 movs r2,#0
+ 613 0038 DA73     	 strb r2,[r3,#15]
+ 162:../VCU_PROCESS/State1_Process.c **** 	/*instrument_clustor_indicators-> parking_brake_light;////////*/
+ 163:../VCU_PROCESS/State1_Process.c **** 	instrument_clustor_indicators-> seat_belt = false;
+ 614              	 .loc 1 163 0
+ 615 003a 064B     	 ldr r3,.L28+4
+ 616 003c 1A68     	 ldr r2,[r3]
+ 617 003e 5379     	 ldrb r3,[r2,#5]
+ 618 0040 6FF30413 	 bfc r3,#4,#1
+ 619 0044 5371     	 strb r3,[r2,#5]
+ 164:../VCU_PROCESS/State1_Process.c ****  }
+ 620              	 .loc 1 164 0
+ 621 0046 BD46     	 mov sp,r7
+ 622              	.LCFI16:
+ 623              	 .cfi_def_cfa_register 13
+ 624              	 
+ 625 0048 5DF8047B 	 ldr r7,[sp],#4
+ 626              	.LCFI17:
+ 627              	 .cfi_restore 7
+ 628              	 .cfi_def_cfa_offset 0
+ 629 004c 7047     	 bx lr
+ 630              	.L29:
+ 631 004e 00BF     	 .align 2
+ 632              	.L28:
+ 633 0050 00000000 	 .word Instrument_Cluster_OUT
+ 634 0054 00000000 	 .word instrument_clustor_indicators
+ 635              	 .cfi_endproc
+ 636              	.LFE610:
+ 638              	 .section .text.process_instrument_cluster_door,"ax",%progbits
+ 639              	 .align 2
+ 640              	 .global process_instrument_cluster_door
+ 641              	 .thumb
+ 642              	 .thumb_func
+ 644              	process_instrument_cluster_door:
+ 645              	.LFB611:
+ 165:../VCU_PROCESS/State1_Process.c **** 
+ 166:../VCU_PROCESS/State1_Process.c **** void process_instrument_cluster_door(void)
+ 167:../VCU_PROCESS/State1_Process.c **** {
+ 646              	 .loc 1 167 0
+ 647              	 .cfi_startproc
+ 648              	 
+ 649              	 
+ 650              	 
+ 651 0000 80B4     	 push {r7}
+ 652              	.LCFI18:
+ 653              	 .cfi_def_cfa_offset 4
+ 654              	 .cfi_offset 7,-4
+ 655 0002 00AF     	 add r7,sp,#0
+ 656              	.LCFI19:
+ 657              	 .cfi_def_cfa_register 7
+ 168:../VCU_PROCESS/State1_Process.c **** 
+ 169:../VCU_PROCESS/State1_Process.c **** }
+ 658              	 .loc 1 169 0
+ 659 0004 BD46     	 mov sp,r7
+ 660              	.LCFI20:
+ 661              	 .cfi_def_cfa_register 13
+ 662              	 
+ 663 0006 5DF8047B 	 ldr r7,[sp],#4
+ 664              	.LCFI21:
+ 665              	 .cfi_restore 7
+ 666              	 .cfi_def_cfa_offset 0
+ 667 000a 7047     	 bx lr
+ 668              	 .cfi_endproc
+ 669              	.LFE611:
+ 671              	 .section .text.cluster_gear,"ax",%progbits
+ 672              	 .align 2
+ 673              	 .global cluster_gear
+ 674              	 .thumb
+ 675              	 .thumb_func
+ 677              	cluster_gear:
+ 678              	.LFB612:
+ 170:../VCU_PROCESS/State1_Process.c **** 
+ 171:../VCU_PROCESS/State1_Process.c **** void cluster_gear(void)
+ 172:../VCU_PROCESS/State1_Process.c **** {
+ 679              	 .loc 1 172 0
+ 680              	 .cfi_startproc
+ 681              	 
+ 682              	 
+ 683              	 
+ 684 0000 80B4     	 push {r7}
+ 685              	.LCFI22:
+ 686              	 .cfi_def_cfa_offset 4
+ 687              	 .cfi_offset 7,-4
+ 688 0002 00AF     	 add r7,sp,#0
+ 689              	.LCFI23:
+ 690              	 .cfi_def_cfa_register 7
+ 173:../VCU_PROCESS/State1_Process.c **** 
+ 174:../VCU_PROCESS/State1_Process.c **** }
+ 691              	 .loc 1 174 0
+ 692 0004 BD46     	 mov sp,r7
+ 693              	.LCFI24:
+ 694              	 .cfi_def_cfa_register 13
+ 695              	 
+ 696 0006 5DF8047B 	 ldr r7,[sp],#4
+ 697              	.LCFI25:
+ 698              	 .cfi_restore 7
+ 699              	 .cfi_def_cfa_offset 0
+ 700 000a 7047     	 bx lr
+ 701              	 .cfi_endproc
+ 702              	.LFE612:
+ 704              	 .section .text.all_Ig1_Inputs_off,"ax",%progbits
+ 705              	 .align 2
+ 706              	 .global all_Ig1_Inputs_off
+ 707              	 .thumb
+ 708              	 .thumb_func
+ 710              	all_Ig1_Inputs_off:
+ 711              	.LFB613:
+ 175:../VCU_PROCESS/State1_Process.c **** 
+ 176:../VCU_PROCESS/State1_Process.c **** void all_Ig1_Inputs_off(void)
+ 177:../VCU_PROCESS/State1_Process.c **** {
+ 712              	 .loc 1 177 0
+ 713              	 .cfi_startproc
+ 714              	 
+ 715              	 
+ 716              	 
+ 717 0000 80B4     	 push {r7}
+ 718              	.LCFI26:
+ 719              	 .cfi_def_cfa_offset 4
+ 720              	 .cfi_offset 7,-4
+ 721 0002 00AF     	 add r7,sp,#0
+ 722              	.LCFI27:
+ 723              	 .cfi_def_cfa_register 7
+ 178:../VCU_PROCESS/State1_Process.c **** 	/* IO_EXP U24 */
+ 179:../VCU_PROCESS/State1_Process.c **** 	/*Relay_Control_Switch_OUT.low_beam_OUT = false;
+ 180:../VCU_PROCESS/State1_Process.c **** 	Relay_Control_Switch_OUT.high_beam_OUT = false;
+ 181:../VCU_PROCESS/State1_Process.c **** 	Relay_Control_Switch_OUT.pos_light_OUT = false;*/
+ 182:../VCU_PROCESS/State1_Process.c **** 
+ 183:../VCU_PROCESS/State1_Process.c **** 	//Relay_Control_Switch_OUT.left_indicator_OUT = false;
+ 184:../VCU_PROCESS/State1_Process.c **** 	//Relay_Control_Switch_OUT.right_indicator_OUT = false;
+ 185:../VCU_PROCESS/State1_Process.c **** 
+ 186:../VCU_PROCESS/State1_Process.c **** 	/* IO EXP U25 */
+ 187:../VCU_PROCESS/State1_Process.c **** }
+ 724              	 .loc 1 187 0
+ 725 0004 BD46     	 mov sp,r7
+ 726              	.LCFI28:
+ 727              	 .cfi_def_cfa_register 13
+ 728              	 
+ 729 0006 5DF8047B 	 ldr r7,[sp],#4
+ 730              	.LCFI29:
+ 731              	 .cfi_restore 7
+ 732              	 .cfi_def_cfa_offset 0
+ 733 000a 7047     	 bx lr
+ 734              	 .cfi_endproc
+ 735              	.LFE613:
+ 737              	 .section .text.Process_drive_mode,"ax",%progbits
+ 738              	 .align 2
+ 739              	 .global Process_drive_mode
+ 740              	 .thumb
+ 741              	 .thumb_func
+ 743              	Process_drive_mode:
+ 744              	.LFB614:
+ 188:../VCU_PROCESS/State1_Process.c **** 
+ 189:../VCU_PROCESS/State1_Process.c **** void Process_drive_mode(void)
+ 190:../VCU_PROCESS/State1_Process.c **** {
+ 745              	 .loc 1 190 0
+ 746              	 .cfi_startproc
+ 747              	 
+ 748              	 
+ 749 0000 80B5     	 push {r7,lr}
+ 750              	.LCFI30:
+ 751              	 .cfi_def_cfa_offset 8
+ 752              	 .cfi_offset 7,-8
+ 753              	 .cfi_offset 14,-4
+ 754 0002 00AF     	 add r7,sp,#0
+ 755              	.LCFI31:
+ 756              	 .cfi_def_cfa_register 7
+ 191:../VCU_PROCESS/State1_Process.c **** 	static bool prev_input = 0;
+ 192:../VCU_PROCESS/State1_Process.c **** 	static uint8_t ModeCounter_MCU = eco_mode_mcu, ModeCounter_Cluster = eco_mode_cluster, counter = 1
+ 193:../VCU_PROCESS/State1_Process.c **** 
+ 194:../VCU_PROCESS/State1_Process.c **** 	switch (Switch_Ios_IN.gear_sw2_IN )
+ 757              	 .loc 1 194 0
+ 758 0004 274B     	 ldr r3,.L43
+ 759 0006 9B7A     	 ldrb r3,[r3,#10]
+ 760 0008 012B     	 cmp r3,#1
+ 761 000a 27D1     	 bne .L42
+ 195:../VCU_PROCESS/State1_Process.c **** 	{
+ 196:../VCU_PROCESS/State1_Process.c **** 		case 1:
+ 197:../VCU_PROCESS/State1_Process.c **** 				if((prev_input == 0 ) && (Hvac_IN.blower_speed2_IN)) // mode switch is connected to Hvac_IN.blo
+ 762              	 .loc 1 197 0
+ 763 000c 264B     	 ldr r3,.L43+4
+ 764 000e 1B78     	 ldrb r3,[r3]
+ 765 0010 83F00103 	 eor r3,r3,#1
+ 766 0014 DBB2     	 uxtb r3,r3
+ 767 0016 002B     	 cmp r3,#0
+ 768 0018 14D0     	 beq .L36
+ 769              	 .loc 1 197 0 is_stmt 0 discriminator 1
+ 770 001a 244B     	 ldr r3,.L43+8
+ 771 001c 5B79     	 ldrb r3,[r3,#5]
+ 772 001e 002B     	 cmp r3,#0
+ 773 0020 10D0     	 beq .L36
+ 198:../VCU_PROCESS/State1_Process.c **** 				{
+ 199:../VCU_PROCESS/State1_Process.c **** 					ModeCounter_Cluster++;
+ 774              	 .loc 1 199 0 is_stmt 1
+ 775 0022 234B     	 ldr r3,.L43+12
+ 776 0024 1B78     	 ldrb r3,[r3]
+ 777 0026 0133     	 adds r3,r3,#1
+ 778 0028 DAB2     	 uxtb r2,r3
+ 779 002a 214B     	 ldr r3,.L43+12
+ 780 002c 1A70     	 strb r2,[r3]
+ 200:../VCU_PROCESS/State1_Process.c **** 					if(ModeCounter_Cluster == invalid_data_cluster)
+ 781              	 .loc 1 200 0
+ 782 002e 204B     	 ldr r3,.L43+12
+ 783 0030 1B78     	 ldrb r3,[r3]
+ 784 0032 032B     	 cmp r3,#3
+ 785 0034 02D1     	 bne .L37
+ 201:../VCU_PROCESS/State1_Process.c **** 						ModeCounter_Cluster = eco_mode_cluster;
+ 786              	 .loc 1 201 0
+ 787 0036 1E4B     	 ldr r3,.L43+12
+ 788 0038 0022     	 movs r2,#0
+ 789 003a 1A70     	 strb r2,[r3]
+ 790              	.L37:
+ 202:../VCU_PROCESS/State1_Process.c **** 
+ 203:../VCU_PROCESS/State1_Process.c **** 					prev_input = 1;
+ 791              	 .loc 1 203 0
+ 792 003c 1A4B     	 ldr r3,.L43+4
+ 793 003e 0122     	 movs r2,#1
+ 794 0040 1A70     	 strb r2,[r3]
+ 795 0042 0AE0     	 b .L38
+ 796              	.L36:
+ 204:../VCU_PROCESS/State1_Process.c **** 				}
+ 205:../VCU_PROCESS/State1_Process.c **** 				else if(Hvac_IN.blower_speed2_IN == 0)
+ 797              	 .loc 1 205 0
+ 798 0044 194B     	 ldr r3,.L43+8
+ 799 0046 5B79     	 ldrb r3,[r3,#5]
+ 800 0048 83F00103 	 eor r3,r3,#1
+ 801 004c DBB2     	 uxtb r3,r3
+ 802 004e 002B     	 cmp r3,#0
+ 803 0050 03D0     	 beq .L38
+ 206:../VCU_PROCESS/State1_Process.c **** 				{
+ 207:../VCU_PROCESS/State1_Process.c **** 					prev_input = 0;
+ 804              	 .loc 1 207 0
+ 805 0052 154B     	 ldr r3,.L43+4
+ 806 0054 0022     	 movs r2,#0
+ 807 0056 1A70     	 strb r2,[r3]
+ 208:../VCU_PROCESS/State1_Process.c **** 				}
+ 209:../VCU_PROCESS/State1_Process.c **** 		break;
+ 808              	 .loc 1 209 0
+ 809 0058 07E0     	 b .L39
+ 810              	.L38:
+ 811 005a 06E0     	 b .L39
+ 812              	.L42:
+ 210:../VCU_PROCESS/State1_Process.c **** 
+ 211:../VCU_PROCESS/State1_Process.c **** 		default:
+ 212:../VCU_PROCESS/State1_Process.c **** 				ModeCounter_MCU = eco_mode_mcu;
+ 813              	 .loc 1 212 0
+ 814 005c 154B     	 ldr r3,.L43+16
+ 815 005e 0322     	 movs r2,#3
+ 816 0060 1A70     	 strb r2,[r3]
+ 213:../VCU_PROCESS/State1_Process.c **** 				ModeCounter_Cluster = eco_mode_cluster;
+ 817              	 .loc 1 213 0
+ 818 0062 134B     	 ldr r3,.L43+12
+ 819 0064 0022     	 movs r2,#0
+ 820 0066 1A70     	 strb r2,[r3]
+ 214:../VCU_PROCESS/State1_Process.c **** 		break;
+ 821              	 .loc 1 214 0
+ 822 0068 00BF     	 nop
+ 823              	.L39:
+ 215:../VCU_PROCESS/State1_Process.c **** 	}
+ 216:../VCU_PROCESS/State1_Process.c **** /* this is for gtake */
+ 217:../VCU_PROCESS/State1_Process.c **** 	if(Switch_Ios_IN.gear_sw2_IN)
+ 824              	 .loc 1 217 0
+ 825 006a 0E4B     	 ldr r3,.L43
+ 826 006c 9B7A     	 ldrb r3,[r3,#10]
+ 827 006e 002B     	 cmp r3,#0
+ 828 0070 07D0     	 beq .L40
+ 218:../VCU_PROCESS/State1_Process.c **** 	{
+ 219:../VCU_PROCESS/State1_Process.c **** 		ModeCounter_MCU = 3 - ModeCounter_Cluster;
+ 829              	 .loc 1 219 0
+ 830 0072 0F4B     	 ldr r3,.L43+12
+ 831 0074 1B78     	 ldrb r3,[r3]
+ 832 0076 C3F10303 	 rsb r3,r3,#3
+ 833 007a DAB2     	 uxtb r2,r3
+ 834 007c 0D4B     	 ldr r3,.L43+16
+ 835 007e 1A70     	 strb r2,[r3]
+ 836 0080 05E0     	 b .L41
+ 837              	.L40:
+ 220:../VCU_PROCESS/State1_Process.c **** 	}
+ 221:../VCU_PROCESS/State1_Process.c **** 	else
+ 222:../VCU_PROCESS/State1_Process.c **** 	{
+ 223:../VCU_PROCESS/State1_Process.c **** 		ModeCounter_MCU = eco_mode_mcu;
+ 838              	 .loc 1 223 0
+ 839 0082 0C4B     	 ldr r3,.L43+16
+ 840 0084 0322     	 movs r2,#3
+ 841 0086 1A70     	 strb r2,[r3]
+ 224:../VCU_PROCESS/State1_Process.c **** 		ModeCounter_Cluster = eco_mode_cluster;
+ 842              	 .loc 1 224 0
+ 843 0088 094B     	 ldr r3,.L43+12
+ 844 008a 0022     	 movs r2,#0
+ 845 008c 1A70     	 strb r2,[r3]
+ 846              	.L41:
+ 225:../VCU_PROCESS/State1_Process.c **** 	}
+ 226:../VCU_PROCESS/State1_Process.c **** /***** for gtake end  **********/
+ 227:../VCU_PROCESS/State1_Process.c **** 
+ 228:../VCU_PROCESS/State1_Process.c **** 	Process_cluster_drivemode(ModeCounter_Cluster);
+ 847              	 .loc 1 228 0
+ 848 008e 084B     	 ldr r3,.L43+12
+ 849 0090 1B78     	 ldrb r3,[r3]
+ 850 0092 1846     	 mov r0,r3
+ 851 0094 FFF7FEFF 	 bl Process_cluster_drivemode
+ 229:../VCU_PROCESS/State1_Process.c **** 	Process_motordrive_mode(ModeCounter_Cluster); //for gtake pass ModeCounter_MCU, and for irp pass M
+ 852              	 .loc 1 229 0
+ 853 0098 054B     	 ldr r3,.L43+12
+ 854 009a 1B78     	 ldrb r3,[r3]
+ 855 009c 1846     	 mov r0,r3
+ 856 009e FFF7FEFF 	 bl Process_motordrive_mode
+ 230:../VCU_PROCESS/State1_Process.c **** 
+ 231:../VCU_PROCESS/State1_Process.c **** }
+ 857              	 .loc 1 231 0
+ 858 00a2 80BD     	 pop {r7,pc}
+ 859              	.L44:
+ 860              	 .align 2
+ 861              	.L43:
+ 862 00a4 00000000 	 .word Switch_Ios_IN
+ 863 00a8 00000000 	 .word prev_input.13910
+ 864 00ac 00000000 	 .word Hvac_IN
+ 865 00b0 00000000 	 .word ModeCounter_Cluster.13912
+ 866 00b4 00000000 	 .word ModeCounter_MCU.13911
+ 867              	 .cfi_endproc
+ 868              	.LFE614:
+ 870              	 .section .text.Process_cluster_drivemode,"ax",%progbits
+ 871              	 .align 2
+ 872              	 .global Process_cluster_drivemode
+ 873              	 .thumb
+ 874              	 .thumb_func
+ 876              	Process_cluster_drivemode:
+ 877              	.LFB615:
+ 232:../VCU_PROCESS/State1_Process.c **** 
+ 233:../VCU_PROCESS/State1_Process.c **** void Process_cluster_drivemode(uint8_t mode)
+ 234:../VCU_PROCESS/State1_Process.c **** {
+ 878              	 .loc 1 234 0
+ 879              	 .cfi_startproc
+ 880              	 
+ 881              	 
+ 882              	 
+ 883 0000 80B4     	 push {r7}
+ 884              	.LCFI32:
+ 885              	 .cfi_def_cfa_offset 4
+ 886              	 .cfi_offset 7,-4
+ 887 0002 83B0     	 sub sp,sp,#12
+ 888              	.LCFI33:
+ 889              	 .cfi_def_cfa_offset 16
+ 890 0004 00AF     	 add r7,sp,#0
+ 891              	.LCFI34:
+ 892              	 .cfi_def_cfa_register 7
+ 893 0006 0346     	 mov r3,r0
+ 894 0008 FB71     	 strb r3,[r7,#7]
+ 235:../VCU_PROCESS/State1_Process.c **** 	if(!Lights_OUT.brake_switch_out_d)
+ 895              	 .loc 1 235 0
+ 896 000a 084B     	 ldr r3,.L47
+ 897 000c 5B78     	 ldrb r3,[r3,#1]
+ 898 000e 83F00103 	 eor r3,r3,#1
+ 899 0012 DBB2     	 uxtb r3,r3
+ 900 0014 002B     	 cmp r3,#0
+ 901 0016 03D0     	 beq .L45
+ 236:../VCU_PROCESS/State1_Process.c **** 		Instrumetcluster_DriveMode_OUT ->DriveMode = mode;
+ 902              	 .loc 1 236 0
+ 903 0018 054B     	 ldr r3,.L47+4
+ 904 001a 1B68     	 ldr r3,[r3]
+ 905 001c FA79     	 ldrb r2,[r7,#7]
+ 906 001e 1A70     	 strb r2,[r3]
+ 907              	.L45:
+ 237:../VCU_PROCESS/State1_Process.c **** }
+ 908              	 .loc 1 237 0
+ 909 0020 0C37     	 adds r7,r7,#12
+ 910              	.LCFI35:
+ 911              	 .cfi_def_cfa_offset 4
+ 912 0022 BD46     	 mov sp,r7
+ 913              	.LCFI36:
+ 914              	 .cfi_def_cfa_register 13
+ 915              	 
+ 916 0024 5DF8047B 	 ldr r7,[sp],#4
+ 917              	.LCFI37:
+ 918              	 .cfi_restore 7
+ 919              	 .cfi_def_cfa_offset 0
+ 920 0028 7047     	 bx lr
+ 921              	.L48:
+ 922 002a 00BF     	 .align 2
+ 923              	.L47:
+ 924 002c 00000000 	 .word Lights_OUT
+ 925 0030 00000000 	 .word Instrumetcluster_DriveMode_OUT
+ 926              	 .cfi_endproc
+ 927              	.LFE615:
+ 929              	 .section .text.Process_motordrive_mode,"ax",%progbits
+ 930              	 .align 2
+ 931              	 .global Process_motordrive_mode
+ 932              	 .thumb
+ 933              	 .thumb_func
+ 935              	Process_motordrive_mode:
+ 936              	.LFB616:
+ 238:../VCU_PROCESS/State1_Process.c **** void Process_motordrive_mode(uint8_t mode)
+ 239:../VCU_PROCESS/State1_Process.c **** {
+ 937              	 .loc 1 239 0
+ 938              	 .cfi_startproc
+ 939              	 
+ 940              	 
+ 941 0000 80B5     	 push {r7,lr}
+ 942              	.LCFI38:
+ 943              	 .cfi_def_cfa_offset 8
+ 944              	 .cfi_offset 7,-8
+ 945              	 .cfi_offset 14,-4
+ 946 0002 82B0     	 sub sp,sp,#8
+ 947              	.LCFI39:
+ 948              	 .cfi_def_cfa_offset 16
+ 949 0004 00AF     	 add r7,sp,#0
+ 950              	.LCFI40:
+ 951              	 .cfi_def_cfa_register 7
+ 952 0006 0346     	 mov r3,r0
+ 953 0008 FB71     	 strb r3,[r7,#7]
+ 240:../VCU_PROCESS/State1_Process.c **** 	//motordrive_mode_Gtake(uint8_t mode);
+ 241:../VCU_PROCESS/State1_Process.c **** 	motordrive_mode_irp(mode);
+ 954              	 .loc 1 241 0
+ 955 000a FB79     	 ldrb r3,[r7,#7]
+ 956 000c 1846     	 mov r0,r3
+ 957 000e FFF7FEFF 	 bl motordrive_mode_irp
+ 242:../VCU_PROCESS/State1_Process.c **** }
+ 958              	 .loc 1 242 0
+ 959 0012 0837     	 adds r7,r7,#8
+ 960              	.LCFI41:
+ 961              	 .cfi_def_cfa_offset 8
+ 962 0014 BD46     	 mov sp,r7
+ 963              	.LCFI42:
+ 964              	 .cfi_def_cfa_register 13
+ 965              	 
+ 966 0016 80BD     	 pop {r7,pc}
+ 967              	 .cfi_endproc
+ 968              	.LFE616:
+ 970              	 .section .text.motordrive_mode_Gtake,"ax",%progbits
+ 971              	 .align 2
+ 972              	 .global motordrive_mode_Gtake
+ 973              	 .thumb
+ 974              	 .thumb_func
+ 976              	motordrive_mode_Gtake:
+ 977              	.LFB617:
+ 243:../VCU_PROCESS/State1_Process.c **** void motordrive_mode_Gtake(uint8_t mode)
+ 244:../VCU_PROCESS/State1_Process.c **** {
+ 978              	 .loc 1 244 0
+ 979              	 .cfi_startproc
+ 980              	 
+ 981              	 
+ 982              	 
+ 983 0000 80B4     	 push {r7}
+ 984              	.LCFI43:
+ 985              	 .cfi_def_cfa_offset 4
+ 986              	 .cfi_offset 7,-4
+ 987 0002 83B0     	 sub sp,sp,#12
+ 988              	.LCFI44:
+ 989              	 .cfi_def_cfa_offset 16
+ 990 0004 00AF     	 add r7,sp,#0
+ 991              	.LCFI45:
+ 992              	 .cfi_def_cfa_register 7
+ 993 0006 0346     	 mov r3,r0
+ 994 0008 FB71     	 strb r3,[r7,#7]
+ 245:../VCU_PROCESS/State1_Process.c **** 	if(!Lights_OUT.brake_switch_out_d)
+ 995              	 .loc 1 245 0
+ 996 000a 0B4B     	 ldr r3,.L52
+ 997 000c 5B78     	 ldrb r3,[r3,#1]
+ 998 000e 83F00103 	 eor r3,r3,#1
+ 999 0012 DBB2     	 uxtb r3,r3
+ 1000 0014 002B     	 cmp r3,#0
+ 1001 0016 09D0     	 beq .L50
+ 246:../VCU_PROCESS/State1_Process.c **** 		Gtake_Mcu_drive_states_29bit ->Drive_mode_cmd = mode;
+ 1002              	 .loc 1 246 0
+ 1003 0018 084B     	 ldr r3,.L52+4
+ 1004 001a 1A68     	 ldr r2,[r3]
+ 1005 001c FB79     	 ldrb r3,[r7,#7]
+ 1006 001e 03F00703 	 and r3,r3,#7
+ 1007 0022 D9B2     	 uxtb r1,r3
+ 1008 0024 1378     	 ldrb r3,[r2]
+ 1009 0026 61F3C503 	 bfi r3,r1,#3,#3
+ 1010 002a 1370     	 strb r3,[r2]
+ 1011              	.L50:
+ 247:../VCU_PROCESS/State1_Process.c **** }
+ 1012              	 .loc 1 247 0
+ 1013 002c 0C37     	 adds r7,r7,#12
+ 1014              	.LCFI46:
+ 1015              	 .cfi_def_cfa_offset 4
+ 1016 002e BD46     	 mov sp,r7
+ 1017              	.LCFI47:
+ 1018              	 .cfi_def_cfa_register 13
+ 1019              	 
+ 1020 0030 5DF8047B 	 ldr r7,[sp],#4
+ 1021              	.LCFI48:
+ 1022              	 .cfi_restore 7
+ 1023              	 .cfi_def_cfa_offset 0
+ 1024 0034 7047     	 bx lr
+ 1025              	.L53:
+ 1026 0036 00BF     	 .align 2
+ 1027              	.L52:
+ 1028 0038 00000000 	 .word Lights_OUT
+ 1029 003c 00000000 	 .word Gtake_Mcu_drive_states_29bit
+ 1030              	 .cfi_endproc
+ 1031              	.LFE617:
+ 1033              	 .section .text.motordrive_mode_irp,"ax",%progbits
+ 1034              	 .align 2
+ 1035              	 .global motordrive_mode_irp
+ 1036              	 .thumb
+ 1037              	 .thumb_func
+ 1039              	motordrive_mode_irp:
+ 1040              	.LFB618:
+ 248:../VCU_PROCESS/State1_Process.c **** 
+ 249:../VCU_PROCESS/State1_Process.c **** void motordrive_mode_irp(uint8_t mode)
+ 250:../VCU_PROCESS/State1_Process.c **** {
+ 1041              	 .loc 1 250 0
+ 1042              	 .cfi_startproc
+ 1043              	 
+ 1044              	 
+ 1045              	 
+ 1046 0000 80B4     	 push {r7}
+ 1047              	.LCFI49:
+ 1048              	 .cfi_def_cfa_offset 4
+ 1049              	 .cfi_offset 7,-4
+ 1050 0002 83B0     	 sub sp,sp,#12
+ 1051              	.LCFI50:
+ 1052              	 .cfi_def_cfa_offset 16
+ 1053 0004 00AF     	 add r7,sp,#0
+ 1054              	.LCFI51:
+ 1055              	 .cfi_def_cfa_register 7
+ 1056 0006 0346     	 mov r3,r0
+ 1057 0008 FB71     	 strb r3,[r7,#7]
+ 251:../VCU_PROCESS/State1_Process.c **** 	if(!Lights_OUT.brake_switch_out_d)
+ 1058              	 .loc 1 251 0
+ 1059 000a 0B4B     	 ldr r3,.L56
+ 1060 000c 5B78     	 ldrb r3,[r3,#1]
+ 1061 000e 83F00103 	 eor r3,r3,#1
+ 1062 0012 DBB2     	 uxtb r3,r3
+ 1063 0014 002B     	 cmp r3,#0
+ 1064 0016 09D0     	 beq .L54
+ 252:../VCU_PROCESS/State1_Process.c **** 		Irp_Mcu_drive_states_29bit->Driving_Profile = mode;
+ 1065              	 .loc 1 252 0
+ 1066 0018 084B     	 ldr r3,.L56+4
+ 1067 001a 1A68     	 ldr r2,[r3]
+ 1068 001c FB79     	 ldrb r3,[r7,#7]
+ 1069 001e 03F00703 	 and r3,r3,#7
+ 1070 0022 D9B2     	 uxtb r1,r3
+ 1071 0024 1378     	 ldrb r3,[r2]
+ 1072 0026 61F38403 	 bfi r3,r1,#2,#3
+ 1073 002a 1370     	 strb r3,[r2]
+ 1074              	.L54:
+ 253:../VCU_PROCESS/State1_Process.c **** }
+ 1075              	 .loc 1 253 0
+ 1076 002c 0C37     	 adds r7,r7,#12
+ 1077              	.LCFI52:
+ 1078              	 .cfi_def_cfa_offset 4
+ 1079 002e BD46     	 mov sp,r7
+ 1080              	.LCFI53:
+ 1081              	 .cfi_def_cfa_register 13
+ 1082              	 
+ 1083 0030 5DF8047B 	 ldr r7,[sp],#4
+ 1084              	.LCFI54:
+ 1085              	 .cfi_restore 7
+ 1086              	 .cfi_def_cfa_offset 0
+ 1087 0034 7047     	 bx lr
+ 1088              	.L57:
+ 1089 0036 00BF     	 .align 2
+ 1090              	.L56:
+ 1091 0038 00000000 	 .word Lights_OUT
+ 1092 003c 00000000 	 .word Irp_Mcu_drive_states_29bit
+ 1093              	 .cfi_endproc
+ 1094              	.LFE618:
+ 1096              	 .section .text.Process_Regen_Control,"ax",%progbits
+ 1097              	 .align 2
+ 1098              	 .global Process_Regen_Control
+ 1099              	 .thumb
+ 1100              	 .thumb_func
+ 1102              	Process_Regen_Control:
+ 1103              	.LFB619:
+ 254:../VCU_PROCESS/State1_Process.c **** 
+ 255:../VCU_PROCESS/State1_Process.c **** void Process_Regen_Control(void)
+ 256:../VCU_PROCESS/State1_Process.c **** {
+ 1104              	 .loc 1 256 0
+ 1105              	 .cfi_startproc
+ 1106              	 
+ 1107              	 
+ 1108              	 
+ 1109 0000 80B4     	 push {r7}
+ 1110              	.LCFI55:
+ 1111              	 .cfi_def_cfa_offset 4
+ 1112              	 .cfi_offset 7,-4
+ 1113 0002 00AF     	 add r7,sp,#0
+ 1114              	.LCFI56:
+ 1115              	 .cfi_def_cfa_register 7
+ 257:../VCU_PROCESS/State1_Process.c **** 	static bool prev_input = 0;
+ 258:../VCU_PROCESS/State1_Process.c **** 
+ 259:../VCU_PROCESS/State1_Process.c **** 	if((prev_input == 0 ) && (Hvac_IN.blower_speed3_IN)) // regen switch is connected to Hvac_IN.blowe
+ 1116              	 .loc 1 259 0
+ 1117 0004 1D4B     	 ldr r3,.L61
+ 1118 0006 1B78     	 ldrb r3,[r3]
+ 1119 0008 83F00103 	 eor r3,r3,#1
+ 1120 000c DBB2     	 uxtb r3,r3
+ 1121 000e 002B     	 cmp r3,#0
+ 1122 0010 26D0     	 beq .L59
+ 1123              	 .loc 1 259 0 is_stmt 0 discriminator 1
+ 1124 0012 1B4B     	 ldr r3,.L61+4
+ 1125 0014 9B79     	 ldrb r3,[r3,#6]
+ 1126 0016 002B     	 cmp r3,#0
+ 1127 0018 22D0     	 beq .L59
+ 260:../VCU_PROCESS/State1_Process.c **** 	{
+ 261:../VCU_PROCESS/State1_Process.c **** 		Relay_Control_Switch_OUT.ac_blower3_OUT = !Relay_Control_Switch_OUT.ac_blower3_OUT;
+ 1128              	 .loc 1 261 0 is_stmt 1
+ 1129 001a 1A4B     	 ldr r3,.L61+8
+ 1130 001c 9B7A     	 ldrb r3,[r3,#10]
+ 1131 001e 002B     	 cmp r3,#0
+ 1132 0020 14BF     	 ite ne
+ 1133 0022 0123     	 movne r3,#1
+ 1134 0024 0023     	 moveq r3,#0
+ 1135 0026 DBB2     	 uxtb r3,r3
+ 1136 0028 83F00103 	 eor r3,r3,#1
+ 1137 002c DBB2     	 uxtb r3,r3
+ 1138 002e 03F00103 	 and r3,r3,#1
+ 1139 0032 DAB2     	 uxtb r2,r3
+ 1140 0034 134B     	 ldr r3,.L61+8
+ 1141 0036 9A72     	 strb r2,[r3,#10]
+ 262:../VCU_PROCESS/State1_Process.c **** 		prev_input = 1;
+ 1142              	 .loc 1 262 0
+ 1143 0038 104B     	 ldr r3,.L61
+ 1144 003a 0122     	 movs r2,#1
+ 1145 003c 1A70     	 strb r2,[r3]
+ 263:../VCU_PROCESS/State1_Process.c **** 		//Irp_Mcu_drive_states_29bit-> Regen_On_Brake = 0x0;
+ 264:../VCU_PROCESS/State1_Process.c **** 		//if(Relay_Control_Switch_OUT.ac_blower3_OUT)
+ 265:../VCU_PROCESS/State1_Process.c **** 		{
+ 266:../VCU_PROCESS/State1_Process.c **** 			//enable region cmd
+ 267:../VCU_PROCESS/State1_Process.c **** 			Irp_Mcu_drive_states_29bit-> Regen_On_Brake = Relay_Control_Switch_OUT.ac_blower3_OUT;
+ 1146              	 .loc 1 267 0
+ 1147 003e 124B     	 ldr r3,.L61+12
+ 1148 0040 1A68     	 ldr r2,[r3]
+ 1149 0042 104B     	 ldr r3,.L61+8
+ 1150 0044 997A     	 ldrb r1,[r3,#10]
+ 1151 0046 9378     	 ldrb r3,[r2,#2]
+ 1152 0048 61F38203 	 bfi r3,r1,#2,#1
+ 1153 004c 9370     	 strb r3,[r2,#2]
+ 268:../VCU_PROCESS/State1_Process.c **** 			Irp_Mcu_drive_states_29bit-> Regen_On_Throttle_Realese = Relay_Control_Switch_OUT.ac_blower3_OUT
+ 1154              	 .loc 1 268 0
+ 1155 004e 0E4B     	 ldr r3,.L61+12
+ 1156 0050 1A68     	 ldr r2,[r3]
+ 1157 0052 0C4B     	 ldr r3,.L61+8
+ 1158 0054 997A     	 ldrb r1,[r3,#10]
+ 1159 0056 9378     	 ldrb r3,[r2,#2]
+ 1160 0058 61F3C303 	 bfi r3,r1,#3,#1
+ 1161 005c 9370     	 strb r3,[r2,#2]
+ 1162 005e 09E0     	 b .L58
+ 1163              	.L59:
+ 269:../VCU_PROCESS/State1_Process.c **** 		}
+ 270:../VCU_PROCESS/State1_Process.c **** 	}
+ 271:../VCU_PROCESS/State1_Process.c **** 	else if(Hvac_IN.blower_speed3_IN == 0)
+ 1164              	 .loc 1 271 0
+ 1165 0060 074B     	 ldr r3,.L61+4
+ 1166 0062 9B79     	 ldrb r3,[r3,#6]
+ 1167 0064 83F00103 	 eor r3,r3,#1
+ 1168 0068 DBB2     	 uxtb r3,r3
+ 1169 006a 002B     	 cmp r3,#0
+ 1170 006c 02D0     	 beq .L58
+ 272:../VCU_PROCESS/State1_Process.c **** 	{
+ 273:../VCU_PROCESS/State1_Process.c **** 		prev_input = 0;
+ 1171              	 .loc 1 273 0
+ 1172 006e 034B     	 ldr r3,.L61
+ 1173 0070 0022     	 movs r2,#0
+ 1174 0072 1A70     	 strb r2,[r3]
+ 1175              	.L58:
+ 274:../VCU_PROCESS/State1_Process.c **** 	}
+ 275:../VCU_PROCESS/State1_Process.c **** 
+ 276:../VCU_PROCESS/State1_Process.c **** }
+ 1176              	 .loc 1 276 0
+ 1177 0074 BD46     	 mov sp,r7
+ 1178              	.LCFI57:
+ 1179              	 .cfi_def_cfa_register 13
+ 1180              	 
+ 1181 0076 5DF8047B 	 ldr r7,[sp],#4
+ 1182              	.LCFI58:
+ 1183              	 .cfi_restore 7
+ 1184              	 .cfi_def_cfa_offset 0
+ 1185 007a 7047     	 bx lr
+ 1186              	.L62:
+ 1187              	 .align 2
+ 1188              	.L61:
+ 1189 007c 00000000 	 .word prev_input.13938
+ 1190 0080 00000000 	 .word Hvac_IN
+ 1191 0084 00000000 	 .word Relay_Control_Switch_OUT
+ 1192 0088 00000000 	 .word Irp_Mcu_drive_states_29bit
+ 1193              	 .cfi_endproc
+ 1194              	.LFE619:
+ 1196              	 .section .text.Process_RearDefogger,"ax",%progbits
+ 1197              	 .align 2
+ 1198              	 .global Process_RearDefogger
+ 1199              	 .thumb
+ 1200              	 .thumb_func
+ 1202              	Process_RearDefogger:
+ 1203              	.LFB620:
+ 277:../VCU_PROCESS/State1_Process.c **** 
+ 278:../VCU_PROCESS/State1_Process.c **** void Process_RearDefogger(void)
+ 279:../VCU_PROCESS/State1_Process.c **** {
+ 1204              	 .loc 1 279 0
+ 1205              	 .cfi_startproc
+ 1206              	 
+ 1207              	 
+ 1208              	 
+ 1209 0000 80B4     	 push {r7}
+ 1210              	.LCFI59:
+ 1211              	 .cfi_def_cfa_offset 4
+ 1212              	 .cfi_offset 7,-4
+ 1213 0002 00AF     	 add r7,sp,#0
+ 1214              	.LCFI60:
+ 1215              	 .cfi_def_cfa_register 7
+ 280:../VCU_PROCESS/State1_Process.c **** 	static bool prev_input = 0;
+ 281:../VCU_PROCESS/State1_Process.c **** 
+ 282:../VCU_PROCESS/State1_Process.c **** 	if((prev_input == 0 ) && (Hvac_IN.ac_solenoid)) // reardefogger switch is connected to Hvac_IN.ac_
+ 1216              	 .loc 1 282 0
+ 1217 0004 164B     	 ldr r3,.L66
+ 1218 0006 1B78     	 ldrb r3,[r3]
+ 1219 0008 83F00103 	 eor r3,r3,#1
+ 1220 000c DBB2     	 uxtb r3,r3
+ 1221 000e 002B     	 cmp r3,#0
+ 1222 0010 18D0     	 beq .L64
+ 1223              	 .loc 1 282 0 is_stmt 0 discriminator 1
+ 1224 0012 144B     	 ldr r3,.L66+4
+ 1225 0014 1B7D     	 ldrb r3,[r3,#20]
+ 1226 0016 002B     	 cmp r3,#0
+ 1227 0018 14D0     	 beq .L64
+ 283:../VCU_PROCESS/State1_Process.c **** 	{
+ 284:../VCU_PROCESS/State1_Process.c **** 		Relay_Control_Switch_OUT.ac_sol_pwr_out = !Relay_Control_Switch_OUT.ac_sol_pwr_out;
+ 1228              	 .loc 1 284 0 is_stmt 1
+ 1229 001a 134B     	 ldr r3,.L66+8
+ 1230 001c 93F82230 	 ldrb r3,[r3,#34]
+ 1231 0020 002B     	 cmp r3,#0
+ 1232 0022 14BF     	 ite ne
+ 1233 0024 0123     	 movne r3,#1
+ 1234 0026 0023     	 moveq r3,#0
+ 1235 0028 DBB2     	 uxtb r3,r3
+ 1236 002a 83F00103 	 eor r3,r3,#1
+ 1237 002e DBB2     	 uxtb r3,r3
+ 1238 0030 03F00103 	 and r3,r3,#1
+ 1239 0034 DAB2     	 uxtb r2,r3
+ 1240 0036 0C4B     	 ldr r3,.L66+8
+ 1241 0038 83F82220 	 strb r2,[r3,#34]
+ 285:../VCU_PROCESS/State1_Process.c **** 
+ 286:../VCU_PROCESS/State1_Process.c **** 		prev_input = 1;
+ 1242              	 .loc 1 286 0
+ 1243 003c 084B     	 ldr r3,.L66
+ 1244 003e 0122     	 movs r2,#1
+ 1245 0040 1A70     	 strb r2,[r3]
+ 1246 0042 09E0     	 b .L63
+ 1247              	.L64:
+ 287:../VCU_PROCESS/State1_Process.c **** 	}
+ 288:../VCU_PROCESS/State1_Process.c **** 	else if(Hvac_IN.ac_solenoid == 0)
+ 1248              	 .loc 1 288 0
+ 1249 0044 074B     	 ldr r3,.L66+4
+ 1250 0046 1B7D     	 ldrb r3,[r3,#20]
+ 1251 0048 83F00103 	 eor r3,r3,#1
+ 1252 004c DBB2     	 uxtb r3,r3
+ 1253 004e 002B     	 cmp r3,#0
+ 1254 0050 02D0     	 beq .L63
+ 289:../VCU_PROCESS/State1_Process.c **** 	{
+ 290:../VCU_PROCESS/State1_Process.c **** 		prev_input = 0;
+ 1255              	 .loc 1 290 0
+ 1256 0052 034B     	 ldr r3,.L66
+ 1257 0054 0022     	 movs r2,#0
+ 1258 0056 1A70     	 strb r2,[r3]
+ 1259              	.L63:
+ 291:../VCU_PROCESS/State1_Process.c **** 	}
+ 292:../VCU_PROCESS/State1_Process.c **** 
+ 293:../VCU_PROCESS/State1_Process.c **** }
+ 1260              	 .loc 1 293 0
+ 1261 0058 BD46     	 mov sp,r7
+ 1262              	.LCFI61:
+ 1263              	 .cfi_def_cfa_register 13
+ 1264              	 
+ 1265 005a 5DF8047B 	 ldr r7,[sp],#4
+ 1266              	.LCFI62:
+ 1267              	 .cfi_restore 7
+ 1268              	 .cfi_def_cfa_offset 0
+ 1269 005e 7047     	 bx lr
+ 1270              	.L67:
+ 1271              	 .align 2
+ 1272              	.L66:
+ 1273 0060 00000000 	 .word prev_input.13942
+ 1274 0064 00000000 	 .word Hvac_IN
+ 1275 0068 00000000 	 .word Relay_Control_Switch_OUT
+ 1276              	 .cfi_endproc
+ 1277              	.LFE620:
+ 1279              	 .section .text.Process_FogLamp,"ax",%progbits
+ 1280              	 .align 2
+ 1281              	 .global Process_FogLamp
+ 1282              	 .thumb
+ 1283              	 .thumb_func
+ 1285              	Process_FogLamp:
+ 1286              	.LFB621:
+ 294:../VCU_PROCESS/State1_Process.c **** 
+ 295:../VCU_PROCESS/State1_Process.c **** void Process_FogLamp(void)
+ 296:../VCU_PROCESS/State1_Process.c **** {
+ 1287              	 .loc 1 296 0
+ 1288              	 .cfi_startproc
+ 1289              	 
+ 1290              	 
+ 1291              	 
+ 1292 0000 80B4     	 push {r7}
+ 1293              	.LCFI63:
+ 1294              	 .cfi_def_cfa_offset 4
+ 1295              	 .cfi_offset 7,-4
+ 1296 0002 00AF     	 add r7,sp,#0
+ 1297              	.LCFI64:
+ 1298              	 .cfi_def_cfa_register 7
+ 297:../VCU_PROCESS/State1_Process.c **** 	static bool prev_input = 0;
+ 298:../VCU_PROCESS/State1_Process.c **** 
+ 299:../VCU_PROCESS/State1_Process.c **** 	if((prev_input == 0 ) && (Hvac_IN.circulation_on_off)) // fog lamp switch is connected to Hvac_IN.
+ 1299              	 .loc 1 299 0
+ 1300 0004 154B     	 ldr r3,.L71
+ 1301 0006 1B78     	 ldrb r3,[r3]
+ 1302 0008 83F00103 	 eor r3,r3,#1
+ 1303 000c DBB2     	 uxtb r3,r3
+ 1304 000e 002B     	 cmp r3,#0
+ 1305 0010 16D0     	 beq .L69
+ 1306              	 .loc 1 299 0 is_stmt 0 discriminator 1
+ 1307 0012 134B     	 ldr r3,.L71+4
+ 1308 0014 1B7A     	 ldrb r3,[r3,#8]
+ 1309 0016 002B     	 cmp r3,#0
+ 1310 0018 12D0     	 beq .L69
+ 300:../VCU_PROCESS/State1_Process.c **** 	{
+ 301:../VCU_PROCESS/State1_Process.c **** 		Relay_Control_Switch_OUT.ac_radiator_pwr_out = !Relay_Control_Switch_OUT.ac_radiator_pwr_out; //a
+ 1311              	 .loc 1 301 0 is_stmt 1
+ 1312 001a 124B     	 ldr r3,.L71+8
+ 1313 001c DB7A     	 ldrb r3,[r3,#11]
+ 1314 001e 002B     	 cmp r3,#0
+ 1315 0020 14BF     	 ite ne
+ 1316 0022 0123     	 movne r3,#1
+ 1317 0024 0023     	 moveq r3,#0
+ 1318 0026 DBB2     	 uxtb r3,r3
+ 1319 0028 83F00103 	 eor r3,r3,#1
+ 1320 002c DBB2     	 uxtb r3,r3
+ 1321 002e 03F00103 	 and r3,r3,#1
+ 1322 0032 DAB2     	 uxtb r2,r3
+ 1323 0034 0B4B     	 ldr r3,.L71+8
+ 1324 0036 DA72     	 strb r2,[r3,#11]
+ 302:../VCU_PROCESS/State1_Process.c **** 
+ 303:../VCU_PROCESS/State1_Process.c **** 		prev_input = 1;
+ 1325              	 .loc 1 303 0
+ 1326 0038 084B     	 ldr r3,.L71
+ 1327 003a 0122     	 movs r2,#1
+ 1328 003c 1A70     	 strb r2,[r3]
+ 1329 003e 09E0     	 b .L68
+ 1330              	.L69:
+ 304:../VCU_PROCESS/State1_Process.c **** 	}
+ 305:../VCU_PROCESS/State1_Process.c **** 	else if(Hvac_IN.circulation_on_off == 0)
+ 1331              	 .loc 1 305 0
+ 1332 0040 074B     	 ldr r3,.L71+4
+ 1333 0042 1B7A     	 ldrb r3,[r3,#8]
+ 1334 0044 83F00103 	 eor r3,r3,#1
+ 1335 0048 DBB2     	 uxtb r3,r3
+ 1336 004a 002B     	 cmp r3,#0
+ 1337 004c 02D0     	 beq .L68
+ 306:../VCU_PROCESS/State1_Process.c **** 	{
+ 307:../VCU_PROCESS/State1_Process.c **** 		prev_input = 0;
+ 1338              	 .loc 1 307 0
+ 1339 004e 034B     	 ldr r3,.L71
+ 1340 0050 0022     	 movs r2,#0
+ 1341 0052 1A70     	 strb r2,[r3]
+ 1342              	.L68:
+ 308:../VCU_PROCESS/State1_Process.c **** 	}
+ 309:../VCU_PROCESS/State1_Process.c **** 
+ 310:../VCU_PROCESS/State1_Process.c **** }
+ 1343              	 .loc 1 310 0
+ 1344 0054 BD46     	 mov sp,r7
+ 1345              	.LCFI65:
+ 1346              	 .cfi_def_cfa_register 13
+ 1347              	 
+ 1348 0056 5DF8047B 	 ldr r7,[sp],#4
+ 1349              	.LCFI66:
+ 1350              	 .cfi_restore 7
+ 1351              	 .cfi_def_cfa_offset 0
+ 1352 005a 7047     	 bx lr
+ 1353              	.L72:
+ 1354              	 .align 2
+ 1355              	.L71:
+ 1356 005c 00000000 	 .word prev_input.13946
+ 1357 0060 00000000 	 .word Hvac_IN
+ 1358 0064 00000000 	 .word Relay_Control_Switch_OUT
+ 1359              	 .cfi_endproc
+ 1360              	.LFE621:
+ 1362              	 .section .text.Process_PowerLatch,"ax",%progbits
+ 1363              	 .align 2
+ 1364              	 .global Process_PowerLatch
+ 1365              	 .thumb
+ 1366              	 .thumb_func
+ 1368              	Process_PowerLatch:
+ 1369              	.LFB622:
+ 311:../VCU_PROCESS/State1_Process.c **** 
+ 312:../VCU_PROCESS/State1_Process.c **** 
+ 313:../VCU_PROCESS/State1_Process.c **** void Process_PowerLatch(void)
+ 314:../VCU_PROCESS/State1_Process.c **** {
+ 1370              	 .loc 1 314 0
+ 1371              	 .cfi_startproc
+ 1372              	 
+ 1373              	 
+ 1374              	 
+ 1375 0000 80B4     	 push {r7}
+ 1376              	.LCFI67:
+ 1377              	 .cfi_def_cfa_offset 4
+ 1378              	 .cfi_offset 7,-4
+ 1379 0002 00AF     	 add r7,sp,#0
+ 1380              	.LCFI68:
+ 1381              	 .cfi_def_cfa_register 7
+ 315:../VCU_PROCESS/State1_Process.c **** 	static bool prev_input = 0;
+ 316:../VCU_PROCESS/State1_Process.c **** 
+ 317:../VCU_PROCESS/State1_Process.c **** 	if((prev_input == 0 ) && (Door_Switch_IN.hatch_IN)) // regen switch is connected to door sw hatch 
+ 1382              	 .loc 1 317 0
+ 1383 0004 154B     	 ldr r3,.L76
+ 1384 0006 1B78     	 ldrb r3,[r3]
+ 1385 0008 83F00103 	 eor r3,r3,#1
+ 1386 000c DBB2     	 uxtb r3,r3
+ 1387 000e 002B     	 cmp r3,#0
+ 1388 0010 16D0     	 beq .L74
+ 1389              	 .loc 1 317 0 is_stmt 0 discriminator 1
+ 1390 0012 134B     	 ldr r3,.L76+4
+ 1391 0014 5B79     	 ldrb r3,[r3,#5]
+ 1392 0016 002B     	 cmp r3,#0
+ 1393 0018 12D0     	 beq .L74
+ 318:../VCU_PROCESS/State1_Process.c **** 	{
+ 319:../VCU_PROCESS/State1_Process.c **** 		Door_Switch_OUT.hatch_OUT = !Door_Switch_OUT.hatch_OUT;
+ 1394              	 .loc 1 319 0 is_stmt 1
+ 1395 001a 124B     	 ldr r3,.L76+8
+ 1396 001c 5B79     	 ldrb r3,[r3,#5]
+ 1397 001e 002B     	 cmp r3,#0
+ 1398 0020 14BF     	 ite ne
+ 1399 0022 0123     	 movne r3,#1
+ 1400 0024 0023     	 moveq r3,#0
+ 1401 0026 DBB2     	 uxtb r3,r3
+ 1402 0028 83F00103 	 eor r3,r3,#1
+ 1403 002c DBB2     	 uxtb r3,r3
+ 1404 002e 03F00103 	 and r3,r3,#1
+ 1405 0032 DAB2     	 uxtb r2,r3
+ 1406 0034 0B4B     	 ldr r3,.L76+8
+ 1407 0036 5A71     	 strb r2,[r3,#5]
+ 320:../VCU_PROCESS/State1_Process.c **** 
+ 321:../VCU_PROCESS/State1_Process.c **** 		prev_input = 1;
+ 1408              	 .loc 1 321 0
+ 1409 0038 084B     	 ldr r3,.L76
+ 1410 003a 0122     	 movs r2,#1
+ 1411 003c 1A70     	 strb r2,[r3]
+ 1412 003e 09E0     	 b .L73
+ 1413              	.L74:
+ 322:../VCU_PROCESS/State1_Process.c **** 	}
+ 323:../VCU_PROCESS/State1_Process.c **** 	else if(Door_Switch_IN.hatch_IN == 0)
+ 1414              	 .loc 1 323 0
+ 1415 0040 074B     	 ldr r3,.L76+4
+ 1416 0042 5B79     	 ldrb r3,[r3,#5]
+ 1417 0044 83F00103 	 eor r3,r3,#1
+ 1418 0048 DBB2     	 uxtb r3,r3
+ 1419 004a 002B     	 cmp r3,#0
+ 1420 004c 02D0     	 beq .L73
+ 324:../VCU_PROCESS/State1_Process.c **** 	{
+ 325:../VCU_PROCESS/State1_Process.c **** 		prev_input = 0;
+ 1421              	 .loc 1 325 0
+ 1422 004e 034B     	 ldr r3,.L76
+ 1423 0050 0022     	 movs r2,#0
+ 1424 0052 1A70     	 strb r2,[r3]
+ 1425              	.L73:
+ 326:../VCU_PROCESS/State1_Process.c **** 	}
+ 327:../VCU_PROCESS/State1_Process.c **** 
+ 328:../VCU_PROCESS/State1_Process.c **** }
+ 1426              	 .loc 1 328 0
+ 1427 0054 BD46     	 mov sp,r7
+ 1428              	.LCFI69:
+ 1429              	 .cfi_def_cfa_register 13
+ 1430              	 
+ 1431 0056 5DF8047B 	 ldr r7,[sp],#4
+ 1432              	.LCFI70:
+ 1433              	 .cfi_restore 7
+ 1434              	 .cfi_def_cfa_offset 0
+ 1435 005a 7047     	 bx lr
+ 1436              	.L77:
+ 1437              	 .align 2
+ 1438              	.L76:
+ 1439 005c 00000000 	 .word prev_input.13950
+ 1440 0060 00000000 	 .word Door_Switch_IN
+ 1441 0064 00000000 	 .word Door_Switch_OUT
+ 1442              	 .cfi_endproc
+ 1443              	.LFE622:
+ 1445              	 .section .text.Process_eps_status,"ax",%progbits
+ 1446              	 .align 2
+ 1447              	 .global Process_eps_status
+ 1448              	 .thumb
+ 1449              	 .thumb_func
+ 1451              	Process_eps_status:
+ 1452              	.LFB623:
+ 329:../VCU_PROCESS/State1_Process.c **** 
+ 330:../VCU_PROCESS/State1_Process.c **** void Process_eps_status(void)
+ 331:../VCU_PROCESS/State1_Process.c **** {
+ 1453              	 .loc 1 331 0
+ 1454              	 .cfi_startproc
+ 1455              	 
+ 1456              	 
+ 1457              	 
+ 1458 0000 80B4     	 push {r7}
+ 1459              	.LCFI71:
+ 1460              	 .cfi_def_cfa_offset 4
+ 1461              	 .cfi_offset 7,-4
+ 1462 0002 00AF     	 add r7,sp,#0
+ 1463              	.LCFI72:
+ 1464              	 .cfi_def_cfa_register 7
+ 332:../VCU_PROCESS/State1_Process.c **** 
+ 333:../VCU_PROCESS/State1_Process.c **** }
+ 1465              	 .loc 1 333 0
+ 1466 0004 BD46     	 mov sp,r7
+ 1467              	.LCFI73:
+ 1468              	 .cfi_def_cfa_register 13
+ 1469              	 
+ 1470 0006 5DF8047B 	 ldr r7,[sp],#4
+ 1471              	.LCFI74:
+ 1472              	 .cfi_restore 7
+ 1473              	 .cfi_def_cfa_offset 0
+ 1474 000a 7047     	 bx lr
+ 1475              	 .cfi_endproc
+ 1476              	.LFE623:
+ 1478              	 .section .text.Process_faciaaswitches,"ax",%progbits
+ 1479              	 .align 2
+ 1480              	 .global Process_faciaaswitches
+ 1481              	 .thumb
+ 1482              	 .thumb_func
+ 1484              	Process_faciaaswitches:
+ 1485              	.LFB624:
+ 334:../VCU_PROCESS/State1_Process.c **** 
+ 335:../VCU_PROCESS/State1_Process.c **** 
+ 336:../VCU_PROCESS/State1_Process.c **** void Process_faciaaswitches(void)
+ 337:../VCU_PROCESS/State1_Process.c **** {
+ 1486              	 .loc 1 337 0
+ 1487              	 .cfi_startproc
+ 1488              	 
+ 1489              	 
+ 1490 0000 80B5     	 push {r7,lr}
+ 1491              	.LCFI75:
+ 1492              	 .cfi_def_cfa_offset 8
+ 1493              	 .cfi_offset 7,-8
+ 1494              	 .cfi_offset 14,-4
+ 1495 0002 00AF     	 add r7,sp,#0
+ 1496              	.LCFI76:
+ 1497              	 .cfi_def_cfa_register 7
+ 338:../VCU_PROCESS/State1_Process.c **** 	Process_Regen_Control();
+ 1498              	 .loc 1 338 0
+ 1499 0004 FFF7FEFF 	 bl Process_Regen_Control
+ 339:../VCU_PROCESS/State1_Process.c **** 	//Process_RearDefogger();
+ 340:../VCU_PROCESS/State1_Process.c **** 	//Process_FogLamp();
+ 341:../VCU_PROCESS/State1_Process.c **** 	//Process_PowerLatch();
+ 342:../VCU_PROCESS/State1_Process.c **** }
+ 1500              	 .loc 1 342 0
+ 1501 0008 80BD     	 pop {r7,pc}
+ 1502              	 .cfi_endproc
+ 1503              	.LFE624:
+ 1505 000a 00BF     	 .section .text.CCU81_0_IRQHandler,"ax",%progbits
+ 1506              	 .align 2
+ 1507              	 .global CCU81_0_IRQHandler
+ 1508              	 .thumb
+ 1509              	 .thumb_func
+ 1511              	CCU81_0_IRQHandler:
+ 1512              	.LFB625:
+ 343:../VCU_PROCESS/State1_Process.c **** 
+ 344:../VCU_PROCESS/State1_Process.c **** void Flasher(void)
+ 345:../VCU_PROCESS/State1_Process.c **** {
+ 1513              	 .loc 1 345 0
+ 1514              	 .cfi_startproc
+ 1515              	 
+ 1516              	 
+ 1517              	 
+ 1518 0000 80B4     	 push {r7}
+ 1519              	.LCFI77:
+ 1520              	 .cfi_def_cfa_offset 4
+ 1521              	 .cfi_offset 7,-4
+ 1522 0002 00AF     	 add r7,sp,#0
+ 1523              	.LCFI78:
+ 1524              	 .cfi_def_cfa_register 7
+ 346:../VCU_PROCESS/State1_Process.c **** /*	if(Combi_Switch_IN.left_indicator_IN)
+ 347:../VCU_PROCESS/State1_Process.c **** 		{
+ 348:../VCU_PROCESS/State1_Process.c **** 			Instrument_Cluster_OUT.set_left_indicator = !Instrument_Cluster_OUT.set_left_indicator;
+ 349:../VCU_PROCESS/State1_Process.c **** 		}
+ 350:../VCU_PROCESS/State1_Process.c **** 		else if(Combi_Switch_IN.right_indicator_IN)
+ 351:../VCU_PROCESS/State1_Process.c **** 		{
+ 352:../VCU_PROCESS/State1_Process.c **** 			Instrument_Cluster_OUT.set_right_indicator = !Instrument_Cluster_OUT.set_right_indicator;
+ 353:../VCU_PROCESS/State1_Process.c **** 		}*/
+ 354:../VCU_PROCESS/State1_Process.c **** 	//INTERRUPT_Disable(&INTERRUPT_0);
+ 355:../VCU_PROCESS/State1_Process.c **** }
+ 1525              	 .loc 1 355 0
+ 1526 0004 BD46     	 mov sp,r7
+ 1527              	.LCFI79:
+ 1528              	 .cfi_def_cfa_register 13
+ 1529              	 
+ 1530 0006 5DF8047B 	 ldr r7,[sp],#4
+ 1531              	.LCFI80:
+ 1532              	 .cfi_restore 7
+ 1533              	 .cfi_def_cfa_offset 0
+ 1534 000a 7047     	 bx lr
+ 1535              	 .cfi_endproc
+ 1536              	.LFE625:
+ 1538              	 .section .data.init_once.13875,"aw",%progbits
+ 1541              	init_once.13875:
+ 1542 0000 01       	 .byte 1
+ 1543              	 .section .bss.i_counter.13892,"aw",%nobits
+ 1544              	 .align 2
+ 1547              	i_counter.13892:
+ 1548 0000 00000000 	 .space 4
+ 1549              	 .section .bss.prev_input.13910,"aw",%nobits
+ 1552              	prev_input.13910:
+ 1553 0000 00       	 .space 1
+ 1554              	 .section .bss.ModeCounter_Cluster.13912,"aw",%nobits
+ 1557              	ModeCounter_Cluster.13912:
+ 1558 0000 00       	 .space 1
+ 1559              	 .section .data.ModeCounter_MCU.13911,"aw",%progbits
+ 1562              	ModeCounter_MCU.13911:
+ 1563 0000 03       	 .byte 3
+ 1564              	 .section .data.counter.13913,"aw",%progbits
+ 1567              	counter.13913:
+ 1568 0000 01       	 .byte 1
+ 1569              	 .section .bss.prev_input.13938,"aw",%nobits
+ 1572              	prev_input.13938:
+ 1573 0000 00       	 .space 1
+ 1574              	 .section .bss.prev_input.13942,"aw",%nobits
+ 1577              	prev_input.13942:
+ 1578 0000 00       	 .space 1
+ 1579              	 .section .bss.prev_input.13946,"aw",%nobits
+ 1582              	prev_input.13946:
+ 1583 0000 00       	 .space 1
+ 1584              	 .section .bss.prev_input.13950,"aw",%nobits
+ 1587              	prev_input.13950:
+ 1588 0000 00       	 .space 1
+ 1589              	 .text
+ 1590              	.Letext0:
+ 1591              	 .file 2 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1592              	 .file 3 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 1593              	 .file 4 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_usic.h"
+ 1594              	 .file 5 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\sys\\types.h"
+ 1595              	 .file 6 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_rtc.h"
+ 1596              	 .file 7 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_spi.h"
+ 1597              	 .file 8 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Vcu_Config.h"
+ 1598              	 .file 9 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/can_matrix.h"
+ 1599              	 .file 10 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Include/cmsis_gcc.h"
+ 1600              	 .file 11 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Include/core_cm4.h"
+ 1601              	 .file 12 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Infineon/XMC4700_series/Include/system_XMC4700.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 State1_Process.c
+                            *COM*:00000004 cluster_door_in
+                            *COM*:00000003 Vcu_OutPuts
+                            *COM*:00000008 Combi_Switch_IN
+                            *COM*:00000003 Seat_Switch_IN
+                            *COM*:00000007 Door_Switch_IN
+                            *COM*:0000002f Relay_Control_Switch_OUT
+                            *COM*:00000018 Hvac_IN
+                            *COM*:00000014 Switch_Ios_IN
+                            *COM*:00000005 Motor_controller_OUT
+                            *COM*:00000008 Lights_OUT
+                            *COM*:00000008 Sensors_OUT
+                            *COM*:00000006 Aux_Inputs
+                            *COM*:00000012 Instrument_Cluster_OUT
+                            *COM*:00000003 Seat_Belt_OUT
+                            *COM*:00000004 Gear_OUT
+    {standard input}:39     .data.Instrumetcluster_DriveMode_OUT:00000000 Instrumetcluster_DriveMode_OUT
+    {standard input}:36     .data.Instrumetcluster_DriveMode_OUT:00000000 $d
+                            *COM*:00000007 Door_Switch_OUT
+                            *COM*:00000007 instrument_cluster_doorsvar
+                            *COM*:00000004 cluster_door_out
+                            *COM*:00000008 current_time
+                            *COM*:00000008 timeval
+                            *COM*:00000010 GPS_data_val
+                            *COM*:00000004 epoch
+                            *COM*:00000001 ambient_temp
+                            *COM*:00000001 BMS_SOC
+                            *COM*:0000003c CAN_MSG_DB_HVAC
+    {standard input}:56     .data.eps_status:00000000 eps_status
+    {standard input}:53     .data.eps_status:00000000 $d
+                            *COM*:00000001 instrument_clustor_doors
+                            *COM*:00000084 CAN_BMS_29bit
+                            *COM*:00000084 CAN_IRP_29bit
+                            *COM*:00000001 charge_complete
+                            *COM*:00000001 charging_started
+                            *COM*:00000002 Bms_SOC
+                            *COM*:00000002 Bms_SOH
+                            *COM*:00000001 Mapped_BMS_SOC
+                            *COM*:00000002 Bms_minTemp
+                            *COM*:00000002 Bms_maxTemp
+                            *COM*:00000004 PackCurrent
+                            *COM*:00000004 PackVoltage
+                            *COM*:00000002 RegenerativeCurrentLimit
+                            *COM*:00000002 ChargeCurrentLimit
+                            *COM*:00000002 DischargeCurrentLimit
+                            *COM*:00000004 HvBatteryPower
+                            *COM*:00000004 bmsFault1
+                            *COM*:00000004 bmsFault2
+                            *COM*:00000004 GtakeFaults
+                            *COM*:00000003 allFault_indicator
+                            *COM*:00000004 cluster_Fault_Indicator
+                            *COM*:00000004 Mcu_Temp
+                            *COM*:00000004 Motor_Temp
+                            *COM*:00000002 VehicleSpeedglb
+                            *COM*:0000003c OBDII_CAN
+                            *COM*:00000002 OBD_data
+                            *COM*:00000004 Irp_Mcu_drive_states_29bit
+                            *COM*:00000004 Irp_Mcu_BMS_states_29bit
+                            *COM*:00000004 Irp_Mcu_Torques_29bit
+                            *COM*:00000004 Irp_Mcu_BMS_Currents_29bit
+                            *COM*:00000004 Irp_MCU_Status_29bit
+                            *COM*:00000004 Irp_MCU_Faults_29bit
+                            *COM*:00000002 DC_Current_irp
+                            *COM*:00000002 MotorPower_Irp
+                            *COM*:00000002 Torque_Estimation
+                            *COM*:00000002 DC_Voltage_irp
+                            *COM*:00000002 Mcu_Temp_Irp
+                            *COM*:00000002 Motor_Temp_Irp
+                            *COM*:00000002 RPM
+                            *COM*:00000001 Regenration_flag
+                            *COM*:00000002 hv_count
+                            *COM*:00000004 BMS_Avg_temp
+                            *COM*:00000001 AC_ON_4g
+                            *COM*:00000002 speed_4g
+    {standard input}:107    .data.instrument_clustor_indicators:00000000 instrument_clustor_indicators
+    {standard input}:104    .data.instrument_clustor_indicators:00000000 $d
+    {standard input}:114    .data.instrument_clustor_buzzer:00000000 instrument_clustor_buzzer
+    {standard input}:111    .data.instrument_clustor_buzzer:00000000 $d
+    {standard input}:117    .text.Process_State1_Inputs:00000000 $t
+    {standard input}:122    .text.Process_State1_Inputs:00000000 Process_State1_Inputs
+    {standard input}:305    .text.Process_Io_exp_U24:00000000 Process_Io_exp_U24
+    {standard input}:400    .text.Process_cluster_indicators:00000000 Process_cluster_indicators
+    {standard input}:743    .text.Process_drive_mode:00000000 Process_drive_mode
+    {standard input}:1484   .text.Process_faciaaswitches:00000000 Process_faciaaswitches
+    {standard input}:710    .text.all_Ig1_Inputs_off:00000000 all_Ig1_Inputs_off
+    {standard input}:564    .text.cluster_indicators_off:00000000 cluster_indicators_off
+    {standard input}:188    .text.Process_State1_Inputs:00000050 $d
+    {standard input}:1541   .data.init_once.13875:00000000 init_once.13875
+    {standard input}:194    .text.hazzard:00000000 $t
+    {standard input}:199    .text.hazzard:00000000 hazzard
+    {standard input}:293    .text.hazzard:0000007c $d
+    {standard input}:300    .text.Process_Io_exp_U24:00000000 $t
+    {standard input}:341    .text.Process_Io_exp_U24:00000024 $d
+    {standard input}:347    .text.Process_Io_exp_U25:00000000 $t
+    {standard input}:352    .text.Process_Io_exp_U25:00000000 Process_Io_exp_U25
+    {standard input}:389    .text.Process_Io_exp_U25:0000001c $d
+    {standard input}:395    .text.Process_cluster_indicators:00000000 $t
+    {standard input}:544    .text.Process_cluster_indicators:000000ec $d
+    {standard input}:559    .text.cluster_indicators_off:00000000 $t
+    {standard input}:633    .text.cluster_indicators_off:00000050 $d
+    {standard input}:639    .text.process_instrument_cluster_door:00000000 $t
+    {standard input}:644    .text.process_instrument_cluster_door:00000000 process_instrument_cluster_door
+    {standard input}:672    .text.cluster_gear:00000000 $t
+    {standard input}:677    .text.cluster_gear:00000000 cluster_gear
+    {standard input}:705    .text.all_Ig1_Inputs_off:00000000 $t
+    {standard input}:738    .text.Process_drive_mode:00000000 $t
+    {standard input}:876    .text.Process_cluster_drivemode:00000000 Process_cluster_drivemode
+    {standard input}:935    .text.Process_motordrive_mode:00000000 Process_motordrive_mode
+    {standard input}:862    .text.Process_drive_mode:000000a4 $d
+    {standard input}:1552   .bss.prev_input.13910:00000000 prev_input.13910
+    {standard input}:1557   .bss.ModeCounter_Cluster.13912:00000000 ModeCounter_Cluster.13912
+    {standard input}:1562   .data.ModeCounter_MCU.13911:00000000 ModeCounter_MCU.13911
+    {standard input}:871    .text.Process_cluster_drivemode:00000000 $t
+    {standard input}:924    .text.Process_cluster_drivemode:0000002c $d
+    {standard input}:930    .text.Process_motordrive_mode:00000000 $t
+    {standard input}:1039   .text.motordrive_mode_irp:00000000 motordrive_mode_irp
+    {standard input}:971    .text.motordrive_mode_Gtake:00000000 $t
+    {standard input}:976    .text.motordrive_mode_Gtake:00000000 motordrive_mode_Gtake
+    {standard input}:1028   .text.motordrive_mode_Gtake:00000038 $d
+    {standard input}:1034   .text.motordrive_mode_irp:00000000 $t
+    {standard input}:1091   .text.motordrive_mode_irp:00000038 $d
+    {standard input}:1097   .text.Process_Regen_Control:00000000 $t
+    {standard input}:1102   .text.Process_Regen_Control:00000000 Process_Regen_Control
+    {standard input}:1189   .text.Process_Regen_Control:0000007c $d
+    {standard input}:1572   .bss.prev_input.13938:00000000 prev_input.13938
+    {standard input}:1197   .text.Process_RearDefogger:00000000 $t
+    {standard input}:1202   .text.Process_RearDefogger:00000000 Process_RearDefogger
+    {standard input}:1273   .text.Process_RearDefogger:00000060 $d
+    {standard input}:1577   .bss.prev_input.13942:00000000 prev_input.13942
+    {standard input}:1280   .text.Process_FogLamp:00000000 $t
+    {standard input}:1285   .text.Process_FogLamp:00000000 Process_FogLamp
+    {standard input}:1356   .text.Process_FogLamp:0000005c $d
+    {standard input}:1582   .bss.prev_input.13946:00000000 prev_input.13946
+    {standard input}:1363   .text.Process_PowerLatch:00000000 $t
+    {standard input}:1368   .text.Process_PowerLatch:00000000 Process_PowerLatch
+    {standard input}:1439   .text.Process_PowerLatch:0000005c $d
+    {standard input}:1587   .bss.prev_input.13950:00000000 prev_input.13950
+    {standard input}:1446   .text.Process_eps_status:00000000 $t
+    {standard input}:1451   .text.Process_eps_status:00000000 Process_eps_status
+    {standard input}:1479   .text.Process_faciaaswitches:00000000 $t
+    {standard input}:1506   .text.CCU81_0_IRQHandler:00000000 $t
+    {standard input}:1511   .text.CCU81_0_IRQHandler:00000000 CCU81_0_IRQHandler
+    {standard input}:1544   .bss.i_counter.13892:00000000 $d
+    {standard input}:1547   .bss.i_counter.13892:00000000 i_counter.13892
+    {standard input}:1553   .bss.prev_input.13910:00000000 $d
+    {standard input}:1558   .bss.ModeCounter_Cluster.13912:00000000 $d
+    {standard input}:1567   .data.counter.13913:00000000 counter.13913
+    {standard input}:1573   .bss.prev_input.13938:00000000 $d
+    {standard input}:1578   .bss.prev_input.13942:00000000 $d
+    {standard input}:1583   .bss.prev_input.13946:00000000 $d
+    {standard input}:1588   .bss.prev_input.13950:00000000 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+CAN_MSG_DB
+eps_n
+init_hw
+charger_on
+vspeed
+Gtake_Mcu_drive_states_29bit

@@ -1,0 +1,1331 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "Vcu_Init.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .global AUX_EFUSE_2_OUT_D
+  20              	 .section .data.AUX_EFUSE_2_OUT_D,"aw",%progbits
+  21              	 .align 2
+  24              	AUX_EFUSE_2_OUT_D:
+  25 0000 19       	 .byte 25
+  26 0001 00       	 .byte 0
+  27 0002 06       	 .byte 6
+  28              	 .comm HV_BATT_FAN_PWR_OUT,3,4
+  29              	 .global ORVM_OPEN_OUT_D
+  30 0003 00       	 .section .data.ORVM_OPEN_OUT_D,"aw",%progbits
+  31              	 .align 2
+  34              	ORVM_OPEN_OUT_D:
+  35 0000 19       	 .byte 25
+  36 0001 01       	 .byte 1
+  37 0002 04       	 .byte 4
+  38              	 .global ORVM_FOLD_OUT_D
+  39 0003 00       	 .section .data.ORVM_FOLD_OUT_D,"aw",%progbits
+  40              	 .align 2
+  43              	ORVM_FOLD_OUT_D:
+  44 0000 19       	 .byte 25
+  45 0001 01       	 .byte 1
+  46 0002 06       	 .byte 6
+  47              	 .global ORVM_PWR_OUT_D
+  48 0003 00       	 .section .data.ORVM_PWR_OUT_D,"aw",%progbits
+  49              	 .align 2
+  52              	ORVM_PWR_OUT_D:
+  53 0000 19       	 .byte 25
+  54 0001 01       	 .byte 1
+  55 0002 07       	 .byte 7
+  56              	 .global AC_BLOWER_SPEED1_OUT_D
+  57 0003 00       	 .section .data.AC_BLOWER_SPEED1_OUT_D,"aw",%progbits
+  58              	 .align 2
+  61              	AC_BLOWER_SPEED1_OUT_D:
+  62 0000 26       	 .byte 38
+  63 0001 00       	 .byte 0
+  64 0002 00       	 .byte 0
+  65              	 .global AC_BLOWER_SPEED2_OUT_D
+  66 0003 00       	 .section .data.AC_BLOWER_SPEED2_OUT_D,"aw",%progbits
+  67              	 .align 2
+  70              	AC_BLOWER_SPEED2_OUT_D:
+  71 0000 26       	 .byte 38
+  72 0001 00       	 .byte 0
+  73 0002 01       	 .byte 1
+  74              	 .global AC_BLOWER_SPEED3_OUT_D
+  75 0003 00       	 .section .data.AC_BLOWER_SPEED3_OUT_D,"aw",%progbits
+  76              	 .align 2
+  79              	AC_BLOWER_SPEED3_OUT_D:
+  80 0000 26       	 .byte 38
+  81 0001 00       	 .byte 0
+  82 0002 02       	 .byte 2
+  83              	 .global AC_SOL_PWR_OUT_D
+  84 0003 00       	 .section .data.AC_SOL_PWR_OUT_D,"aw",%progbits
+  85              	 .align 2
+  88              	AC_SOL_PWR_OUT_D:
+  89 0000 26       	 .byte 38
+  90 0001 00       	 .byte 0
+  91 0002 03       	 .byte 3
+  92              	 .global AUX_EFUSE_3_OUT_D
+  93 0003 00       	 .section .data.AUX_EFUSE_3_OUT_D,"aw",%progbits
+  94              	 .align 2
+  97              	AUX_EFUSE_3_OUT_D:
+  98 0000 26       	 .byte 38
+  99 0001 01       	 .byte 1
+ 100 0002 01       	 .byte 1
+ 101              	 .global AUX_EFUSE_4_OUT_D
+ 102 0003 00       	 .section .data.AUX_EFUSE_4_OUT_D,"aw",%progbits
+ 103              	 .align 2
+ 106              	AUX_EFUSE_4_OUT_D:
+ 107 0000 26       	 .byte 38
+ 108 0001 01       	 .byte 1
+ 109 0002 02       	 .byte 2
+ 110              	 .global AUX_EFUSE_5_OUT_D
+ 111 0003 00       	 .section .data.AUX_EFUSE_5_OUT_D,"aw",%progbits
+ 112              	 .align 2
+ 115              	AUX_EFUSE_5_OUT_D:
+ 116 0000 26       	 .byte 38
+ 117 0001 01       	 .byte 1
+ 118 0002 03       	 .byte 3
+ 119              	 .global AUX_MOSFET_OUT3_D
+ 120 0003 00       	 .section .data.AUX_MOSFET_OUT3_D,"aw",%progbits
+ 121              	 .align 2
+ 124              	AUX_MOSFET_OUT3_D:
+ 125 0000 26       	 .byte 38
+ 126 0001 01       	 .byte 1
+ 127 0002 04       	 .byte 4
+ 128              	 .global SUNROOF_PWR_OUT_D
+ 129 0003 00       	 .section .data.SUNROOF_PWR_OUT_D,"aw",%progbits
+ 130              	 .align 2
+ 133              	SUNROOF_PWR_OUT_D:
+ 134 0000 26       	 .byte 38
+ 135 0001 01       	 .byte 1
+ 136 0002 05       	 .byte 5
+ 137              	 .global HV_CHARGER_EN_OUT_D
+ 138 0003 00       	 .section .data.HV_CHARGER_EN_OUT_D,"aw",%progbits
+ 139              	 .align 2
+ 142              	HV_CHARGER_EN_OUT_D:
+ 143 0000 26       	 .byte 38
+ 144 0001 01       	 .byte 1
+ 145 0002 06       	 .byte 6
+ 146              	 .global AC_COMPRESSOR_OUT_D
+ 147 0003 00       	 .section .data.AC_COMPRESSOR_OUT_D,"aw",%progbits
+ 148              	 .align 2
+ 151              	AC_COMPRESSOR_OUT_D:
+ 152 0000 26       	 .byte 38
+ 153 0001 01       	 .byte 1
+ 154 0002 07       	 .byte 7
+ 155              	 .global ELEC_HANDBRAKE_PWR_OUT_D
+ 156 0003 00       	 .section .data.ELEC_HANDBRAKE_PWR_OUT_D,"aw",%progbits
+ 157              	 .align 2
+ 160              	ELEC_HANDBRAKE_PWR_OUT_D:
+ 161 0000 30       	 .byte 48
+ 162 0001 00       	 .byte 0
+ 163 0002 02       	 .byte 2
+ 164              	 .comm SuperLoop_Time,8,8
+ 165              	 .comm SuperLoop_Time_usec,8,8
+ 166              	 .comm SuperLoop_Time_msec,8,8
+ 167              	 .comm SuperLoop_Time_sec,8,8
+ 168              	 .comm End_Time,4,4
+ 169              	 .comm Start_Time,4,4
+ 170              	 .comm CState,1,1
+ 171              	 .comm PreState,1,1
+ 172              	 .global HV_BATT_FAN_PWR_OUT_D
+ 173 0003 00       	 .section .data.HV_BATT_FAN_PWR_OUT_D,"aw",%progbits
+ 174              	 .align 2
+ 177              	HV_BATT_FAN_PWR_OUT_D:
+ 178 0000 19       	 .byte 25
+ 179 0001 01       	 .byte 1
+ 180 0002 03       	 .byte 3
+ 181 0003 00       	 .section .text.uart_debugg,"ax",%progbits
+ 182              	 .align 2
+ 183              	 .global uart_debugg
+ 184              	 .thumb
+ 185              	 .thumb_func
+ 187              	uart_debugg:
+ 188              	.LFB605:
+ 189              	 .file 1 "../Vcu_Init.c"
+   1:../Vcu_Init.c **** /*
+   2:../Vcu_Init.c ****  * Vcu_Init.c
+   3:../Vcu_Init.c ****  *
+   4:../Vcu_Init.c ****  *  Created on: 30-Jun-2023
+   5:../Vcu_Init.c ****  *      Author: Suchit Sawant
+   6:../Vcu_Init.c ****  */
+   7:../Vcu_Init.c **** #include "DAVE.h"
+   8:../Vcu_Init.c **** #include "Vcu_Init.h"
+   9:../Vcu_Init.c **** #include "InputCapture/IOExp_lib.h"
+  10:../Vcu_Init.c **** #include "stdlib.h"
+  11:../Vcu_Init.c **** #include "string.h"
+  12:../Vcu_Init.c **** 
+  13:../Vcu_Init.c **** #define UART_DEBUG 0
+  14:../Vcu_Init.c **** #define UART_DEBUG4G 1
+  15:../Vcu_Init.c **** 
+  16:../Vcu_Init.c **** #define IO_EXP_IC_25 25
+  17:../Vcu_Init.c **** #define IO_EXP_IC_38 38
+  18:../Vcu_Init.c **** #define IO_EXP_IC_48 48
+  19:../Vcu_Init.c **** 
+  20:../Vcu_Init.c **** #define PORT0 0x00
+  21:../Vcu_Init.c **** #define PORT1 0x01
+  22:../Vcu_Init.c **** 
+  23:../Vcu_Init.c **** #define PIN0 0X00
+  24:../Vcu_Init.c **** #define PIN1 0X01
+  25:../Vcu_Init.c **** #define PIN2 0X02
+  26:../Vcu_Init.c **** #define PIN3 0X03
+  27:../Vcu_Init.c **** #define PIN4 0X04
+  28:../Vcu_Init.c **** #define PIN5 0X05
+  29:../Vcu_Init.c **** #define PIN6 0X06
+  30:../Vcu_Init.c **** #define PIN7 0X07
+  31:../Vcu_Init.c **** 
+  32:../Vcu_Init.c **** 
+  33:../Vcu_Init.c **** /* IO_EXP U25 */
+  34:../Vcu_Init.c **** Io_Exp_PinMap_t AUX_EFUSE_2_OUT_D = {IO_EXP_IC_25, PORT0, PIN6};
+  35:../Vcu_Init.c **** Io_Exp_PinMap_t HV_BATT_FAN_PWR_OUT_D = {IO_EXP_IC_25, PORT1, PIN3};
+  36:../Vcu_Init.c **** Io_Exp_PinMap_t ORVM_OPEN_OUT_D = {IO_EXP_IC_25, PORT1, PIN4};
+  37:../Vcu_Init.c **** Io_Exp_PinMap_t ORVM_FOLD_OUT_D = {IO_EXP_IC_25, PORT1, PIN6};
+  38:../Vcu_Init.c **** Io_Exp_PinMap_t ORVM_PWR_OUT_D = {IO_EXP_IC_25, PORT1, PIN7};
+  39:../Vcu_Init.c **** 
+  40:../Vcu_Init.c **** 
+  41:../Vcu_Init.c **** /* IO_EXP U38 */
+  42:../Vcu_Init.c **** Io_Exp_PinMap_t AC_BLOWER_SPEED1_OUT_D = {IO_EXP_IC_38, PORT0, PIN0};
+  43:../Vcu_Init.c **** Io_Exp_PinMap_t AC_BLOWER_SPEED2_OUT_D = {IO_EXP_IC_38, PORT0, PIN1};
+  44:../Vcu_Init.c **** Io_Exp_PinMap_t AC_BLOWER_SPEED3_OUT_D = {IO_EXP_IC_38, PORT0, PIN2};
+  45:../Vcu_Init.c **** Io_Exp_PinMap_t AC_SOL_PWR_OUT_D = {IO_EXP_IC_38, PORT0, PIN3};
+  46:../Vcu_Init.c **** 
+  47:../Vcu_Init.c **** Io_Exp_PinMap_t AUX_EFUSE_3_OUT_D = {IO_EXP_IC_38, PORT1, PIN1};
+  48:../Vcu_Init.c **** Io_Exp_PinMap_t AUX_EFUSE_4_OUT_D = {IO_EXP_IC_38, PORT1, PIN2};
+  49:../Vcu_Init.c **** Io_Exp_PinMap_t AUX_EFUSE_5_OUT_D = {IO_EXP_IC_38, PORT1, PIN3};
+  50:../Vcu_Init.c **** Io_Exp_PinMap_t AUX_MOSFET_OUT3_D = {IO_EXP_IC_38, PORT1, PIN4};
+  51:../Vcu_Init.c **** Io_Exp_PinMap_t SUNROOF_PWR_OUT_D = {IO_EXP_IC_38, PORT1, PIN5};
+  52:../Vcu_Init.c **** Io_Exp_PinMap_t HV_CHARGER_EN_OUT_D = {IO_EXP_IC_38, PORT1, PIN6};
+  53:../Vcu_Init.c **** Io_Exp_PinMap_t AC_COMPRESSOR_OUT_D = {IO_EXP_IC_38, PORT1, PIN7};
+  54:../Vcu_Init.c **** 
+  55:../Vcu_Init.c **** 
+  56:../Vcu_Init.c **** /* IO_EXP U48 */
+  57:../Vcu_Init.c **** Io_Exp_PinMap_t ELEC_HANDBRAKE_PWR_OUT_D = {IO_EXP_IC_48, PORT0, PIN2};
+  58:../Vcu_Init.c **** 
+  59:../Vcu_Init.c **** 
+  60:../Vcu_Init.c **** //#if UART_DEBUG
+  61:../Vcu_Init.c **** void uart_debugg(uint8_t uart_buff[])
+  62:../Vcu_Init.c **** {
+ 190              	 .loc 1 62 0
+ 191              	 .cfi_startproc
+ 192              	 
+ 193              	 
+ 194              	 
+ 195 0000 80B4     	 push {r7}
+ 196              	.LCFI0:
+ 197              	 .cfi_def_cfa_offset 4
+ 198              	 .cfi_offset 7,-4
+ 199 0002 83B0     	 sub sp,sp,#12
+ 200              	.LCFI1:
+ 201              	 .cfi_def_cfa_offset 16
+ 202 0004 00AF     	 add r7,sp,#0
+ 203              	.LCFI2:
+ 204              	 .cfi_def_cfa_register 7
+ 205 0006 7860     	 str r0,[r7,#4]
+  63:../Vcu_Init.c **** 
+  64:../Vcu_Init.c **** #if UART_DEBUG
+  65:../Vcu_Init.c **** 	int index = 0;
+  66:../Vcu_Init.c **** 		/*while(UART_Transmit(&UART_0, uart_buff, strlen(uart_buff)) == UART_STATUS_BUSY);
+  67:../Vcu_Init.c **** 		while((UART_Transmit(&UART_0, "\n", 1) == UART_STATUS_BUSY));
+  68:../Vcu_Init.c **** 		while((UART_Transmit(&UART_0, "\r", 1) == UART_STATUS_BUSY));*/
+  69:../Vcu_Init.c **** 
+  70:../Vcu_Init.c **** 	//while(uart_buff)
+  71:../Vcu_Init.c **** 	UART_Transmit(&UART_0, uart_buff, strlen(uart_buff));
+  72:../Vcu_Init.c **** 	//while(UART_0.runtime->tx_busy);
+  73:../Vcu_Init.c **** 	(UART_Transmit(&UART_0, "\n", 1));
+  74:../Vcu_Init.c **** 	//while(UART_0.runtime->tx_busy);
+  75:../Vcu_Init.c **** 	(UART_Transmit(&UART_0, "\r", 1));
+  76:../Vcu_Init.c **** 	//while(UART_0.runtime->tx_busy);
+  77:../Vcu_Init.c **** 
+  78:../Vcu_Init.c **** 
+  79:../Vcu_Init.c **** 	//@ref UART_GetProtocolStatus
+  80:../Vcu_Init.c **** 	/* while(index < strlen(uart_buff))
+  81:../Vcu_Init.c **** 	  {
+  82:../Vcu_Init.c **** 	            UART_TransmitWord(&UART_0,uart_buff[index]);
+  83:../Vcu_Init.c **** 	            index++;
+  84:../Vcu_Init.c **** 
+  85:../Vcu_Init.c **** 	            //Wait for transmit buffer interrupt to fill it again with remaining data
+  86:../Vcu_Init.c **** 	            while((UART_GetTXFIFOStatus(&UART_0) & XMC_USIC_CH_TXFIFO_EVENT_STANDARD) == 0);
+  87:../Vcu_Init.c **** 	            UART_ClearTXFIFOStatus(&UART_0, XMC_USIC_CH_TXFIFO_EVENT_STANDARD);
+  88:../Vcu_Init.c **** 	   }*/
+  89:../Vcu_Init.c **** #endif
+  90:../Vcu_Init.c **** }
+ 206              	 .loc 1 90 0
+ 207 0008 0C37     	 adds r7,r7,#12
+ 208              	.LCFI3:
+ 209              	 .cfi_def_cfa_offset 4
+ 210 000a BD46     	 mov sp,r7
+ 211              	.LCFI4:
+ 212              	 .cfi_def_cfa_register 13
+ 213              	 
+ 214 000c 5DF8047B 	 ldr r7,[sp],#4
+ 215              	.LCFI5:
+ 216              	 .cfi_restore 7
+ 217              	 .cfi_def_cfa_offset 0
+ 218 0010 7047     	 bx lr
+ 219              	 .cfi_endproc
+ 220              	.LFE605:
+ 222 0012 00BF     	 .section .rodata
+ 223              	 .align 2
+ 224              	.LC0:
+ 225 0000 0A00     	 .ascii "\012\000"
+ 226 0002 0000     	 .align 2
+ 227              	.LC1:
+ 228 0004 0D00     	 .ascii "\015\000"
+ 229 0006 0000     	 .section .text.uart_debugg4g,"ax",%progbits
+ 230              	 .align 2
+ 231              	 .global uart_debugg4g
+ 232              	 .thumb
+ 233              	 .thumb_func
+ 235              	uart_debugg4g:
+ 236              	.LFB606:
+  91:../Vcu_Init.c **** //#endif
+  92:../Vcu_Init.c **** 
+  93:../Vcu_Init.c **** //#if UART_DEBUG
+  94:../Vcu_Init.c **** void uart_debugg4g(uint8_t uart_buff[])
+  95:../Vcu_Init.c **** {
+ 237              	 .loc 1 95 0
+ 238              	 .cfi_startproc
+ 239              	 
+ 240              	 
+ 241 0000 80B5     	 push {r7,lr}
+ 242              	.LCFI6:
+ 243              	 .cfi_def_cfa_offset 8
+ 244              	 .cfi_offset 7,-8
+ 245              	 .cfi_offset 14,-4
+ 246 0002 84B0     	 sub sp,sp,#16
+ 247              	.LCFI7:
+ 248              	 .cfi_def_cfa_offset 24
+ 249 0004 00AF     	 add r7,sp,#0
+ 250              	.LCFI8:
+ 251              	 .cfi_def_cfa_register 7
+ 252 0006 7860     	 str r0,[r7,#4]
+  96:../Vcu_Init.c **** 
+  97:../Vcu_Init.c **** #if UART_DEBUG4G
+  98:../Vcu_Init.c **** 	int index = 0;
+ 253              	 .loc 1 98 0
+ 254 0008 0023     	 movs r3,#0
+ 255 000a FB60     	 str r3,[r7,#12]
+  99:../Vcu_Init.c **** 		/*while(UART_Transmit(&UART_0, uart_buff, strlen(uart_buff)) == UART_STATUS_BUSY);
+ 100:../Vcu_Init.c **** 		while((UART_Transmit(&UART_0, "\n", 1) == UART_STATUS_BUSY));
+ 101:../Vcu_Init.c **** 		while((UART_Transmit(&UART_0, "\r", 1) == UART_STATUS_BUSY));*/
+ 102:../Vcu_Init.c **** 
+ 103:../Vcu_Init.c **** 	//while(uart_buff)
+ 104:../Vcu_Init.c **** 	UART_Transmit(&UART_0, uart_buff, strlen(uart_buff));
+ 256              	 .loc 1 104 0
+ 257 000c 7868     	 ldr r0,[r7,#4]
+ 258 000e FFF7FEFF 	 bl strlen
+ 259 0012 0346     	 mov r3,r0
+ 260 0014 0848     	 ldr r0,.L3
+ 261 0016 7968     	 ldr r1,[r7,#4]
+ 262 0018 1A46     	 mov r2,r3
+ 263 001a FFF7FEFF 	 bl UART_Transmit
+ 105:../Vcu_Init.c **** 	//while(UART_0.runtime->tx_busy);
+ 106:../Vcu_Init.c **** 	(UART_Transmit(&UART_0, "\n", 1));
+ 264              	 .loc 1 106 0
+ 265 001e 0648     	 ldr r0,.L3
+ 266 0020 0649     	 ldr r1,.L3+4
+ 267 0022 0122     	 movs r2,#1
+ 268 0024 FFF7FEFF 	 bl UART_Transmit
+ 107:../Vcu_Init.c **** 	//while(UART_0.runtime->tx_busy);
+ 108:../Vcu_Init.c **** 	(UART_Transmit(&UART_0, "\r", 1));
+ 269              	 .loc 1 108 0
+ 270 0028 0348     	 ldr r0,.L3
+ 271 002a 0549     	 ldr r1,.L3+8
+ 272 002c 0122     	 movs r2,#1
+ 273 002e FFF7FEFF 	 bl UART_Transmit
+ 109:../Vcu_Init.c **** 	//while(UART_0.runtime->tx_busy);
+ 110:../Vcu_Init.c **** 
+ 111:../Vcu_Init.c **** 
+ 112:../Vcu_Init.c **** 	//@ref UART_GetProtocolStatus
+ 113:../Vcu_Init.c **** 	/* while(index < strlen(uart_buff))
+ 114:../Vcu_Init.c **** 	  {
+ 115:../Vcu_Init.c **** 	            UART_TransmitWord(&UART_0,uart_buff[index]);
+ 116:../Vcu_Init.c **** 	            index++;
+ 117:../Vcu_Init.c **** 
+ 118:../Vcu_Init.c **** 	            //Wait for transmit buffer interrupt to fill it again with remaining data
+ 119:../Vcu_Init.c **** 	            while((UART_GetTXFIFOStatus(&UART_0) & XMC_USIC_CH_TXFIFO_EVENT_STANDARD) == 0);
+ 120:../Vcu_Init.c **** 	            UART_ClearTXFIFOStatus(&UART_0, XMC_USIC_CH_TXFIFO_EVENT_STANDARD);
+ 121:../Vcu_Init.c **** 	   }*/
+ 122:../Vcu_Init.c **** #endif
+ 123:../Vcu_Init.c **** }
+ 274              	 .loc 1 123 0
+ 275 0032 1037     	 adds r7,r7,#16
+ 276              	.LCFI9:
+ 277              	 .cfi_def_cfa_offset 8
+ 278 0034 BD46     	 mov sp,r7
+ 279              	.LCFI10:
+ 280              	 .cfi_def_cfa_register 13
+ 281              	 
+ 282 0036 80BD     	 pop {r7,pc}
+ 283              	.L4:
+ 284              	 .align 2
+ 285              	.L3:
+ 286 0038 00000000 	 .word UART_0
+ 287 003c 00000000 	 .word .LC0
+ 288 0040 04000000 	 .word .LC1
+ 289              	 .cfi_endproc
+ 290              	.LFE606:
+ 292              	 .section .text.Io_Exp_Init,"ax",%progbits
+ 293              	 .align 2
+ 294              	 .global Io_Exp_Init
+ 295              	 .thumb
+ 296              	 .thumb_func
+ 298              	Io_Exp_Init:
+ 299              	.LFB607:
+ 124:../Vcu_Init.c **** //#endif
+ 125:../Vcu_Init.c **** 
+ 126:../Vcu_Init.c **** 
+ 127:../Vcu_Init.c **** void Io_Exp_Init(void)
+ 128:../Vcu_Init.c **** {
+ 300              	 .loc 1 128 0
+ 301              	 .cfi_startproc
+ 302              	 
+ 303              	 
+ 304 0000 80B5     	 push {r7,lr}
+ 305              	.LCFI11:
+ 306              	 .cfi_def_cfa_offset 8
+ 307              	 .cfi_offset 7,-8
+ 308              	 .cfi_offset 14,-4
+ 309 0002 82B0     	 sub sp,sp,#8
+ 310              	.LCFI12:
+ 311              	 .cfi_def_cfa_offset 16
+ 312 0004 00AF     	 add r7,sp,#0
+ 313              	.LCFI13:
+ 314              	 .cfi_def_cfa_register 7
+ 129:../Vcu_Init.c **** 	/* 0 set as output, 1 as input */
+ 130:../Vcu_Init.c **** 	/* Initially output is high hence make 0 */
+ 131:../Vcu_Init.c **** 
+ 132:../Vcu_Init.c **** 	uint8_t Io_Exp_address = 0x42, set_port0_pin_as_out_or_input = 0xbf, set_port1_pin_as_out_or_input
+ 315              	 .loc 1 132 0
+ 316 0006 4223     	 movs r3,#66
+ 317 0008 FB71     	 strb r3,[r7,#7]
+ 318 000a BF23     	 movs r3,#191
+ 319 000c BB71     	 strb r3,[r7,#6]
+ 320 000e 2723     	 movs r3,#39
+ 321 0010 7B71     	 strb r3,[r7,#5]
+ 322 0012 0023     	 movs r3,#0
+ 323 0014 3B71     	 strb r3,[r7,#4]
+ 324 0016 0123     	 movs r3,#1
+ 325 0018 FB70     	 strb r3,[r7,#3]
+ 326 001a 0623     	 movs r3,#6
+ 327 001c BB70     	 strb r3,[r7,#2]
+ 133:../Vcu_Init.c **** 
+ 134:../Vcu_Init.c **** 	/* U25 I2C_0*/
+ 135:../Vcu_Init.c **** 	IOExp_Configure(&I2C_MASTER_0, Io_Exp_address, set_port0_pin_as_out_or_input , set_port1_pin_as_ou
+ 328              	 .loc 1 135 0
+ 329 001e F979     	 ldrb r1,[r7,#7]
+ 330 0020 BA79     	 ldrb r2,[r7,#6]
+ 331 0022 7B79     	 ldrb r3,[r7,#5]
+ 332 0024 5148     	 ldr r0,.L6
+ 333 0026 FFF7FEFF 	 bl IOExp_Configure
+ 136:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_0,Io_Exp_address, port0, pin_value);
+ 334              	 .loc 1 136 0
+ 335 002a F979     	 ldrb r1,[r7,#7]
+ 336 002c 3A79     	 ldrb r2,[r7,#4]
+ 337 002e BB78     	 ldrb r3,[r7,#2]
+ 338 0030 4E48     	 ldr r0,.L6
+ 339 0032 FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 137:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_0,Io_Exp_address, port1, 0x03);
+ 340              	 .loc 1 137 0
+ 341 0036 FA79     	 ldrb r2,[r7,#7]
+ 342 0038 FB78     	 ldrb r3,[r7,#3]
+ 343 003a 4C48     	 ldr r0,.L6
+ 344 003c 1146     	 mov r1,r2
+ 345 003e 1A46     	 mov r2,r3
+ 346 0040 0323     	 movs r3,#3
+ 347 0042 FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 138:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_0,Io_Exp_address, port1, 0x04);
+ 348              	 .loc 1 138 0
+ 349 0046 FA79     	 ldrb r2,[r7,#7]
+ 350 0048 FB78     	 ldrb r3,[r7,#3]
+ 351 004a 4848     	 ldr r0,.L6
+ 352 004c 1146     	 mov r1,r2
+ 353 004e 1A46     	 mov r2,r3
+ 354 0050 0423     	 movs r3,#4
+ 355 0052 FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 139:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_0,Io_Exp_address, port1, 0x06);
+ 356              	 .loc 1 139 0
+ 357 0056 FA79     	 ldrb r2,[r7,#7]
+ 358 0058 FB78     	 ldrb r3,[r7,#3]
+ 359 005a 4448     	 ldr r0,.L6
+ 360 005c 1146     	 mov r1,r2
+ 361 005e 1A46     	 mov r2,r3
+ 362 0060 0623     	 movs r3,#6
+ 363 0062 FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 140:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_0,Io_Exp_address, port1, 0x07);
+ 364              	 .loc 1 140 0
+ 365 0066 FA79     	 ldrb r2,[r7,#7]
+ 366 0068 FB78     	 ldrb r3,[r7,#3]
+ 367 006a 4048     	 ldr r0,.L6
+ 368 006c 1146     	 mov r1,r2
+ 369 006e 1A46     	 mov r2,r3
+ 370 0070 0723     	 movs r3,#7
+ 371 0072 FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 141:../Vcu_Init.c **** 	//IOExp_SetPIN_HIGH(&I2C_MASTER_0,Io_Exp_address, port0, pin_value);
+ 142:../Vcu_Init.c **** 
+ 143:../Vcu_Init.c **** 	/* U38 I2C_1 */
+ 144:../Vcu_Init.c **** 	Io_Exp_address = 0x40;
+ 372              	 .loc 1 144 0
+ 373 0076 4023     	 movs r3,#64
+ 374 0078 FB71     	 strb r3,[r7,#7]
+ 145:../Vcu_Init.c **** 	set_port0_pin_as_out_or_input = 0xf0;
+ 375              	 .loc 1 145 0
+ 376 007a F023     	 movs r3,#240
+ 377 007c BB71     	 strb r3,[r7,#6]
+ 146:../Vcu_Init.c **** 	set_port1_pin_as_out_or_input = 0x01;
+ 378              	 .loc 1 146 0
+ 379 007e 0123     	 movs r3,#1
+ 380 0080 7B71     	 strb r3,[r7,#5]
+ 147:../Vcu_Init.c **** 	IOExp_Configure(&I2C_MASTER_1, Io_Exp_address, set_port0_pin_as_out_or_input , set_port1_pin_as_ou
+ 381              	 .loc 1 147 0
+ 382 0082 F979     	 ldrb r1,[r7,#7]
+ 383 0084 BA79     	 ldrb r2,[r7,#6]
+ 384 0086 7B79     	 ldrb r3,[r7,#5]
+ 385 0088 3948     	 ldr r0,.L6+4
+ 386 008a FFF7FEFF 	 bl IOExp_Configure
+ 148:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, port0, 0);
+ 387              	 .loc 1 148 0
+ 388 008e FA79     	 ldrb r2,[r7,#7]
+ 389 0090 3B79     	 ldrb r3,[r7,#4]
+ 390 0092 3748     	 ldr r0,.L6+4
+ 391 0094 1146     	 mov r1,r2
+ 392 0096 1A46     	 mov r2,r3
+ 393 0098 0023     	 movs r3,#0
+ 394 009a FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 149:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, port0, 1);
+ 395              	 .loc 1 149 0
+ 396 009e FA79     	 ldrb r2,[r7,#7]
+ 397 00a0 3B79     	 ldrb r3,[r7,#4]
+ 398 00a2 3348     	 ldr r0,.L6+4
+ 399 00a4 1146     	 mov r1,r2
+ 400 00a6 1A46     	 mov r2,r3
+ 401 00a8 0123     	 movs r3,#1
+ 402 00aa FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 150:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, port0, 2);
+ 403              	 .loc 1 150 0
+ 404 00ae FA79     	 ldrb r2,[r7,#7]
+ 405 00b0 3B79     	 ldrb r3,[r7,#4]
+ 406 00b2 2F48     	 ldr r0,.L6+4
+ 407 00b4 1146     	 mov r1,r2
+ 408 00b6 1A46     	 mov r2,r3
+ 409 00b8 0223     	 movs r3,#2
+ 410 00ba FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 151:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, port0, 3);
+ 411              	 .loc 1 151 0
+ 412 00be FA79     	 ldrb r2,[r7,#7]
+ 413 00c0 3B79     	 ldrb r3,[r7,#4]
+ 414 00c2 2B48     	 ldr r0,.L6+4
+ 415 00c4 1146     	 mov r1,r2
+ 416 00c6 1A46     	 mov r2,r3
+ 417 00c8 0323     	 movs r3,#3
+ 418 00ca FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 152:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, port1, 0x01);
+ 419              	 .loc 1 152 0
+ 420 00ce FA79     	 ldrb r2,[r7,#7]
+ 421 00d0 FB78     	 ldrb r3,[r7,#3]
+ 422 00d2 2748     	 ldr r0,.L6+4
+ 423 00d4 1146     	 mov r1,r2
+ 424 00d6 1A46     	 mov r2,r3
+ 425 00d8 0123     	 movs r3,#1
+ 426 00da FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 153:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, port1, 0x02);
+ 427              	 .loc 1 153 0
+ 428 00de FA79     	 ldrb r2,[r7,#7]
+ 429 00e0 FB78     	 ldrb r3,[r7,#3]
+ 430 00e2 2348     	 ldr r0,.L6+4
+ 431 00e4 1146     	 mov r1,r2
+ 432 00e6 1A46     	 mov r2,r3
+ 433 00e8 0223     	 movs r3,#2
+ 434 00ea FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 154:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, port1, 0x03);
+ 435              	 .loc 1 154 0
+ 436 00ee FA79     	 ldrb r2,[r7,#7]
+ 437 00f0 FB78     	 ldrb r3,[r7,#3]
+ 438 00f2 1F48     	 ldr r0,.L6+4
+ 439 00f4 1146     	 mov r1,r2
+ 440 00f6 1A46     	 mov r2,r3
+ 441 00f8 0323     	 movs r3,#3
+ 442 00fa FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 155:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, port1, 0x04);
+ 443              	 .loc 1 155 0
+ 444 00fe FA79     	 ldrb r2,[r7,#7]
+ 445 0100 FB78     	 ldrb r3,[r7,#3]
+ 446 0102 1B48     	 ldr r0,.L6+4
+ 447 0104 1146     	 mov r1,r2
+ 448 0106 1A46     	 mov r2,r3
+ 449 0108 0423     	 movs r3,#4
+ 450 010a FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 156:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, port1, 0x05);
+ 451              	 .loc 1 156 0
+ 452 010e FA79     	 ldrb r2,[r7,#7]
+ 453 0110 FB78     	 ldrb r3,[r7,#3]
+ 454 0112 1748     	 ldr r0,.L6+4
+ 455 0114 1146     	 mov r1,r2
+ 456 0116 1A46     	 mov r2,r3
+ 457 0118 0523     	 movs r3,#5
+ 458 011a FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 157:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, port1, 0x06);
+ 459              	 .loc 1 157 0
+ 460 011e FA79     	 ldrb r2,[r7,#7]
+ 461 0120 FB78     	 ldrb r3,[r7,#3]
+ 462 0122 1348     	 ldr r0,.L6+4
+ 463 0124 1146     	 mov r1,r2
+ 464 0126 1A46     	 mov r2,r3
+ 465 0128 0623     	 movs r3,#6
+ 466 012a FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 158:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, port1, 0x07);
+ 467              	 .loc 1 158 0
+ 468 012e FA79     	 ldrb r2,[r7,#7]
+ 469 0130 FB78     	 ldrb r3,[r7,#3]
+ 470 0132 0F48     	 ldr r0,.L6+4
+ 471 0134 1146     	 mov r1,r2
+ 472 0136 1A46     	 mov r2,r3
+ 473 0138 0723     	 movs r3,#7
+ 474 013a FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 159:../Vcu_Init.c **** 
+ 160:../Vcu_Init.c **** 	/* U48 I2C_1 */
+ 161:../Vcu_Init.c **** 	Io_Exp_address = 0x42;
+ 475              	 .loc 1 161 0
+ 476 013e 4223     	 movs r3,#66
+ 477 0140 FB71     	 strb r3,[r7,#7]
+ 162:../Vcu_Init.c **** 	set_port0_pin_as_out_or_input =0XF7;
+ 478              	 .loc 1 162 0
+ 479 0142 F723     	 movs r3,#247
+ 480 0144 BB71     	 strb r3,[r7,#6]
+ 163:../Vcu_Init.c **** 	set_port1_pin_as_out_or_input = 0xFF;
+ 481              	 .loc 1 163 0
+ 482 0146 FF23     	 movs r3,#255
+ 483 0148 7B71     	 strb r3,[r7,#5]
+ 164:../Vcu_Init.c **** 	IOExp_Configure(&I2C_MASTER_1, Io_Exp_address, set_port0_pin_as_out_or_input , set_port1_pin_as_ou
+ 484              	 .loc 1 164 0
+ 485 014a F979     	 ldrb r1,[r7,#7]
+ 486 014c BA79     	 ldrb r2,[r7,#6]
+ 487 014e 7B79     	 ldrb r3,[r7,#5]
+ 488 0150 0748     	 ldr r0,.L6+4
+ 489 0152 FFF7FEFF 	 bl IOExp_Configure
+ 165:../Vcu_Init.c **** 	IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, port0, 3);
+ 490              	 .loc 1 165 0
+ 491 0156 FA79     	 ldrb r2,[r7,#7]
+ 492 0158 3B79     	 ldrb r3,[r7,#4]
+ 493 015a 0548     	 ldr r0,.L6+4
+ 494 015c 1146     	 mov r1,r2
+ 495 015e 1A46     	 mov r2,r3
+ 496 0160 0323     	 movs r3,#3
+ 497 0162 FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 166:../Vcu_Init.c **** 
+ 167:../Vcu_Init.c **** }
+ 498              	 .loc 1 167 0
+ 499 0166 0837     	 adds r7,r7,#8
+ 500              	.LCFI14:
+ 501              	 .cfi_def_cfa_offset 8
+ 502 0168 BD46     	 mov sp,r7
+ 503              	.LCFI15:
+ 504              	 .cfi_def_cfa_register 13
+ 505              	 
+ 506 016a 80BD     	 pop {r7,pc}
+ 507              	.L7:
+ 508              	 .align 2
+ 509              	.L6:
+ 510 016c 00000000 	 .word I2C_MASTER_0
+ 511 0170 00000000 	 .word I2C_MASTER_1
+ 512              	 .cfi_endproc
+ 513              	.LFE607:
+ 515              	 .section .text.digital_io_setoutputlow,"ax",%progbits
+ 516              	 .align 2
+ 517              	 .global digital_io_setoutputlow
+ 518              	 .thumb
+ 519              	 .thumb_func
+ 521              	digital_io_setoutputlow:
+ 522              	.LFB608:
+ 168:../Vcu_Init.c **** 
+ 169:../Vcu_Init.c **** 
+ 170:../Vcu_Init.c **** void digital_io_setoutputlow(Io_Exp_PinMap_t *IO_EXP_PINName_handler)
+ 171:../Vcu_Init.c **** {
+ 523              	 .loc 1 171 0
+ 524              	 .cfi_startproc
+ 525              	 
+ 526              	 
+ 527 0000 80B5     	 push {r7,lr}
+ 528              	.LCFI16:
+ 529              	 .cfi_def_cfa_offset 8
+ 530              	 .cfi_offset 7,-8
+ 531              	 .cfi_offset 14,-4
+ 532 0002 84B0     	 sub sp,sp,#16
+ 533              	.LCFI17:
+ 534              	 .cfi_def_cfa_offset 24
+ 535 0004 00AF     	 add r7,sp,#0
+ 536              	.LCFI18:
+ 537              	 .cfi_def_cfa_register 7
+ 538 0006 7860     	 str r0,[r7,#4]
+ 172:../Vcu_Init.c **** 	uint8_t Io_Exp_address;
+ 173:../Vcu_Init.c **** 
+ 174:../Vcu_Init.c **** 	if((IO_EXP_PINName_handler ->IC_no == 24) || (IO_EXP_PINName_handler ->IC_no == 25))
+ 539              	 .loc 1 174 0
+ 540 0008 7B68     	 ldr r3,[r7,#4]
+ 541 000a 1B78     	 ldrb r3,[r3]
+ 542 000c 182B     	 cmp r3,#24
+ 543 000e 03D0     	 beq .L9
+ 544              	 .loc 1 174 0 is_stmt 0 discriminator 1
+ 545 0010 7B68     	 ldr r3,[r7,#4]
+ 546 0012 1B78     	 ldrb r3,[r3]
+ 547 0014 192B     	 cmp r3,#25
+ 548 0016 10D1     	 bne .L10
+ 549              	.L9:
+ 175:../Vcu_Init.c **** 	{
+ 176:../Vcu_Init.c **** 		Io_Exp_address = 0x40;
+ 550              	 .loc 1 176 0 is_stmt 1
+ 551 0018 4023     	 movs r3,#64
+ 552 001a FB73     	 strb r3,[r7,#15]
+ 177:../Vcu_Init.c **** 
+ 178:../Vcu_Init.c **** 		if(IO_EXP_PINName_handler ->IC_no == 25)
+ 553              	 .loc 1 178 0
+ 554 001c 7B68     	 ldr r3,[r7,#4]
+ 555 001e 1B78     	 ldrb r3,[r3]
+ 556 0020 192B     	 cmp r3,#25
+ 557 0022 01D1     	 bne .L11
+ 179:../Vcu_Init.c **** 			Io_Exp_address = 0x42;
+ 558              	 .loc 1 179 0
+ 559 0024 4223     	 movs r3,#66
+ 560 0026 FB73     	 strb r3,[r7,#15]
+ 561              	.L11:
+ 180:../Vcu_Init.c **** 
+ 181:../Vcu_Init.c **** 		IOExp_SetPIN_LOW(&I2C_MASTER_0, Io_Exp_address, IO_EXP_PINName_handler ->port, IO_EXP_PINName_han
+ 562              	 .loc 1 181 0
+ 563 0028 7B68     	 ldr r3,[r7,#4]
+ 564 002a 5A78     	 ldrb r2,[r3,#1]
+ 565 002c 7B68     	 ldr r3,[r7,#4]
+ 566 002e 9B78     	 ldrb r3,[r3,#2]
+ 567 0030 F97B     	 ldrb r1,[r7,#15]
+ 568 0032 0F48     	 ldr r0,.L15
+ 569 0034 FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 570 0038 17E0     	 b .L8
+ 571              	.L10:
+ 182:../Vcu_Init.c **** 	}
+ 183:../Vcu_Init.c **** 	else if((IO_EXP_PINName_handler ->IC_no == 38) || (IO_EXP_PINName_handler ->IC_no == 48))
+ 572              	 .loc 1 183 0
+ 573 003a 7B68     	 ldr r3,[r7,#4]
+ 574 003c 1B78     	 ldrb r3,[r3]
+ 575 003e 262B     	 cmp r3,#38
+ 576 0040 03D0     	 beq .L13
+ 577              	 .loc 1 183 0 is_stmt 0 discriminator 1
+ 578 0042 7B68     	 ldr r3,[r7,#4]
+ 579 0044 1B78     	 ldrb r3,[r3]
+ 580 0046 302B     	 cmp r3,#48
+ 581 0048 0FD1     	 bne .L8
+ 582              	.L13:
+ 184:../Vcu_Init.c **** 	{
+ 185:../Vcu_Init.c **** 		Io_Exp_address = 0x40;
+ 583              	 .loc 1 185 0 is_stmt 1
+ 584 004a 4023     	 movs r3,#64
+ 585 004c FB73     	 strb r3,[r7,#15]
+ 186:../Vcu_Init.c **** 
+ 187:../Vcu_Init.c **** 		if(IO_EXP_PINName_handler ->IC_no == 48)
+ 586              	 .loc 1 187 0
+ 587 004e 7B68     	 ldr r3,[r7,#4]
+ 588 0050 1B78     	 ldrb r3,[r3]
+ 589 0052 302B     	 cmp r3,#48
+ 590 0054 01D1     	 bne .L14
+ 188:../Vcu_Init.c **** 			Io_Exp_address = 0x42;
+ 591              	 .loc 1 188 0
+ 592 0056 4223     	 movs r3,#66
+ 593 0058 FB73     	 strb r3,[r7,#15]
+ 594              	.L14:
+ 189:../Vcu_Init.c **** 
+ 190:../Vcu_Init.c **** 		IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, IO_EXP_PINName_handler ->port, IO_EXP_PINName_han
+ 595              	 .loc 1 190 0
+ 596 005a 7B68     	 ldr r3,[r7,#4]
+ 597 005c 5A78     	 ldrb r2,[r3,#1]
+ 598 005e 7B68     	 ldr r3,[r7,#4]
+ 599 0060 9B78     	 ldrb r3,[r3,#2]
+ 600 0062 F97B     	 ldrb r1,[r7,#15]
+ 601 0064 0348     	 ldr r0,.L15+4
+ 602 0066 FFF7FEFF 	 bl IOExp_SetPIN_LOW
+ 603              	.L8:
+ 191:../Vcu_Init.c **** 	}
+ 192:../Vcu_Init.c **** 
+ 193:../Vcu_Init.c **** }
+ 604              	 .loc 1 193 0
+ 605 006a 1037     	 adds r7,r7,#16
+ 606              	.LCFI19:
+ 607              	 .cfi_def_cfa_offset 8
+ 608 006c BD46     	 mov sp,r7
+ 609              	.LCFI20:
+ 610              	 .cfi_def_cfa_register 13
+ 611              	 
+ 612 006e 80BD     	 pop {r7,pc}
+ 613              	.L16:
+ 614              	 .align 2
+ 615              	.L15:
+ 616 0070 00000000 	 .word I2C_MASTER_0
+ 617 0074 00000000 	 .word I2C_MASTER_1
+ 618              	 .cfi_endproc
+ 619              	.LFE608:
+ 621              	 .section .text.digital_io_setoutputhigh,"ax",%progbits
+ 622              	 .align 2
+ 623              	 .global digital_io_setoutputhigh
+ 624              	 .thumb
+ 625              	 .thumb_func
+ 627              	digital_io_setoutputhigh:
+ 628              	.LFB609:
+ 194:../Vcu_Init.c **** 
+ 195:../Vcu_Init.c **** 
+ 196:../Vcu_Init.c **** void digital_io_setoutputhigh(Io_Exp_PinMap_t *IO_EXP_PINName_handler)
+ 197:../Vcu_Init.c **** {
+ 629              	 .loc 1 197 0
+ 630              	 .cfi_startproc
+ 631              	 
+ 632              	 
+ 633 0000 80B5     	 push {r7,lr}
+ 634              	.LCFI21:
+ 635              	 .cfi_def_cfa_offset 8
+ 636              	 .cfi_offset 7,-8
+ 637              	 .cfi_offset 14,-4
+ 638 0002 84B0     	 sub sp,sp,#16
+ 639              	.LCFI22:
+ 640              	 .cfi_def_cfa_offset 24
+ 641 0004 00AF     	 add r7,sp,#0
+ 642              	.LCFI23:
+ 643              	 .cfi_def_cfa_register 7
+ 644 0006 7860     	 str r0,[r7,#4]
+ 198:../Vcu_Init.c **** 	uint8_t Io_Exp_address;
+ 199:../Vcu_Init.c **** 
+ 200:../Vcu_Init.c **** 	if((IO_EXP_PINName_handler ->IC_no == 24) || (IO_EXP_PINName_handler ->IC_no == 25))
+ 645              	 .loc 1 200 0
+ 646 0008 7B68     	 ldr r3,[r7,#4]
+ 647 000a 1B78     	 ldrb r3,[r3]
+ 648 000c 182B     	 cmp r3,#24
+ 649 000e 03D0     	 beq .L18
+ 650              	 .loc 1 200 0 is_stmt 0 discriminator 1
+ 651 0010 7B68     	 ldr r3,[r7,#4]
+ 652 0012 1B78     	 ldrb r3,[r3]
+ 653 0014 192B     	 cmp r3,#25
+ 654 0016 10D1     	 bne .L19
+ 655              	.L18:
+ 201:../Vcu_Init.c **** 	{
+ 202:../Vcu_Init.c **** 		Io_Exp_address = 0x40;
+ 656              	 .loc 1 202 0 is_stmt 1
+ 657 0018 4023     	 movs r3,#64
+ 658 001a FB73     	 strb r3,[r7,#15]
+ 203:../Vcu_Init.c **** 
+ 204:../Vcu_Init.c **** 		if(IO_EXP_PINName_handler ->IC_no == 25)
+ 659              	 .loc 1 204 0
+ 660 001c 7B68     	 ldr r3,[r7,#4]
+ 661 001e 1B78     	 ldrb r3,[r3]
+ 662 0020 192B     	 cmp r3,#25
+ 663 0022 01D1     	 bne .L20
+ 205:../Vcu_Init.c **** 			Io_Exp_address = 0x42;
+ 664              	 .loc 1 205 0
+ 665 0024 4223     	 movs r3,#66
+ 666 0026 FB73     	 strb r3,[r7,#15]
+ 667              	.L20:
+ 206:../Vcu_Init.c **** 
+ 207:../Vcu_Init.c **** 		IOExp_SetPIN_HIGH(&I2C_MASTER_0, Io_Exp_address, IO_EXP_PINName_handler ->port, IO_EXP_PINName_ha
+ 668              	 .loc 1 207 0
+ 669 0028 7B68     	 ldr r3,[r7,#4]
+ 670 002a 5A78     	 ldrb r2,[r3,#1]
+ 671 002c 7B68     	 ldr r3,[r7,#4]
+ 672 002e 9B78     	 ldrb r3,[r3,#2]
+ 673 0030 F97B     	 ldrb r1,[r7,#15]
+ 674 0032 0F48     	 ldr r0,.L24
+ 675 0034 FFF7FEFF 	 bl IOExp_SetPIN_HIGH
+ 676 0038 17E0     	 b .L17
+ 677              	.L19:
+ 208:../Vcu_Init.c **** 	}
+ 209:../Vcu_Init.c **** 	else if((IO_EXP_PINName_handler ->IC_no == 38) || (IO_EXP_PINName_handler ->IC_no == 48))
+ 678              	 .loc 1 209 0
+ 679 003a 7B68     	 ldr r3,[r7,#4]
+ 680 003c 1B78     	 ldrb r3,[r3]
+ 681 003e 262B     	 cmp r3,#38
+ 682 0040 03D0     	 beq .L22
+ 683              	 .loc 1 209 0 is_stmt 0 discriminator 1
+ 684 0042 7B68     	 ldr r3,[r7,#4]
+ 685 0044 1B78     	 ldrb r3,[r3]
+ 686 0046 302B     	 cmp r3,#48
+ 687 0048 0FD1     	 bne .L17
+ 688              	.L22:
+ 210:../Vcu_Init.c **** 	{
+ 211:../Vcu_Init.c **** 		Io_Exp_address = 0x40;
+ 689              	 .loc 1 211 0 is_stmt 1
+ 690 004a 4023     	 movs r3,#64
+ 691 004c FB73     	 strb r3,[r7,#15]
+ 212:../Vcu_Init.c **** 
+ 213:../Vcu_Init.c **** 		if(IO_EXP_PINName_handler ->IC_no == 48)
+ 692              	 .loc 1 213 0
+ 693 004e 7B68     	 ldr r3,[r7,#4]
+ 694 0050 1B78     	 ldrb r3,[r3]
+ 695 0052 302B     	 cmp r3,#48
+ 696 0054 01D1     	 bne .L23
+ 214:../Vcu_Init.c **** 			Io_Exp_address = 0x42;
+ 697              	 .loc 1 214 0
+ 698 0056 4223     	 movs r3,#66
+ 699 0058 FB73     	 strb r3,[r7,#15]
+ 700              	.L23:
+ 215:../Vcu_Init.c **** 
+ 216:../Vcu_Init.c **** 		IOExp_SetPIN_HIGH(&I2C_MASTER_1, Io_Exp_address, IO_EXP_PINName_handler ->port, IO_EXP_PINName_ha
+ 701              	 .loc 1 216 0
+ 702 005a 7B68     	 ldr r3,[r7,#4]
+ 703 005c 5A78     	 ldrb r2,[r3,#1]
+ 704 005e 7B68     	 ldr r3,[r7,#4]
+ 705 0060 9B78     	 ldrb r3,[r3,#2]
+ 706 0062 F97B     	 ldrb r1,[r7,#15]
+ 707 0064 0348     	 ldr r0,.L24+4
+ 708 0066 FFF7FEFF 	 bl IOExp_SetPIN_HIGH
+ 709              	.L17:
+ 217:../Vcu_Init.c **** 	}
+ 218:../Vcu_Init.c **** 
+ 219:../Vcu_Init.c **** }
+ 710              	 .loc 1 219 0
+ 711 006a 1037     	 adds r7,r7,#16
+ 712              	.LCFI24:
+ 713              	 .cfi_def_cfa_offset 8
+ 714 006c BD46     	 mov sp,r7
+ 715              	.LCFI25:
+ 716              	 .cfi_def_cfa_register 13
+ 717              	 
+ 718 006e 80BD     	 pop {r7,pc}
+ 719              	.L25:
+ 720              	 .align 2
+ 721              	.L24:
+ 722 0070 00000000 	 .word I2C_MASTER_0
+ 723 0074 00000000 	 .word I2C_MASTER_1
+ 724              	 .cfi_endproc
+ 725              	.LFE609:
+ 727              	 .section .text.Delay,"ax",%progbits
+ 728              	 .align 2
+ 729              	 .global Delay
+ 730              	 .thumb
+ 731              	 .thumb_func
+ 733              	Delay:
+ 734              	.LFB610:
+ 220:../Vcu_Init.c **** 
+ 221:../Vcu_Init.c **** void Delay(uint32_t delay_ms)
+ 222:../Vcu_Init.c **** {
+ 735              	 .loc 1 222 0
+ 736              	 .cfi_startproc
+ 737              	 
+ 738              	 
+ 739 0000 80B5     	 push {r7,lr}
+ 740              	.LCFI26:
+ 741              	 .cfi_def_cfa_offset 8
+ 742              	 .cfi_offset 7,-8
+ 743              	 .cfi_offset 14,-4
+ 744 0002 84B0     	 sub sp,sp,#16
+ 745              	.LCFI27:
+ 746              	 .cfi_def_cfa_offset 24
+ 747 0004 00AF     	 add r7,sp,#0
+ 748              	.LCFI28:
+ 749              	 .cfi_def_cfa_register 7
+ 750 0006 7860     	 str r0,[r7,#4]
+ 223:../Vcu_Init.c **** 	uint32_t delay_cnt;
+ 224:../Vcu_Init.c **** 
+ 225:../Vcu_Init.c **** 	TIMER_ClearEvent(&TIMER_0);
+ 751              	 .loc 1 225 0
+ 752 0008 0F48     	 ldr r0,.L28
+ 753 000a FFF7FEFF 	 bl TIMER_ClearEvent
+ 226:../Vcu_Init.c **** 
+ 227:../Vcu_Init.c ****    delay_cnt = delay_ms * 100000;//TIMER_DELAY_MUL_FACTOR;
+ 754              	 .loc 1 227 0
+ 755 000e 7B68     	 ldr r3,[r7,#4]
+ 756 0010 0E4A     	 ldr r2,.L28+4
+ 757 0012 02FB03F3 	 mul r3,r2,r3
+ 758 0016 FB60     	 str r3,[r7,#12]
+ 228:../Vcu_Init.c **** 
+ 229:../Vcu_Init.c ****    TIMER_SetTimeInterval(&TIMER_0,delay_cnt);
+ 759              	 .loc 1 229 0
+ 760 0018 0B48     	 ldr r0,.L28
+ 761 001a F968     	 ldr r1,[r7,#12]
+ 762 001c FFF7FEFF 	 bl TIMER_SetTimeInterval
+ 230:../Vcu_Init.c **** 
+ 231:../Vcu_Init.c ****    TIMER_Start(&TIMER_0);
+ 763              	 .loc 1 231 0
+ 764 0020 0948     	 ldr r0,.L28
+ 765 0022 FFF7FEFF 	 bl TIMER_Start
+ 232:../Vcu_Init.c **** 
+ 233:../Vcu_Init.c ****    while(!TIMER_GetInterruptStatus(&TIMER_0));
+ 766              	 .loc 1 233 0
+ 767 0026 00BF     	 nop
+ 768              	.L27:
+ 769              	 .loc 1 233 0 is_stmt 0 discriminator 1
+ 770 0028 0748     	 ldr r0,.L28
+ 771 002a FFF7FEFF 	 bl TIMER_GetInterruptStatus
+ 772 002e 0346     	 mov r3,r0
+ 773 0030 83F00103 	 eor r3,r3,#1
+ 774 0034 DBB2     	 uxtb r3,r3
+ 775 0036 002B     	 cmp r3,#0
+ 776 0038 F6D1     	 bne .L27
+ 234:../Vcu_Init.c **** 
+ 235:../Vcu_Init.c ****    TIMER_Stop(&TIMER_0);
+ 777              	 .loc 1 235 0 is_stmt 1
+ 778 003a 0348     	 ldr r0,.L28
+ 779 003c FFF7FEFF 	 bl TIMER_Stop
+ 236:../Vcu_Init.c **** 
+ 237:../Vcu_Init.c **** }
+ 780              	 .loc 1 237 0
+ 781 0040 1037     	 adds r7,r7,#16
+ 782              	.LCFI29:
+ 783              	 .cfi_def_cfa_offset 8
+ 784 0042 BD46     	 mov sp,r7
+ 785              	.LCFI30:
+ 786              	 .cfi_def_cfa_register 13
+ 787              	 
+ 788 0044 80BD     	 pop {r7,pc}
+ 789              	.L29:
+ 790 0046 00BF     	 .align 2
+ 791              	.L28:
+ 792 0048 00000000 	 .word TIMER_0
+ 793 004c A0860100 	 .word 100000
+ 794              	 .cfi_endproc
+ 795              	.LFE610:
+ 797              	 .section .text.SuperLooptime_Start,"ax",%progbits
+ 798              	 .align 2
+ 799              	 .global SuperLooptime_Start
+ 800              	 .thumb
+ 801              	 .thumb_func
+ 803              	SuperLooptime_Start:
+ 804              	.LFB611:
+ 238:../Vcu_Init.c **** 
+ 239:../Vcu_Init.c **** void SuperLooptime_Start(void)
+ 240:../Vcu_Init.c **** {
+ 805              	 .loc 1 240 0
+ 806              	 .cfi_startproc
+ 807              	 
+ 808              	 
+ 809 0000 80B5     	 push {r7,lr}
+ 810              	.LCFI31:
+ 811              	 .cfi_def_cfa_offset 8
+ 812              	 .cfi_offset 7,-8
+ 813              	 .cfi_offset 14,-4
+ 814 0002 82B0     	 sub sp,sp,#8
+ 815              	.LCFI32:
+ 816              	 .cfi_def_cfa_offset 16
+ 817 0004 00AF     	 add r7,sp,#0
+ 818              	.LCFI33:
+ 819              	 .cfi_def_cfa_register 7
+ 241:../Vcu_Init.c **** 	TIMER_STATUS_t timer_status;
+ 242:../Vcu_Init.c **** 
+ 243:../Vcu_Init.c **** 	timer_status = TIMER_Start(&TIMER_1);
+ 820              	 .loc 1 243 0
+ 821 0006 0848     	 ldr r0,.L32
+ 822 0008 FFF7FEFF 	 bl TIMER_Start
+ 823 000c 0346     	 mov r3,r0
+ 824 000e FB71     	 strb r3,[r7,#7]
+ 244:../Vcu_Init.c **** 	if(timer_status == TIMER_STATUS_SUCCESS)
+ 825              	 .loc 1 244 0
+ 826 0010 FB79     	 ldrb r3,[r7,#7]
+ 827 0012 002B     	 cmp r3,#0
+ 828 0014 05D1     	 bne .L30
+ 245:../Vcu_Init.c **** 		Start_Time = TIMER_GetTime(&TIMER_1);
+ 829              	 .loc 1 245 0
+ 830 0016 0448     	 ldr r0,.L32
+ 831 0018 FFF7FEFF 	 bl TIMER_GetTime
+ 832 001c 0246     	 mov r2,r0
+ 833 001e 034B     	 ldr r3,.L32+4
+ 834 0020 1A60     	 str r2,[r3]
+ 835              	.L30:
+ 246:../Vcu_Init.c **** }
+ 836              	 .loc 1 246 0
+ 837 0022 0837     	 adds r7,r7,#8
+ 838              	.LCFI34:
+ 839              	 .cfi_def_cfa_offset 8
+ 840 0024 BD46     	 mov sp,r7
+ 841              	.LCFI35:
+ 842              	 .cfi_def_cfa_register 13
+ 843              	 
+ 844 0026 80BD     	 pop {r7,pc}
+ 845              	.L33:
+ 846              	 .align 2
+ 847              	.L32:
+ 848 0028 00000000 	 .word TIMER_1
+ 849 002c 00000000 	 .word Start_Time
+ 850              	 .cfi_endproc
+ 851              	.LFE611:
+ 853              	 .global __aeabi_ui2d
+ 854              	 .global __aeabi_ddiv
+ 855              	 .section .text.SuperLooptime_End,"ax",%progbits
+ 856              	 .align 2
+ 857              	 .global SuperLooptime_End
+ 858              	 .thumb
+ 859              	 .thumb_func
+ 861              	SuperLooptime_End:
+ 862              	.LFB612:
+ 247:../Vcu_Init.c **** 
+ 248:../Vcu_Init.c **** void SuperLooptime_End(void)
+ 249:../Vcu_Init.c **** {
+ 863              	 .loc 1 249 0
+ 864              	 .cfi_startproc
+ 865              	 
+ 866              	 
+ 867 0000 80B5     	 push {r7,lr}
+ 868              	.LCFI36:
+ 869              	 .cfi_def_cfa_offset 8
+ 870              	 .cfi_offset 7,-8
+ 871              	 .cfi_offset 14,-4
+ 872 0002 82B0     	 sub sp,sp,#8
+ 873              	.LCFI37:
+ 874              	 .cfi_def_cfa_offset 16
+ 875 0004 00AF     	 add r7,sp,#0
+ 876              	.LCFI38:
+ 877              	 .cfi_def_cfa_register 7
+ 250:../Vcu_Init.c **** 	TIMER_STATUS_t timer_status;
+ 251:../Vcu_Init.c **** 	SuperLoop_Time = 0;
+ 878              	 .loc 1 251 0
+ 879 0006 3A49     	 ldr r1,.L36+16
+ 880 0008 4FF00002 	 mov r2,#0
+ 881 000c 4FF00003 	 mov r3,#0
+ 882 0010 C1E90023 	 strd r2,[r1]
+ 252:../Vcu_Init.c **** 
+ 253:../Vcu_Init.c **** 	timer_status = TIMER_Stop(&TIMER_1);
+ 883              	 .loc 1 253 0
+ 884 0014 3748     	 ldr r0,.L36+20
+ 885 0016 FFF7FEFF 	 bl TIMER_Stop
+ 886 001a 0346     	 mov r3,r0
+ 887 001c FB71     	 strb r3,[r7,#7]
+ 254:../Vcu_Init.c **** 	if(timer_status == TIMER_STATUS_SUCCESS)
+ 888              	 .loc 1 254 0
+ 889 001e FB79     	 ldrb r3,[r7,#7]
+ 890 0020 002B     	 cmp r3,#0
+ 891 0022 54D1     	 bne .L35
+ 255:../Vcu_Init.c **** 	{
+ 256:../Vcu_Init.c **** 		End_Time = (uint32_t)TIMER_GetTime(&TIMER_1);
+ 892              	 .loc 1 256 0
+ 893 0024 3348     	 ldr r0,.L36+20
+ 894 0026 FFF7FEFF 	 bl TIMER_GetTime
+ 895 002a 0246     	 mov r2,r0
+ 896 002c 324B     	 ldr r3,.L36+24
+ 897 002e 1A60     	 str r2,[r3]
+ 257:../Vcu_Init.c **** 		SuperLoop_Time = (End_Time - Start_Time);
+ 898              	 .loc 1 257 0
+ 899 0030 314B     	 ldr r3,.L36+24
+ 900 0032 1A68     	 ldr r2,[r3]
+ 901 0034 314B     	 ldr r3,.L36+28
+ 902 0036 1B68     	 ldr r3,[r3]
+ 903 0038 D31A     	 subs r3,r2,r3
+ 904 003a 1846     	 mov r0,r3
+ 905 003c FFF7FEFF 	 bl __aeabi_ui2d
+ 906 0040 0246     	 mov r2,r0
+ 907 0042 0B46     	 mov r3,r1
+ 908 0044 2A49     	 ldr r1,.L36+16
+ 909 0046 C1E90023 	 strd r2,[r1]
+ 258:../Vcu_Init.c **** 		SuperLoop_Time_usec = (End_Time - Start_Time) / 100.0;
+ 910              	 .loc 1 258 0
+ 911 004a 2B4B     	 ldr r3,.L36+24
+ 912 004c 1A68     	 ldr r2,[r3]
+ 913 004e 2B4B     	 ldr r3,.L36+28
+ 914 0050 1B68     	 ldr r3,[r3]
+ 915 0052 D31A     	 subs r3,r2,r3
+ 916 0054 1846     	 mov r0,r3
+ 917 0056 FFF7FEFF 	 bl __aeabi_ui2d
+ 918 005a 0246     	 mov r2,r0
+ 919 005c 0B46     	 mov r3,r1
+ 920 005e 1046     	 mov r0,r2
+ 921 0060 1946     	 mov r1,r3
+ 922 0062 4FF00002 	 mov r2,#0
+ 923 0066 264B     	 ldr r3,.L36+32
+ 924 0068 FFF7FEFF 	 bl __aeabi_ddiv
+ 925 006c 0246     	 mov r2,r0
+ 926 006e 0B46     	 mov r3,r1
+ 927 0070 2449     	 ldr r1,.L36+36
+ 928 0072 C1E90023 	 strd r2,[r1]
+ 259:../Vcu_Init.c **** 		SuperLoop_Time_msec = (End_Time - Start_Time) / 100000.0;
+ 929              	 .loc 1 259 0
+ 930 0076 204B     	 ldr r3,.L36+24
+ 931 0078 1A68     	 ldr r2,[r3]
+ 932 007a 204B     	 ldr r3,.L36+28
+ 933 007c 1B68     	 ldr r3,[r3]
+ 934 007e D31A     	 subs r3,r2,r3
+ 935 0080 1846     	 mov r0,r3
+ 936 0082 FFF7FEFF 	 bl __aeabi_ui2d
+ 937 0086 0246     	 mov r2,r0
+ 938 0088 0B46     	 mov r3,r1
+ 939 008a 1046     	 mov r0,r2
+ 940 008c 1946     	 mov r1,r3
+ 941 008e 14A3     	 adr r3,.L36
+ 942 0090 D3E90023 	 ldrd r2,[r3]
+ 943 0094 FFF7FEFF 	 bl __aeabi_ddiv
+ 944 0098 0246     	 mov r2,r0
+ 945 009a 0B46     	 mov r3,r1
+ 946 009c 1A49     	 ldr r1,.L36+40
+ 947 009e C1E90023 	 strd r2,[r1]
+ 260:../Vcu_Init.c **** 		SuperLoop_Time_sec = (End_Time - Start_Time) / 100000000.0;
+ 948              	 .loc 1 260 0
+ 949 00a2 154B     	 ldr r3,.L36+24
+ 950 00a4 1A68     	 ldr r2,[r3]
+ 951 00a6 154B     	 ldr r3,.L36+28
+ 952 00a8 1B68     	 ldr r3,[r3]
+ 953 00aa D31A     	 subs r3,r2,r3
+ 954 00ac 1846     	 mov r0,r3
+ 955 00ae FFF7FEFF 	 bl __aeabi_ui2d
+ 956 00b2 0246     	 mov r2,r0
+ 957 00b4 0B46     	 mov r3,r1
+ 958 00b6 1046     	 mov r0,r2
+ 959 00b8 1946     	 mov r1,r3
+ 960 00ba 0BA3     	 adr r3,.L36+8
+ 961 00bc D3E90023 	 ldrd r2,[r3]
+ 962 00c0 FFF7FEFF 	 bl __aeabi_ddiv
+ 963 00c4 0246     	 mov r2,r0
+ 964 00c6 0B46     	 mov r3,r1
+ 965 00c8 1049     	 ldr r1,.L36+44
+ 966 00ca C1E90023 	 strd r2,[r1]
+ 967              	.L35:
+ 261:../Vcu_Init.c **** 
+ 262:../Vcu_Init.c **** 		//itoa();
+ 263:../Vcu_Init.c **** 	}
+ 264:../Vcu_Init.c **** 
+ 265:../Vcu_Init.c **** 	TIMER_Clear(&TIMER_1);
+ 968              	 .loc 1 265 0
+ 969 00ce 0948     	 ldr r0,.L36+20
+ 970 00d0 FFF7FEFF 	 bl TIMER_Clear
+ 266:../Vcu_Init.c **** }
+ 971              	 .loc 1 266 0
+ 972 00d4 0837     	 adds r7,r7,#8
+ 973              	.LCFI39:
+ 974              	 .cfi_def_cfa_offset 8
+ 975 00d6 BD46     	 mov sp,r7
+ 976              	.LCFI40:
+ 977              	 .cfi_def_cfa_register 13
+ 978              	 
+ 979 00d8 80BD     	 pop {r7,pc}
+ 980              	.L37:
+ 981 00da 00BFAFF3 	 .align 3
+ 981      0080
+ 982              	.L36:
+ 983 00e0 00000000 	 .word 0
+ 984 00e4 006AF840 	 .word 1090021888
+ 985 00e8 00000000 	 .word 0
+ 986 00ec 84D79741 	 .word 1100470148
+ 987 00f0 00000000 	 .word SuperLoop_Time
+ 988 00f4 00000000 	 .word TIMER_1
+ 989 00f8 00000000 	 .word End_Time
+ 990 00fc 00000000 	 .word Start_Time
+ 991 0100 00005940 	 .word 1079574528
+ 992 0104 00000000 	 .word SuperLoop_Time_usec
+ 993 0108 00000000 	 .word SuperLoop_Time_msec
+ 994 010c 00000000 	 .word SuperLoop_Time_sec
+ 995              	 .cfi_endproc
+ 996              	.LFE612:
+ 998              	 .text
+ 999              	.Letext0:
+ 1000              	 .file 2 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 1001              	 .file 3 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 1002              	 .file 4 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Infineon/XMC4700_series/Include/XMC4700.h"
+ 1003              	 .file 5 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_gpio.h"
+ 1004              	 .file 6 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 1005              	 .file 7 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc4_scu.h"
+ 1006              	 .file 8 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_usic.h"
+ 1007              	 .file 9 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_i2c.h"
+ 1008              	 .file 10 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/I2C_MASTER/i2c_master.h"
+ 1009              	 .file 11 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_ccu4.h"
+ 1010              	 .file 12 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/GLOBAL_CCU4/global_ccu4.h"
+ 1011              	 .file 13 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_ccu8.h"
+ 1012              	 .file 14 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/GLOBAL_CCU8/global_ccu8.h"
+ 1013              	 .file 15 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/TIMER/timer.h"
+ 1014              	 .file 16 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_uart.h"
+ 1015              	 .file 17 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/UART/uart.h"
+ 1016              	 .file 18 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_spi.h"
+ 1017              	 .file 19 "../Vcu_Init.h"
+ 1018              	 .file 20 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Include/cmsis_gcc.h"
+ 1019              	 .file 21 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Include/core_cm4.h"
+ 1020              	 .file 22 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Infineon/XMC4700_series/Include/system_XMC4700.h"
+ 1021              	 .file 23 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/I2C_MASTER/i2c_master_extern.h"
+ 1022              	 .file 24 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/TIMER/timer_extern.h"
+ 1023              	 .file 25 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/UART/uart_extern.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 Vcu_Init.c
+    {standard input}:24     .data.AUX_EFUSE_2_OUT_D:00000000 AUX_EFUSE_2_OUT_D
+    {standard input}:21     .data.AUX_EFUSE_2_OUT_D:00000000 $d
+                            *COM*:00000003 HV_BATT_FAN_PWR_OUT
+    {standard input}:34     .data.ORVM_OPEN_OUT_D:00000000 ORVM_OPEN_OUT_D
+    {standard input}:31     .data.ORVM_OPEN_OUT_D:00000000 $d
+    {standard input}:43     .data.ORVM_FOLD_OUT_D:00000000 ORVM_FOLD_OUT_D
+    {standard input}:40     .data.ORVM_FOLD_OUT_D:00000000 $d
+    {standard input}:52     .data.ORVM_PWR_OUT_D:00000000 ORVM_PWR_OUT_D
+    {standard input}:49     .data.ORVM_PWR_OUT_D:00000000 $d
+    {standard input}:61     .data.AC_BLOWER_SPEED1_OUT_D:00000000 AC_BLOWER_SPEED1_OUT_D
+    {standard input}:58     .data.AC_BLOWER_SPEED1_OUT_D:00000000 $d
+    {standard input}:70     .data.AC_BLOWER_SPEED2_OUT_D:00000000 AC_BLOWER_SPEED2_OUT_D
+    {standard input}:67     .data.AC_BLOWER_SPEED2_OUT_D:00000000 $d
+    {standard input}:79     .data.AC_BLOWER_SPEED3_OUT_D:00000000 AC_BLOWER_SPEED3_OUT_D
+    {standard input}:76     .data.AC_BLOWER_SPEED3_OUT_D:00000000 $d
+    {standard input}:88     .data.AC_SOL_PWR_OUT_D:00000000 AC_SOL_PWR_OUT_D
+    {standard input}:85     .data.AC_SOL_PWR_OUT_D:00000000 $d
+    {standard input}:97     .data.AUX_EFUSE_3_OUT_D:00000000 AUX_EFUSE_3_OUT_D
+    {standard input}:94     .data.AUX_EFUSE_3_OUT_D:00000000 $d
+    {standard input}:106    .data.AUX_EFUSE_4_OUT_D:00000000 AUX_EFUSE_4_OUT_D
+    {standard input}:103    .data.AUX_EFUSE_4_OUT_D:00000000 $d
+    {standard input}:115    .data.AUX_EFUSE_5_OUT_D:00000000 AUX_EFUSE_5_OUT_D
+    {standard input}:112    .data.AUX_EFUSE_5_OUT_D:00000000 $d
+    {standard input}:124    .data.AUX_MOSFET_OUT3_D:00000000 AUX_MOSFET_OUT3_D
+    {standard input}:121    .data.AUX_MOSFET_OUT3_D:00000000 $d
+    {standard input}:133    .data.SUNROOF_PWR_OUT_D:00000000 SUNROOF_PWR_OUT_D
+    {standard input}:130    .data.SUNROOF_PWR_OUT_D:00000000 $d
+    {standard input}:142    .data.HV_CHARGER_EN_OUT_D:00000000 HV_CHARGER_EN_OUT_D
+    {standard input}:139    .data.HV_CHARGER_EN_OUT_D:00000000 $d
+    {standard input}:151    .data.AC_COMPRESSOR_OUT_D:00000000 AC_COMPRESSOR_OUT_D
+    {standard input}:148    .data.AC_COMPRESSOR_OUT_D:00000000 $d
+    {standard input}:160    .data.ELEC_HANDBRAKE_PWR_OUT_D:00000000 ELEC_HANDBRAKE_PWR_OUT_D
+    {standard input}:157    .data.ELEC_HANDBRAKE_PWR_OUT_D:00000000 $d
+                            *COM*:00000008 SuperLoop_Time
+                            *COM*:00000008 SuperLoop_Time_usec
+                            *COM*:00000008 SuperLoop_Time_msec
+                            *COM*:00000008 SuperLoop_Time_sec
+                            *COM*:00000004 End_Time
+                            *COM*:00000004 Start_Time
+                            *COM*:00000001 CState
+                            *COM*:00000001 PreState
+    {standard input}:177    .data.HV_BATT_FAN_PWR_OUT_D:00000000 HV_BATT_FAN_PWR_OUT_D
+    {standard input}:174    .data.HV_BATT_FAN_PWR_OUT_D:00000000 $d
+    {standard input}:182    .text.uart_debugg:00000000 $t
+    {standard input}:187    .text.uart_debugg:00000000 uart_debugg
+    {standard input}:223    .rodata:00000000 $d
+    {standard input}:230    .text.uart_debugg4g:00000000 $t
+    {standard input}:235    .text.uart_debugg4g:00000000 uart_debugg4g
+    {standard input}:286    .text.uart_debugg4g:00000038 $d
+    {standard input}:293    .text.Io_Exp_Init:00000000 $t
+    {standard input}:298    .text.Io_Exp_Init:00000000 Io_Exp_Init
+    {standard input}:510    .text.Io_Exp_Init:0000016c $d
+    {standard input}:516    .text.digital_io_setoutputlow:00000000 $t
+    {standard input}:521    .text.digital_io_setoutputlow:00000000 digital_io_setoutputlow
+    {standard input}:616    .text.digital_io_setoutputlow:00000070 $d
+    {standard input}:622    .text.digital_io_setoutputhigh:00000000 $t
+    {standard input}:627    .text.digital_io_setoutputhigh:00000000 digital_io_setoutputhigh
+    {standard input}:722    .text.digital_io_setoutputhigh:00000070 $d
+    {standard input}:728    .text.Delay:00000000 $t
+    {standard input}:733    .text.Delay:00000000 Delay
+    {standard input}:792    .text.Delay:00000048 $d
+    {standard input}:798    .text.SuperLooptime_Start:00000000 $t
+    {standard input}:803    .text.SuperLooptime_Start:00000000 SuperLooptime_Start
+    {standard input}:848    .text.SuperLooptime_Start:00000028 $d
+    {standard input}:856    .text.SuperLooptime_End:00000000 $t
+    {standard input}:861    .text.SuperLooptime_End:00000000 SuperLooptime_End
+    {standard input}:983    .text.SuperLooptime_End:000000e0 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+strlen
+UART_Transmit
+UART_0
+IOExp_Configure
+IOExp_SetPIN_LOW
+I2C_MASTER_0
+I2C_MASTER_1
+IOExp_SetPIN_HIGH
+TIMER_ClearEvent
+TIMER_SetTimeInterval
+TIMER_Start
+TIMER_GetInterruptStatus
+TIMER_Stop
+TIMER_0
+TIMER_GetTime
+TIMER_1
+__aeabi_ui2d
+__aeabi_ddiv
+TIMER_Clear

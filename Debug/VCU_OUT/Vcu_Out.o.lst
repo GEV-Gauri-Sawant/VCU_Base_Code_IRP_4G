@@ -1,0 +1,1753 @@
+   1              	 .syntax unified
+   2              	 .cpu cortex-m4
+   3              	 .eabi_attribute 27,3
+   4              	 .fpu fpv4-sp-d16
+   5              	 .eabi_attribute 20,1
+   6              	 .eabi_attribute 21,1
+   7              	 .eabi_attribute 23,3
+   8              	 .eabi_attribute 24,1
+   9              	 .eabi_attribute 25,1
+  10              	 .eabi_attribute 26,1
+  11              	 .eabi_attribute 30,6
+  12              	 .eabi_attribute 34,1
+  13              	 .eabi_attribute 18,4
+  14              	 .thumb
+  15              	 .file "Vcu_Out.c"
+  16              	 .text
+  17              	.Ltext0:
+  18              	 .cfi_sections .debug_frame
+  19              	 .section .text.XMC_GPIO_SetOutputHigh,"ax",%progbits
+  20              	 .align 2
+  21              	 .thumb
+  22              	 .thumb_func
+  24              	XMC_GPIO_SetOutputHigh:
+  25              	.LFB135:
+  26              	 .file 1 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_gpio.h"
+   1:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+   2:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @file xmc_gpio.h
+   3:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @date 2015-06-20
+   4:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+   5:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @cond
+   6:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *****************************************************************************
+   7:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMClib v2.2.0 - XMC Peripheral Driver Library
+   8:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+   9:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Copyright (c) 2015-2020, Infineon Technologies AG
+  10:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * All rights reserved.
+  11:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  12:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Boost Software License - Version 1.0 - August 17th, 2003
+  13:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  14:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Permission is hereby granted, free of charge, to any person or organization
+  15:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * obtaining a copy of the software and accompanying documentation covered by
+  16:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * this license (the "Software") to use, reproduce, display, distribute,
+  17:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * execute, and transmit the Software, and to prepare derivative works of the
+  18:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Software, and to permit third-parties to whom the Software is furnished to
+  19:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * do so, all subject to the following:
+  20:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  21:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * The copyright notices in the Software and this entire statement, including
+  22:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * the above license grant, this restriction and the following disclaimer,
+  23:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * must be included in all copies of the Software, in whole or in part, and
+  24:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * all derivative works of the Software, unless such copies or derivative
+  25:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * works are solely in the form of machine-executable object code generated by
+  26:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * a source language processor.
+  27:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  28:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  29:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  30:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * FITNESS FOR A PARTICULAR PURPOSE, TITLE AND NON-INFRINGEMENT. IN NO EVENT
+  31:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * SHALL THE COPYRIGHT HOLDERS OR ANYONE DISTRIBUTING THE SOFTWARE BE LIABLE
+  32:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * FOR ANY DAMAGES OR OTHER LIABILITY, WHETHER IN CONTRACT, TORT OR OTHERWISE,
+  33:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER
+  34:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * DEALINGS IN THE SOFTWARE.
+  35:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  36:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * To improve the quality of the software, users are encouraged to share
+  37:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * modifications, enhancements or bug fixes with Infineon Technologies AG
+  38:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * at XMCSupport@infineon.com.
+  39:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *****************************************************************************
+  40:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  41:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Change History
+  42:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * --------------
+  43:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  44:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * 2015-02-20:
+  45:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Initial draft<br>
+  46:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Documentation improved <br>
+  47:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  48:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * 2015-06-20:
+  49:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *     - Removed version macros and declaration of GetDriverVersion API
+  50:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  51:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @endcond
+  52:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  53:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  54:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  55:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #ifndef XMC_GPIO_H
+  56:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_H
+  57:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  58:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+  59:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * HEADER FILES
+  60:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+  61:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  62:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc_common.h"
+  63:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  64:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+  65:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @addtogroup XMClib XMC Peripheral Library
+  66:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @{
+  67:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  68:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  69:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+  70:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @addtogroup GPIO
+  71:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @brief General Purpose Input Output (GPIO) driver for the XMC microcontroller family.
+  72:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  73:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * GPIO driver provide a generic and very flexible software interface for all standard digital I/O 
+  74:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Each port slice has individual interfaces for the operation as General Purpose I/O and it furthe
+  75:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * connectivity to the on-chip periphery and the control for the pad characteristics.
+  76:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  77:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * The driver is divided into Input and Output mode.
+  78:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  79:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Input mode features:
+  80:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Configuration structure XMC_GPIO_CONFIG_t and initialization function XMC_GPIO_Init()
+  81:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of weak pull-up or pull-down device. Configuration structure XMC_GPIO_MO
+  82:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC1
+  83:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of input hysteresis. XMC_GPIO_SetInputHysteresis()
+  84:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+  85:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  86:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  87:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Output mode features:
+  88:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of push pull/open drain and Alternate output. Configuration structure XM
+  89:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC4
+  90:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of pad driver strength. Configuration structure XMC_GPIO_OUTPUT_STRENGTH
+  91:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+  92:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  93:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * -# Allows the selection of initial output level. Configuration structure XMC_GPIO_OUTPUT_LEVEL_t
+  94:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+  95:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *@{
+  96:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+  97:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+  98:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+  99:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * MACROS
+ 100:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 101:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 102:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Pos PORT0_IOCR0_PC0_Pos
+ 103:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Msk PORT0_IOCR0_PC0_Msk
+ 104:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 105:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #define PORT_IOCR_PC_Size 				(8U)
+ 106:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 107:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 108:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_CHECK_OUTPUT_LEVEL(level) ((level == XMC_GPIO_OUTPUT_LEVEL_LOW) || \
+ 109:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****                                             (level == XMC_GPIO_OUTPUT_LEVEL_HIGH))
+ 110:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 111:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #define XMC_GPIO_CHECK_HWCTRL(hwctrl) ((hwctrl == XMC_GPIO_HWCTRL_DISABLED) || \
+ 112:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****                                        (hwctrl == XMC_GPIO_HWCTRL_PERIPHERAL1) || \
+ 113:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****                                        (hwctrl == XMC_GPIO_HWCTRL_PERIPHERAL2))
+ 114:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 115:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 116:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * ENUMS
+ 117:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 118:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 119:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 120:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 121:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Defines output level of a pin. Use type \a XMC_GPIO_OUTPUT_LEVEL_t for this enum.
+ 122:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 123:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** typedef enum XMC_GPIO_OUTPUT_LEVEL
+ 124:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 125:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_OUTPUT_LEVEL_LOW  = 0x10000U, /**<  Reset bit */
+ 126:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_OUTPUT_LEVEL_HIGH = 0x1U, 	/**< Set bit  */
+ 127:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** } XMC_GPIO_OUTPUT_LEVEL_t;
+ 128:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 129:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 130:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Defines direct hardware control characteristics of the pin . Use type \a XMC_GPIO_HWCTRL_t for t
+ 131:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 132:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** typedef enum XMC_GPIO_HWCTRL
+ 133:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 134:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_DISABLED     = 0x0U, /**<  Software control only */
+ 135:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_PERIPHERAL1  = 0x1U, /**<  HWI0/HWO0 control path can override the software confi
+ 136:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_GPIO_HWCTRL_PERIPHERAL2  = 0x2U  /**<  HWI1/HWO1 control path can override the software confi
+ 137:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** } XMC_GPIO_HWCTRL_t;
+ 138:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 139:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 140:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * DEVICE FAMILY EXTENSIONS
+ 141:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 142:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 143:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #if UC_FAMILY == XMC1
+ 144:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc1_gpio.h"
+ 145:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #elif UC_FAMILY == XMC4
+ 146:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #include "xmc4_gpio.h"
+ 147:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #else
+ 148:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #error "xmc_gpio.h: family device not supported"
+ 149:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #endif
+ 150:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 151:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**************************************************************************************************
+ 152:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * API PROTOTYPES
+ 153:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  **************************************************************************************************
+ 154:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 155:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #ifdef __cplusplus
+ 156:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** extern "C" {
+ 157:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** #endif
+ 158:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 159:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 160:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 161:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	  Constant pointer pointing to GPIO port, to access port registers like Pn_OUT,Pn_O
+ 162:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	  Port pin number.
+ 163:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  config GPIO configuration data structure. Refer data structure @ref XMC_GPIO_CONFIG_t fo
+ 164:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 165:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 166:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 167:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 168:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC1
+ 169:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Initializes input / output mode settings like, pull up / pull down devices,hysteresis, push pull
+ 170:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Also configures alternate function outputs and clears hardware port control for a selected \a po
+ 171:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \a config provides selected I/O settings. It configures hardware registers Pn_IOCR,Pn_OUT, Pn_OM
+ 172:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+ 173:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \if XMC4
+ 174:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Initializes input / output mode settings like, pull up / pull down devices,push pull /open drain
+ 175:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Also configures alternate function outputs and clears hardware port control for selected \a port
+ 176:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * It configures hardware registers Pn_IOCR,Pn_OUT,Pn_OMR,Pn_PDISC and Pn_PDR.\n
+ 177:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \endif
+ 178:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 179:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 180:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *  None
+ 181:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 182:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 183:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * This API is called in definition of DAVE_init by code generation and therefore should not be exp
+ 184:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * for the normal operation. Use other APIs only after DAVE_init is called successfully (returns DA
+ 185:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 186:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 187:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 188:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 189:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 190:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** void XMC_GPIO_Init(XMC_GPIO_PORT_t *const port, const uint8_t pin, const XMC_GPIO_CONFIG_t *const c
+ 191:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 192:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 193:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 194:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	Constant pointer pointing to GPIO port, to access hardware register Pn_IOCR.
+ 195:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	Port pin number.
+ 196:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  mode input / output functionality selection. Refer @ref XMC_GPIO_MODE_t for valid values
+ 197:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 198:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 199:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 200:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 201:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Sets digital input and output driver functionality and characteristics of a GPIO port pin. It co
+ 202:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * registers Pn_IOCR. \a mode is initially configured during initialization in XMC_GPIO_Init(). Cal
+ 203:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * the port direction functionality as needed later in the program.
+ 204:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 205:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 206:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *  None
+ 207:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 208:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 209:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 210:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** void XMC_GPIO_SetMode(XMC_GPIO_PORT_t *const port, const uint8_t pin, const XMC_GPIO_MODE_t mode);
+ 211:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 212:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 213:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 214:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 215:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	 Constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 216:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	 Port pin number.
+ 217:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  level output level selection. Refer @ref XMC_GPIO_OUTPUT_LEVEL_t for valid values.
+ 218:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 219:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 220:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 221:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 222:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Set port pin output level to high or low.It configures hardware registers Pn_OMR.\a level is ini
+ 223:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * configured during initialization in XMC_GPIO_Init(). Call this API to alter output level as need
+ 224:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 225:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>
+ 226:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *  XMC_GPIO_SetOutputHigh(), XMC_GPIO_SetOutputLow().
+ 227:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 228:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 229:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().
+ 230:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 231:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 232:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 233:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 234:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputLevel(XMC_GPIO_PORT_t *const port, const uint8_t pin, const 
+ 235:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** {
+ 236:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLevel: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 237:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLevel: Invalid output level", XMC_GPIO_CHECK_OUTPUT_LEVEL(level));
+ 238:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 239:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = (uint32_t)level << pin;
+ 240:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** }
+ 241:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 242:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 243:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 244:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 245:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	Port pin number.
+ 246:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 247:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return None
+ 248:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 249:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Description:</b><br>
+ 250:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *  Sets port pin output to high. It configures hardware registers Pn_OMR.
+ 251:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 252:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *  \par<b>Related APIs:</b><BR>
+ 253:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *  XMC_GPIO_SetOutputLow()
+ 254:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 255:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Note:</b><br>
+ 256:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().\n
+ 257:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Register Pn_OMR is virtual and does not contain any flip-flop. A read action delivers the value 
+ 258:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 259:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 260:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 261:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputHigh(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 262:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** {
+  27              	 .loc 1 262 0
+  28              	 .cfi_startproc
+  29              	 
+  30              	 
+  31              	 
+  32 0000 80B4     	 push {r7}
+  33              	.LCFI0:
+  34              	 .cfi_def_cfa_offset 4
+  35              	 .cfi_offset 7,-4
+  36 0002 83B0     	 sub sp,sp,#12
+  37              	.LCFI1:
+  38              	 .cfi_def_cfa_offset 16
+  39 0004 00AF     	 add r7,sp,#0
+  40              	.LCFI2:
+  41              	 .cfi_def_cfa_register 7
+  42 0006 7860     	 str r0,[r7,#4]
+  43 0008 0B46     	 mov r3,r1
+  44 000a FB70     	 strb r3,[r7,#3]
+ 263:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputHigh: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 264:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 265:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = (uint32_t)0x1U << pin;
+  45              	 .loc 1 265 0
+  46 000c FB78     	 ldrb r3,[r7,#3]
+  47 000e 0122     	 movs r2,#1
+  48 0010 9A40     	 lsls r2,r2,r3
+  49 0012 7B68     	 ldr r3,[r7,#4]
+  50 0014 5A60     	 str r2,[r3,#4]
+ 266:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** }
+  51              	 .loc 1 266 0
+  52 0016 0C37     	 adds r7,r7,#12
+  53              	.LCFI3:
+  54              	 .cfi_def_cfa_offset 4
+  55 0018 BD46     	 mov sp,r7
+  56              	.LCFI4:
+  57              	 .cfi_def_cfa_register 13
+  58              	 
+  59 001a 5DF8047B 	 ldr r7,[sp],#4
+  60              	.LCFI5:
+  61              	 .cfi_restore 7
+  62              	 .cfi_def_cfa_offset 0
+  63 001e 7047     	 bx lr
+  64              	 .cfi_endproc
+  65              	.LFE135:
+  67              	 .section .text.XMC_GPIO_SetOutputLow,"ax",%progbits
+  68              	 .align 2
+  69              	 .thumb
+  70              	 .thumb_func
+  72              	XMC_GPIO_SetOutputLow:
+  73              	.LFB136:
+ 267:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 268:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** /**
+ 269:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 270:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  port	constant pointer pointing to GPIO port, to access hardware register Pn_OMR.
+ 271:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @param  pin	port pin number.
+ 272:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 273:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * @return  None
+ 274:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 275:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Description:</b><br>
+ 276:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Sets port pin output to low. It configures hardware registers Pn_OMR.\n
+ 277:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 278:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * \par<b>Related APIs:</b><BR>>
+ 279:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * XMC_GPIO_SetOutputHigh()
+ 280:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 281:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *\par<b>Note:</b><br>
+ 282:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Prior to this api, user has to configure port pin to output mode using XMC_GPIO_SetMode().
+ 283:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  * Register Pn_OMR is virtual and does not contain any flip-flop. A read action delivers the value 
+ 284:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  *
+ 285:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****  */
+ 286:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 287:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** __STATIC_INLINE void XMC_GPIO_SetOutputLow(XMC_GPIO_PORT_t *const port, const uint8_t pin)
+ 288:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** {
+  74              	 .loc 1 288 0
+  75              	 .cfi_startproc
+  76              	 
+  77              	 
+  78              	 
+  79 0000 80B4     	 push {r7}
+  80              	.LCFI6:
+  81              	 .cfi_def_cfa_offset 4
+  82              	 .cfi_offset 7,-4
+  83 0002 83B0     	 sub sp,sp,#12
+  84              	.LCFI7:
+  85              	 .cfi_def_cfa_offset 16
+  86 0004 00AF     	 add r7,sp,#0
+  87              	.LCFI8:
+  88              	 .cfi_def_cfa_register 7
+  89 0006 7860     	 str r0,[r7,#4]
+  90 0008 0B46     	 mov r3,r1
+  91 000a FB70     	 strb r3,[r7,#3]
+ 289:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****   XMC_ASSERT("XMC_GPIO_SetOutputLow: Invalid port", XMC_GPIO_CHECK_OUTPUT_PORT(port));
+ 290:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** 
+ 291:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h ****   port->OMR = 0x10000U << pin;
+  92              	 .loc 1 291 0
+  93 000c FB78     	 ldrb r3,[r7,#3]
+  94 000e 4FF48032 	 mov r2,#65536
+  95 0012 9A40     	 lsls r2,r2,r3
+  96 0014 7B68     	 ldr r3,[r7,#4]
+  97 0016 5A60     	 str r2,[r3,#4]
+ 292:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc\xmc_gpio.h **** }
+  98              	 .loc 1 292 0
+  99 0018 0C37     	 adds r7,r7,#12
+ 100              	.LCFI9:
+ 101              	 .cfi_def_cfa_offset 4
+ 102 001a BD46     	 mov sp,r7
+ 103              	.LCFI10:
+ 104              	 .cfi_def_cfa_register 13
+ 105              	 
+ 106 001c 5DF8047B 	 ldr r7,[sp],#4
+ 107              	.LCFI11:
+ 108              	 .cfi_restore 7
+ 109              	 .cfi_def_cfa_offset 0
+ 110 0020 7047     	 bx lr
+ 111              	 .cfi_endproc
+ 112              	.LFE136:
+ 114 0022 00BF     	 .section .text.DIGITAL_IO_SetOutputHigh,"ax",%progbits
+ 115              	 .align 2
+ 116              	 .thumb
+ 117              	 .thumb_func
+ 119              	DIGITAL_IO_SetOutputHigh:
+ 120              	.LFB143:
+ 121              	 .file 2 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO/digital_io.h"
+   1:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /*
+   2:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+   3:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * @file digital_io.h
+   4:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * @date 2021-01-08
+   5:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+   6:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * NOTE:
+   7:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * This file is generated by DAVE. Any manual modification done to this file will be lost when the 
+   8:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+   9:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * @cond
+  10:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  11:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * DIGITAL_IO v4.0.18 - The DIGITAL_IO APP is used to configure a port pin as digital Input/Output.
+  12:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  13:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * Copyright (c) 2015-2020, Infineon Technologies AG
+  14:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * All rights reserved.
+  15:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  16:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * Redistribution and use in source and binary forms, with or without modification,are permitted pr
+  17:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * following conditions are met:
+  18:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  19:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   Redistributions of source code must retain the above copyright notice, this list of conditions
+  20:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   disclaimer.
+  21:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  22:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   Redistributions in binary form must reproduce the above copyright notice, this list of conditi
+  23:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   following disclaimer in the documentation and/or other materials provided with the distributio
+  24:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  25:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   Neither the name of the copyright holders nor the names of its contributors may be used to end
+  26:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *   products derived from this software without specific prior written permission.
+  27:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  28:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY EXPRESS OR I
+  29:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTI
+  30:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE  FOR ANY DIRECT, IN
+  31:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBS
+  32:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THE
+  33:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * WHETHER IN CONTRACT, STRICT LIABILITY,OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY
+  34:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+  35:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  36:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * To improve the quality of the software, users are encouraged to share modifications, enhancement
+  37:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * with Infineon Technologies AG (dave@infineon.com).
+  38:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  39:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  40:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * Change History
+  41:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * --------------
+  42:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  43:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2015-02-16
+  44:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - Initial version
+  45:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  46:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2015-04-22
+  47:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - XMC_ASSERT is added in static inline functions.<br>
+  48:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  49:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2015-06-20
+  50:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - Version check added for XMCLib dependency.<br>
+  51:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  52:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2015-12-22
+  53:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - Added hardware controlled IO feature.
+  54:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2016-07-08:
+  55:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - Fixed incorrect case for an included header.<br>
+  56:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * 2021-01-08:
+  57:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *     - Modified check for minimum XMCLib version
+  58:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  59:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * @endcond
+  60:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  *
+  61:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  */
+  62:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  63:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**************************************************************************************************
+  64:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * HEADER FILES
+  65:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  66:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  67:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** #ifndef DIGITAL_IO_H
+  68:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** #define DIGITAL_IO_H
+  69:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  70:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** #include "xmc_gpio.h"
+  71:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** #include "DAVE_Common.h"
+  72:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** #include "digital_io_conf.h"
+  73:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  74:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**************************************************************************************************
+  75:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * MACROS
+  76:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  77:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** #define DIGITAL_IO_XMC_LIB_MAJOR_VERSION 2
+  78:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** #define DIGITAL_IO_XMC_LIB_MINOR_VERSION 0
+  79:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** #define DIGITAL_IO_XMC_LIB_PATCH_VERSION 0
+  80:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  81:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** #if !((XMC_LIB_MAJOR_VERSION > DIGITAL_IO_XMC_LIB_MAJOR_VERSION) ||\
+  82:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****       ((XMC_LIB_MAJOR_VERSION == DIGITAL_IO_XMC_LIB_MAJOR_VERSION) && (XMC_LIB_MINOR_VERSION > DIGI
+  83:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****       ((XMC_LIB_MAJOR_VERSION == DIGITAL_IO_XMC_LIB_MAJOR_VERSION) && (XMC_LIB_MINOR_VERSION == DIG
+  84:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** #error "DIGITAL_IO requires XMC Peripheral Library v2.0.0 or higher"
+  85:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** #endif
+  86:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  87:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  /*************************************************************************************************
+  88:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * ENUMS
+  89:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+  90:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  91:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+  92:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @ingroup DIGITAL_IO_enumerations
+  93:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @{
+  94:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+  95:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+  96:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+  97:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Initialization status of DIGITAL_IO APP.
+  98:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+  99:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** typedef enum DIGITAL_IO_STATUS
+ 100:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+ 101:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****   DIGITAL_IO_STATUS_OK = 0U,/**< 0=Status OK */
+ 102:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****   DIGITAL_IO_STATUS_FAILURE = 1U/**< 1=Status Failed */
+ 103:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** } DIGITAL_IO_STATUS_t;
+ 104:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 105:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 106:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @}
+ 107:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 108:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 109:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**************************************************************************************************
+ 110:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * DATA STRUCTURES
+ 111:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+ 112:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 113:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @ingroup DIGITAL_IO_datastructures
+ 114:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @{
+ 115:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 116:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 117:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 118:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Initialization data structure of DIGITAL_IO APP
+ 119:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 120:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** typedef struct DIGITAL_IO
+ 121:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+ 122:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_GPIO_PORT_t *const gpio_port;             /**< port number */
+ 123:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****   const XMC_GPIO_CONFIG_t gpio_config;          /**< mode, initial output level and pad driver stre
+ 124:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****   const uint8_t gpio_pin;                       /**< pin number */
+ 125:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****   const XMC_GPIO_HWCTRL_t hwctrl;               /**< Hardware port control */
+ 126:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** } DIGITAL_IO_t;
+ 127:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 128:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 129:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 130:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @}
+ 131:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 132:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 133:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 134:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**************************************************************************************************
+ 135:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  * API Prototypes
+ 136:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****  **************************************************************************************************
+ 137:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 138:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 139:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** #ifdef __cplusplus
+ 140:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** extern "C" {
+ 141:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** #endif
+ 142:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 143:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 144:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @ingroup DIGITAL_IO_apidoc
+ 145:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @{
+ 146:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 147:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 148:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 149:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 150:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 151:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Get DIGITAL_IO APP version
+ 152:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return DAVE_APP_VERSION_t APP version information (major, minor and patch number)
+ 153:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 154:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description: </b><br>
+ 155:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * The function can be used to check application software compatibility with a
+ 156:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * specific version of the APP.
+ 157:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 158:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 159:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 160:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 161:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * #include "DAVE.h"
+ 162:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 163:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * int main(void)
+ 164:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * {
+ 165:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_STATUS_t init_status;
+ 166:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_APP_VERSION_t version;
+ 167:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 168:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   // Initialize DIGITAL_IO APP:
+ 169:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   // DIGITAL_IO_Init() is called from within DAVE_Init().
+ 170:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   init_status = DAVE_Init();
+ 171:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   if(init_status == DAVE_STATUS_SUCCESS)
+ 172:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 173:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     version = DIGITAL_IO_GetAppVersion();
+ 174:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     if (version.major != 4U) {
+ 175:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     // Probably, not the right version.
+ 176:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 177:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 178:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 179:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     // More code here
+ 180:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     while(1) {
+ 181:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 182:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 183:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     return (1);
+ 184:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *  }
+ 185:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @endcode<BR>
+ 186:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 187:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 188:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** DAVE_APP_VERSION_t DIGITAL_IO_GetAppVersion(void);
+ 189:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 190:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 191:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 192:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Function to initialize the port pin as per UI settings.
+ 193:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @param handler Pointer pointing to APP data structure. Refer @ref DIGITAL_IO_t for details.
+ 194:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return DIGITAL_IO_STATUS_t DIGITAL_IO APP status. Refer @ref DIGITAL_IO_STATUS_t structure for d
+ 195:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 196:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description:</b><br>
+ 197:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * This function initializes GPIO port registers IOCR,PDISC,OMR,PDR/PHCR to configure pin direction,
+ 198:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * and pad driver strength/hysteresis.
+ 199:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 200:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Related APIs:</b><BR>
+ 201:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * None
+ 202:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 203:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 204:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 205:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * #include "DAVE.h" //Declarations from DAVE Code Generation (includes SFR declaration)
+ 206:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 207:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * int main(void)
+ 208:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * {
+ 209:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_STATUS_t status;
+ 210:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   status = DAVE_Init();  //(DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0) is called within DAVE_In
+ 211:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   if(status == DAVE_STATUS_SUCCESS)
+ 212:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 213:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG("DAVE Apps initialization success\n");
+ 214:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 215:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   else
+ 216:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 217:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG(("DAVE Apps initialization failed with status %d\n", status));
+ 218:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     while(1U)
+ 219:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     {
+ 220:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 221:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 222:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   //Placeholder for user application code. The while loop below can be replaced with user applica
+ 223:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   while(1U)
+ 224:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 225:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 226:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   return 1U;
+ 227:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *  }
+ 228:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *  @endcode
+ 229:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 230:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 231:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** DIGITAL_IO_STATUS_t DIGITAL_IO_Init(const DIGITAL_IO_t *const handler);
+ 232:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 233:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 234:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 235:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Function to set port pin high.
+ 236:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @param handler Pointer pointing to APP data structure. Refer @ref DIGITAL_IO_t for details.
+ 237:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return None
+ 238:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 239:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description:</b><br>
+ 240:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * This function configures port output modification register Pn_OMR, to make port pin to high level
+ 241:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 242:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Related APIs:</b><BR>
+ 243:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *  DIGITAL_IO_SetOutputLow()
+ 244:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 245:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 246:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 247:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * #include "DAVE.h" //Declarations from DAVE Code Generation (includes SFR declaration)
+ 248:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 249:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * int main(void)
+ 250:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * {
+ 251:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DAVE_STATUS_t status;
+ 252:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   status = DAVE_Init();  //(DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0) is called within DAVE_In
+ 253:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   if(status == DAVE_STATUS_SUCCESS)
+ 254:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 255:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG("DAVE Apps initialization success\n");
+ 256:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 257:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   else
+ 258:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 259:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     XMC_DEBUG(("DAVE Apps initialization failed with status %d\n", status));
+ 260:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     while(1U)
+ 261:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     {
+ 262:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     }
+ 263:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 264:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   //Placeholder for user application code. The while loop below can be replaced with user applica
+ 265:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_0);
+ 266:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   while(1U)
+ 267:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   {
+ 268:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *     // Add application code here
+ 269:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   }
+ 270:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 271:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   return (1);
+ 272:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * }
+ 273:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *  @endcode
+ 274:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 275:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 276:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** __STATIC_INLINE void DIGITAL_IO_SetOutputHigh(const DIGITAL_IO_t *const handler)
+ 277:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+ 122              	 .loc 2 277 0
+ 123              	 .cfi_startproc
+ 124              	 
+ 125              	 
+ 126 0000 80B5     	 push {r7,lr}
+ 127              	.LCFI12:
+ 128              	 .cfi_def_cfa_offset 8
+ 129              	 .cfi_offset 7,-8
+ 130              	 .cfi_offset 14,-4
+ 131 0002 82B0     	 sub sp,sp,#8
+ 132              	.LCFI13:
+ 133              	 .cfi_def_cfa_offset 16
+ 134 0004 00AF     	 add r7,sp,#0
+ 135              	.LCFI14:
+ 136              	 .cfi_def_cfa_register 7
+ 137 0006 7860     	 str r0,[r7,#4]
+ 278:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_ASSERT("DIGITAL_IO_SetOutputHigh: handler null pointer", handler != NULL);
+ 279:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_GPIO_SetOutputHigh(handler->gpio_port, handler->gpio_pin);
+ 138              	 .loc 2 279 0
+ 139 0008 7B68     	 ldr r3,[r7,#4]
+ 140 000a 1A68     	 ldr r2,[r3]
+ 141 000c 7B68     	 ldr r3,[r7,#4]
+ 142 000e 1B7C     	 ldrb r3,[r3,#16]
+ 143 0010 1046     	 mov r0,r2
+ 144 0012 1946     	 mov r1,r3
+ 145 0014 FFF7FEFF 	 bl XMC_GPIO_SetOutputHigh
+ 280:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** }
+ 146              	 .loc 2 280 0
+ 147 0018 0837     	 adds r7,r7,#8
+ 148              	.LCFI15:
+ 149              	 .cfi_def_cfa_offset 8
+ 150 001a BD46     	 mov sp,r7
+ 151              	.LCFI16:
+ 152              	 .cfi_def_cfa_register 13
+ 153              	 
+ 154 001c 80BD     	 pop {r7,pc}
+ 155              	 .cfi_endproc
+ 156              	.LFE143:
+ 158 001e 00BF     	 .section .text.DIGITAL_IO_SetOutputLow,"ax",%progbits
+ 159              	 .align 2
+ 160              	 .thumb
+ 161              	 .thumb_func
+ 163              	DIGITAL_IO_SetOutputLow:
+ 164              	.LFB144:
+ 281:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 282:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** /**
+ 283:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @brief Function to reset port pin.
+ 284:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @param handler Pointer pointing to APP data structure. Refer @ref DIGITAL_IO_t for details.
+ 285:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @return None
+ 286:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 287:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Description:</b><br>
+ 288:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * This function configures port output modification register Pn_OMR, to make port pin to low level.
+ 289:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 290:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * \par<b>Related APIs:</b><BR>
+ 291:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * DIGITAL_IO_SetOutputHigh()
+ 292:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 293:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * Example Usage:
+ 294:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * @code
+ 295:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *  #include "DAVE.h" //Declarations from DAVE Code Generation (includes SFR declaration)
+ 296:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 297:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *  int main(void)
+ 298:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *  {
+ 299:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *    DAVE_STATUS_t status;
+ 300:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *    status = DAVE_Init();  //(DAVE_STATUS_t)DIGITAL_IO_Init(&DIGITAL_IO_0) is called within DAVE_I
+ 301:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *    if(status == DAVE_STATUS_SUCCESS)
+ 302:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *    {
+ 303:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *      XMC_DEBUG("DAVE Apps initialization success\n");
+ 304:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *    }
+ 305:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *    else
+ 306:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *    {
+ 307:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *      XMC_DEBUG(("DAVE Apps initialization failed with status %d\n", status));
+ 308:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *      while(1U)
+ 309:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *      {
+ 310:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *      }
+ 311:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *    }
+ 312:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *    //Placeholder for user application code. The while loop below can be replaced with user applic
+ 313:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *    DIGITAL_IO_SetOutputLow(&DIGITAL_IO_0);
+ 314:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *    while(1U)
+ 315:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *    {
+ 316:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *      // Add application code here
+ 317:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *    }
+ 318:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *
+ 319:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *   return (1);
+ 320:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** * }
+ 321:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** *  @endcode
+ 322:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** */
+ 323:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** 
+ 324:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** __STATIC_INLINE void DIGITAL_IO_SetOutputLow(const DIGITAL_IO_t *const handler)
+ 325:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** {
+ 165              	 .loc 2 325 0
+ 166              	 .cfi_startproc
+ 167              	 
+ 168              	 
+ 169 0000 80B5     	 push {r7,lr}
+ 170              	.LCFI17:
+ 171              	 .cfi_def_cfa_offset 8
+ 172              	 .cfi_offset 7,-8
+ 173              	 .cfi_offset 14,-4
+ 174 0002 82B0     	 sub sp,sp,#8
+ 175              	.LCFI18:
+ 176              	 .cfi_def_cfa_offset 16
+ 177 0004 00AF     	 add r7,sp,#0
+ 178              	.LCFI19:
+ 179              	 .cfi_def_cfa_register 7
+ 180 0006 7860     	 str r0,[r7,#4]
+ 326:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_ASSERT("DIGITAL_IO_SetOutputLow: handler null pointer", handler != NULL);
+ 327:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h ****   XMC_GPIO_SetOutputLow(handler->gpio_port,handler->gpio_pin);
+ 181              	 .loc 2 327 0
+ 182 0008 7B68     	 ldr r3,[r7,#4]
+ 183 000a 1A68     	 ldr r2,[r3]
+ 184 000c 7B68     	 ldr r3,[r7,#4]
+ 185 000e 1B7C     	 ldrb r3,[r3,#16]
+ 186 0010 1046     	 mov r0,r2
+ 187 0012 1946     	 mov r1,r3
+ 188 0014 FFF7FEFF 	 bl XMC_GPIO_SetOutputLow
+ 328:D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO\digital_io.h **** }
+ 189              	 .loc 2 328 0
+ 190 0018 0837     	 adds r7,r7,#8
+ 191              	.LCFI20:
+ 192              	 .cfi_def_cfa_offset 8
+ 193 001a BD46     	 mov sp,r7
+ 194              	.LCFI21:
+ 195              	 .cfi_def_cfa_register 13
+ 196              	 
+ 197 001c 80BD     	 pop {r7,pc}
+ 198              	 .cfi_endproc
+ 199              	.LFE144:
+ 201              	 .comm cluster_door_in,4,4
+ 202              	 .comm Vcu_OutPuts,3,4
+ 203              	 .comm Combi_Switch_IN,8,4
+ 204              	 .comm Seat_Switch_IN,3,4
+ 205              	 .comm Door_Switch_IN,7,4
+ 206              	 .comm Relay_Control_Switch_OUT,47,4
+ 207              	 .comm Hvac_IN,24,4
+ 208              	 .comm Switch_Ios_IN,20,4
+ 209              	 .comm Motor_controller_OUT,5,4
+ 210              	 .comm Lights_OUT,8,4
+ 211              	 .comm Sensors_OUT,8,4
+ 212              	 .comm Aux_Inputs,6,4
+ 213              	 .comm Instrument_Cluster_OUT,18,4
+ 214              	 .comm Seat_Belt_OUT,3,4
+ 215              	 .comm Gear_OUT,4,4
+ 216              	 .comm Instrumetcluster_DriveMode_OUT,4,4
+ 217              	 .comm Door_Switch_OUT,7,4
+ 218              	 .comm instrument_cluster_doorsvar,7,4
+ 219              	 .comm cluster_door_out,4,4
+ 220              	 .comm current_time,8,4
+ 221              	 .comm timeval,8,4
+ 222              	 .comm GPS_data_val,16,4
+ 223              	 .comm epoch,4,4
+ 224              	 .comm ambient_temp,1,1
+ 225              	 .comm AUX_EFUSE_2_OUT_D,3,4
+ 226              	 .comm HV_BATT_FAN_PWR_OUT,3,4
+ 227              	 .comm ORVM_OPEN_OUT_D,3,4
+ 228              	 .comm ORVM_FOLD_OUT_D,3,4
+ 229              	 .comm ORVM_PWR_OUT_D,3,4
+ 230              	 .comm AC_BLOWER_SPEED1_OUT_D,3,4
+ 231              	 .comm AC_BLOWER_SPEED2_OUT_D,3,4
+ 232              	 .comm AC_BLOWER_SPEED3_OUT_D,3,4
+ 233              	 .comm AC_SOL_PWR_OUT_D,3,4
+ 234              	 .comm AUX_EFUSE_3_OUT_D,3,4
+ 235              	 .comm AUX_EFUSE_4_OUT_D,3,4
+ 236              	 .comm AUX_EFUSE_5_OUT_D,3,4
+ 237              	 .comm AUX_MOSFET_OUT3_D,3,4
+ 238              	 .comm SUNROOF_PWR_OUT_D,3,4
+ 239              	 .comm HV_CHARGER_EN_OUT_D,3,4
+ 240              	 .comm AC_COMPRESSOR_OUT_D,3,4
+ 241              	 .comm ELEC_HANDBRAKE_PWR_OUT_D,3,4
+ 242              	 .comm SuperLoop_Time,8,8
+ 243              	 .comm SuperLoop_Time_usec,8,8
+ 244              	 .comm SuperLoop_Time_msec,8,8
+ 245              	 .comm SuperLoop_Time_sec,8,8
+ 246              	 .comm End_Time,4,4
+ 247              	 .comm Start_Time,4,4
+ 248              	 .comm CState,1,1
+ 249              	 .comm PreState,1,1
+ 250              	 .comm BMS_SOC,1,1
+ 251              	 .comm CAN_MSG_DB_HVAC,60,4
+ 252              	 .comm eps_status,4,4
+ 253              	 .comm instrument_clustor_doors,1,1
+ 254              	 .comm CAN_BMS_29bit,132,4
+ 255              	 .comm CAN_IRP_29bit,132,4
+ 256              	 .comm charge_complete,1,1
+ 257              	 .comm charging_started,1,1
+ 258              	 .comm Bms_SOC,2,2
+ 259              	 .comm Bms_SOH,2,2
+ 260              	 .comm Mapped_BMS_SOC,1,1
+ 261              	 .comm Bms_minTemp,2,2
+ 262              	 .comm Bms_maxTemp,2,2
+ 263              	 .comm PackCurrent,4,4
+ 264              	 .comm PackVoltage,4,4
+ 265              	 .comm RegenerativeCurrentLimit,2,2
+ 266              	 .comm ChargeCurrentLimit,2,2
+ 267              	 .comm DischargeCurrentLimit,2,2
+ 268              	 .comm HvBatteryPower,4,4
+ 269              	 .comm bmsFault1,4,4
+ 270              	 .comm bmsFault2,4,4
+ 271              	 .comm GtakeFaults,4,4
+ 272              	 .comm allFault_indicator,3,4
+ 273              	 .comm cluster_Fault_Indicator,4,4
+ 274              	 .comm Mcu_Temp,4,4
+ 275              	 .comm Motor_Temp,4,4
+ 276              	 .comm VehicleSpeedglb,2,2
+ 277              	 .comm OBDII_CAN,60,4
+ 278              	 .comm OBD_data,2,2
+ 279              	 .comm Irp_Mcu_drive_states_29bit,4,4
+ 280              	 .comm Irp_Mcu_BMS_states_29bit,4,4
+ 281              	 .comm Irp_Mcu_Torques_29bit,4,4
+ 282              	 .comm Irp_Mcu_BMS_Currents_29bit,4,4
+ 283              	 .comm Irp_MCU_Status_29bit,4,4
+ 284              	 .comm Irp_MCU_Faults_29bit,4,4
+ 285              	 .comm DC_Current_irp,2,2
+ 286              	 .comm MotorPower_Irp,2,2
+ 287              	 .comm Torque_Estimation,2,2
+ 288              	 .comm DC_Voltage_irp,2,2
+ 289              	 .comm Mcu_Temp_Irp,2,2
+ 290              	 .comm Motor_Temp_Irp,2,2
+ 291              	 .comm RPM,2,2
+ 292              	 .comm Regenration_flag,1,1
+ 293              	 .comm hv_count,2,2
+ 294              	 .comm BMS_Avg_temp,4,4
+ 295              	 .comm AC_ON_4g,1,1
+ 296              	 .comm speed_4g,2,2
+ 297              	 .section .text.OutPutAction_Update,"ax",%progbits
+ 298              	 .align 2
+ 299              	 .global OutPutAction_Update
+ 300              	 .thumb
+ 301              	 .thumb_func
+ 303              	OutPutAction_Update:
+ 304              	.LFB605:
+ 305              	 .file 3 "../VCU_OUT/Vcu_Out.c"
+   1:../VCU_OUT/Vcu_Out.c **** /*
+   2:../VCU_OUT/Vcu_Out.c ****  * Vcu_Out.C
+   3:../VCU_OUT/Vcu_Out.c ****  *
+   4:../VCU_OUT/Vcu_Out.c ****  *  Created on: 27-Jun-2023
+   5:../VCU_OUT/Vcu_Out.c ****  *      Author: Suchit Sawant
+   6:../VCU_OUT/Vcu_Out.c ****  */
+   7:../VCU_OUT/Vcu_Out.c **** #include "Vcu_Out.h"
+   8:../VCU_OUT/Vcu_Out.c **** #include "Vcu_Config.h"
+   9:../VCU_OUT/Vcu_Out.c **** #include "Vcu_Init.h"
+  10:../VCU_OUT/Vcu_Out.c **** #include "can_matrix.h"
+  11:../VCU_OUT/Vcu_Out.c **** 
+  12:../VCU_OUT/Vcu_Out.c **** 
+  13:../VCU_OUT/Vcu_Out.c **** void OutPutAction_Update(void)
+  14:../VCU_OUT/Vcu_Out.c **** {
+ 306              	 .loc 3 14 0
+ 307              	 .cfi_startproc
+ 308              	 
+ 309              	 
+ 310 0000 80B5     	 push {r7,lr}
+ 311              	.LCFI22:
+ 312              	 .cfi_def_cfa_offset 8
+ 313              	 .cfi_offset 7,-8
+ 314              	 .cfi_offset 14,-4
+ 315 0002 00AF     	 add r7,sp,#0
+ 316              	.LCFI23:
+ 317              	 .cfi_def_cfa_register 7
+  15:../VCU_OUT/Vcu_Out.c **** 	ALL_CONDITION_ON();
+ 318              	 .loc 3 15 0
+ 319 0004 FFF7FEFF 	 bl ALL_CONDITION_ON
+  16:../VCU_OUT/Vcu_Out.c **** 
+  17:../VCU_OUT/Vcu_Out.c **** 	can_outputs_allState();
+ 320              	 .loc 3 17 0
+ 321 0008 FFF7FEFF 	 bl can_outputs_allState
+  18:../VCU_OUT/Vcu_Out.c **** 
+  19:../VCU_OUT/Vcu_Out.c **** 	State_1();
+ 322              	 .loc 3 19 0
+ 323 000c FFF7FEFF 	 bl State_1
+  20:../VCU_OUT/Vcu_Out.c **** 	State_2();
+ 324              	 .loc 3 20 0
+ 325 0010 FFF7FEFF 	 bl State_2
+  21:../VCU_OUT/Vcu_Out.c **** 	//Can_Outputs_State1();
+  22:../VCU_OUT/Vcu_Out.c **** 
+  23:../VCU_OUT/Vcu_Out.c **** 	/* light */
+  24:../VCU_OUT/Vcu_Out.c **** 	Lights_on_off();
+ 326              	 .loc 3 24 0
+ 327 0014 FFF7FEFF 	 bl Lights_on_off
+  25:../VCU_OUT/Vcu_Out.c **** 
+  26:../VCU_OUT/Vcu_Out.c **** 
+  27:../VCU_OUT/Vcu_Out.c **** 
+  28:../VCU_OUT/Vcu_Out.c **** 	VcuOut_MotorController_IRPbrakes();
+ 328              	 .loc 3 28 0
+ 329 0018 FFF7FEFF 	 bl VcuOut_MotorController_IRPbrakes
+  29:../VCU_OUT/Vcu_Out.c **** 
+  30:../VCU_OUT/Vcu_Out.c **** 	door_en_cabin_light();
+ 330              	 .loc 3 30 0
+ 331 001c FFF7FEFF 	 bl door_en_cabin_light
+  31:../VCU_OUT/Vcu_Out.c **** 	 SPI_ADC_ProcessModeChange(1);
+ 332              	 .loc 3 31 0
+ 333 0020 0120     	 movs r0,#1
+ 334 0022 FFF7FEFF 	 bl SPI_ADC_ProcessModeChange
+  32:../VCU_OUT/Vcu_Out.c **** }
+ 335              	 .loc 3 32 0
+ 336 0026 80BD     	 pop {r7,pc}
+ 337              	 .cfi_endproc
+ 338              	.LFE605:
+ 340              	 .section .text.charger_tx,"ax",%progbits
+ 341              	 .align 2
+ 342              	 .global charger_tx
+ 343              	 .thumb
+ 344              	 .thumb_func
+ 346              	charger_tx:
+ 347              	.LFB606:
+  33:../VCU_OUT/Vcu_Out.c **** 
+  34:../VCU_OUT/Vcu_Out.c **** void charger_tx(void)
+  35:../VCU_OUT/Vcu_Out.c **** {
+ 348              	 .loc 3 35 0
+ 349              	 .cfi_startproc
+ 350              	 
+ 351              	 
+ 352 0000 80B5     	 push {r7,lr}
+ 353              	.LCFI24:
+ 354              	 .cfi_def_cfa_offset 8
+ 355              	 .cfi_offset 7,-8
+ 356              	 .cfi_offset 14,-4
+ 357 0002 00AF     	 add r7,sp,#0
+ 358              	.LCFI25:
+ 359              	 .cfi_def_cfa_register 7
+  36:../VCU_OUT/Vcu_Out.c **** 	/*  obc set v and i */
+  37:../VCU_OUT/Vcu_Out.c **** 	Update_CAN_id0x1806E5F4();
+ 360              	 .loc 3 37 0
+ 361 0004 FFF7FEFF 	 bl Update_CAN_id0x1806E5F4
+  38:../VCU_OUT/Vcu_Out.c **** }
+ 362              	 .loc 3 38 0
+ 363 0008 80BD     	 pop {r7,pc}
+ 364              	 .cfi_endproc
+ 365              	.LFE606:
+ 367 000a 00BF     	 .section .text.Lights_on_off,"ax",%progbits
+ 368              	 .align 2
+ 369              	 .global Lights_on_off
+ 370              	 .thumb
+ 371              	 .thumb_func
+ 373              	Lights_on_off:
+ 374              	.LFB607:
+  39:../VCU_OUT/Vcu_Out.c **** 
+  40:../VCU_OUT/Vcu_Out.c **** void Lights_on_off()
+  41:../VCU_OUT/Vcu_Out.c **** {
+ 375              	 .loc 3 41 0
+ 376              	 .cfi_startproc
+ 377              	 
+ 378              	 
+ 379 0000 80B5     	 push {r7,lr}
+ 380              	.LCFI26:
+ 381              	 .cfi_def_cfa_offset 8
+ 382              	 .cfi_offset 7,-8
+ 383              	 .cfi_offset 14,-4
+ 384 0002 00AF     	 add r7,sp,#0
+ 385              	.LCFI27:
+ 386              	 .cfi_def_cfa_register 7
+  42:../VCU_OUT/Vcu_Out.c **** 	/* light */
+  43:../VCU_OUT/Vcu_Out.c **** 	if(Lights_OUT.brake_switch_out_d)
+ 387              	 .loc 3 43 0
+ 388 0004 0B4B     	 ldr r3,.L10
+ 389 0006 5B78     	 ldrb r3,[r3,#1]
+ 390 0008 002B     	 cmp r3,#0
+ 391 000a 09D0     	 beq .L8
+  44:../VCU_OUT/Vcu_Out.c **** 	{
+  45:../VCU_OUT/Vcu_Out.c **** 		DIGITAL_IO_SetOutputHigh(&BRAKE_LIGHT_OUT_D);
+ 392              	 .loc 3 45 0
+ 393 000c 0A48     	 ldr r0,.L10+4
+ 394 000e FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+  46:../VCU_OUT/Vcu_Out.c **** 		Gtake_Mcu_drive_states_additional_29bit->Brake_cmd = 1;
+ 395              	 .loc 3 46 0
+ 396 0012 0A4B     	 ldr r3,.L10+8
+ 397 0014 1A68     	 ldr r2,[r3]
+ 398 0016 1378     	 ldrb r3,[r2]
+ 399 0018 43F04003 	 orr r3,r3,#64
+ 400 001c 1370     	 strb r3,[r2]
+ 401 001e 08E0     	 b .L7
+ 402              	.L8:
+  47:../VCU_OUT/Vcu_Out.c **** 	}
+  48:../VCU_OUT/Vcu_Out.c **** 	else
+  49:../VCU_OUT/Vcu_Out.c **** 	{
+  50:../VCU_OUT/Vcu_Out.c **** 		DIGITAL_IO_SetOutputLow(&BRAKE_LIGHT_OUT_D);
+ 403              	 .loc 3 50 0
+ 404 0020 0548     	 ldr r0,.L10+4
+ 405 0022 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+  51:../VCU_OUT/Vcu_Out.c **** 		Gtake_Mcu_drive_states_additional_29bit->Brake_cmd = 0;
+ 406              	 .loc 3 51 0
+ 407 0026 054B     	 ldr r3,.L10+8
+ 408 0028 1A68     	 ldr r2,[r3]
+ 409 002a 1378     	 ldrb r3,[r2]
+ 410 002c 6FF38613 	 bfc r3,#6,#1
+ 411 0030 1370     	 strb r3,[r2]
+ 412              	.L7:
+  52:../VCU_OUT/Vcu_Out.c **** 	}
+  53:../VCU_OUT/Vcu_Out.c **** }
+ 413              	 .loc 3 53 0
+ 414 0032 80BD     	 pop {r7,pc}
+ 415              	.L11:
+ 416              	 .align 2
+ 417              	.L10:
+ 418 0034 00000000 	 .word Lights_OUT
+ 419 0038 00000000 	 .word BRAKE_LIGHT_OUT_D
+ 420 003c 00000000 	 .word Gtake_Mcu_drive_states_additional_29bit
+ 421              	 .cfi_endproc
+ 422              	.LFE607:
+ 424              	 .section .text.VcuOut_MotorController_IRPbrakes,"ax",%progbits
+ 425              	 .align 2
+ 426              	 .global VcuOut_MotorController_IRPbrakes
+ 427              	 .thumb
+ 428              	 .thumb_func
+ 430              	VcuOut_MotorController_IRPbrakes:
+ 431              	.LFB608:
+  54:../VCU_OUT/Vcu_Out.c **** 
+  55:../VCU_OUT/Vcu_Out.c **** void VcuOut_MotorController_IRPbrakes(void)
+  56:../VCU_OUT/Vcu_Out.c **** {
+ 432              	 .loc 3 56 0
+ 433              	 .cfi_startproc
+ 434              	 
+ 435              	 
+ 436              	 
+ 437 0000 80B4     	 push {r7}
+ 438              	.LCFI28:
+ 439              	 .cfi_def_cfa_offset 4
+ 440              	 .cfi_offset 7,-4
+ 441 0002 00AF     	 add r7,sp,#0
+ 442              	.LCFI29:
+ 443              	 .cfi_def_cfa_register 7
+  57:../VCU_OUT/Vcu_Out.c **** 	Irp_Mcu_drive_states_29bit->Brake_Command = Lights_OUT.brake_switch_out_d;
+ 444              	 .loc 3 57 0
+ 445 0004 0D4B     	 ldr r3,.L13
+ 446 0006 1A68     	 ldr r2,[r3]
+ 447 0008 0D4B     	 ldr r3,.L13+4
+ 448 000a 5978     	 ldrb r1,[r3,#1]
+ 449 000c 1378     	 ldrb r3,[r2]
+ 450 000e 61F34513 	 bfi r3,r1,#5,#1
+ 451 0012 1370     	 strb r3,[r2]
+  58:../VCU_OUT/Vcu_Out.c **** 
+  59:../VCU_OUT/Vcu_Out.c **** 	Irp_Mcu_drive_states_29bit->Handbrake_Command = !Relay_Control_Switch_OUT.elec_handbrake_pwr_out;
+ 452              	 .loc 3 59 0
+ 453 0014 094B     	 ldr r3,.L13
+ 454 0016 1A68     	 ldr r2,[r3]
+ 455 0018 0A4B     	 ldr r3,.L13+8
+ 456 001a 93F82530 	 ldrb r3,[r3,#37]
+ 457 001e 83F00103 	 eor r3,r3,#1
+ 458 0022 DBB2     	 uxtb r3,r3
+ 459 0024 03F00103 	 and r3,r3,#1
+ 460 0028 D9B2     	 uxtb r1,r3
+ 461 002a 1378     	 ldrb r3,[r2]
+ 462 002c 61F38613 	 bfi r3,r1,#6,#1
+ 463 0030 1370     	 strb r3,[r2]
+  60:../VCU_OUT/Vcu_Out.c **** }
+ 464              	 .loc 3 60 0
+ 465 0032 BD46     	 mov sp,r7
+ 466              	.LCFI30:
+ 467              	 .cfi_def_cfa_register 13
+ 468              	 
+ 469 0034 5DF8047B 	 ldr r7,[sp],#4
+ 470              	.LCFI31:
+ 471              	 .cfi_restore 7
+ 472              	 .cfi_def_cfa_offset 0
+ 473 0038 7047     	 bx lr
+ 474              	.L14:
+ 475 003a 00BF     	 .align 2
+ 476              	.L13:
+ 477 003c 00000000 	 .word Irp_Mcu_drive_states_29bit
+ 478 0040 00000000 	 .word Lights_OUT
+ 479 0044 00000000 	 .word Relay_Control_Switch_OUT
+ 480              	 .cfi_endproc
+ 481              	.LFE608:
+ 483              	 .section .text.door_en_cabin_light,"ax",%progbits
+ 484              	 .align 2
+ 485              	 .global door_en_cabin_light
+ 486              	 .thumb
+ 487              	 .thumb_func
+ 489              	door_en_cabin_light:
+ 490              	.LFB609:
+  61:../VCU_OUT/Vcu_Out.c **** 
+  62:../VCU_OUT/Vcu_Out.c **** void door_en_cabin_light(void)
+  63:../VCU_OUT/Vcu_Out.c **** {
+ 491              	 .loc 3 63 0
+ 492              	 .cfi_startproc
+ 493              	 
+ 494              	 
+ 495 0000 80B5     	 push {r7,lr}
+ 496              	.LCFI32:
+ 497              	 .cfi_def_cfa_offset 8
+ 498              	 .cfi_offset 7,-8
+ 499              	 .cfi_offset 14,-4
+ 500 0002 00AF     	 add r7,sp,#0
+ 501              	.LCFI33:
+ 502              	 .cfi_def_cfa_register 7
+  64:../VCU_OUT/Vcu_Out.c **** 	if((!Door_Switch_OUT.passenger_door_OUT) || (!Door_Switch_OUT.driver_door_OUT) || /*(!Door_Switch_
+ 503              	 .loc 3 64 0
+ 504 0004 0E4B     	 ldr r3,.L19
+ 505 0006 9B78     	 ldrb r3,[r3,#2]
+ 506 0008 83F00103 	 eor r3,r3,#1
+ 507 000c DBB2     	 uxtb r3,r3
+ 508 000e 002B     	 cmp r3,#0
+ 509 0010 0DD1     	 bne .L16
+ 510              	 .loc 3 64 0 is_stmt 0 discriminator 1
+ 511 0012 0B4B     	 ldr r3,.L19
+ 512 0014 5B78     	 ldrb r3,[r3,#1]
+ 513 0016 83F00103 	 eor r3,r3,#1
+ 514 001a DBB2     	 uxtb r3,r3
+ 515 001c 002B     	 cmp r3,#0
+ 516 001e 06D1     	 bne .L16
+ 517              	 .loc 3 64 0 discriminator 2
+ 518 0020 074B     	 ldr r3,.L19
+ 519 0022 5B79     	 ldrb r3,[r3,#5]
+ 520 0024 83F00103 	 eor r3,r3,#1
+ 521 0028 DBB2     	 uxtb r3,r3
+ 522 002a 002B     	 cmp r3,#0
+ 523 002c 03D0     	 beq .L17
+ 524              	.L16:
+  65:../VCU_OUT/Vcu_Out.c **** 	{
+  66:../VCU_OUT/Vcu_Out.c **** 		digital_io_setoutputhigh(&AC_COMPRESSOR_OUT_D); // for cabin light on doors on/off
+ 525              	 .loc 3 66 0 is_stmt 1
+ 526 002e 0548     	 ldr r0,.L19+4
+ 527 0030 FFF7FEFF 	 bl digital_io_setoutputhigh
+ 528 0034 02E0     	 b .L15
+ 529              	.L17:
+  67:../VCU_OUT/Vcu_Out.c **** 	}
+  68:../VCU_OUT/Vcu_Out.c **** 	else
+  69:../VCU_OUT/Vcu_Out.c **** 	{
+  70:../VCU_OUT/Vcu_Out.c **** 		digital_io_setoutputlow(&AC_COMPRESSOR_OUT_D);
+ 530              	 .loc 3 70 0
+ 531 0036 0348     	 ldr r0,.L19+4
+ 532 0038 FFF7FEFF 	 bl digital_io_setoutputlow
+ 533              	.L15:
+  71:../VCU_OUT/Vcu_Out.c **** 	}
+  72:../VCU_OUT/Vcu_Out.c **** 
+  73:../VCU_OUT/Vcu_Out.c **** }
+ 534              	 .loc 3 73 0
+ 535 003c 80BD     	 pop {r7,pc}
+ 536              	.L20:
+ 537 003e 00BF     	 .align 2
+ 538              	.L19:
+ 539 0040 00000000 	 .word Door_Switch_OUT
+ 540 0044 00000000 	 .word AC_COMPRESSOR_OUT_D
+ 541              	 .cfi_endproc
+ 542              	.LFE609:
+ 544              	 .section .text.ALL_CONDITION_ON,"ax",%progbits
+ 545              	 .align 2
+ 546              	 .global ALL_CONDITION_ON
+ 547              	 .thumb
+ 548              	 .thumb_func
+ 550              	ALL_CONDITION_ON:
+ 551              	.LFB610:
+  74:../VCU_OUT/Vcu_Out.c **** /*
+  75:../VCU_OUT/Vcu_Out.c **** void cluster_door_out(void)
+  76:../VCU_OUT/Vcu_Out.c **** {
+  77:../VCU_OUT/Vcu_Out.c **** 	//cluster_door_out = cluster_door_in;
+  78:../VCU_OUT/Vcu_Out.c **** }
+  79:../VCU_OUT/Vcu_Out.c **** */
+  80:../VCU_OUT/Vcu_Out.c **** void ALL_CONDITION_ON()
+  81:../VCU_OUT/Vcu_Out.c ****  {
+ 552              	 .loc 3 81 0
+ 553              	 .cfi_startproc
+ 554              	 
+ 555              	 
+ 556 0000 80B5     	 push {r7,lr}
+ 557              	.LCFI34:
+ 558              	 .cfi_def_cfa_offset 8
+ 559              	 .cfi_offset 7,-8
+ 560              	 .cfi_offset 14,-4
+ 561 0002 00AF     	 add r7,sp,#0
+ 562              	.LCFI35:
+ 563              	 .cfi_def_cfa_register 7
+  82:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&DOOR_LOCK_PWR_OUT_D);//check j4 -> f1
+ 564              	 .loc 3 82 0
+ 565 0004 0948     	 ldr r0,.L22
+ 566 0006 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+  83:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&LIGHTS_PWR_OUT_D); // Check j4 -> k1
+ 567              	 .loc 3 83 0
+ 568 000a 0948     	 ldr r0,.L22+4
+ 569 000c FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+  84:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&HORN_PWR_OUT_D);
+ 570              	 .loc 3 84 0
+ 571 0010 0848     	 ldr r0,.L22+8
+ 572 0012 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+  85:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D);
+ 573              	 .loc 3 85 0
+ 574 0016 0848     	 ldr r0,.L22+12
+ 575 0018 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+  86:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&HEADLAMPS_ADJ_PWR_OUT_D);
+ 576              	 .loc 3 86 0
+ 577 001c 0748     	 ldr r0,.L22+16
+ 578 001e FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+  87:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputHigh(&CABIN_LIGHT_OUT_D);
+ 579              	 .loc 3 87 0
+ 580 0022 0748     	 ldr r0,.L22+20
+ 581 0024 FFF7FEFF 	 bl DIGITAL_IO_SetOutputHigh
+  88:../VCU_OUT/Vcu_Out.c **** 
+  89:../VCU_OUT/Vcu_Out.c **** 
+  90:../VCU_OUT/Vcu_Out.c **** 	// DIGITAL_IO_SetOutputHigh(&AUX_EFUSE_1_OUT_D);//instrument cluster 12v as battery(constant 12v)
+  91:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputhigh(&AUX_EFUSE_3_OUT_D);//bms 12v
+  92:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputhigh(&AUX_EFUSE_2_OUT_D);//GB/T that is for super charge charging connector
+  93:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputhigh(&AUX_EFUSE_5_OUT_D);//obc 12v
+  94:../VCU_OUT/Vcu_Out.c ****  }
+ 582              	 .loc 3 94 0
+ 583 0028 80BD     	 pop {r7,pc}
+ 584              	.L23:
+ 585 002a 00BF     	 .align 2
+ 586              	.L22:
+ 587 002c 00000000 	 .word DOOR_LOCK_PWR_OUT_D
+ 588 0030 00000000 	 .word LIGHTS_PWR_OUT_D
+ 589 0034 00000000 	 .word HORN_PWR_OUT_D
+ 590 0038 00000000 	 .word DC_DC_EN_OUT_D
+ 591 003c 00000000 	 .word HEADLAMPS_ADJ_PWR_OUT_D
+ 592 0040 00000000 	 .word CABIN_LIGHT_OUT_D
+ 593              	 .cfi_endproc
+ 594              	.LFE610:
+ 596              	 .section .text.ALL_CONDITION_OFF,"ax",%progbits
+ 597              	 .align 2
+ 598              	 .global ALL_CONDITION_OFF
+ 599              	 .thumb
+ 600              	 .thumb_func
+ 602              	ALL_CONDITION_OFF:
+ 603              	.LFB611:
+  95:../VCU_OUT/Vcu_Out.c **** 
+  96:../VCU_OUT/Vcu_Out.c ****  void ALL_CONDITION_OFF()
+  97:../VCU_OUT/Vcu_Out.c ****  {
+ 604              	 .loc 3 97 0
+ 605              	 .cfi_startproc
+ 606              	 
+ 607              	 
+ 608 0000 80B5     	 push {r7,lr}
+ 609              	.LCFI36:
+ 610              	 .cfi_def_cfa_offset 8
+ 611              	 .cfi_offset 7,-8
+ 612              	 .cfi_offset 14,-4
+ 613 0002 00AF     	 add r7,sp,#0
+ 614              	.LCFI37:
+ 615              	 .cfi_def_cfa_register 7
+  98:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&DOOR_LOCK_PWR_OUT_D);
+ 616              	 .loc 3 98 0
+ 617 0004 0948     	 ldr r0,.L25
+ 618 0006 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+  99:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&LIGHTS_PWR_OUT_D);
+ 619              	 .loc 3 99 0
+ 620 000a 0948     	 ldr r0,.L25+4
+ 621 000c FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 100:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&HORN_PWR_OUT_D);
+ 622              	 .loc 3 100 0
+ 623 0010 0848     	 ldr r0,.L25+8
+ 624 0012 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 101:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D);
+ 625              	 .loc 3 101 0
+ 626 0016 0848     	 ldr r0,.L25+12
+ 627 0018 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 102:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&HEADLAMPS_ADJ_PWR_OUT_D);
+ 628              	 .loc 3 102 0
+ 629 001c 0748     	 ldr r0,.L25+16
+ 630 001e FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 103:../VCU_OUT/Vcu_Out.c **** 	 DIGITAL_IO_SetOutputLow(&CABIN_LIGHT_OUT_D);
+ 631              	 .loc 3 103 0
+ 632 0022 0748     	 ldr r0,.L25+20
+ 633 0024 FFF7FEFF 	 bl DIGITAL_IO_SetOutputLow
+ 104:../VCU_OUT/Vcu_Out.c **** 
+ 105:../VCU_OUT/Vcu_Out.c **** 
+ 106:../VCU_OUT/Vcu_Out.c **** 	 //DIGITAL_IO_SetOutputHigh(&AUX_EFUSE_1_OUT_D);//instrument cluster 12v as battery(constant 12v)
+ 107:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputlow(&AUX_EFUSE_3_OUT_D);//bms 12v
+ 108:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputlow(&AUX_EFUSE_2_OUT_D);//GB/T that is for super charge charging connector
+ 109:../VCU_OUT/Vcu_Out.c **** 	 //digital_io_setoutputlow(&AUX_EFUSE_5_OUT_D);//obc 12v
+ 110:../VCU_OUT/Vcu_Out.c ****  }
+ 634              	 .loc 3 110 0
+ 635 0028 80BD     	 pop {r7,pc}
+ 636              	.L26:
+ 637 002a 00BF     	 .align 2
+ 638              	.L25:
+ 639 002c 00000000 	 .word DOOR_LOCK_PWR_OUT_D
+ 640 0030 00000000 	 .word LIGHTS_PWR_OUT_D
+ 641 0034 00000000 	 .word HORN_PWR_OUT_D
+ 642 0038 00000000 	 .word DC_DC_EN_OUT_D
+ 643 003c 00000000 	 .word HEADLAMPS_ADJ_PWR_OUT_D
+ 644 0040 00000000 	 .word CABIN_LIGHT_OUT_D
+ 645              	 .cfi_endproc
+ 646              	.LFE611:
+ 648              	 .section .text.charger_connected_inVoff,"ax",%progbits
+ 649              	 .align 2
+ 650              	 .global charger_connected_inVoff
+ 651              	 .thumb
+ 652              	 .thumb_func
+ 654              	charger_connected_inVoff:
+ 655              	.LFB612:
+ 111:../VCU_OUT/Vcu_Out.c **** 
+ 112:../VCU_OUT/Vcu_Out.c **** void charger_connected_inVoff(void)
+ 113:../VCU_OUT/Vcu_Out.c **** {
+ 656              	 .loc 3 113 0
+ 657              	 .cfi_startproc
+ 658              	 
+ 659              	 
+ 660 0000 80B5     	 push {r7,lr}
+ 661              	.LCFI38:
+ 662              	 .cfi_def_cfa_offset 8
+ 663              	 .cfi_offset 7,-8
+ 664              	 .cfi_offset 14,-4
+ 665 0002 00AF     	 add r7,sp,#0
+ 666              	.LCFI39:
+ 667              	 .cfi_def_cfa_register 7
+ 668              	.LBB2:
+ 114:../VCU_OUT/Vcu_Out.c **** 	if(charger_on())
+ 669              	 .loc 3 114 0
+ 670 0004 FFF7FEFF 	 bl charger_on
+ 671 0008 0346     	 mov r3,r0
+ 672 000a 002B     	 cmp r3,#0
+ 673 000c 01D0     	 beq .L27
+ 674              	.LBB3:
+ 115:../VCU_OUT/Vcu_Out.c **** 	{
+ 116:../VCU_OUT/Vcu_Out.c **** 		Update_CAN_0x18FFB632();
+ 675              	 .loc 3 116 0
+ 676 000e FFF7FEFF 	 bl Update_CAN_0x18FFB632
+ 677              	.L27:
+ 678              	.LBE3:
+ 679              	.LBE2:
+ 117:../VCU_OUT/Vcu_Out.c **** 	}
+ 118:../VCU_OUT/Vcu_Out.c **** }
+ 680              	 .loc 3 118 0
+ 681 0012 80BD     	 pop {r7,pc}
+ 682              	 .cfi_endproc
+ 683              	.LFE612:
+ 685              	 .section .text.can_outputs_allState,"ax",%progbits
+ 686              	 .align 2
+ 687              	 .global can_outputs_allState
+ 688              	 .thumb
+ 689              	 .thumb_func
+ 691              	can_outputs_allState:
+ 692              	.LFB613:
+ 119:../VCU_OUT/Vcu_Out.c **** 
+ 120:../VCU_OUT/Vcu_Out.c **** void can_outputs_allState(void)
+ 121:../VCU_OUT/Vcu_Out.c **** {
+ 693              	 .loc 3 121 0
+ 694              	 .cfi_startproc
+ 695              	 
+ 696              	 
+ 697 0000 80B5     	 push {r7,lr}
+ 698              	.LCFI40:
+ 699              	 .cfi_def_cfa_offset 8
+ 700              	 .cfi_offset 7,-8
+ 701              	 .cfi_offset 14,-4
+ 702 0002 00AF     	 add r7,sp,#0
+ 703              	.LCFI41:
+ 704              	 .cfi_def_cfa_register 7
+ 122:../VCU_OUT/Vcu_Out.c **** 	//charger_tx(); // charger can tx
+ 123:../VCU_OUT/Vcu_Out.c **** 	charger_connected_inVoff();
+ 705              	 .loc 3 123 0
+ 706 0004 FFF7FEFF 	 bl charger_connected_inVoff
+ 124:../VCU_OUT/Vcu_Out.c **** 	OBDII_CAN_Tx();
+ 707              	 .loc 3 124 0
+ 708 0008 FFF7FEFF 	 bl OBDII_CAN_Tx
+ 125:../VCU_OUT/Vcu_Out.c **** }
+ 709              	 .loc 3 125 0
+ 710 000c 80BD     	 pop {r7,pc}
+ 711              	 .cfi_endproc
+ 712              	.LFE613:
+ 714 000e 00BF     	 .section .text.limphome_Mode,"ax",%progbits
+ 715              	 .align 2
+ 716              	 .global limphome_Mode
+ 717              	 .thumb
+ 718              	 .thumb_func
+ 720              	limphome_Mode:
+ 721              	.LFB614:
+ 126:../VCU_OUT/Vcu_Out.c **** 
+ 127:../VCU_OUT/Vcu_Out.c **** int limphome_Mode(void)
+ 128:../VCU_OUT/Vcu_Out.c **** {
+ 722              	 .loc 3 128 0
+ 723              	 .cfi_startproc
+ 724              	 
+ 725              	 
+ 726              	 
+ 727 0000 80B4     	 push {r7}
+ 728              	.LCFI42:
+ 729              	 .cfi_def_cfa_offset 4
+ 730              	 .cfi_offset 7,-4
+ 731 0002 00AF     	 add r7,sp,#0
+ 732              	.LCFI43:
+ 733              	 .cfi_def_cfa_register 7
+ 129:../VCU_OUT/Vcu_Out.c **** 	if((Bms_SOC < 10) || (Mcu_Temp > 120))
+ 734              	 .loc 3 129 0
+ 735 0004 0B4B     	 ldr r3,.L34
+ 736 0006 1B88     	 ldrh r3,[r3]
+ 737 0008 092B     	 cmp r3,#9
+ 738 000a 03D9     	 bls .L31
+ 739              	 .loc 3 129 0 is_stmt 0 discriminator 1
+ 740 000c 0A4B     	 ldr r3,.L34+4
+ 741 000e 1B68     	 ldr r3,[r3]
+ 742 0010 782B     	 cmp r3,#120
+ 743 0012 08DD     	 ble .L32
+ 744              	.L31:
+ 130:../VCU_OUT/Vcu_Out.c **** 	{
+ 131:../VCU_OUT/Vcu_Out.c **** 		Gtake_Mcu_drive_states_29bit ->Drive_mode_cmd = limphome_mode_mcu;
+ 745              	 .loc 3 131 0 is_stmt 1
+ 746 0014 094B     	 ldr r3,.L34+8
+ 747 0016 1A68     	 ldr r2,[r3]
+ 748 0018 1378     	 ldrb r3,[r2]
+ 749 001a 0421     	 movs r1,#4
+ 750 001c 61F3C503 	 bfi r3,r1,#3,#3
+ 751 0020 1370     	 strb r3,[r2]
+ 132:../VCU_OUT/Vcu_Out.c **** 		return 0;
+ 752              	 .loc 3 132 0
+ 753 0022 0023     	 movs r3,#0
+ 754 0024 00E0     	 b .L33
+ 755              	.L32:
+ 133:../VCU_OUT/Vcu_Out.c **** 	}
+ 134:../VCU_OUT/Vcu_Out.c **** 	else
+ 135:../VCU_OUT/Vcu_Out.c **** 	{
+ 136:../VCU_OUT/Vcu_Out.c **** 		return 1;
+ 756              	 .loc 3 136 0
+ 757 0026 0123     	 movs r3,#1
+ 758              	.L33:
+ 137:../VCU_OUT/Vcu_Out.c **** 	}
+ 138:../VCU_OUT/Vcu_Out.c **** 
+ 139:../VCU_OUT/Vcu_Out.c **** 	return 0;
+ 140:../VCU_OUT/Vcu_Out.c **** }
+ 759              	 .loc 3 140 0
+ 760 0028 1846     	 mov r0,r3
+ 761 002a BD46     	 mov sp,r7
+ 762              	.LCFI44:
+ 763              	 .cfi_def_cfa_register 13
+ 764              	 
+ 765 002c 5DF8047B 	 ldr r7,[sp],#4
+ 766              	.LCFI45:
+ 767              	 .cfi_restore 7
+ 768              	 .cfi_def_cfa_offset 0
+ 769 0030 7047     	 bx lr
+ 770              	.L35:
+ 771 0032 00BF     	 .align 2
+ 772              	.L34:
+ 773 0034 00000000 	 .word Bms_SOC
+ 774 0038 00000000 	 .word Mcu_Temp
+ 775 003c 00000000 	 .word Gtake_Mcu_drive_states_29bit
+ 776              	 .cfi_endproc
+ 777              	.LFE614:
+ 779              	 .section .text.limphome_Mode_IRP,"ax",%progbits
+ 780              	 .align 2
+ 781              	 .global limphome_Mode_IRP
+ 782              	 .thumb
+ 783              	 .thumb_func
+ 785              	limphome_Mode_IRP:
+ 786              	.LFB615:
+ 141:../VCU_OUT/Vcu_Out.c **** 
+ 142:../VCU_OUT/Vcu_Out.c **** int limphome_Mode_IRP(void)
+ 143:../VCU_OUT/Vcu_Out.c **** {
+ 787              	 .loc 3 143 0
+ 788              	 .cfi_startproc
+ 789              	 
+ 790              	 
+ 791              	 
+ 792 0000 80B4     	 push {r7}
+ 793              	.LCFI46:
+ 794              	 .cfi_def_cfa_offset 4
+ 795              	 .cfi_offset 7,-4
+ 796 0002 00AF     	 add r7,sp,#0
+ 797              	.LCFI47:
+ 798              	 .cfi_def_cfa_register 7
+ 144:../VCU_OUT/Vcu_Out.c **** 	if((Mapped_BMS_SOC < 10) /*|| (Mcu_Temp_Irp > 90)*/)
+ 799              	 .loc 3 144 0
+ 800 0004 094B     	 ldr r3,.L39
+ 801 0006 1B78     	 ldrb r3,[r3]
+ 802 0008 092B     	 cmp r3,#9
+ 803 000a 08D8     	 bhi .L37
+ 145:../VCU_OUT/Vcu_Out.c **** 	{
+ 146:../VCU_OUT/Vcu_Out.c **** 		Irp_Mcu_drive_states_29bit ->Driving_Profile = Limp_Crawl_irp;
+ 804              	 .loc 3 146 0
+ 805 000c 084B     	 ldr r3,.L39+4
+ 806 000e 1A68     	 ldr r2,[r3]
+ 807 0010 1378     	 ldrb r3,[r2]
+ 808 0012 0321     	 movs r1,#3
+ 809 0014 61F38403 	 bfi r3,r1,#2,#3
+ 810 0018 1370     	 strb r3,[r2]
+ 147:../VCU_OUT/Vcu_Out.c **** 		return 0;
+ 811              	 .loc 3 147 0
+ 812 001a 0023     	 movs r3,#0
+ 813 001c 00E0     	 b .L38
+ 814              	.L37:
+ 148:../VCU_OUT/Vcu_Out.c **** 	}
+ 149:../VCU_OUT/Vcu_Out.c **** 	else
+ 150:../VCU_OUT/Vcu_Out.c **** 	{
+ 151:../VCU_OUT/Vcu_Out.c **** 		return 1;
+ 815              	 .loc 3 151 0
+ 816 001e 0123     	 movs r3,#1
+ 817              	.L38:
+ 152:../VCU_OUT/Vcu_Out.c **** 	}
+ 153:../VCU_OUT/Vcu_Out.c **** 
+ 154:../VCU_OUT/Vcu_Out.c **** 	return 0;
+ 155:../VCU_OUT/Vcu_Out.c **** }
+ 818              	 .loc 3 155 0
+ 819 0020 1846     	 mov r0,r3
+ 820 0022 BD46     	 mov sp,r7
+ 821              	.LCFI48:
+ 822              	 .cfi_def_cfa_register 13
+ 823              	 
+ 824 0024 5DF8047B 	 ldr r7,[sp],#4
+ 825              	.LCFI49:
+ 826              	 .cfi_restore 7
+ 827              	 .cfi_def_cfa_offset 0
+ 828 0028 7047     	 bx lr
+ 829              	.L40:
+ 830 002a 00BF     	 .align 2
+ 831              	.L39:
+ 832 002c 00000000 	 .word Mapped_BMS_SOC
+ 833 0030 00000000 	 .word Irp_Mcu_drive_states_29bit
+ 834              	 .cfi_endproc
+ 835              	.LFE615:
+ 837              	 .text
+ 838              	.Letext0:
+ 839              	 .file 4 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\machine\\_default_types.h"
+ 840              	 .file 5 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\stdint.h"
+ 841              	 .file 6 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc4_gpio.h"
+ 842              	 .file 7 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_usic.h"
+ 843              	 .file 8 "c:\\infineon\\tools\\dave ide\\4.5.0.202105191637\\eclipse\\arm-gcc-49\\arm-none-eabi\\include\\sys\\types.h"
+ 844              	 .file 9 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_rtc.h"
+ 845              	 .file 10 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/XMCLib/inc/xmc_spi.h"
+ 846              	 .file 11 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Vcu_Config.h"
+ 847              	 .file 12 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Vcu_Init.h"
+ 848              	 .file 13 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/can_matrix.h"
+ 849              	 .file 14 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Include/cmsis_gcc.h"
+ 850              	 .file 15 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Include/core_cm4.h"
+ 851              	 .file 16 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Libraries/CMSIS/Infineon/XMC4700_series/Include/system_XMC4700.h"
+ 852              	 .file 17 "D:/Projects/VCU Firmware Main/IRP/Git Repo/VCU14_29bit_overCAN_withIRP_new4g_proto26_adding_All10sec_data/Dave/Generated/DIGITAL_IO/digital_io_extern.h"
+DEFINED SYMBOLS
+                            *ABS*:00000000 Vcu_Out.c
+    {standard input}:20     .text.XMC_GPIO_SetOutputHigh:00000000 $t
+    {standard input}:24     .text.XMC_GPIO_SetOutputHigh:00000000 XMC_GPIO_SetOutputHigh
+    {standard input}:68     .text.XMC_GPIO_SetOutputLow:00000000 $t
+    {standard input}:72     .text.XMC_GPIO_SetOutputLow:00000000 XMC_GPIO_SetOutputLow
+    {standard input}:115    .text.DIGITAL_IO_SetOutputHigh:00000000 $t
+    {standard input}:119    .text.DIGITAL_IO_SetOutputHigh:00000000 DIGITAL_IO_SetOutputHigh
+    {standard input}:159    .text.DIGITAL_IO_SetOutputLow:00000000 $t
+    {standard input}:163    .text.DIGITAL_IO_SetOutputLow:00000000 DIGITAL_IO_SetOutputLow
+                            *COM*:00000004 cluster_door_in
+                            *COM*:00000003 Vcu_OutPuts
+                            *COM*:00000008 Combi_Switch_IN
+                            *COM*:00000003 Seat_Switch_IN
+                            *COM*:00000007 Door_Switch_IN
+                            *COM*:0000002f Relay_Control_Switch_OUT
+                            *COM*:00000018 Hvac_IN
+                            *COM*:00000014 Switch_Ios_IN
+                            *COM*:00000005 Motor_controller_OUT
+                            *COM*:00000008 Lights_OUT
+                            *COM*:00000008 Sensors_OUT
+                            *COM*:00000006 Aux_Inputs
+                            *COM*:00000012 Instrument_Cluster_OUT
+                            *COM*:00000003 Seat_Belt_OUT
+                            *COM*:00000004 Gear_OUT
+                            *COM*:00000004 Instrumetcluster_DriveMode_OUT
+                            *COM*:00000007 Door_Switch_OUT
+                            *COM*:00000007 instrument_cluster_doorsvar
+                            *COM*:00000004 cluster_door_out
+                            *COM*:00000008 current_time
+                            *COM*:00000008 timeval
+                            *COM*:00000010 GPS_data_val
+                            *COM*:00000004 epoch
+                            *COM*:00000001 ambient_temp
+                            *COM*:00000003 AUX_EFUSE_2_OUT_D
+                            *COM*:00000003 HV_BATT_FAN_PWR_OUT
+                            *COM*:00000003 ORVM_OPEN_OUT_D
+                            *COM*:00000003 ORVM_FOLD_OUT_D
+                            *COM*:00000003 ORVM_PWR_OUT_D
+                            *COM*:00000003 AC_BLOWER_SPEED1_OUT_D
+                            *COM*:00000003 AC_BLOWER_SPEED2_OUT_D
+                            *COM*:00000003 AC_BLOWER_SPEED3_OUT_D
+                            *COM*:00000003 AC_SOL_PWR_OUT_D
+                            *COM*:00000003 AUX_EFUSE_3_OUT_D
+                            *COM*:00000003 AUX_EFUSE_4_OUT_D
+                            *COM*:00000003 AUX_EFUSE_5_OUT_D
+                            *COM*:00000003 AUX_MOSFET_OUT3_D
+                            *COM*:00000003 SUNROOF_PWR_OUT_D
+                            *COM*:00000003 HV_CHARGER_EN_OUT_D
+                            *COM*:00000003 AC_COMPRESSOR_OUT_D
+                            *COM*:00000003 ELEC_HANDBRAKE_PWR_OUT_D
+                            *COM*:00000008 SuperLoop_Time
+                            *COM*:00000008 SuperLoop_Time_usec
+                            *COM*:00000008 SuperLoop_Time_msec
+                            *COM*:00000008 SuperLoop_Time_sec
+                            *COM*:00000004 End_Time
+                            *COM*:00000004 Start_Time
+                            *COM*:00000001 CState
+                            *COM*:00000001 PreState
+                            *COM*:00000001 BMS_SOC
+                            *COM*:0000003c CAN_MSG_DB_HVAC
+                            *COM*:00000004 eps_status
+                            *COM*:00000001 instrument_clustor_doors
+                            *COM*:00000084 CAN_BMS_29bit
+                            *COM*:00000084 CAN_IRP_29bit
+                            *COM*:00000001 charge_complete
+                            *COM*:00000001 charging_started
+                            *COM*:00000002 Bms_SOC
+                            *COM*:00000002 Bms_SOH
+                            *COM*:00000001 Mapped_BMS_SOC
+                            *COM*:00000002 Bms_minTemp
+                            *COM*:00000002 Bms_maxTemp
+                            *COM*:00000004 PackCurrent
+                            *COM*:00000004 PackVoltage
+                            *COM*:00000002 RegenerativeCurrentLimit
+                            *COM*:00000002 ChargeCurrentLimit
+                            *COM*:00000002 DischargeCurrentLimit
+                            *COM*:00000004 HvBatteryPower
+                            *COM*:00000004 bmsFault1
+                            *COM*:00000004 bmsFault2
+                            *COM*:00000004 GtakeFaults
+                            *COM*:00000003 allFault_indicator
+                            *COM*:00000004 cluster_Fault_Indicator
+                            *COM*:00000004 Mcu_Temp
+                            *COM*:00000004 Motor_Temp
+                            *COM*:00000002 VehicleSpeedglb
+                            *COM*:0000003c OBDII_CAN
+                            *COM*:00000002 OBD_data
+                            *COM*:00000004 Irp_Mcu_drive_states_29bit
+                            *COM*:00000004 Irp_Mcu_BMS_states_29bit
+                            *COM*:00000004 Irp_Mcu_Torques_29bit
+                            *COM*:00000004 Irp_Mcu_BMS_Currents_29bit
+                            *COM*:00000004 Irp_MCU_Status_29bit
+                            *COM*:00000004 Irp_MCU_Faults_29bit
+                            *COM*:00000002 DC_Current_irp
+                            *COM*:00000002 MotorPower_Irp
+                            *COM*:00000002 Torque_Estimation
+                            *COM*:00000002 DC_Voltage_irp
+                            *COM*:00000002 Mcu_Temp_Irp
+                            *COM*:00000002 Motor_Temp_Irp
+                            *COM*:00000002 RPM
+                            *COM*:00000001 Regenration_flag
+                            *COM*:00000002 hv_count
+                            *COM*:00000004 BMS_Avg_temp
+                            *COM*:00000001 AC_ON_4g
+                            *COM*:00000002 speed_4g
+    {standard input}:298    .text.OutPutAction_Update:00000000 $t
+    {standard input}:303    .text.OutPutAction_Update:00000000 OutPutAction_Update
+    {standard input}:550    .text.ALL_CONDITION_ON:00000000 ALL_CONDITION_ON
+    {standard input}:691    .text.can_outputs_allState:00000000 can_outputs_allState
+    {standard input}:373    .text.Lights_on_off:00000000 Lights_on_off
+    {standard input}:430    .text.VcuOut_MotorController_IRPbrakes:00000000 VcuOut_MotorController_IRPbrakes
+    {standard input}:489    .text.door_en_cabin_light:00000000 door_en_cabin_light
+    {standard input}:341    .text.charger_tx:00000000 $t
+    {standard input}:346    .text.charger_tx:00000000 charger_tx
+    {standard input}:368    .text.Lights_on_off:00000000 $t
+    {standard input}:418    .text.Lights_on_off:00000034 $d
+    {standard input}:425    .text.VcuOut_MotorController_IRPbrakes:00000000 $t
+    {standard input}:477    .text.VcuOut_MotorController_IRPbrakes:0000003c $d
+    {standard input}:484    .text.door_en_cabin_light:00000000 $t
+    {standard input}:539    .text.door_en_cabin_light:00000040 $d
+    {standard input}:545    .text.ALL_CONDITION_ON:00000000 $t
+    {standard input}:587    .text.ALL_CONDITION_ON:0000002c $d
+    {standard input}:597    .text.ALL_CONDITION_OFF:00000000 $t
+    {standard input}:602    .text.ALL_CONDITION_OFF:00000000 ALL_CONDITION_OFF
+    {standard input}:639    .text.ALL_CONDITION_OFF:0000002c $d
+    {standard input}:649    .text.charger_connected_inVoff:00000000 $t
+    {standard input}:654    .text.charger_connected_inVoff:00000000 charger_connected_inVoff
+    {standard input}:686    .text.can_outputs_allState:00000000 $t
+    {standard input}:715    .text.limphome_Mode:00000000 $t
+    {standard input}:720    .text.limphome_Mode:00000000 limphome_Mode
+    {standard input}:773    .text.limphome_Mode:00000034 $d
+    {standard input}:780    .text.limphome_Mode_IRP:00000000 $t
+    {standard input}:785    .text.limphome_Mode_IRP:00000000 limphome_Mode_IRP
+    {standard input}:832    .text.limphome_Mode_IRP:0000002c $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+State_1
+State_2
+SPI_ADC_ProcessModeChange
+Update_CAN_id0x1806E5F4
+BRAKE_LIGHT_OUT_D
+Gtake_Mcu_drive_states_additional_29bit
+digital_io_setoutputhigh
+digital_io_setoutputlow
+DOOR_LOCK_PWR_OUT_D
+LIGHTS_PWR_OUT_D
+HORN_PWR_OUT_D
+DC_DC_EN_OUT_D
+HEADLAMPS_ADJ_PWR_OUT_D
+CABIN_LIGHT_OUT_D
+charger_on
+Update_CAN_0x18FFB632
+OBDII_CAN_Tx
+Gtake_Mcu_drive_states_29bit
