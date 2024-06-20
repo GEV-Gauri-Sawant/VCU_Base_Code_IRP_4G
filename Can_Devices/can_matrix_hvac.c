@@ -4,6 +4,7 @@
 //#include <main.h>
 
 volatile uint8_t error_compressor;
+uint16_t rpm=0;
 
 CAN_MSG_t CAN_MSG_DB_HVAC[CAN_HVAC_MAX] =
 {
@@ -180,7 +181,6 @@ void Process_CAN_Hifire_0x8000250(void)
 
 void Process_CAN_0x100(void)
 {
-	uint16_t rpm=0;
 	float pressure_in, voltage_psi;
 	float pressure_value;
 	uint8_t TempDegreeC;
@@ -202,7 +202,35 @@ void Process_CAN_0x100(void)
 		//convert the temperature to rpm
 		if(TempDegreeC <= 28)
 		{
-			rpm = (uint16_t)(((-200) * (int32_t)TempDegreeC) + 9100);        //from line eqn relating temperature to rpm
+//			rpm = (uint16_t)(((-200) * (int32_t)TempDegreeC) + 9100);        //from line eqn relating temperature to rpm
+
+			//hifire
+			rpm = (uint16_t)(((-170) * (int32_t)TempDegreeC) + 8220);        //from line eqn relating temperature to rpm
+
+//			if(TempDegreeC == 18)
+//			{
+//				rpm = 5000;
+//			}
+//			else if(TempDegreeC == 19)
+//			{
+//				rpm = 4500;
+//			}
+//			else if(TempDegreeC == 20)
+//			{
+//				rpm = 4000;
+//			}
+//			else if(TempDegreeC == 21 || TempDegreeC == 22 || TempDegreeC == 23)
+//			{
+//				rpm = 3500;
+//			}
+//			else if(TempDegreeC == 24)
+//			{
+//				rpm = 3000;
+//			}
+//			else
+//			{
+//				rpm = 2500;
+//			}
 
 			if(Vcu_InPuts.IGNITION_1_IN)
 			{//ptc turn off//
@@ -237,8 +265,11 @@ void Process_CAN_0x100(void)
 //	CAN_MSG_DB_HVAC[CAN_0x238].CAN_Data[1] = (rpm >> 8);
 
 	//update CAN_MSG_DB_HVAC for 0x8000530 //hifire
-	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[3] = rpm;        //hifire
-	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[4] = (rpm >> 8); //hifire
+//	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[3] = 0x0b;        //hifire
+//	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[4] = 0xb8; //hifire
+	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[3] = (rpm >> 8);//0x0b;        //hifire
+	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[4] = rpm;//0xb8; //hifire
+	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[5] = 0x0F;       //hifire
 
 	//error_compressor from 0x8000250
 	if((0x01 == AC_ON) && (0x01 != error_compressor))
@@ -258,7 +289,7 @@ void Process_CAN_0x100(void)
 
 		//turn AC ON
 //		CAN_MSG_DB_HVAC[CAN_0x238].CAN_Data[3] = 0x01;	//setting 24th bit of CAN_0x238
-		CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[0] = 0x01;	//setting 7th bit of CAN_0x8000530 //hifire
+		CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[0] = 0x80;	//setting 7th bit of CAN_0x8000530 //hifire
 	}
 	else
 	{

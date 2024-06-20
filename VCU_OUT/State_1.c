@@ -27,7 +27,7 @@ void State_1(void)
 	else if(!(Vcu_OutPuts.IGNITION_1_OUT))
 	{
 		//check battery voltage and turn on/off DC to DC converter
-		dc_dc_state_update(); //test this later
+//		dc_dc_state_update(); //test this later
 		/* ignition 1 off state */
 		ignition1_d_off();
 		all_direct_controlled_relay_off();
