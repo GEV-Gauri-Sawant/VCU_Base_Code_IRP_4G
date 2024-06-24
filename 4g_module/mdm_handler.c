@@ -3439,7 +3439,7 @@ en_responseRetCodes_t mod_pub10sPackExtractGps(void)
 		sgb_flag4g = false;
 	}
 
-	if (sgb_packetFlag == true)
+	if (sgb_packetFlag == true && is_drive_mode == true) //publish only in drive mode
 	{
 		len_retStatus = mod_mqttPublishData(Eventbuffer_4Gcomm,
 				strlen((char*) Eventbuffer_4Gcomm),(uint8_t*) MQTT_PUBLISH_TOPIC);

@@ -41,6 +41,8 @@ void Vcu_OutPut(void);
 void reset_on(void);
 
 uint8_t CState = 4, PreState = 0;
+int testv = 0;
+bool is_drive_mode = false;
 
 int main(void)
 {

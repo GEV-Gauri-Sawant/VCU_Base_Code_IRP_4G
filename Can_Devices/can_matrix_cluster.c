@@ -125,8 +125,8 @@ void Update_CAN_0x18FFB632(void)
 		//BMS_SOC = CAN_MSG_DB[CAN_18FFB632].CAN_Data[ZERO_BYTE] = map(CAN_MSG_DB_BMS[CAN_0x102].CAN_Data[ZERO_BYTE], 10, 100, 0, 100);
 
 	//to update SOC percentage byte         (0 to 100) to (10 to 100)
-	Mapped_BMS_SOC = BMS_SOC = CAN_MSG_DB[CAN_18FFB632].CAN_Data[ZERO_BYTE] = Bms_SOC;
-//	Mapped_BMS_SOC = BMS_SOC = CAN_MSG_DB[CAN_18FFB632].CAN_Data[ZERO_BYTE] = map(Bms_SOC, 10, 100, 0, 100);
+//	Mapped_BMS_SOC = BMS_SOC = CAN_MSG_DB[CAN_18FFB632].CAN_Data[ZERO_BYTE] = Bms_SOC;
+	Mapped_BMS_SOC = BMS_SOC = CAN_MSG_DB[CAN_18FFB632].CAN_Data[ZERO_BYTE] = map(Bms_SOC, 10, 100, 0, 100);
 
 	//to update battery temperature
 	CAN_MSG_DB[CAN_18FFB632].CAN_Data[SECOND_BYTE] = Bms_maxTemp;

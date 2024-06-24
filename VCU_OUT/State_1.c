@@ -19,6 +19,8 @@ void State_1(void)
 	if(Vcu_OutPuts.IGNITION_1_OUT)
 	{
 		/* ignition 1 on state */
+		is_drive_mode = true;
+
 		ignition1_d_on();
 		faciaaswitches();
 		Can_Outputs_State1();
@@ -26,6 +28,8 @@ void State_1(void)
 	}
 	else if(!(Vcu_OutPuts.IGNITION_1_OUT))
 	{
+		is_drive_mode = false;
+
 		//check battery voltage and turn on/off DC to DC converter
 //		dc_dc_state_update(); //test this later
 		/* ignition 1 off state */

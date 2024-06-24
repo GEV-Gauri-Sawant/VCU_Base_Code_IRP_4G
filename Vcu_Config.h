@@ -359,3 +359,6 @@ GPS_data_t GPS_data_val;
 time_t epoch;
 // Adding for ambient_temp
 uint8_t ambient_temp;
+
+//flag added to check if vehicle is in drive mode or not (i.e ign 1) used for packet publishing using 4G
+bool is_drive_mode;
