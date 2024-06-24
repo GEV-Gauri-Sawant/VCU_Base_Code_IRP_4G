@@ -19,3 +19,10 @@ Date : 19/06/2024
 Date : 20/06/2024
 1. Added battery 12V monitor for DC to DC converter
 2. AUX_EFUSE3 output pin is connected to 48V battery input.
+
+Date : 24/06/2024
+1. is_drive_mode flag added to check whether vehicle is in drive mode (ign 1) or not.
+2. Publish 10 second packet only when is_drive_mode == true.
+3. Testing on VP05, VP06 and VP10 (with Diksha).
+4. SOC mapping removed from VP05.
+5. SOC mapping added in VP06, VP10.
