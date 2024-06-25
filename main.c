@@ -43,6 +43,7 @@ void reset_on(void);
 uint8_t CState = 4, PreState = 0;
 int testv = 0;
 bool is_drive_mode = false;
+volatile uint16_t seconds_elapsed = 0;
 
 int main(void)
 {
@@ -239,4 +240,10 @@ void NMI_Handler(void)
 	//DIGITAL_IO_SetOutputLow(&CABIN_LIGHT_OUT_D);
 	//uart_debugg("exit watchdog");
 	}
+}
+
+//used for 12V battery charging during parked mode. 10 seconds timer
+void timer_irq(void)
+{
+	seconds_elapsed++;
 }

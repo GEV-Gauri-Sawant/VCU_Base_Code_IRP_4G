@@ -44,3 +44,5 @@ void Can_Outputs_State2(void);
 void all_direct_controlled_relay_off(void);
 
 void charger_tx(void);
+
+void dc_dc_state_update(void);

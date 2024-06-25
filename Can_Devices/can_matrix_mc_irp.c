@@ -25,7 +25,9 @@ CAN_MSG_t CAN_IRP_29bit[CAN_IRP_Total_id29bit] =
 void CAN_Tx_id0x10(void)
 {
 	    CAN_NODE_STATUS_t status;
+	    XMC_CAN_MO_t *MO_Ptr;
 	    const CAN_NODE_t *HandlePtr1 = &CAN_NODE_1;
+	    MO_Ptr = HandlePtr1->lmobj_ptr[16]->mo_ptr;
 
 	    uint8_t *array_data;
 
@@ -40,7 +42,17 @@ void CAN_Tx_id0x10(void)
 	        // message object data updated.
 
 	        // transmit the data
-	        CAN_NODE_MO_Transmit(HandlePtr1->lmobj_ptr[16]);
+	    	  status = CAN_NODE_MO_Transmit(HandlePtr1->lmobj_ptr[16]);
+	    	  if (status == CAN_NODE_STATUS_SUCCESS)
+	    	  {
+	    	       status = CAN_NODE_MO_GetStatus(HandlePtr1->lmobj_ptr[16]);
+
+	    	        if (status &  XMC_CAN_MO_STATUS_TX_PENDING)
+	    	        {
+	    	          //Clear the transmit OK flag
+	    	          XMC_CAN_MO_ResetStatus(MO_Ptr,XMC_CAN_MO_RESET_STATUS_TX_PENDING);
+	    	        }
+	    	  }
 	      }
 	      else
 	      {
@@ -94,7 +106,10 @@ void CAN_Tx_id0x21(void)
 	        // message object data updated.
 
 	        // transmit the data
-	        CAN_NODE_MO_Transmit(HandlePtr1->lmobj_ptr[18]);
+	    	  status = CAN_NODE_MO_Transmit(HandlePtr1->lmobj_ptr[18]);
+	        if (status == CAN_NODE_STATUS_SUCCESS)
+	        {
+	        }
 	      }
 	      else
 	      {

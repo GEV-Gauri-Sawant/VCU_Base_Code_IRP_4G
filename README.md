@@ -26,3 +26,8 @@ Date : 24/06/2024
 3. Testing on VP05, VP06 and VP10 (with Diksha).
 4. SOC mapping removed from VP05.
 5. SOC mapping added in VP06, VP10.
+
+Date : 25/06/2024
+1. DC to DC converter charging logic updated (commented).
+2. Needs testing on VP07 and other vehicles (48V battery connection is only done for VP07).
+3. ADC2, ADC3 testing.

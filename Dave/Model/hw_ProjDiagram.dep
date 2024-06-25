@@ -6472,7 +6472,7 @@
     <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="261" height="81" x="640" y="7750">
       <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="221" height="81" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
     </graphicsAlgorithm>
-    <anchors xsi:type="pi:BoxRelativeAnchor" active="true" referencedGraphicsAlgorithm="//@children.76/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" outgoingConnections="//@connections.8" referencedGraphicsAlgorithm="//@children.76/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
       <properties key="SignalName" value="event_time_interval"/>
       <properties key="uri" value="http://resources/4.1.12/app/TIMER/2/vs_timer_ccu4_period_match_interrupt"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="220" y="50"/>
@@ -6517,7 +6517,7 @@
       <properties key="uri" value="http://resources/4.1.12/app/TIMER/2/vs_timer_ccu4_period_match_interrupt"/>
       <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="30"/>
     </children>
-    <children>
+    <children visible="true">
       <properties key="uri" value="http://resources/4.1.12/app/TIMER/2/vs_timer_ccu4_period_match_interrupt"/>
       <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="95" height="20" x="140" y="45" style="//@styles.0/@styles.2" horizontalAlignment="ALIGNMENT_RIGHT" value="event_time_interval"/>
     </children>
@@ -8471,6 +8471,47 @@
     </children>
   </children>
   <children xsi:type="pi:ContainerShape" visible="true" active="true">
+    <properties key="uri" value="http://resources/4.0.10/app/INTERRUPT/1"/>
+    <properties key="APP_NAME_ID" value="INTERRUPT/1"/>
+    <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="171" height="71" x="940" y="7755">
+      <graphicsAlgorithmChildren xsi:type="al:RoundedRectangle" lineWidth="2" transparency="0.0" width="131" height="71" x="20" style="//@styles.0/@styles.3" cornerHeight="5" cornerWidth="5"/>
+    </graphicsAlgorithm>
+    <anchors xsi:type="pi:BoxRelativeAnchor" visible="true" active="true" incomingConnections="//@connections.8" referencedGraphicsAlgorithm="//@children.88/@graphicsAlgorithm/@graphicsAlgorithmChildren.0">
+      <properties key="SignalName" value="sr_irq"/>
+      <properties key="uri" value="http://resources/4.0.10/app/INTERRUPT/1/vs_nvic_signal_in"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" background="//@colors.2" lineStyle="UNSPECIFIED" width="20" height="10" x="-20" y="50"/>
+    </anchors>
+    <children visible="true">
+      <graphicsAlgorithm xsi:type="al:Polyline" lineStyle="UNSPECIFIED" style="//@styles.0">
+        <points x="20" y="40"/>
+        <points x="151" y="40"/>
+      </graphicsAlgorithm>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="131" height="20" x="20"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="129" height="20" x="2" style="//@styles.0/@styles.0" horizontalAlignment="ALIGNMENT_CENTER" value="INTERRUPT"/>
+      </children>
+    </children>
+    <children xsi:type="pi:ContainerShape" visible="true">
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="131" height="20" x="20" y="20"/>
+      <children visible="true">
+        <graphicsAlgorithm xsi:type="al:Text" lineStyle="UNSPECIFIED" width="129" height="20" x="2" style="//@styles.0/@styles.1" horizontalAlignment="ALIGNMENT_CENTER" value="INTERRUPT_1">
+          <properties key="AppInstanceLabel" value="INTERRUPT_1"/>
+        </graphicsAlgorithm>
+      </children>
+    </children>
+    <children visible="true" active="true">
+      <properties key="SignalName" value="sr_irq"/>
+      <properties key="uri" value="http://resources/4.0.10/app/INTERRUPT/1/vs_nvic_signal_in"/>
+      <graphicsAlgorithm xsi:type="al:Rectangle" lineWidth="1" filled="false" lineVisible="false" transparency="0.0" width="20" height="10" x="-20" y="30"/>
+    </children>
+    <children visible="true">
+      <properties key="uri" value="http://resources/4.0.10/app/INTERRUPT/1/vs_nvic_signal_in"/>
+      <graphicsAlgorithm xsi:type="al:Text" foreground="//@colors.2" lineStyle="UNSPECIFIED" width="96" height="20" x="25" y="45" style="//@styles.0/@styles.2" value="sr_irq"/>
+    </children>
+  </children>
+  <children xsi:type="pi:ContainerShape" visible="true" active="true">
     <properties key="junctionPoint"/>
     <graphicsAlgorithm xsi:type="al:Ellipse" lineStyle="UNSPECIFIED" width="6" height="6" x="317" y="8007">
       <graphicsAlgorithmChildren xsi:type="al:Ellipse" background="//@colors.5" foreground="//@colors.5" lineWidth="1" transparency="0.0" width="5" height="5"/>
@@ -8784,6 +8825,19 @@
     </connectionDecorators>
     <bendpoints x="300" y="6381"/>
     <bendpoints x="300" y="7599"/>
+  </connections>
+  <connections xsi:type="pi:FreeFormConnection" visible="true" active="true" start="//@children.76/@anchors.0" end="//@children.88/@anchors.0">
+    <properties key="uri" value="http://resources/4.1.12/app/TIMER/2/http://resources/4.1.12/app/TIMER/2/vs_timer_ccu4_period_match_interrupt/http://resources/4.0.10/app/INTERRUPT/1/vs_nvic_signal_in"/>
+    <graphicsAlgorithm xsi:type="al:Polyline" background="//@colors.6" foreground="//@colors.6" lineStyle="UNSPECIFIED" style="//@styles.0/@styles.3"/>
+    <connectionDecorators visible="true" locationRelative="true" location="1.0">
+      <graphicsAlgorithm xsi:type="al:Polyline" background="//@colors.6" foreground="//@colors.6" lineStyle="UNSPECIFIED" style="//@styles.0/@styles.3">
+        <points x="-10" y="5"/>
+        <points/>
+        <points x="-10" y="-5"/>
+      </graphicsAlgorithm>
+    </connectionDecorators>
+    <bendpoints x="920" y="7805"/>
+    <bendpoints x="920" y="7810"/>
   </connections>
   <colors red="227" green="238" blue="249"/>
   <colors red="255" green="255" blue="255"/>

@@ -30,12 +30,13 @@ void State_1(void)
 	{
 		is_drive_mode = false;
 
-		//check battery voltage and turn on/off DC to DC converter
-//		dc_dc_state_update(); //test this later
 		/* ignition 1 off state */
 		ignition1_d_off();
 		all_direct_controlled_relay_off();
 	}
+
+	//check battery voltage and turn on/off DC to DC converter
+	dc_dc_state_update();
 
 	VcuOut_IoExp_U24();
 	VcuOut_IoExp_U25();
@@ -54,14 +55,16 @@ void ignition1_d_on()
  	DIGITAL_IO_SetOutputHigh(&INFOTAINMENT_PWR_OUT_D); // check infotainment port & pin
  	DIGITAL_IO_SetOutputHigh(&INSTRUMENT_CON_PWR_OUT_D);
  	DIGITAL_IO_SetOutputHigh(&WIPER_PWR_OUT_D);
-
+ 	DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D);
+ 	DIGITAL_IO_SetOutputHigh(&PWR_WINDOW_OUT_D);
  	DIGITAL_IO_SetOutputHigh(&CABIN_LIGHT_OUT_D);
 
  	//IOExp_SetPIN_LOW(&I2C_MASTER_1, 0x40, 0, 0);
  	digital_io_setoutputhigh(&AC_BLOWER_SPEED1_OUT_D); /// turn on HVAC(CPIS)
  	digital_io_setoutputhigh(&AC_BLOWER_SPEED2_OUT_D); /// turn on COMPRESSOR PWR.
 
- 	DIGITAL_IO_SetOutputHigh(&PWR_WINDOW_OUT_D);
+ 	//AUX_EFUSE_3_OUT_D output is connected to 48V battery input
+ 	digital_io_setoutputhigh(&AUX_EFUSE_3_OUT_D); //48V battery
 
  	//digital_io_setoutputhigh(&SUNROOF_PWR_OUT_D);//irp_12v supply
  	/*  active low */
@@ -83,14 +86,13 @@ void ignition1_d_on()
  	DIGITAL_IO_SetOutputLow(&INFOTAINMENT_PWR_OUT_D);
  	DIGITAL_IO_SetOutputLow(&INSTRUMENT_CON_PWR_OUT_D);
  	DIGITAL_IO_SetOutputLow(&WIPER_PWR_OUT_D);
-
+ 	DIGITAL_IO_SetOutputLow(&AC_RADIATOR_OUT_D);
  	//DIGITAL_IO_SetOutputLow(&CABIN_LIGHT_OUT_D);
-
  	DIGITAL_IO_SetOutputLow(&PWR_WINDOW_OUT_D);
 
  	digital_io_setoutputlow(&AC_BLOWER_SPEED1_OUT_D); /// turn off HVAC(CPIS)
  	digital_io_setoutputlow(&AC_BLOWER_SPEED2_OUT_D); /// turn off COMPRESSOR PWR.
- 	DIGITAL_IO_SetOutputLow(&AC_RADIATOR_OUT_D);
+
 
  	/* active low */
  	digital_io_setoutputlow(&AUX_EFUSE_4_OUT_D);
@@ -231,36 +233,74 @@ void ignition1_d_on()
 
  }
 
- //check 12V battery voltage, if less than 12.5V then start DC to DC converter and 48V battery and if greater than 13.5 then turn off DC to DC converter and 48V battery
+//check 12V battery voltage, if less than 12.5V then start DC to DC converter and 48V battery and if greater than 13.5 then turn off DC to DC converter and 48V battery
 //only in ignition off mode as in ignition on mode DC to DC and 48V battery is always ON.
-//we can also add a flag to check if DC to DC converter is already on or not
+//dc_dc_started : to check if DC to DC converter is already on or not
 void dc_dc_state_update(void)
 {
 	static bool dc_dc_started = false;
 
 	DROPPED_IN_12_volt(); //update voltage value
-	if (DROPPED_IN_12V < 12.50f)
-//	if (DROPPED_IN_12V > 12.0f && DROPPED_IN_12V < 12.50f) //added for testing
+
+	//if ignition 1 is on
+	if (Vcu_OutPuts.IGNITION_1_OUT)
 	{
-		//AUX_EFUSE_3_OUT_D output is connected to 48V battery input
+		seconds_elapsed = 0;
+		//if timer is on then stop the timer
+		if (TIMER_GetTimerStatus(&TIMER_2))
+		{
+			TIMER_Stop(&TIMER_2);
+		}
+	}
+	//if ignition 1 is off
+	else if (!(Vcu_OutPuts.IGNITION_1_OUT))
+	{
+//		if (DROPPED_IN_12V > 11.50f && DROPPED_IN_12V < 12.50f)
+//		{
+//			//AUX_EFUSE_3_OUT_D output is connected to 48V battery input
+//			digital_io_setoutputhigh(&AUX_EFUSE_3_OUT_D); //48V battery
+////			DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D); //FOR TRIPHASE DC TO DC converter
+//			DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D); //for Madhura-MPT DC TO DC converter
+//			dc_dc_started = true;
+//
+//			//start charging and start 10second timer for 1 hour
+//			if (!TIMER_GetTimerStatus(&TIMER_2))
+//			{
+//				TIMER_Start(&TIMER_2);
+//			}
+//		}
+//		else if (dc_dc_started == true && DROPPED_IN_12V > 13.50f)
+//		{
+//			//if timer is on and 1 hour is passed which is in parked stated OR
+//			//timer has not been started which is after turning off the ignition
+//			if ((TIMER_GetTimerStatus(&TIMER_2) && (seconds_elapsed >= 360)) || (!TIMER_GetTimerStatus(&TIMER_2)))
+//			{
+//				seconds_elapsed = 0;
+//				if (TIMER_GetTimerStatus(&TIMER_2))
+//				{
+//					TIMER_Stop(&TIMER_2);
+//				}
+//
+//				//AUX_EFUSE_3_OUT_D output is connected to 48V battery input
+//				digital_io_setoutputlow(&AUX_EFUSE_3_OUT_D); //48V battery
+////				DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D); //FOR TRIPHASE DC TO DC converter
+//				DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D); //for Madhura DC TO DC converter
+//				dc_dc_started = false;
+//			}
+//		}
+//		//when DC to DC is not started
+//		else if (dc_dc_started == false)
+//		{
+//			//if voltage is within range then do not turn on 48V battery as well as DC to DC converter
+//			digital_io_setoutputlow(&AUX_EFUSE_3_OUT_D);
+//			DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D);
+//		}
+
+		/*---------------ADDED FOR TESTING----------------*/
+//		AUX_EFUSE_3_OUT_D output is connected to 48V battery input
 		digital_io_setoutputhigh(&AUX_EFUSE_3_OUT_D); //48V battery
-		//DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D); //FOR TRIPHASE DC TO DC converter
-		DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D); //for Madhura DC TO DC converter
-		dc_dc_started = true;
-	}
-	else if (DROPPED_IN_12V > 13.50f)
-	{
-		//AUX_EFUSE_3_OUT_D output is connected to 48V battery input
-		digital_io_setoutputlow(&AUX_EFUSE_3_OUT_D); //48V battery
-		//DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D); //FOR TRIPHASE DC TO DC converter
-		DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D); //for Madhura DC TO DC converter
-		dc_dc_started = false;
-	}
-	//when DC to DC is not started
-	else if (dc_dc_started == false)
-	{
-		//if voltage is within range then do not turn on 48V battery as well as DC to DC converter
-		digital_io_setoutputlow(&AUX_EFUSE_3_OUT_D);
-		DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D);
+		//		DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D); //FOR TRIPHASE DC TO DC converter
+		DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D); //for Madhura-MPT DC TO DC converter
+//		dc_dc_started = true;
 	}
 }

@@ -299,7 +299,10 @@ void VcuOut_MotorController_IRP_BMS_Status(void)
 	Irp_Mcu_BMS_Currents_29bit->Battery_Voltage = PackVoltage;//50
 	Irp_Mcu_BMS_Currents_29bit->Battery_Current = PackCurrent;//20
 	Irp_Mcu_BMS_Currents_29bit->MaxDischargeCurrent = 450;//DischargeCurrentLimit * -1;//20;
-	Irp_Mcu_BMS_Currents_29bit->MaxRechargeCurrent = -1 * RegenerativeCurrentLimit;//ChargeCurrentLimit;//0;
+
+	//-1 commented because RegenerativeCurrentLimit from BMS was 90 and when you multiply it with -1, it gives -90 which does not start regen function of mcu.
+//	Irp_Mcu_BMS_Currents_29bit->MaxRechargeCurrent = -1 * RegenerativeCurrentLimit;//ChargeCurrentLimit;//0;
+	Irp_Mcu_BMS_Currents_29bit->MaxRechargeCurrent = RegenerativeCurrentLimit;//ChargeCurrentLimit;//0;
 
 }
 

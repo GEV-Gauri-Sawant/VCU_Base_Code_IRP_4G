@@ -166,56 +166,42 @@ void Io_Exp_Init(void)
 
 }
 
-
 void digital_io_setoutputlow(Io_Exp_PinMap_t *IO_EXP_PINName_handler)
 {
-	uint8_t Io_Exp_address;
+	uint8_t Io_Exp_address = 0x40; //for IC no 24 & 38
 
-	if((IO_EXP_PINName_handler ->IC_no == 24) || (IO_EXP_PINName_handler ->IC_no == 25))
+	if((IO_EXP_PINName_handler->IC_no == 25) || (IO_EXP_PINName_handler->IC_no == 48))
 	{
-		Io_Exp_address = 0x40;
+		Io_Exp_address = 0x42;
+	}
 
-		if(IO_EXP_PINName_handler ->IC_no == 25)
-			Io_Exp_address = 0x42;
-
+	if((IO_EXP_PINName_handler->IC_no == 24) || (IO_EXP_PINName_handler->IC_no == 25))
+	{
 		IOExp_SetPIN_LOW(&I2C_MASTER_0, Io_Exp_address, IO_EXP_PINName_handler ->port, IO_EXP_PINName_handler ->pin);
 	}
-	else if((IO_EXP_PINName_handler ->IC_no == 38) || (IO_EXP_PINName_handler ->IC_no == 48))
+	else
 	{
-		Io_Exp_address = 0x40;
-
-		if(IO_EXP_PINName_handler ->IC_no == 48)
-			Io_Exp_address = 0x42;
-
 		IOExp_SetPIN_LOW(&I2C_MASTER_1, Io_Exp_address, IO_EXP_PINName_handler ->port, IO_EXP_PINName_handler ->pin);
 	}
-
 }
-
 
 void digital_io_setoutputhigh(Io_Exp_PinMap_t *IO_EXP_PINName_handler)
 {
-	uint8_t Io_Exp_address;
+	uint8_t Io_Exp_address = 0x40; //for IC no 24 & 38
 
-	if((IO_EXP_PINName_handler ->IC_no == 24) || (IO_EXP_PINName_handler ->IC_no == 25))
+	if((IO_EXP_PINName_handler->IC_no == 25) || (IO_EXP_PINName_handler->IC_no == 48))
 	{
-		Io_Exp_address = 0x40;
-
-		if(IO_EXP_PINName_handler ->IC_no == 25)
-			Io_Exp_address = 0x42;
-
-		IOExp_SetPIN_HIGH(&I2C_MASTER_0, Io_Exp_address, IO_EXP_PINName_handler ->port, IO_EXP_PINName_handler ->pin);
-	}
-	else if((IO_EXP_PINName_handler ->IC_no == 38) || (IO_EXP_PINName_handler ->IC_no == 48))
-	{
-		Io_Exp_address = 0x40;
-
-		if(IO_EXP_PINName_handler ->IC_no == 48)
-			Io_Exp_address = 0x42;
-
-		IOExp_SetPIN_HIGH(&I2C_MASTER_1, Io_Exp_address, IO_EXP_PINName_handler ->port, IO_EXP_PINName_handler ->pin);
+		Io_Exp_address = 0x42;
 	}
 
+	if((IO_EXP_PINName_handler->IC_no == 24) || (IO_EXP_PINName_handler->IC_no == 25))
+	{
+		IOExp_SetPIN_HIGH(&I2C_MASTER_0, Io_Exp_address, IO_EXP_PINName_handler->port, IO_EXP_PINName_handler->pin);
+	}
+	else
+	{
+		IOExp_SetPIN_HIGH(&I2C_MASTER_1, Io_Exp_address, IO_EXP_PINName_handler->port, IO_EXP_PINName_handler->pin);
+	}
 }
 
 void Delay(uint32_t delay_ms)
@@ -249,6 +235,7 @@ void SuperLooptime_End(void)
 {
 	TIMER_STATUS_t timer_status;
 	SuperLoop_Time = 0;
+	SuperLoop_Time_msec = 0;
 
 	timer_status = TIMER_Stop(&TIMER_1);
 	if(timer_status == TIMER_STATUS_SUCCESS)

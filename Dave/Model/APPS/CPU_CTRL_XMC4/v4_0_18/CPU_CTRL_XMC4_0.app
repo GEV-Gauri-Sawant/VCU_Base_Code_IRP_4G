@@ -6,6 +6,7 @@
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../WATCHDOG/v4_0_16/WATCHDOG_0.app#//@requiredApps.2"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../SYSTIMER/v4_1_18/SYSTIMER_0.app#//@requiredApps.1"/>
   <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../GLOBAL_DMA/v4_0_10/GLOBAL_DMA_0.app#//@requiredApps.0"/>
+  <upwardMapList xsi:type="ResourceModel:RequiredApp" href="../../INTERRUPT/v4_0_10/INTERRUPT_1.app#//@requiredApps.0"/>
   <properties singleton="true" sharable="true"/>
   <virtualSignals name="nmi_irq" URI="http://resources/4.0.18/app/CPU_CTRL_XMC4/0/vs_nmi_irq" hwSignal="nmi_in" hwResource="//@hwResources.0" visible="true">
     <upwardMapList xsi:type="ResourceModel:Connections" href="../../WATCHDOG/v4_0_16/WATCHDOG_0.app#//@connections.1"/>

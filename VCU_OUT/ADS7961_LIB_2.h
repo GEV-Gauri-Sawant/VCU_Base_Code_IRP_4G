@@ -80,11 +80,11 @@ float adc3_current[16];
 XMC_GPIO_PORT_t temp;
 
 void SPI_ADC_MANUAL_MODE(void);
-void SPI_ADC_ProcessModeChange(uint8_t ADCMode);
+void SPI_ADC_ReadAllData(uint8_t ADCMode);
 
 uint16_t ADS7861_MANUAL_PKT(uint16_t channel);
 void ADC_Read_AllChannel(uint8_t temp_port_num ,uint8_t pin_number);
 void ADC_Read_by_Channel(uint8_t temp_port_num ,uint8_t pin_number,uint8_t channel);
-void SPI_ADS7961_AUTO_MODE2(uint8_t temp_port_num ,uint8_t pin_number);
+void SPI_ADS7961_AUTO2_MODE(uint8_t temp_port_num ,uint8_t pin_number);
 void SPI_ADS7961_AUTO2_Init(uint8_t temp_port_num ,uint8_t pin_number);
 void DROPPED_IN_12_volt(void);

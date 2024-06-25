@@ -67,10 +67,10 @@
 
 /* Moudule and Kernel Pointers */
 #define TIMER_0_KERNEL_PTR (XMC_CCU4_MODULE_t*)(void *)CCU43_BASE
-#define TIMER_0_SLICE_PTR  (XMC_CCU4_SLICE_t*)(void *)CCU43_CC43
+#define TIMER_0_SLICE_PTR  (XMC_CCU4_SLICE_t*)(void *)CCU43_CC42
 /* Shadow transfer masks */
-#define TIMER_0_SLICE_SH_MSK      XMC_CCU4_SHADOW_TRANSFER_SLICE_3
-#define TIMER_0_PRESCALER_SH_MSK  XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_3
+#define TIMER_0_SLICE_SH_MSK      XMC_CCU4_SHADOW_TRANSFER_SLICE_2
+#define TIMER_0_PRESCALER_SH_MSK  XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_2
 
 /* Moudule and Kernel Pointers */
 #define TIMER_1_KERNEL_PTR (XMC_CCU8_MODULE_t*)(void *)CCU80_BASE
@@ -81,10 +81,10 @@
 
 /* Moudule and Kernel Pointers */
 #define TIMER_2_KERNEL_PTR (XMC_CCU4_MODULE_t*)(void *)CCU43_BASE
-#define TIMER_2_SLICE_PTR  (XMC_CCU4_SLICE_t*)(void *)CCU43_CC42
+#define TIMER_2_SLICE_PTR  (XMC_CCU4_SLICE_t*)(void *)CCU43_CC43
 /* Shadow transfer masks */
-#define TIMER_2_SLICE_SH_MSK      XMC_CCU4_SHADOW_TRANSFER_SLICE_2
-#define TIMER_2_PRESCALER_SH_MSK  XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_2
+#define TIMER_2_SLICE_SH_MSK      XMC_CCU4_SHADOW_TRANSFER_SLICE_3
+#define TIMER_2_PRESCALER_SH_MSK  XMC_CCU4_SHADOW_TRANSFER_PRESCALER_SLICE_3
 
 /** This is used to calculate the time in GetTime API */
 #define TIMER_CLK_CONST_SCALED (2982616177U)
@@ -94,6 +94,9 @@
 
 /** This enables the functionality for the CCU8 timer */
 #define TIMER_CCU8_USED
+
+/** This enables the Interrupt functionality */
+#define TIMER_INTERRUPT
 
 #endif /* TIMER_CONF_H */
 

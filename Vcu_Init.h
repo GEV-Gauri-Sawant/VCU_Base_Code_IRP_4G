@@ -58,3 +58,6 @@ double SuperLoop_Time, SuperLoop_Time_usec, SuperLoop_Time_msec, SuperLoop_Time_
 uint32_t End_Time, Start_Time;
 
 uint8_t CState, PreState;
+
+//used for 12V battery charging during parked mode.
+volatile uint16_t seconds_elapsed;

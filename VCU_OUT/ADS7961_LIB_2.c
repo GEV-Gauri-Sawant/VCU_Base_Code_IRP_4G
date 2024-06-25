@@ -50,7 +50,7 @@ void convert_raw_data_into_current(void)
 	}
 }
 
-void SPI_ADC_ProcessModeChange(uint8_t ADCMode)
+void SPI_ADC_ReadAllData(uint8_t ADCMode)
 {
 	if(ADC_AUTO1 == ADCMode)
 	{
@@ -58,9 +58,9 @@ void SPI_ADC_ProcessModeChange(uint8_t ADCMode)
 	}
 	else if(ADC_AUTO2 == ADCMode)
 	{
-		//read only ADC3 right now later on add ADC2
-		SPI_ADS7961_AUTO_MODE2(ADS3_Port2,ADS3_Pin);//pass Ads cs port and pin
-		SPI_ADS7961_AUTO_MODE2(ADS2_Port5 ,ADS2_Pin);//pass Ads cs port and pin
+		//Add ADC1 after hardware changes
+		SPI_ADS7961_AUTO2_MODE(ADS3_Port2,ADS3_Pin);//pass Ads cs port and pin
+		SPI_ADS7961_AUTO2_MODE(ADS2_Port5 ,ADS2_Pin);//pass Ads cs port and pin
 	}
 	else //manual mode
 	{
@@ -214,7 +214,7 @@ void SPI_ADS7961_AUTO2_Init(uint8_t temp_port_num ,uint8_t pin_number)
 }
 
 //
-void SPI_ADS7961_AUTO_MODE2(uint8_t temp_port_num, uint8_t pin_number)
+void SPI_ADS7961_AUTO2_MODE(uint8_t temp_port_num, uint8_t pin_number)
 {
 	uint8_t loop = 16;
 	uint8_t ReadData[2];

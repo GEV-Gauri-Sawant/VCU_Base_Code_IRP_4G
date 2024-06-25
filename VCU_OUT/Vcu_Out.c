@@ -8,13 +8,13 @@
 #include "Vcu_Config.h"
 #include "Vcu_Init.h"
 #include "can_matrix.h"
-
+#include "ADS7961_LIB_2.h"
 
 void OutPutAction_Update(void)
 {
 	ALL_CONDITION_ON();
 
-	SPI_ADC_ProcessModeChange(1);
+	SPI_ADC_ReadAllData(1);
 
 	can_outputs_allState();
 
@@ -83,7 +83,7 @@ void ALL_CONDITION_ON()
 	 DIGITAL_IO_SetOutputHigh(&DOOR_LOCK_PWR_OUT_D);//check j4 -> f1
 	 DIGITAL_IO_SetOutputHigh(&LIGHTS_PWR_OUT_D); // Check j4 -> k1
 	 DIGITAL_IO_SetOutputHigh(&HORN_PWR_OUT_D);
-	 DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D);
+//	 DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D); not set here
 	 DIGITAL_IO_SetOutputHigh(&HEADLAMPS_ADJ_PWR_OUT_D);
 	 DIGITAL_IO_SetOutputHigh(&CABIN_LIGHT_OUT_D);
 

@@ -481,6 +481,11 @@ __WEAK DAVE_STATUS_t DAVE_Init(void)
   {
 	 /**  Initialization of FATFS APP instance FATFS_0 */
 	 init_status = (DAVE_STATUS_t)FATFS_Init(&FATFS_0); 
+   } 
+  if (init_status == DAVE_STATUS_SUCCESS)
+  {
+	 /**  Initialization of INTERRUPT APP instance INTERRUPT_1 */
+	 init_status = (DAVE_STATUS_t)INTERRUPT_Init(&INTERRUPT_1); 
    }  
   return init_status;
 } /**  End of function DAVE_Init */
