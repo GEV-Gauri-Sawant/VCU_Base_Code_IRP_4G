@@ -5,6 +5,7 @@
  *  Created on: 14-Jul-2023
  *      Author: Suchit Sawant
  */
+#include <math.h>
 #include "DAVE.h"
 #include "Vcu_config.h"
 
@@ -12,17 +13,62 @@
 #define U6_address 0x90
 #define U9_address 0x92
 
+//not working
+//enum U18_channels {
+//	MOTOR_TEMP_BYTE = 0x9C,//0b10011100,
+//	CABIN_TEMP_BYTE = 0xDC,//0b11011100,
+//	MC_TEMP_BYTE = 0xAC,//0b10101100,
+//	BATTERY_TEMP_BYTE = 0xEC//0b11101100
+//};
 
 void U18_read_temp(void)
 {
 	uart_debugg("in temp");
 	U18_MotorTemp_read();
 	U18_CabinTemp_read();
+
+//	ambient_temp = U18_read_channel(MOTOR_TEMP_BYTE); //test this //not working
 	//U18_McTemp_read();
 	//U18_BatteryTemp_read();
 	//U18_throttle_read();
 	uart_debugg("exit temp");
 }
+
+//not working
+//float U18_read_channel(uint8_t ch_no)
+//{
+//	unsigned int SERIESRESISTOR = 10000, NOMINAL_RESISTANCE = 10000, BCOEFFICIENT = 3950, NOMINAL_TEMPERATURE = 25;
+//	bool start = true, stop = false, ack = false;
+//	float Resistance = 0, steinhart = 0, temp = 0;
+//	uint8_t rx_buff[2];
+//	uint16_t rx = 0;
+//
+//	I2C_MASTER_Transmit(&I2C_MASTER_1, start, U18_address, &ch_no, 1, stop);
+//	while(I2C_MASTER_IsTxBusy(&I2C_MASTER_1));
+//
+//	stop = true;
+//
+//	I2C_MASTER_Receive(&I2C_MASTER_1, start, U18_address, rx_buff, 2, stop, ack);
+//	while(I2C_MASTER_IsRxBusy(&I2C_MASTER_1));
+//
+//	rx = ((uint16_t)rx_buff[0] << 8) | rx_buff[1];
+//	rx &= 0x0fff;
+//
+//	Resistance = ((float)4095.0/(float)rx) - 1;
+//	Resistance = ((float)10000.0/(float)Resistance);
+//
+//	Resistance /= (float)2;
+//
+//	steinhart = (float)Resistance / (float)10000.0; // (R/Ro)
+//	steinhart = (float)log(steinhart); // ln(R/Ro)
+//	steinhart /= (float)3950.0;
+//	steinhart += (float)1.0 / (NOMINAL_TEMPERATURE + (float)273.15); // + (1/To)
+//
+//	steinhart = (float)1.0 / steinhart;
+//	temp =	steinhart -= (float)273.15;
+//
+//	return temp;
+//}
 
 void U18_48v_read(void)
 {
@@ -42,7 +88,6 @@ void U18_MotorTemp_read(void)
 	uint8_t command_byte= 0x1f;
 	I2C_MASTER_Transmit(&I2C_MASTER_1, start, U38_address, &command_byte, 1, stop);
 	while(I2C_MASTER_IsTxBusy(&I2C_MASTER_0));*/
-
 
 	bool start = true, stop = 0, ack = true;
 	float ans = 0, Resistance = 0;
@@ -75,7 +120,6 @@ void U18_MotorTemp_read(void)
 
 	steinhart = (float)1.0 / steinhart;
 	ambient_temp =	steinhart -= (float)273.15;
-
 }
 
 void U18_CabinTemp_read(void)

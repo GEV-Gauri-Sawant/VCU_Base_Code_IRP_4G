@@ -263,14 +263,14 @@ void SPI_ADS7961_AUTO2_MODE(uint8_t temp_port_num, uint8_t pin_number)
 			if (temp_port_num == 5)
 			{
 				ADS2_receive_data[channel_count][adc2_array_counter] = ((ReadData[0] & 0x0F) << 4) | ((ReadData[1] & 0xF0) >> 4);
-//				ADS2_recive_channel[channel_count] = ((ReadData[0] & 0xF0) >> 4); //uncomment channel for debugging
+				ADS2_recive_channel[channel_count] = ((ReadData[0] & 0xF0) >> 4); //uncomment channel for debugging
 
 //				ADS2_avg_receive_data[channel_count] += ADS2_receive_data[channel_count];
 			}
 			else if (temp_port_num == 2)
 			{
 				ADS3_receive_data[channel_count][adc3_array_counter] = ((ReadData[0] & 0x0F) << 4) | ((ReadData[1] & 0xF0) >> 4);
-//				ADS3_recive_channel[channel_count] = ((ReadData[0] & 0xF0) >> 4); //uncomment channel for debugging
+				ADS3_recive_channel[channel_count] = ((ReadData[0] & 0xF0) >> 4); //uncomment channel for debugging
 
 //				ADS3_avg_receive_data[channel_count] += ADS3_receive_data[channel_count];
 			}

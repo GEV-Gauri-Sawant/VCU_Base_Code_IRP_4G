@@ -363,7 +363,7 @@
     <resourcesList name="global_signal" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/global_global_signal"/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="35" URI="http://resources/48.0.0/peripheral/can/0/mo/35">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.24"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.25"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo35_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo35_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo35_moctr"/>
@@ -488,7 +488,7 @@
   </provided>
   <provided xsi:type="ResourceModel:BitField" name="RXSEL" URI="http://resources/48.0.0/peripheral/can/0/node1_npcr/rxsel" value="0x00000000" toolTipHelpDescription="Receive Select" defaultValue="0x00000000" startPos="0" stopPos="2" accessPermission="rw" maxValue="7" minValue="0"/>
   <provided xsi:type="ResourceModel:ResourceGroup" name="34" URI="http://resources/48.0.0/peripheral/can/0/mo/34">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.23"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.24"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo34_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo34_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo34_moctr"/>
@@ -533,7 +533,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="9" URI="http://resources/48.0.0/peripheral/can/0/mo/9">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.14"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.15"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo9_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo9_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo9_moctr"/>
@@ -578,7 +578,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="8" URI="http://resources/48.0.0/peripheral/can/0/mo/8">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.11"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.12"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo8_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo8_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo8_moctr"/>
@@ -623,7 +623,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="5" URI="http://resources/48.0.0/peripheral/can/0/mo/5">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.10"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.11"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo5_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo5_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo5_moctr"/>
@@ -668,7 +668,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="7" URI="http://resources/48.0.0/peripheral/can/0/mo/7">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.12"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.13"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo7_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo7_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo7_moctr"/>
@@ -713,7 +713,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="6" URI="http://resources/48.0.0/peripheral/can/0/mo/6">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.9"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.10"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo6_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo6_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo6_moctr"/>
@@ -758,7 +758,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="32" URI="http://resources/48.0.0/peripheral/can/0/mo/32">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.21"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.22"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo32_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo32_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo32_moctr"/>
@@ -803,7 +803,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="31" URI="http://resources/48.0.0/peripheral/can/0/mo/31">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.20"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.21"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo31_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo31_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo31_moctr"/>
@@ -848,7 +848,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="30" URI="http://resources/48.0.0/peripheral/can/0/mo/30">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.19"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.20"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo30_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo30_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo30_moctr"/>
@@ -893,7 +893,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="24" URI="http://resources/48.0.0/peripheral/can/0/mo/24">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.6"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.7"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo24_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo24_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo24_moctr"/>
@@ -938,7 +938,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="23" URI="http://resources/48.0.0/peripheral/can/0/mo/23">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.5"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.6"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo23_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo23_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo23_moctr"/>
@@ -983,7 +983,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="22" URI="http://resources/48.0.0/peripheral/can/0/mo/22">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.8"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.9"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo22_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo22_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo22_moctr"/>
@@ -1028,7 +1028,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="21" URI="http://resources/48.0.0/peripheral/can/0/mo/21">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.7"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.8"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo21_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo21_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo21_moctr"/>
@@ -1073,7 +1073,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="36" URI="http://resources/48.0.0/peripheral/can/0/mo/36">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.15"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.16"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo36_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo36_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo36_moctr"/>
@@ -1118,7 +1118,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="33" URI="http://resources/48.0.0/peripheral/can/0/mo/33">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.22"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.23"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo33_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo33_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo33_moctr"/>
@@ -1163,7 +1163,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="39" URI="http://resources/48.0.0/peripheral/can/0/mo/39">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.18"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.19"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo39_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo39_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo39_moctr"/>
@@ -1208,7 +1208,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="38" URI="http://resources/48.0.0/peripheral/can/0/mo/38">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.17"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.18"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo38_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo38_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo38_moctr"/>
@@ -1253,7 +1253,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="37" URI="http://resources/48.0.0/peripheral/can/0/mo/37">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.16"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.17"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo37_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo37_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo37_moctr"/>
@@ -1298,7 +1298,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="60" URI="http://resources/48.0.0/peripheral/can/0/mo/60">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.13"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.14"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo60_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo60_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo60_moctr"/>
@@ -1343,7 +1343,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="20" URI="http://resources/48.0.0/peripheral/can/0/mo/20">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.4"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.5"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo20_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo20_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo20_moctr"/>
@@ -1388,7 +1388,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="1" URI="http://resources/48.0.0/peripheral/can/0/mo/1">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.23"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.24"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo1_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo1_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo1_moctr"/>
@@ -1433,7 +1433,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="0" URI="http://resources/48.0.0/peripheral/can/0/mo/0">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.25"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.26"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo0_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo0_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo0_moctr"/>
@@ -1478,7 +1478,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="25" URI="http://resources/48.0.0/peripheral/can/0/mo/25">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.32"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.33"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo25_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo25_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo25_moctr"/>
@@ -1523,7 +1523,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="29" URI="http://resources/48.0.0/peripheral/can/0/mo/29">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.3"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.4"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo29_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo29_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo29_moctr"/>
@@ -1568,7 +1568,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="28" URI="http://resources/48.0.0/peripheral/can/0/mo/28">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.30"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.31"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo28_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo28_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo28_moctr"/>
@@ -1613,7 +1613,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="27" URI="http://resources/48.0.0/peripheral/can/0/mo/27">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.28"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.29"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo27_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo27_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo27_moctr"/>
@@ -1658,7 +1658,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="26" URI="http://resources/48.0.0/peripheral/can/0/mo/26">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.33"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.34"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo26_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo26_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo26_moctr"/>
@@ -1703,7 +1703,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="13" URI="http://resources/48.0.0/peripheral/can/0/mo/13">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.24"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.25"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo13_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo13_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo13_moctr"/>
@@ -1748,7 +1748,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="61" URI="http://resources/48.0.0/peripheral/can/0/mo/61">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.34"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_1.app#//@hwResources.3"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo61_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo61_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo61_moctr"/>
@@ -1793,7 +1793,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="63" URI="http://resources/48.0.0/peripheral/can/0/mo/63">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.29"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.30"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo63_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo63_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo63_moctr"/>
@@ -1838,7 +1838,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="62" URI="http://resources/48.0.0/peripheral/can/0/mo/62">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.31"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.32"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo62_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo62_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo62_moctr"/>
@@ -1883,7 +1883,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="58" URI="http://resources/48.0.0/peripheral/can/0/mo/58">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.27"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.28"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo58_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo58_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo58_moctr"/>
@@ -1928,7 +1928,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="59" URI="http://resources/48.0.0/peripheral/can/0/mo/59">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.26"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.27"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo59_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo59_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo59_moctr"/>
@@ -1973,7 +1973,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="3" URI="http://resources/48.0.0/peripheral/can/0/mo/3">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.20"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.21"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo3_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo3_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo3_moctr"/>
@@ -2018,7 +2018,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="2" URI="http://resources/48.0.0/peripheral/can/0/mo/2">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.22"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.23"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo2_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo2_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo2_moctr"/>
@@ -2063,7 +2063,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="4" URI="http://resources/48.0.0/peripheral/can/0/mo/4">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.18"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.19"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo4_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo4_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo4_moctr"/>
@@ -2108,7 +2108,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="10" URI="http://resources/48.0.0/peripheral/can/0/mo/10">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.17"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.18"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo10_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo10_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo10_moctr"/>
@@ -2153,7 +2153,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="12" URI="http://resources/48.0.0/peripheral/can/0/mo/12">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.21"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.22"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo12_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo12_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo12_moctr"/>
@@ -2198,7 +2198,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="11" URI="http://resources/48.0.0/peripheral/can/0/mo/11">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.19"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.20"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo11_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo11_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo11_moctr"/>
@@ -2403,7 +2403,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="17" URI="http://resources/48.0.0/peripheral/can/0/mo/17">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.16"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.17"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo17_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo17_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo17_moctr"/>
@@ -2448,7 +2448,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="52" URI="http://resources/48.0.0/peripheral/can/0/mo/52">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.15"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.16"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo52_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo52_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo52_moctr"/>
@@ -2493,7 +2493,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="16" URI="http://resources/48.0.0/peripheral/can/0/mo/16">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.14"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.15"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo16_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo16_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo16_moctr"/>
@@ -2538,7 +2538,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="53" URI="http://resources/48.0.0/peripheral/can/0/mo/53">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.13"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.14"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo53_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo53_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo53_moctr"/>
@@ -2583,7 +2583,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="50" URI="http://resources/48.0.0/peripheral/can/0/mo/50">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.12"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.13"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo50_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo50_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo50_moctr"/>
@@ -2628,7 +2628,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="15" URI="http://resources/48.0.0/peripheral/can/0/mo/15">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_2.app#//@hwResources.7"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.12"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo15_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo15_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo15_moctr"/>
@@ -2673,7 +2673,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="51" URI="http://resources/48.0.0/peripheral/can/0/mo/51">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_2.app#//@hwResources.6"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_2.app#//@hwResources.7"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo51_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo51_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo51_moctr"/>
@@ -2718,7 +2718,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="14" URI="http://resources/48.0.0/peripheral/can/0/mo/14">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_2.app#//@hwResources.5"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_2.app#//@hwResources.6"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo14_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo14_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo14_moctr"/>
@@ -2763,7 +2763,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="56" URI="http://resources/48.0.0/peripheral/can/0/mo/56">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_2.app#//@hwResources.4"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_2.app#//@hwResources.5"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo56_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo56_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo56_moctr"/>
@@ -2808,7 +2808,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="18" URI="http://resources/48.0.0/peripheral/can/0/mo/18">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.5"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.4"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo18_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo18_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo18_moctr"/>
@@ -2853,7 +2853,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="19" URI="http://resources/48.0.0/peripheral/can/0/mo/19">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.4"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.3"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo19_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo19_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo19_moctr"/>
@@ -2898,7 +2898,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="54" URI="http://resources/48.0.0/peripheral/can/0/mo/54">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.3"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_2.app#//@hwResources.3"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo54_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo54_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo54_moctr"/>
@@ -2943,7 +2943,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="57" URI="http://resources/48.0.0/peripheral/can/0/mo/57">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_2.app#//@hwResources.3"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_2.app#//@hwResources.4"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo57_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo57_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo57_moctr"/>
@@ -2988,7 +2988,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="55" URI="http://resources/48.0.0/peripheral/can/0/mo/55">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.6"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.5"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo55_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo55_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo55_moctr"/>
@@ -3033,7 +3033,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="47" URI="http://resources/48.0.0/peripheral/can/0/mo/47">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.7"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.6"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo47_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo47_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo47_moctr"/>
@@ -3078,7 +3078,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="48" URI="http://resources/48.0.0/peripheral/can/0/mo/48">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.8"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.7"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo48_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo48_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo48_moctr"/>
@@ -3123,7 +3123,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="49" URI="http://resources/48.0.0/peripheral/can/0/mo/49">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.9"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.8"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo49_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo49_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo49_moctr"/>
@@ -3168,7 +3168,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="41" URI="http://resources/48.0.0/peripheral/can/0/mo/41">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.11"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.10"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo41_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo41_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo41_moctr"/>
@@ -3213,7 +3213,7 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:ResourceGroup" name="40" URI="http://resources/48.0.0/peripheral/can/0/mo/40">
-    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.10"/>
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.9"/>
     <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo40_moamr"/>
     <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo40_moar"/>
     <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo40_moctr"/>
@@ -3252,6 +3252,51 @@
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
   </provided>
   <provided xsi:type="ResourceModel:BitField" name="TXINP" URI="http://resources/48.0.0/peripheral/can/0/mo40_moipr/txinp" value="0x00000000" toolTipHelpDescription="Transmit Interrupt Node Pointer" defaultValue="0x00000000" startPos="4" stopPos="7" accessPermission="rw" maxValue="15" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0000" description="Interrupt output line INT_O0 is selected."/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0001" description="Interrupt output line INT_O1 is selected."/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1110" description="Interrupt output line INT_O14 is selected."/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
+  </provided>
+  <provided xsi:type="ResourceModel:ResourceGroup" name="42" URI="http://resources/48.0.0/peripheral/can/0/mo/42">
+    <upwardMapList xsi:type="ResourceModel:HWResource" href="../../APPS/CAN_NODE/v4_1_24/CAN_NODE_0.app#//@hwResources.11"/>
+    <resourcesList name="moamr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_moamr"/>
+    <resourcesList name="moar" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_moar"/>
+    <resourcesList name="moctr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_moctr"/>
+    <resourcesList name="modatah" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_modatah"/>
+    <resourcesList name="modatal" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_modatal"/>
+    <resourcesList name="mofcr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_mofcr"/>
+    <resourcesList name="mofgpr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_mofgpr"/>
+    <resourcesList name="moipr" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_moipr"/>
+    <resourcesList name="moipr_rxinp" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_moipr/rxinp"/>
+    <resourcesList name="moipr_txinp" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_moipr/txinp"/>
+    <resourcesList name="mostat" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_mostat"/>
+    <resourcesList name="global_signal" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_global_signal"/>
+    <resourcesList name="txinp" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_txinp"/>
+    <resourcesList name="rxinp" requiredResourceUri="http://resources/48.0.0/peripheral/can/0/mo42_rxinp"/>
+  </provided>
+  <provided xsi:type="ResourceModel:RegisterParameter" name="MO42_MOIPR" URI="http://resources/48.0.0/peripheral/can/0/mo42_moipr" value="0x00000000" toolTipHelpDescription="Message Object Interrupt Pointer Register" defaultValue="0x00000000" addressOffset="0x1548" resetValue="0x00000000" resetMask="0xFFFFFFFF">
+    <bitFields name="RXINP" URI="http://resources/48.0.0/peripheral/can/0/mo42_moipr/rxinp" value="0x00000000" toolTipHelpDescription="Receive Interrupt Node Pointer" defaultValue="0x00000000" startPos="0" stopPos="3" accessPermission="rw" maxValue="15" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0000" description="Interrupt output line INT_O0 is selected."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0001" description="Interrupt output line INT_O1 is selected."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1110" description="Interrupt output line INT_O14 is selected."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
+    </bitFields>
+    <bitFields name="TXINP" URI="http://resources/48.0.0/peripheral/can/0/mo42_moipr/txinp" value="0x00000000" toolTipHelpDescription="Transmit Interrupt Node Pointer" defaultValue="0x00000000" startPos="4" stopPos="7" accessPermission="rw" maxValue="15" minValue="0">
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0000" description="Interrupt output line INT_O0 is selected."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0001" description="Interrupt output line INT_O1 is selected."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1110" description="Interrupt output line INT_O14 is selected."/>
+      <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
+    </bitFields>
+    <bitFields name="MPN" URI="http://resources/48.0.0/peripheral/can/0/mo42_moipr/mpn" value="0x00000000" toolTipHelpDescription="Message Pending Number" defaultValue="0x00000000" startPos="8" stopPos="15" accessPermission="rw" maxValue="255" minValue="0"/>
+    <bitFields name="CFCVAL" URI="http://resources/48.0.0/peripheral/can/0/mo42_moipr/cfcval" value="0x00000000" toolTipHelpDescription="CAN Frame Counter Value" defaultValue="0x00000000" startPos="16" stopPos="31" accessPermission="rw" maxValue="65535" minValue="0"/>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="TXINP" URI="http://resources/48.0.0/peripheral/can/0/mo42_moipr/txinp" value="0x00000000" toolTipHelpDescription="Transmit Interrupt Node Pointer" defaultValue="0x00000000" startPos="4" stopPos="7" accessPermission="rw" maxValue="15" minValue="0">
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0000" description="Interrupt output line INT_O0 is selected."/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0001" description="Interrupt output line INT_O1 is selected."/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1110" description="Interrupt output line INT_O14 is selected."/>
+    <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1111" description="Interrupt output line INT_O15 is selected."/>
+  </provided>
+  <provided xsi:type="ResourceModel:BitField" name="RXINP" URI="http://resources/48.0.0/peripheral/can/0/mo42_moipr/rxinp" value="0x00000000" toolTipHelpDescription="Receive Interrupt Node Pointer" defaultValue="0x00000000" startPos="0" stopPos="3" accessPermission="rw" maxValue="15" minValue="0">
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0000" description="Interrupt output line INT_O0 is selected."/>
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#0001" description="Interrupt output line INT_O1 is selected."/>
     <enumValues xsi:type="ResourceModel:RegEnumValue" value="#1110" description="Interrupt output line INT_O14 is selected."/>

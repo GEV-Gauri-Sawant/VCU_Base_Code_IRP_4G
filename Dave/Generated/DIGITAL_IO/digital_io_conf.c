@@ -119,7 +119,8 @@ const DIGITAL_IO_t ACCEL_CS_OUT =
   .gpio_port = XMC_GPIO_PORT0,
   .gpio_pin = 10U,
   .gpio_config = {
-    .mode = XMC_GPIO_MODE_INPUT_TRISTATE,
+    .mode = XMC_GPIO_MODE_OUTPUT_PUSH_PULL,
+    .output_level = XMC_GPIO_OUTPUT_LEVEL_LOW,
 
   },
   .hwctrl = XMC_GPIO_HWCTRL_DISABLED

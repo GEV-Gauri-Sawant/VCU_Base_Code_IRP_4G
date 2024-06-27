@@ -4,18 +4,18 @@
     <Solver>
         <SolverBndMap>
             <BindMap MUri="port/p/5/pad/8" Proxy="app/DIGITAL_IO/64/hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/30" Proxy="app/CAN_NODE/1/hwres_can_mobj17"/>
+            <BindMap MUri="peripheral/can/0/mo/39" Proxy="app/CAN_NODE/1/hwres_can_mobj17"/>
             <BindMap MUri="devicepackage/0/26" Proxy="app/DIGITAL_IO/53/__pin_hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/39" Proxy="app/CAN_NODE/1/hwres_can_mobj16"/>
-            <BindMap MUri="peripheral/can/0/mo/38" Proxy="app/CAN_NODE/1/hwres_can_mobj15"/>
+            <BindMap MUri="peripheral/can/0/mo/38" Proxy="app/CAN_NODE/1/hwres_can_mobj16"/>
+            <BindMap MUri="peripheral/can/0/mo/37" Proxy="app/CAN_NODE/1/hwres_can_mobj15"/>
             <BindMap MUri="devicepackage/0/56" Proxy="app/CAN_NODE/2/__pin_hwres_port_pad_can_rx"/>
-            <BindMap MUri="peripheral/can/0/mo/37" Proxy="app/CAN_NODE/1/hwres_can_mobj14"/>
-            <BindMap MUri="peripheral/can/0/mo/32" Proxy="app/CAN_NODE/1/hwres_can_mobj19"/>
-            <BindMap MUri="peripheral/can/0/mo/31" Proxy="app/CAN_NODE/1/hwres_can_mobj18"/>
-            <BindMap MUri="peripheral/can/0/mo/36" Proxy="app/CAN_NODE/1/hwres_can_mobj13"/>
-            <BindMap MUri="peripheral/can/0/mo/9" Proxy="app/CAN_NODE/1/hwres_can_mobj12"/>
-            <BindMap MUri="peripheral/can/0/mo/60" Proxy="app/CAN_NODE/1/hwres_can_mobj11"/>
-            <BindMap MUri="peripheral/can/0/mo/7" Proxy="app/CAN_NODE/1/hwres_can_mobj10"/>
+            <BindMap MUri="peripheral/can/0/mo/36" Proxy="app/CAN_NODE/1/hwres_can_mobj14"/>
+            <BindMap MUri="peripheral/can/0/mo/31" Proxy="app/CAN_NODE/1/hwres_can_mobj19"/>
+            <BindMap MUri="peripheral/can/0/mo/30" Proxy="app/CAN_NODE/1/hwres_can_mobj18"/>
+            <BindMap MUri="peripheral/can/0/mo/9" Proxy="app/CAN_NODE/1/hwres_can_mobj13"/>
+            <BindMap MUri="peripheral/can/0/mo/60" Proxy="app/CAN_NODE/1/hwres_can_mobj12"/>
+            <BindMap MUri="peripheral/can/0/mo/7" Proxy="app/CAN_NODE/1/hwres_can_mobj11"/>
+            <BindMap MUri="peripheral/can/0/mo/8" Proxy="app/CAN_NODE/1/hwres_can_mobj10"/>
             <BindMap MUri="devicepackage/0/141" Proxy="app/DIGITAL_IO/9/__pin_hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/106" Proxy="app/DIGITAL_IO/15/__pin_hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/131" Proxy="app/DIGITAL_IO/34/__pin_hwres_port_pin"/>
@@ -75,50 +75,50 @@
             <BindMap MUri="port/p/1/pad/13" Proxy="app/CAN_NODE/0/hwres_port_pad_can_rx"/>
             <BindMap MUri="devicepackage/0/110" Proxy="app/DIGITAL_IO/20/__pin_hwres_port_pin"/>
             <BindMap MUri="port/debug_port/0/pad/1" Proxy="app/CPU_CTRL_XMC4/0/hwres_port_pad_swd_tck"/>
-            <BindMap MUri="peripheral/can/0/mo/58" Proxy="app/CAN_NODE/0/hwres_can_mobj25"/>
-            <BindMap MUri="peripheral/can/0/mo/59" Proxy="app/CAN_NODE/0/hwres_can_mobj24"/>
+            <BindMap MUri="peripheral/can/0/mo/59" Proxy="app/CAN_NODE/0/hwres_can_mobj25"/>
+            <BindMap MUri="peripheral/can/0/mo/0" Proxy="app/CAN_NODE/0/hwres_can_mobj24"/>
             <BindMap MUri="port/p/2/pad/15" Proxy="app/UART/0/hwres_port_pad_uart_rx"/>
-            <BindMap MUri="peripheral/can/0/mo/63" Proxy="app/CAN_NODE/0/hwres_can_mobj27"/>
-            <BindMap MUri="peripheral/can/0/mo/27" Proxy="app/CAN_NODE/0/hwres_can_mobj26"/>
-            <BindMap MUri="peripheral/can/0/mo/62" Proxy="app/CAN_NODE/0/hwres_can_mobj29"/>
+            <BindMap MUri="peripheral/can/0/mo/27" Proxy="app/CAN_NODE/0/hwres_can_mobj27"/>
+            <BindMap MUri="peripheral/can/0/mo/58" Proxy="app/CAN_NODE/0/hwres_can_mobj26"/>
+            <BindMap MUri="peripheral/can/0/mo/28" Proxy="app/CAN_NODE/0/hwres_can_mobj29"/>
             <BindMap MUri="port/p/2/pad/12" Proxy="app/DIGITAL_IO/36/hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/28" Proxy="app/CAN_NODE/0/hwres_can_mobj28"/>
-            <BindMap MUri="peripheral/can/0/mo/6" Proxy="app/CAN_NODE/1/hwres_can_mobj7"/>
+            <BindMap MUri="peripheral/can/0/mo/63" Proxy="app/CAN_NODE/0/hwres_can_mobj28"/>
             <BindMap MUri="devicepackage/0/51" Proxy="app/DIGITAL_IO/29/__pin_hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/5" Proxy="app/CAN_NODE/1/hwres_can_mobj8"/>
+            <BindMap MUri="peripheral/can/0/mo/22" Proxy="app/CAN_NODE/1/hwres_can_mobj7"/>
+            <BindMap MUri="peripheral/can/0/mo/6" Proxy="app/CAN_NODE/1/hwres_can_mobj8"/>
             <BindMap MUri="port/p/14/pad/15" Proxy="app/DIGITAL_IO/62/hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/21" Proxy="app/CAN_NODE/1/hwres_can_mobj5"/>
-            <BindMap MUri="peripheral/can/0/mo/22" Proxy="app/CAN_NODE/1/hwres_can_mobj6"/>
-            <BindMap MUri="peripheral/can/0/mo/1" Proxy="app/CAN_NODE/0/hwres_can_mobj21"/>
-            <BindMap MUri="peripheral/can/0/mo/2" Proxy="app/CAN_NODE/0/hwres_can_mobj20"/>
+            <BindMap MUri="peripheral/can/0/mo/24" Proxy="app/CAN_NODE/1/hwres_can_mobj5"/>
+            <BindMap MUri="peripheral/can/0/mo/21" Proxy="app/CAN_NODE/1/hwres_can_mobj6"/>
+            <BindMap MUri="peripheral/can/0/mo/2" Proxy="app/CAN_NODE/0/hwres_can_mobj21"/>
+            <BindMap MUri="peripheral/can/0/mo/12" Proxy="app/CAN_NODE/0/hwres_can_mobj20"/>
             <BindMap MUri="devicepackage/0/142" Proxy="app/DIGITAL_IO/10/__pin_hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/8" Proxy="app/CAN_NODE/1/hwres_can_mobj9"/>
-            <BindMap MUri="peripheral/can/0/mo/0" Proxy="app/CAN_NODE/0/hwres_can_mobj23"/>
+            <BindMap MUri="peripheral/can/0/mo/5" Proxy="app/CAN_NODE/1/hwres_can_mobj9"/>
             <BindMap MUri="devicepackage/0/49" Proxy="app/DIGITAL_IO/48/__pin_hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/13" Proxy="app/CAN_NODE/0/hwres_can_mobj22"/>
+            <BindMap MUri="peripheral/can/0/mo/13" Proxy="app/CAN_NODE/0/hwres_can_mobj23"/>
+            <BindMap MUri="peripheral/can/0/mo/1" Proxy="app/CAN_NODE/0/hwres_can_mobj22"/>
             <BindMap MUri="port/p/0/pad/7" Proxy="app/DIGITAL_IO/7/hwres_port_pin"/>
             <BindMap MUri="port/p/3/pad/13" Proxy="app/DIGITAL_IO/32/hwres_port_pin"/>
             <BindMap MUri="peripheral/scu/0/clkctrl/0/ccu" Proxy="app/CLOCK_XMC4/0/hwres_ccu"/>
             <BindMap MUri="devicepackage/0/67" Proxy="app/DIGITAL_IO/38/__pin_hwres_port_pin"/>
             <BindMap MUri="port/p/2/pad/13" Proxy="app/DIGITAL_IO/24/hwres_port_pin"/>
             <BindMap MUri="port/p/2/pad/0" Proxy="app/DIGITAL_IO/44/hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/17" Proxy="app/CAN_NODE/0/hwres_can_mobj14"/>
-            <BindMap MUri="peripheral/can/0/mo/52" Proxy="app/CAN_NODE/0/hwres_can_mobj13"/>
-            <BindMap MUri="peripheral/can/0/mo/4" Proxy="app/CAN_NODE/0/hwres_can_mobj16"/>
-            <BindMap MUri="peripheral/can/0/mo/10" Proxy="app/CAN_NODE/0/hwres_can_mobj15"/>
+            <BindMap MUri="peripheral/can/0/mo/52" Proxy="app/CAN_NODE/0/hwres_can_mobj14"/>
+            <BindMap MUri="peripheral/can/0/mo/16" Proxy="app/CAN_NODE/0/hwres_can_mobj13"/>
+            <BindMap MUri="peripheral/can/0/mo/10" Proxy="app/CAN_NODE/0/hwres_can_mobj16"/>
+            <BindMap MUri="peripheral/can/0/mo/17" Proxy="app/CAN_NODE/0/hwres_can_mobj15"/>
             <BindMap MUri="peripheral/scu/0/gcu/interrupt/rtcalarm" Proxy="app/RTC/0/hwres_gcu_rtcalarm"/>
-            <BindMap MUri="peripheral/can/0/mo/3" Proxy="app/CAN_NODE/0/hwres_can_mobj18"/>
-            <BindMap MUri="peripheral/can/0/mo/11" Proxy="app/CAN_NODE/0/hwres_can_mobj17"/>
+            <BindMap MUri="peripheral/can/0/mo/11" Proxy="app/CAN_NODE/0/hwres_can_mobj18"/>
+            <BindMap MUri="peripheral/can/0/mo/4" Proxy="app/CAN_NODE/0/hwres_can_mobj17"/>
             <BindMap MUri="devicepackage/0/34" Proxy="app/DIGITAL_IO/59/__pin_hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/12" Proxy="app/CAN_NODE/0/hwres_can_mobj19"/>
+            <BindMap MUri="peripheral/can/0/mo/3" Proxy="app/CAN_NODE/0/hwres_can_mobj19"/>
             <BindMap MUri="port/p/1/pad/6" Proxy="app/SPI_MASTER/0/hwres_port_pad_spi_sclkout"/>
             <BindMap MUri="devicepackage/0/138" Proxy="app/DIGITAL_IO/3/__pin_hwres_port_pin"/>
             <BindMap MUri="port/p/3/pad/8" Proxy="app/CAN_NODE/1/hwres_port_pad_can_rx"/>
             <BindMap MUri="devicepackage/0/119" Proxy="app/DIGITAL_IO/66/__pin_hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/50" Proxy="app/CAN_NODE/0/hwres_can_mobj10"/>
+            <BindMap MUri="peripheral/can/0/mo/15" Proxy="app/CAN_NODE/0/hwres_can_mobj10"/>
             <BindMap MUri="peripheral/can/0/global" Proxy="app/GLOBAL_CAN/0/hwres_can_global"/>
-            <BindMap MUri="peripheral/can/0/mo/16" Proxy="app/CAN_NODE/0/hwres_can_mobj12"/>
-            <BindMap MUri="peripheral/can/0/mo/53" Proxy="app/CAN_NODE/0/hwres_can_mobj11"/>
+            <BindMap MUri="peripheral/can/0/mo/53" Proxy="app/CAN_NODE/0/hwres_can_mobj12"/>
+            <BindMap MUri="peripheral/can/0/mo/50" Proxy="app/CAN_NODE/0/hwres_can_mobj11"/>
             <BindMap MUri="port/p/3/pad/5" Proxy="app/I2C_MASTER/1/hwres_i2c_sda"/>
             <BindMap MUri="port/p/1/pad/1" Proxy="app/DIGITAL_IO/21/hwres_port_pin"/>
             <BindMap MUri="port/p/15/pad/8" Proxy="app/DIGITAL_IO/51/hwres_port_pin"/>
@@ -136,11 +136,11 @@
             <BindMap MUri="peripheral/ccu4/3/cc4/3" Proxy="app/TIMER/2/hwres_ccu4_cc4"/>
             <BindMap MUri="port/p/2/pad/7" Proxy="app/DIGITAL_IO/40/hwres_port_pin"/>
             <BindMap MUri="peripheral/dma8/0/ch_adv/1" Proxy="app/SPI_MASTER/0/hwres_dma_channel_tx"/>
-            <BindMap MUri="peripheral/can/0/mo/23" Proxy="app/CAN_NODE/1/hwres_can_mobj3"/>
-            <BindMap MUri="peripheral/can/0/mo/24" Proxy="app/CAN_NODE/1/hwres_can_mobj4"/>
+            <BindMap MUri="peripheral/can/0/mo/20" Proxy="app/CAN_NODE/1/hwres_can_mobj3"/>
+            <BindMap MUri="peripheral/can/0/mo/23" Proxy="app/CAN_NODE/1/hwres_can_mobj4"/>
             <BindMap MUri="port/p/4/pad/5" Proxy="app/DIGITAL_IO/66/hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/29" Proxy="app/CAN_NODE/1/hwres_can_mobj1"/>
-            <BindMap MUri="peripheral/can/0/mo/20" Proxy="app/CAN_NODE/1/hwres_can_mobj2"/>
+            <BindMap MUri="peripheral/can/0/mo/61" Proxy="app/CAN_NODE/1/hwres_can_mobj1"/>
+            <BindMap MUri="peripheral/can/0/mo/29" Proxy="app/CAN_NODE/1/hwres_can_mobj2"/>
             <BindMap MUri="port/p/0/pad/4" Proxy="app/DIGITAL_IO/10/hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/58" Proxy="app/DIGITAL_IO/64/__pin_hwres_port_pin"/>
             <BindMap MUri="port/p/1/pad/4" Proxy="app/SPI_MASTER/0/hwres_port_pad_spi_mosi_1"/>
@@ -164,11 +164,11 @@
             <BindMap MUri="peripheral/cpu/0/systick" Proxy="app/SYSTIMER/0/hwres_syst"/>
             <BindMap MUri="port/p/15/pad/4" Proxy="app/DIGITAL_IO/55/hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/74" Proxy="app/DIGITAL_IO/44/__pin_hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/54" Proxy="app/CAN_NODE/0/hwres_can_mobj1"/>
-            <BindMap MUri="peripheral/can/0/mo/19" Proxy="app/CAN_NODE/0/hwres_can_mobj2"/>
-            <BindMap MUri="peripheral/can/0/mo/18" Proxy="app/CAN_NODE/0/hwres_can_mobj3"/>
-            <BindMap MUri="peripheral/can/0/mo/55" Proxy="app/CAN_NODE/0/hwres_can_mobj4"/>
-            <BindMap MUri="peripheral/can/0/mo/47" Proxy="app/CAN_NODE/0/hwres_can_mobj5"/>
+            <BindMap MUri="peripheral/can/0/mo/19" Proxy="app/CAN_NODE/0/hwres_can_mobj1"/>
+            <BindMap MUri="peripheral/can/0/mo/18" Proxy="app/CAN_NODE/0/hwres_can_mobj2"/>
+            <BindMap MUri="peripheral/can/0/mo/55" Proxy="app/CAN_NODE/0/hwres_can_mobj3"/>
+            <BindMap MUri="peripheral/can/0/mo/47" Proxy="app/CAN_NODE/0/hwres_can_mobj4"/>
+            <BindMap MUri="peripheral/can/0/mo/48" Proxy="app/CAN_NODE/0/hwres_can_mobj5"/>
             <BindMap MUri="devicepackage/0/63" Proxy="app/DIGITAL_IO/24/__pin_hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/31" Proxy="app/DIGITAL_IO/62/__pin_hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/72" Proxy="app/DIGITAL_IO/43/__pin_hwres_port_pin"/>
@@ -212,16 +212,16 @@
             <BindMap MUri="devicepackage/0/75" Proxy="app/DIGITAL_IO/40/__pin_hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/99" Proxy="app/DIGITAL_IO/26/__pin_hwres_port_pin"/>
             <BindMap MUri="peripheral/scu/0/trap/0/ulpwdg" Proxy="app/CLOCK_XMC4/0/hwres_ulpwdg_trap"/>
-            <BindMap MUri="peripheral/can/0/mo/48" Proxy="app/CAN_NODE/0/hwres_can_mobj6"/>
-            <BindMap MUri="peripheral/can/0/mo/49" Proxy="app/CAN_NODE/0/hwres_can_mobj7"/>
-            <BindMap MUri="peripheral/can/0/mo/40" Proxy="app/CAN_NODE/0/hwres_can_mobj8"/>
-            <BindMap MUri="peripheral/can/0/mo/41" Proxy="app/CAN_NODE/0/hwres_can_mobj9"/>
+            <BindMap MUri="peripheral/can/0/mo/49" Proxy="app/CAN_NODE/0/hwres_can_mobj6"/>
+            <BindMap MUri="peripheral/can/0/mo/40" Proxy="app/CAN_NODE/0/hwres_can_mobj7"/>
+            <BindMap MUri="peripheral/can/0/mo/41" Proxy="app/CAN_NODE/0/hwres_can_mobj8"/>
+            <BindMap MUri="peripheral/can/0/mo/42" Proxy="app/CAN_NODE/0/hwres_can_mobj9"/>
             <BindMap MUri="peripheral/scu/0/pwrctrl/0/hibernate" Proxy="app/CLOCK_XMC4/0/hwres_hibernate"/>
             <BindMap MUri="devicepackage/0/79" Proxy="app/DIGITAL_IO/47/__pin_hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/25" Proxy="app/CAN_NODE/0/hwres_can_mobj30"/>
+            <BindMap MUri="peripheral/can/0/mo/62" Proxy="app/CAN_NODE/0/hwres_can_mobj30"/>
             <BindMap MUri="devicepackage/0/32" Proxy="app/DIGITAL_IO/61/__pin_hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/61" Proxy="app/CAN_NODE/0/hwres_can_mobj32"/>
-            <BindMap MUri="peripheral/can/0/mo/26" Proxy="app/CAN_NODE/0/hwres_can_mobj31"/>
+            <BindMap MUri="peripheral/can/0/mo/26" Proxy="app/CAN_NODE/0/hwres_can_mobj32"/>
+            <BindMap MUri="peripheral/can/0/mo/25" Proxy="app/CAN_NODE/0/hwres_can_mobj31"/>
             <BindMap MUri="port/p/1/pad/7" Proxy="app/DIGITAL_IO/18/hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/68" Proxy="app/DIGITAL_IO/39/__pin_hwres_port_pin"/>
             <BindMap MUri="port/p/0/pad/11" Proxy="app/DIGITAL_IO/4/hwres_port_pin"/>
@@ -250,17 +250,17 @@
             <BindMap MUri="port/p/0/pad/2" Proxy="app/DIGITAL_IO/12/hwres_port_pin"/>
             <BindMap MUri="port/p/0/pad/6" Proxy="app/DIGITAL_IO/8/hwres_port_pin"/>
             <BindMap MUri="devicepackage/0/29" Proxy="app/DIGITAL_IO/56/__pin_hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/57" Proxy="app/CAN_NODE/2/hwres_can_mobj1"/>
-            <BindMap MUri="peripheral/can/0/mo/56" Proxy="app/CAN_NODE/2/hwres_can_mobj2"/>
+            <BindMap MUri="peripheral/can/0/mo/54" Proxy="app/CAN_NODE/2/hwres_can_mobj1"/>
+            <BindMap MUri="peripheral/can/0/mo/57" Proxy="app/CAN_NODE/2/hwres_can_mobj2"/>
             <BindMap MUri="devicepackage/0/50" Proxy="app/DIGITAL_IO/49/__pin_hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/14" Proxy="app/CAN_NODE/2/hwres_can_mobj3"/>
+            <BindMap MUri="peripheral/can/0/mo/56" Proxy="app/CAN_NODE/2/hwres_can_mobj3"/>
             <BindMap MUri="peripheral/dlr/0/ch/2" Proxy="app/SPI_MASTER/0/hwres_dlr_channel_rx"/>
             <BindMap MUri="peripheral/ccu8/0/global" Proxy="app/GLOBAL_CCU8/0/hwres_peripheral_ccu8_global"/>
             <BindMap MUri="devicepackage/0/120" Proxy="app/DIGITAL_IO/65/__pin_hwres_port_pin"/>
             <BindMap MUri="port/p/6/pad/2" Proxy="app/DIGITAL_IO/26/hwres_port_pin"/>
             <BindMap MUri="port/p/15/pad/3" Proxy="app/DIGITAL_IO/56/hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/51" Proxy="app/CAN_NODE/2/hwres_can_mobj4"/>
-            <BindMap MUri="peripheral/can/0/mo/15" Proxy="app/CAN_NODE/2/hwres_can_mobj5"/>
+            <BindMap MUri="peripheral/can/0/mo/14" Proxy="app/CAN_NODE/2/hwres_can_mobj4"/>
+            <BindMap MUri="peripheral/can/0/mo/51" Proxy="app/CAN_NODE/2/hwres_can_mobj5"/>
             <BindMap MUri="devicepackage/0/65" Proxy="app/DIGITAL_IO/37/__pin_hwres_port_pin"/>
             <BindMap MUri="port/p/2/pad/3" Proxy="app/DIGITAL_IO/42/hwres_port_pin"/>
             <BindMap MUri="peripheral/ccu4/3/cc4/2" Proxy="app/TIMER/0/hwres_ccu4_cc4"/>
@@ -273,10 +273,11 @@
             <BindMap MUri="port/p/0/pad/10" Proxy="app/DIGITAL_IO/5/hwres_port_pin"/>
             <BindMap MUri="peripheral/dlr/0/ch/5" Proxy="app/SPI_MASTER/0/hwres_dlr_channel_tx"/>
             <BindMap MUri="port/p/15/pad/6" Proxy="app/DIGITAL_IO/53/hwres_port_pin"/>
-            <BindMap MUri="peripheral/can/0/mo/33" Proxy="app/CAN_NODE/1/hwres_can_mobj20"/>
+            <BindMap MUri="peripheral/can/0/mo/32" Proxy="app/CAN_NODE/1/hwres_can_mobj20"/>
             <BindMap MUri="peripheral/scu/0/clkctrl/0/wdt" Proxy="app/CLOCK_XMC4/0/hwres_wdt"/>
-            <BindMap MUri="peripheral/can/0/mo/35" Proxy="app/CAN_NODE/1/hwres_can_mobj22"/>
-            <BindMap MUri="peripheral/can/0/mo/34" Proxy="app/CAN_NODE/1/hwres_can_mobj21"/>
+            <BindMap MUri="peripheral/can/0/mo/35" Proxy="app/CAN_NODE/1/hwres_can_mobj23"/>
+            <BindMap MUri="peripheral/can/0/mo/34" Proxy="app/CAN_NODE/1/hwres_can_mobj22"/>
+            <BindMap MUri="peripheral/can/0/mo/33" Proxy="app/CAN_NODE/1/hwres_can_mobj21"/>
             <BindMap MUri="devicepackage/0/123" Proxy="app/DIGITAL_IO/23/__pin_hwres_port_pin"/>
             <BindMap MUri="peripheral/cpu/0/nvic/interrupt/105" Proxy="app/GLOBAL_DMA/0/rg_nvicnodedma"/>
             <BindMap MUri="devicepackage/0/40" Proxy="app/DIGITAL_IO/30/__pin_hwres_port_pin"/>

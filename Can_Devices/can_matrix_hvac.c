@@ -3,6 +3,9 @@
 #include "Vcu_Config.h"
 //#include <main.h>
 
+#define HVAC_0x100		1
+#define HVAC_0x8000100	0
+
 volatile uint8_t error_compressor;
 uint16_t rpm=0;
 
@@ -12,7 +15,8 @@ CAN_MSG_t CAN_MSG_DB_HVAC[CAN_HVAC_MAX] =
 		{0x100, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, //Rx
 		{0x248, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, //Rx
 		{0x8000250, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, //Rx
-		{0x8000530, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0} //Tx
+		{0x8000530, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0}, //Tx
+		{0x8000100, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0, 0x0} //Rx
 };
 
 
@@ -29,6 +33,123 @@ void Process_Read_CAN_0x100(void)
 	CAN_NODE_MO_ReadData(HandlePtr1->lmobj_ptr[mo_index], tempData);
 }
 
+void Process_Read_CAN_0x8000100(void)
+{
+	float pressure_in, voltage_psi;
+	float pressure_value;
+	uint8_t TempDegreeC;
+	uint8_t AC_ON=1;
+	static uint8_t condenser_on = 0x00;
+
+	uint8_t *tempData, mo_index;
+	const CAN_NODE_t *HandlePtr1 = &CAN_NODE_1;
+
+	mo_index = 22;
+
+	tempData = &CAN_MSG_DB_HVAC[CAN_0x8000100].CAN_Data[ZERO_BYTE];
+
+	//read data to external buffer
+	CAN_NODE_MO_ReadData(HandlePtr1->lmobj_ptr[mo_index], tempData);
+
+	//get the temperature
+	TempDegreeC = CAN_MSG_DB_HVAC[CAN_0x8000100].CAN_Data[0];
+	//get the pressure
+	pressure_in = (float) CAN_MSG_DB_HVAC[CAN_0x8000100].CAN_Data[1];
+	//get the AC switch input
+	AC_ON = CAN_MSG_DB_HVAC[CAN_0x8000100].CAN_Data[2];
+	AC_ON_4g = AC_ON;
+
+	//AC is ON when AC_ON == 0
+	//now ac is on when == 1
+	//AC_ON = 1;
+	if(0x01 == AC_ON)
+	{
+		//convert the temperature to rpm
+		if(TempDegreeC <= 28)
+		{
+			//sanden
+//			rpm = (uint16_t)(((-200) * (int32_t)TempDegreeC) + 9100);        //from line eqn relating temperature to rpm
+
+			//hifire
+			rpm = (uint16_t)(((-170) * (int32_t)TempDegreeC) + 8220);        //from line eqn relating temperature to rpm
+
+			if(Vcu_InPuts.IGNITION_1_IN)
+			{
+				//ptc turn off//
+				//DIGITAL_IO_SetOutputLow(&MC_CONTACTOR_RELAY_OUT_D);
+			}
+		}
+		else if (TempDegreeC > 28)
+		{
+			rpm = 2500;
+			if(Vcu_InPuts.IGNITION_1_IN)
+			{
+			//ptc turn on//
+			//DIGITAL_IO_SetOutputHigh(&MC_CONTACTOR_RELAY_OUT_D);
+			}
+		}
+
+		//calculate pressure value in megaPascal
+		pressure_value = (0.6833 * pressure_in) - 0.0935;
+
+		if(pressure_value >= HIGH_PRESSURE_mP)
+		{
+			//AC_ON = 0x01;
+			AC_ON = 0x00; //make whole system off
+		}
+	}
+
+//	//update CAN_MSG_DB_HVAC for 0x238
+//	CAN_MSG_DB_HVAC[CAN_0x238].CAN_Data[0] = rpm;
+//	//CAN_MSG_DB_HVAC[CAN_0x238].CAN_Data[1] = (rpm >> 1);
+//	CAN_MSG_DB_HVAC[CAN_0x238].CAN_Data[1] = (rpm >> 8);
+
+	//update CAN_MSG_DB_HVAC for 0x8000530 //hifire
+//	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[3] = 0x0b;        //hifire
+//	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[4] = 0xb8; //hifire
+	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[3] = (rpm >> 8);//0x0b;        //hifire
+	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[4] = rpm;//0xb8; //hifire
+	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[5] = 0x0F;       //hifire
+
+	//error_compressor from 0x8000250
+	if((0x01 == AC_ON) && (0x01 != error_compressor))
+	{
+		if(0x0 == condenser_on)
+		{
+			//turn on the condenser using digital IO
+//			DIGITAL_IO_SetOutputHigh(&DIGITAL_IO_0);
+			//DIGITAL_IO_SetOutputHigh(&AC_BLOWER_SPEED_1); // for
+		//	if(DIGITAL_IO_GetInput(&IGNI_POS1_IN_D))
+			//	DIGITAL_IO_SetOutputHigh(&AC_BLOWER_SPEED_2); // for compressor to on X
+		//	if(DIGITAL_IO_GetInput(&IGNI_POS1_IN_D))
+					   DIGITAL_IO_SetOutputHigh(&AC_RADIATOR_OUT_D); // for compressor to on
+
+			condenser_on = 0x1;
+		}
+
+		//turn AC ON
+//		CAN_MSG_DB_HVAC[CAN_0x238].CAN_Data[3] = 0x01;	//setting 24th bit of CAN_0x238
+		CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[0] = 0x80;	//setting 7th bit of CAN_0x8000530 //hifire
+	}
+	else
+	{
+		//turn off the condenser
+//		DIGITAL_IO_SetOutputLow(&DIGITAL_IO_0);
+		//if(0x01 == condenser_on)
+	//	{
+			//DIGITAL_IO_SetOutputLow(&AC_BLOWER_SPEED_1); // for
+			//for(volatile int i = 0; i < 0xffff*4; i++);
+		//if(DIGITAL_IO_GetInput(&IGNI_POS2_IN_D))
+			//DIGITAL_IO_SetOutputLow(&AC_BLOWER_SPEED_2);
+		//if(DIGITAL_IO_GetInput(&IGNI_POS1_IN_D))
+			  DIGITAL_IO_SetOutputLow(&AC_RADIATOR_OUT_D);/// for compressor to turn off
+		condenser_on = 0x0;
+		//}
+//		CAN_MSG_DB_HVAC[CAN_0x238].CAN_Data[3] = 0x00;
+		CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[0] = 0x00; //hifire
+	}
+}
+
 void Process_Read_CAN_0x248(void)
 {
 	uint8_t *tempData, mo_index;
@@ -41,6 +162,7 @@ void Process_Read_CAN_0x248(void)
 	//read data to external buffer
 	CAN_NODE_MO_ReadData(HandlePtr1->lmobj_ptr[mo_index], tempData);
 }
+
 void Read_CAN_0x100(void)
 {
 	uint8_t test;
@@ -76,6 +198,44 @@ void Read_CAN_0x100(void)
 
 	//copy data from MO object to HVAC DB CAN_MSG_DB_HVAC
 	Process_Read_CAN_0x100();
+}
+
+
+void Read_CAN_0x8000100(void)
+{
+	uint8_t test;
+	CAN_NODE_STATUS_t status, receive_status;
+	XMC_CAN_MO_t *MO_Ptr;
+	uint8_t mo_index;
+	const CAN_NODE_t *HandlePtr1 = &CAN_NODE_1;
+
+	mo_index = 22;
+
+	MO_Ptr = HandlePtr1->lmobj_ptr[mo_index]->mo_ptr;
+
+	status = CAN_NODE_MO_GetStatus(HandlePtr1->lmobj_ptr[mo_index]);
+	//Check receive pending status
+	if (status & XMC_CAN_MO_STATUS_RX_PENDING)
+	{
+		// Clear the flag
+		XMC_CAN_MO_ResetStatus(MO_Ptr,XMC_CAN_MO_RESET_STATUS_RX_PENDING);
+		// Read the received Message object
+		receive_status = CAN_NODE_MO_Receive(HandlePtr1->lmobj_ptr[mo_index]);
+
+		if (receive_status == CAN_NODE_STATUS_SUCCESS)
+		{
+			// message object receive success.
+			test = 1;
+		}
+		else
+		{
+			// message object failed to receive.
+			test = 0;
+		}
+	}
+
+	//copy data from MO object to HVAC DB CAN_MSG_DB_HVAC
+	Process_Read_CAN_0x8000100();
 }
 
 void Read_CAN_0x248(void)
@@ -357,8 +517,14 @@ void CAN_INPUT_HVAC(void)
 {
 	//read compressor to check error
 	Read_CAN_Hifire_0x8000250();
+
+#if HVAC_0x100
 	Read_CAN_0x100();
 	Process_CAN_0x100();
+#else
+	Read_CAN_0x8000100();
+#endif
+
 }
 
 //for hifire

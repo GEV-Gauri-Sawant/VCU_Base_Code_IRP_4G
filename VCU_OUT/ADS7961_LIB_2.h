@@ -65,12 +65,12 @@ uint32_t ADS1_avg_receive_data[16];
 
 //collecting data ADS2
 uint8_t ADS2_receive_data[16][50];
-//uint8_t ADS2_recive_channel[16]; //uncomment channel for debugging
+uint8_t ADS2_recive_channel[16]; //uncomment channel for debugging
 uint32_t ADS2_avg_receive_data[16];
 
 //collecting data ADS3//
 uint8_t ADS3_receive_data[16][50];
-//uint8_t ADS3_recive_channel[16]; //uncomment channel for debugging
+uint8_t ADS3_recive_channel[16]; //uncomment channel for debugging
 uint32_t ADS3_avg_receive_data[16];
 
 uint8_t flag;

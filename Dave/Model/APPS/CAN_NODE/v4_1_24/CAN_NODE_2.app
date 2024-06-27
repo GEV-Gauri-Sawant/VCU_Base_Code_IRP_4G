@@ -88,19 +88,19 @@
     <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/can/can_0.dd#//@provided.185"/>
   </hwResources>
   <hwResources name="MO_1" URI="http://resources/4.1.24/app/CAN_NODE/2/hwres_can_mobj1" resourceGroupUri="peripheral/can/*/mo/*" mResGrpUri="peripheral/can/*/mo/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/can/can_0.dd#//@provided.241"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/can/can_0.dd#//@provided.237"/>
   </hwResources>
   <hwResources name="MO_2" URI="http://resources/4.1.24/app/CAN_NODE/2/hwres_can_mobj2" resourceGroupUri="peripheral/can/*/mo/*" mResGrpUri="peripheral/can/*/mo/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/can/can_0.dd#//@provided.225"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/can/can_0.dd#//@provided.241"/>
   </hwResources>
   <hwResources name="MO_3" URI="http://resources/4.1.24/app/CAN_NODE/2/hwres_can_mobj3" resourceGroupUri="peripheral/can/*/mo/*" mResGrpUri="peripheral/can/*/mo/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/can/can_0.dd#//@provided.221"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/can/can_0.dd#//@provided.225"/>
   </hwResources>
   <hwResources name="MO_4" URI="http://resources/4.1.24/app/CAN_NODE/2/hwres_can_mobj4" resourceGroupUri="peripheral/can/*/mo/*" mResGrpUri="peripheral/can/*/mo/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/can/can_0.dd#//@provided.217"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/can/can_0.dd#//@provided.221"/>
   </hwResources>
   <hwResources name="MO_5" URI="http://resources/4.1.24/app/CAN_NODE/2/hwres_can_mobj5" resourceGroupUri="peripheral/can/*/mo/*" mResGrpUri="peripheral/can/*/mo/*">
-    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/can/can_0.dd#//@provided.213"/>
+    <downwardMapList xsi:type="ResourceModel:ResourceGroup" href="../../../HW_RESOURCES/can/can_0.dd#//@provided.217"/>
   </hwResources>
   <hwResources name="MO_6" URI="http://resources/4.1.24/app/CAN_NODE/2/hwres_can_mobj6" resourceGroupUri="" required="false" mResGrpUri="peripheral/can/*/mo/*"/>
   <hwResources name="MO_7" URI="http://resources/4.1.24/app/CAN_NODE/2/hwres_can_mobj7" resourceGroupUri="" required="false" mResGrpUri="peripheral/can/*/mo/*"/>

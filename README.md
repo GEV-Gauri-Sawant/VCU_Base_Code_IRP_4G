@@ -31,3 +31,8 @@ Date : 25/06/2024
 1. DC to DC converter charging logic updated (commented).
 2. Needs testing on VP07 and other vehicles (48V battery connection is only done for VP07).
 3. ADC2, ADC3 testing.
+
+Date : 26/06/2024
+1. DC to DC converter charging logic still commented.
+2. New CPIS (0x8000100 500kbps) changes added needs testing.
+3. ADC2, ADC3 testing.

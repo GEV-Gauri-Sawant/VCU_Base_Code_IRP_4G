@@ -36,7 +36,11 @@
 #define SIXTH_BYTE    6
 #define SEVENTH_BYTE  7
 
-#define HIGH_PRESSURE_mP 1.47
+#ifdef HVAC_0x100
+	#define HIGH_PRESSURE_mP 1.47
+#else
+	#define HIGH_PRESSURE_mP 2.25
+#endif
 
 
 
@@ -780,6 +784,7 @@ typedef enum
 	CAN_0x248,
 	CAN_0x8000250,
 	CAN_0x8000530,
+	CAN_0x8000100,
 	CAN_HVAC_MAX
 }eCanMSGIndexHVAC_t;
 
@@ -804,6 +809,8 @@ void Process_CAN_0x248(void);
 void Process_CAN_0x100(void);
 void Read_CAN_0x248(void);
 void Read_CAN_0x100(void);
+void Read_CAN_0x8000100(void);
+void Process_Read_CAN_0x8000100(void);
 void Read_CAN_Hifire_0x8000250(void);
 void Process_CAN_Hifire_0x8000250(void);
 

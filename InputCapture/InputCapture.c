@@ -14,6 +14,7 @@
 #define curtis 0
 #define gtake 0
 #define IRP 1
+
 	//if(Vcu_InPuts.IGNITION_1_IN)
 //#endif
 
@@ -86,12 +87,7 @@ void Can_Inputs(void)
 
 void read_temp(void)
 {
-
-
 	U18_read_temp();
-
-
-
 }
 
 void ruff(void)

@@ -175,6 +175,8 @@ extern const CAN_NODE_LMO_t CAN_NODE_1_LMO_21_Config;
 
 extern const CAN_NODE_LMO_t CAN_NODE_1_LMO_22_Config;
 
+extern const CAN_NODE_LMO_t CAN_NODE_1_LMO_23_Config;
+
 extern const CAN_NODE_t CAN_NODE_2; 
 
 extern const CAN_NODE_LMO_t CAN_NODE_2_LMO_01_Config;

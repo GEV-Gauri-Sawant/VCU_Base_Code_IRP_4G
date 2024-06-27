@@ -13,7 +13,6 @@
 
 /*instrument_clustor_indicators_t *instrument_clustor_indicators = &CAN_MSG_DB[CAN_18FFB632];*/
 
-
 void State_1(void)
 {
 	if(Vcu_OutPuts.IGNITION_1_OUT)
@@ -298,9 +297,9 @@ void dc_dc_state_update(void)
 
 		/*---------------ADDED FOR TESTING----------------*/
 //		AUX_EFUSE_3_OUT_D output is connected to 48V battery input
-		digital_io_setoutputhigh(&AUX_EFUSE_3_OUT_D); //48V battery
+		digital_io_setoutputlow(&AUX_EFUSE_3_OUT_D); //48V battery
 		//		DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D); //FOR TRIPHASE DC TO DC converter
-		DIGITAL_IO_SetOutputHigh(&DC_DC_EN_OUT_D); //for Madhura-MPT DC TO DC converter
+		DIGITAL_IO_SetOutputLow(&DC_DC_EN_OUT_D); //for Madhura-MPT DC TO DC converter
 //		dc_dc_started = true;
 	}
 }
