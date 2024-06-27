@@ -3,11 +3,12 @@
 #include "Vcu_Config.h"
 //#include <main.h>
 
-#define HVAC_0x100		1
-#define HVAC_0x8000100	0
+#define HVAC_0x100		0
+#define HVAC_0x8000100	1
 
 volatile uint8_t error_compressor;
 uint16_t rpm=0;
+float pressure_value = 0;
 
 CAN_MSG_t CAN_MSG_DB_HVAC[CAN_HVAC_MAX] =
 {
@@ -36,7 +37,6 @@ void Process_Read_CAN_0x100(void)
 void Process_Read_CAN_0x8000100(void)
 {
 	float pressure_in, voltage_psi;
-	float pressure_value;
 	uint8_t TempDegreeC;
 	uint8_t AC_ON=1;
 	static uint8_t condenser_on = 0x00;
@@ -53,10 +53,13 @@ void Process_Read_CAN_0x8000100(void)
 
 	//get the temperature
 	TempDegreeC = CAN_MSG_DB_HVAC[CAN_0x8000100].CAN_Data[0];
+
 	//get the pressure
-	pressure_in = (float) CAN_MSG_DB_HVAC[CAN_0x8000100].CAN_Data[1];
+//	pressure_in = ((CAN_MSG_DB_HVAC[CAN_0x8000100].CAN_Data[1] >> 8) || (CAN_MSG_DB_HVAC[CAN_0x8000100].CAN_Data[2] << 8));
+	pressure_in = (float)((CAN_MSG_DB_HVAC[CAN_0x8000100].CAN_Data[2] << 8) || (CAN_MSG_DB_HVAC[CAN_0x8000100].CAN_Data[1]));
+
 	//get the AC switch input
-	AC_ON = CAN_MSG_DB_HVAC[CAN_0x8000100].CAN_Data[2];
+	AC_ON = CAN_MSG_DB_HVAC[CAN_0x8000100].CAN_Data[3];
 	AC_ON_4g = AC_ON;
 
 	//AC is ON when AC_ON == 0
@@ -109,7 +112,7 @@ void Process_Read_CAN_0x8000100(void)
 //	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[4] = 0xb8; //hifire
 	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[3] = (rpm >> 8);//0x0b;        //hifire
 	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[4] = rpm;//0xb8; //hifire
-	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[5] = 0x0F;       //hifire
+	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[5] = 0x0F;  //0xFE is max     //hifire
 
 	//error_compressor from 0x8000250
 	if((0x01 == AC_ON) && (0x01 != error_compressor))
