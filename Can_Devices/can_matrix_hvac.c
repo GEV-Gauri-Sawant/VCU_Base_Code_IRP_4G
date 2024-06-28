@@ -7,7 +7,8 @@
 #define HVAC_0x8000100	1
 
 volatile uint8_t error_compressor;
-uint16_t rpm=0;
+uint16_t rpm = 0;
+uint16_t compressor_rpm = 0, prev_compressor_rpm = 2000;
 float pressure_value = 0;
 
 CAN_MSG_t CAN_MSG_DB_HVAC[CAN_HVAC_MAX] =
@@ -110,9 +111,11 @@ void Process_Read_CAN_0x8000100(void)
 	//update CAN_MSG_DB_HVAC for 0x8000530 //hifire
 //	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[3] = 0x0b;        //hifire
 //	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[4] = 0xb8; //hifire
-	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[3] = (rpm >> 8);//0x0b;        //hifire
-	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[4] = rpm;//0xb8; //hifire
+	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[3] = (prev_compressor_rpm >> 8);//0x0b;        //hifire
+	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[4] = prev_compressor_rpm;//0xb8; //hifire
 	CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[5] = 0x0F;  //0xFE is max     //hifire
+
+	compressor_rpm = rpm;
 
 	//error_compressor from 0x8000250
 	if((0x01 == AC_ON) && (0x01 != error_compressor))

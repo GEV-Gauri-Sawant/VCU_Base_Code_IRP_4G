@@ -13,6 +13,9 @@
 #define U6_address 0x90
 #define U9_address 0x92
 
+float ambient_temp = 0;
+float cabin_temp = 0;
+
 //not working
 //enum U18_channels {
 //	MOTOR_TEMP_BYTE = 0x9C,//0b10011100,
@@ -20,6 +23,23 @@
 //	MC_TEMP_BYTE = 0xAC,//0b10101100,
 //	BATTERY_TEMP_BYTE = 0xEC//0b11101100
 //};
+float calculate_temperatre(uint16_t adc_raw)
+{
+	float nominal_in_k = 298.15;
+	uint16_t resolution = 4096;
+	float v_supply = 3.3;
+	uint16_t nomial_r = 10000;
+	uint16_t beta = 3435;
+	float v_ref = 2.5;
+
+	float vout = adc_raw * (v_ref/resolution); //25 in c = 298.15 in K
+	float rt = nomial_r * ((v_supply / vout) - 1);
+	float t_in_kel = (1 / nominal_in_k) + (1 / (beta * (log(nomial_r/rt))));
+	t_in_kel = 1 / t_in_kel;
+	float t_in_cel = t_in_kel - 273.15;
+	cabin_temp = t_in_cel;
+	return cabin_temp;
+}
 
 void U18_read_temp(void)
 {
@@ -124,7 +144,6 @@ void U18_MotorTemp_read(void)
 
 void U18_CabinTemp_read(void)
 {
-
 	bool start = true, stop = 0, ack = true;
 	float ans = 0, Resistance = 0;
 	unsigned int SERIESRESISTOR = 10000, NOMINAL_RESISTANCE = 10000, BCOEFFICIENT = 3950, NOMINAL_TEMPERATURE = 25;
@@ -142,6 +161,8 @@ void U18_CabinTemp_read(void)
 	rx = ((uint16_t)rx_buff[0] << 8) | rx_buff[1];
 	rx &= 0x0fff;
 
+	cabin_temp = calculate_temperatre(rx);
+
 	Resistance = ((float)4095.0/(float)rx) - 1;
 	Resistance = ((float)10000.0/(float)Resistance);
 
@@ -156,7 +177,7 @@ void U18_CabinTemp_read(void)
 
 	steinhart = (float)1.0 / steinhart;
 	steinhart -= (float)273.15;
-
+	cabin_temp = steinhart;
 }
 
 void U18_McTemp_read(void)

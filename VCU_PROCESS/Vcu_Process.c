@@ -8,7 +8,6 @@
 #include "Vcu_Config.h"
 #include "can_matrix.h"
 
-
 int *cluster_door_in = &CAN_MSG_DB[CAN_18FF2121].CAN_Data[0];
 
 void Process_VcuOutputs_Update(void)

@@ -10,6 +10,10 @@
 #include "Vcu_Process.h"
 #include "can_matrix.h"
 
+uint8_t last_time = 0;
+uint8_t compressor_timer = 0;
+float prev_cabin_temp = 0; //used to check conditions
+
 instrument_clustor_indicators_t *instrument_clustor_indicators = (instrument_clustor_indicators_t *)&(CAN_MSG_DB[CAN_18FFB632].CAN_Data[0]);
 instrument_clustor_buzzer_t *instrument_clustor_buzzer = &(CAN_MSG_DB[CAN_18FF2021].CAN_Data[0]);
 Instrumetcluster_DriveMode_OUT_t *Instrumetcluster_DriveMode_OUT = &(CAN_MSG_DB[CAN_18FFB632].CAN_Data[4]);
@@ -26,6 +30,7 @@ void Process_State1_Inputs(void)
 		Process_cluster_indicators();
 		Process_drive_mode();
 		Process_faciaaswitches();
+		Process_cabin_temperature();
 		if(init_once)
 		{
 			init_hw();
@@ -340,6 +345,165 @@ void Process_faciaaswitches(void)
 	//Process_FogLamp();
 	//Process_PowerLatch();
 }
+
+void Process_cabin_temperature(void)
+{
+	if((AC_ON_4g == 1) && (error_compressor != 1))
+	{
+		RTC_GetTime(&current_time);
+		if((current_time.seconds % 5 == 0) && (current_time.seconds != last_time))
+		{
+			last_time = current_time.seconds;
+			if (prev_compressor_rpm < compressor_rpm)
+			{
+				prev_compressor_rpm += 500;
+			}
+			else if (prev_compressor_rpm > compressor_rpm)
+			{
+				prev_compressor_rpm -= 500;
+			}
+
+			CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[3] = (prev_compressor_rpm >> 8);
+			CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[4] = prev_compressor_rpm;
+		}
+	}
+}
+
+////to be used when rotor is removed. NEEDS TESTING
+//void Process_cabin_temperature(void)
+//{
+//	if((AC_ON_4g == 1) && (error_compressor != 1))
+//	{
+//		RTC_GetTime(&current_time);
+//		if((current_time.seconds % 5 == 0) && (current_time.seconds != last_time))
+//		{
+//			last_time = current_time.seconds;
+//
+//			CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[0] = 0x80;	//setting 7th bit of CAN_0x8000530 //hifire
+//
+//			if(cabin_temp < 18)
+//			{
+//				prev_cabin_temp = cabin_temp;
+//			}
+//			else if(cabin_temp >= 18 && cabin_temp < 25)
+//			{
+//				//turn off compressor when cabin temp is between 18 and 25.
+//				CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[0] = 0x00; //hifire
+//				prev_cabin_temp = cabin_temp;
+//			}
+//			else if(cabin_temp >= 25 && cabin_temp < 35)
+//			{
+//				compressor_rpm = 2500;
+//				prev_cabin_temp = cabin_temp;
+//			}
+//			else if(cabin_temp >= 35 && cabin_temp < 45)
+//			{
+//				//10 mins
+//				if(compressor_timer == 0)
+//				{
+//					if(compressor_rpm != 3500 || (prev_cabin_temp < 35 || prev_cabin_temp >= 45))
+//					{
+//						compressor_rpm = 2000;
+//						compressor_timer = current_time.minutes;
+//					}
+//				}
+//				else if((current_time.minutes - compressor_timer) >= 10)
+//				{
+//					//rest 3500
+//					compressor_timer = 0;
+//					compressor_rpm = 3500;
+//					prev_cabin_temp = cabin_temp;
+//				}
+//			}
+//			else if(cabin_temp >= 45 && cabin_temp < 55)
+//			{
+//				if(compressor_timer == 0)
+//				{
+//					//compressor_rpm 3000 is rest condition after all compressor speeds are executed between 45 and 55 degree c.
+//					if(compressor_rpm != 3000 || (prev_cabin_temp < 45 || prev_cabin_temp >= 55))
+//					{
+//						compressor_rpm = 2000;
+//						compressor_timer = current_time.minutes;
+//					}
+//				}
+//				//after 10 mins of setting a compressor speed
+//				else if((current_time.minutes - compressor_timer) >= 10)
+//				{
+//					if(compressor_rpm == 2000)
+//					{
+//						compressor_rpm = 3000;
+//						compressor_timer = current_time.minutes;
+//					}
+//					else if(compressor_rpm == 3000)
+//					{
+//						//20 minutes after setting compressor speed as 3000
+//						if((current_time.minutes - compressor_timer) >= 20)
+//						{
+//							compressor_rpm = 4000;
+//							compressor_timer = current_time.minutes;
+//						}
+//					}
+//					else if(compressor_rpm == 4000)
+//					{
+//						//after executing 4000 for 10mins put compressor speed 3000 for rest of the time
+//						compressor_rpm = 3000;
+//						compressor_timer = 0;
+//						prev_cabin_temp = cabin_temp;
+//					}
+//				}
+//			}
+//			else if(cabin_temp >= 55)
+//			{
+//				if(compressor_timer == 0)
+//				{
+//					//compressor_rpm 3000 is rest condition after all compressor speeds are executed above 55 degree c.
+//					if(compressor_rpm != 3000 || (prev_cabin_temp < 55))
+//					{
+//						compressor_rpm = 2000;
+//						compressor_timer = current_time.minutes;
+//					}
+//				}
+//				//after 10 mins of setting a compressor speed
+//				else if((current_time.minutes - compressor_timer) >= 10)
+//				{
+//					if(compressor_rpm == 2000)
+//					{
+//						compressor_rpm = 3500;
+//						compressor_timer = current_time.minutes;
+//					}
+//					else if(compressor_rpm == 3500)
+//					{
+//						//20 minutes after setting compressor speed as 3500
+//						if((current_time.minutes - compressor_timer) >= 20)
+//						{
+//							compressor_rpm = 4500;
+//							compressor_timer = current_time.minutes;
+//						}
+//					}
+//					else if(compressor_rpm == 4500)
+//					{
+//						//after executing 4500 for 10mins put compressor speed 3000 for rest of the time
+//						compressor_rpm = 3000;
+//						compressor_timer = 0;
+//						prev_cabin_temp = cabin_temp;
+//					}
+//				}
+//			}
+//
+//			if (prev_compressor_rpm < compressor_rpm)
+//			{
+//				prev_compressor_rpm += 500;
+//			}
+//			else if (prev_compressor_rpm > compressor_rpm)
+//			{
+//				prev_compressor_rpm -= 500;
+//			}
+//
+//			CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[3] = (prev_compressor_rpm >> 8);
+//			CAN_MSG_DB_HVAC[CAN_0x8000530].CAN_Data[4] = prev_compressor_rpm;
+//		}
+//	}
+//}
 
 void Flasher(void)
 {

@@ -8,9 +8,10 @@
 #ifndef VCU_PROCESS_VCU_PROCESS_H_
 #define VCU_PROCESS_VCU_PROCESS_H_
 
+#include <inttypes.h>
 //#include "Vcu_Config.h"
 
-#endif /* VCU_PROCESS_VCU_PROCESS_H_ */
+uint8_t last_time; //used for compressor logic
 
 void Process_VcuOutputs_Update(void);
 void Process_State1_Inputs(void);
@@ -24,5 +25,8 @@ void Process_ig2_lights_off(void);
 void all_Ig1_Inputs_off(void);
 void Process_cluster_indicators(void);
 void cluster_indicators_off(void);
+void Process_cabin_temperature(void);
 
 void init_hw(void);
+
+#endif /* VCU_PROCESS_VCU_PROCESS_H_ */

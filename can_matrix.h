@@ -937,3 +937,4 @@ int BMS_Avg_temp;
 bool AC_ON_4g;
 //Adding speed for 4g
 uint16_t speed_4g;
+uint16_t compressor_rpm, prev_compressor_rpm; //used for rpm logic used in compressor given by thermal team

@@ -25,8 +25,6 @@ void OutPutAction_Update(void)
 	/* light */
 	Lights_on_off();
 
-
-
 	VcuOut_MotorController_IRPbrakes();
 
 	door_en_cabin_light();

@@ -36,3 +36,12 @@ Date : 26/06/2024
 1. DC to DC converter charging logic still commented.
 2. New CPIS (0x8000100 500kbps) changes added needs testing.
 3. ADC2, ADC3 testing.
+
+Date : 27/06/2024
+1. New CPIS (0x8000100 500kbps) tested.
+2. ADC2, ADC3 testing (SPI0 clock settings conflict with SD card).
+
+Date : 28/06/2024
+1. Gradually increase/decrease compressor RPM until matches desired RPM based on temperature received from CPIS rotor.
+2. New compressor logic where no rotor will be there and compressor RPM will be dependent on cabin temperature. Logic commented.  
+3. Cabin temperature new formula added needs testing.
